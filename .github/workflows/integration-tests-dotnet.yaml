@@ -5,8 +5,8 @@ on:
     branches-ignore:
       - main
     paths: # run if any of below was changed
-      - 'clients/**'
-      - 'packages/**'
+      - 'src/clients/**'
+      - 'src/packages/**'
       - 'tests/IntegrationTests/**'
 
 permissions:
