@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <RootNamespace>AffinidiTdk.AuthProvider</RootNamespace>
+    <AssemblyName>AffinidiTdk.AuthProvider</AssemblyName>
+    <PackageId>AffinidiTdk.AuthProvider</PackageId>
+    <PackageVersion>1.0.0</PackageVersion>
+    <Authors>Affinidi</Authors>
+    <Company>Affinidi</Company>
+    <Description>Internal module for managing access tokens</Description>
+    <PackageTags>affinidi-tdk, identity, holistic, network, trust</PackageTags>
+    <RepositoryUrl>https://github.com/affinidi/affinidi-tdk</RepositoryUrl>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="jose-jwt" Version="5.2.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.OpenIdConnect" Version="7.0.1" />
+  </ItemGroup>
+
+</Project>
