@@ -29,6 +29,11 @@ jobs:
         run: dotnet restore
         working-directory: tests/IntegrationTests
 
+      - name: Debug folder structure
+        run: |
+          echo "Current working directory: $PWD"
+          tree -L 5
+
       - name: Cache testing env file
         uses: actions/cache@v4
         id: testing-env-cache
