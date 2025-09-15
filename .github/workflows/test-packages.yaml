@@ -21,7 +21,7 @@ jobs:
 
     defaults:
       run:
-        working-directory: packages/${{ matrix.package }}/tests
+        working-directory: src/packages/${{ matrix.package }}/tests
 
     steps:
       - name: Checkout repository
