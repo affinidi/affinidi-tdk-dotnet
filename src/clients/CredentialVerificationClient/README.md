@@ -154,8 +154,6 @@ Class | Method | HTTP request | Description
 
  - [Model.Constraints](docs/Constraints.md)
  - [Model.ConstraintsStatuses](docs/ConstraintsStatuses.md)
- - [Model.CredentialRequirements](docs/CredentialRequirements.md)
- - [Model.CredentialRequirementsConstraints](docs/CredentialRequirementsConstraints.md)
  - [Model.Descriptor](docs/Descriptor.md)
  - [Model.Error](docs/Error.md)
  - [Model.ErrorDetail](docs/ErrorDetail.md)
