@@ -3,6 +3,7 @@ using Xunit;
 using DotNetEnv;
 using AffinidiTdk.AuthProvider;
 using System;
+using System.Net.Http;
 using System.Threading.Tasks;
 
 namespace IntegrationTests.Helpers
@@ -13,6 +14,9 @@ namespace IntegrationTests.Helpers
         public static AuthHelper Instance => _instance.Value;
 
         private readonly AuthProvider _authProvider;
+
+        // Expose the shared HttpClient instance
+        public HttpClient HttpClient { get; }
 
         private AuthHelper()
         {
@@ -28,6 +32,10 @@ namespace IntegrationTests.Helpers
             };
 
             _authProvider = new AuthProvider(authProviderParams);
+
+            // Set up the token handler + HttpClient
+            var tokenHandler = new TokenInjectingHandler(GetProjectScopedToken, new HttpClientHandler());
+            HttpClient = new HttpClient(tokenHandler);
         }
 
         public async Task<string> GetProjectScopedToken()

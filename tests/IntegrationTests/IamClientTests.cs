@@ -19,21 +19,14 @@ namespace IntegrationTests
         [Fact]
         public async Task ManagePrincipals()
         {
-            string token = await AuthHelper.Instance.GetProjectScopedToken();
-
-            Configuration config = new Configuration();
-            config.ApiKey.Add("authorization", token);
-
-            HttpClient httpClient = new HttpClient();
-            HttpClientHandler httpClientHandler = new HttpClientHandler();
-
-            var apiInstance = new ProjectsApi(httpClient, config, httpClientHandler);
+            HttpClient httpClient = AuthHelper.Instance.HttpClient;
 
             string principalId = System.Guid.NewGuid().ToString();
-
             var principalType = "token";
-
             var addUserToProjectInput = new AddUserToProjectInput(principalId, principalType);
+
+            Configuration config = new Configuration();
+            var apiInstance = new ProjectsApi(httpClient, config);
 
             var addPrincipalResult = apiInstance.AddPrincipalToProjectWithHttpInfo(addUserToProjectInput);
             Assert.Equal(HttpStatusCode.NoContent, addPrincipalResult.StatusCode);
