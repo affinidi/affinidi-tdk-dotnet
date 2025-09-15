@@ -18,15 +18,10 @@ namespace IntegrationTests
         [Fact]
         public async Task ListConfigurations()
         {
-            string token = await AuthHelper.Instance.GetProjectScopedToken();
+            HttpClient httpClient = AuthHelper.Instance.HttpClient;
 
             Configuration config = new Configuration();
-            config.ApiKey.Add("authorization", token);
-
-            HttpClient httpClient = new HttpClient();
-            HttpClientHandler httpClientHandler = new HttpClientHandler();
-
-            var apiInstance = new ConfigurationApi(httpClient, config, httpClientHandler);
+            var apiInstance = new ConfigurationApi(httpClient, config);
 
             IssuanceConfigListResponse result = apiInstance.GetIssuanceConfigList();
 

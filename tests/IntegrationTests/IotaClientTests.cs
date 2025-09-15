@@ -18,15 +18,11 @@ namespace IntegrationTests
         [Fact]
         public async Task ListWallets()
         {
-            string token = await AuthHelper.Instance.GetProjectScopedToken();
+            HttpClient httpClient = AuthHelper.Instance.HttpClient;
 
             Configuration config = new Configuration();
-            config.ApiKey.Add("authorization", token);
+            var apiInstance = new ConfigurationsApi(httpClient, config);
 
-            HttpClient httpClient = new HttpClient();
-            HttpClientHandler httpClientHandler = new HttpClientHandler();
-
-            var apiInstance = new ConfigurationsApi(httpClient, config, httpClientHandler);
             ListConfigurationOK result = apiInstance.ListIotaConfigurations();
 
             Assert.NotNull(result);

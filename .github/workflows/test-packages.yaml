@@ -1,12 +1,6 @@
 name: Testing TDK packages
 
 on:
-  push:
-    branches-ignore:
-      - main
-    paths:
-      - 'src/packages/**'
-
   pull_request:
     paths:
       - 'src/packages/**'

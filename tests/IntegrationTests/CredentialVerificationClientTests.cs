@@ -23,20 +23,15 @@ namespace IntegrationTests
         {
             Env.TraversePath().Load();
 
-            string token = await AuthHelper.Instance.GetProjectScopedToken();
-
-            Configuration config = new Configuration();
-            config.ApiKey.Add("authorization", token);
-
-            HttpClient httpClient = new HttpClient();
-            HttpClientHandler httpClientHandler = new HttpClientHandler();
-
-            var apiInstance = new DefaultApi(httpClient, config, httpClientHandler);
-
             var credential = Environment.GetEnvironmentVariable("VERIFIABLE_CREDENTIAL");
             JObject vc = JObject.Parse(credential);
-
             VerifyCredentialInput verifyCredentialInput = new VerifyCredentialInput(new List<object> { vc });
+
+            HttpClient httpClient = AuthHelper.Instance.HttpClient;
+
+            Configuration config = new Configuration();
+            var apiInstance = new DefaultApi(httpClient, config);
+
             VerifyCredentialOutput result = await apiInstance.VerifyCredentialsAsync(verifyCredentialInput);
 
             Assert.NotNull(result);
