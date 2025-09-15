@@ -4,8 +4,6 @@ README.md
 appveyor.yml
 docs/Constraints.md
 docs/ConstraintsStatuses.md
-docs/CredentialRequirements.md
-docs/CredentialRequirementsConstraints.md
 docs/DefaultApi.md
 docs/Descriptor.md
 docs/Error.md
@@ -60,8 +58,6 @@ src/AffinidiTdk.CredentialVerificationClient/Client/WebRequestPathBuilder.cs
 src/AffinidiTdk.CredentialVerificationClient/Model/AbstractOpenAPISchema.cs
 src/AffinidiTdk.CredentialVerificationClient/Model/Constraints.cs
 src/AffinidiTdk.CredentialVerificationClient/Model/ConstraintsStatuses.cs
-src/AffinidiTdk.CredentialVerificationClient/Model/CredentialRequirements.cs
-src/AffinidiTdk.CredentialVerificationClient/Model/CredentialRequirementsConstraints.cs
 src/AffinidiTdk.CredentialVerificationClient/Model/Descriptor.cs
 src/AffinidiTdk.CredentialVerificationClient/Model/Error.cs
 src/AffinidiTdk.CredentialVerificationClient/Model/ErrorDetail.cs

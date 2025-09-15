@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <RootNamespace>AffinidiTdk.Common</RootNamespace>
+    <AssemblyName>AffinidiTdk.Common</AssemblyName>
+    <PackageId>AffinidiTdk.Common</PackageId>
+    <PackageVersion>1.0.0</PackageVersion>
+    <Authors>Affinidi</Authors>
+    <Company>Affinidi</Company>
+    <Description>Common utilities for Affinidi TDK</Description>
+    <PackageTags>affinidi-tdk, identity, holistic, network, trust</PackageTags>
+    <RepositoryUrl>https://github.com/affinidi/affinidi-tdk-dotnet</RepositoryUrl>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="DotNetEnv" Version="3.1.1" />
+  </ItemGroup>
+
+</Project>

@@ -25,11 +25,19 @@ Leave all other fields unchanged.
 Run all tests:
 
 ```bash
+dotnet test"
+```
+
+Logs verbosity can be changed via:
+
+```bash
 dotnet test --logger "console;verbosity=normal"
 ```
 
 Run tests for a specific file:
 
 ```bash
-dotnet test --logger "console;verbosity=normal" --filter DisplayName~WalletApiTests
+dotnet test --filter DisplayName~WalletApiTests
 ```
+
+For more options refer to [xUnit docs](https://learn.microsoft.com/en-us/dotnet/core/testing/selective-unit-tests?pivots=xunit).

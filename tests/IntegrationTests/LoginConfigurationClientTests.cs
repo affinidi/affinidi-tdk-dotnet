@@ -5,15 +5,15 @@ using System.Net.Http;
 using System.Text.Json;
 using System.Threading.Tasks;
 
-using AffinidiTdk.WalletsClient.Api;
-using AffinidiTdk.WalletsClient.Client;
-using AffinidiTdk.WalletsClient.Model;
+using AffinidiTdk.LoginConfigurationClient.Api;
+using AffinidiTdk.LoginConfigurationClient.Client;
+using AffinidiTdk.LoginConfigurationClient.Model;
 
 using IntegrationTests.Helpers;
 
 namespace IntegrationTests
 {
-    public class WalletApiTests
+    public class LoginConfigurationClientTests
     {
         [Fact]
         public async Task ListWallets()
@@ -26,12 +26,13 @@ namespace IntegrationTests
             HttpClient httpClient = new HttpClient();
             HttpClientHandler httpClientHandler = new HttpClientHandler();
 
-            var walletApi = new WalletApi(httpClient, config, httpClientHandler);
+            var configurationApi = new ConfigurationApi(httpClient, config, httpClientHandler);
 
-            WalletsListDto wallets = await walletApi.ListWalletsAsync();
+            ListLoginConfigurationOutput result = await configurationApi.ListLoginConfigurationsAsync();
 
-            Assert.NotNull(wallets);
-            Assert.IsType<WalletsListDto>(wallets);
+            Assert.NotNull(result);
+            Assert.IsType<ListLoginConfigurationOutput>(result);
+            // Assert.Empty(result.Configurations); // for 0 items
         }
     }
 }

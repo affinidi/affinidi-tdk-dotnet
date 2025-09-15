@@ -5,14 +5,14 @@ using System.Net.Http;
 using System.Text.Json;
 using System.Threading.Tasks;
 
-using IntegrationTests.Helpers;
+using AffinidiTdk.AuthProvider.Tests.Helpers;
 
-namespace IntegrationTests
+namespace AffinidiTdk.AuthProvider.Tests
 {
     public class AuthProviderTests
     {
         [Fact]
-        public async Task ListWallets()
+        public async Task GetProjectScopedToken()
         {
             string token = await AuthHelper.Instance.GetProjectScopedToken();
             Assert.NotNull(token);
