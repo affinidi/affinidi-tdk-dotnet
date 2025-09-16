@@ -31,7 +31,7 @@ jobs:
           from: "origin/main"
           to: ${{ steps.set_shas.outputs.head }}
       - name: build
-        run: dotnet build affected 
+        run: dotnet build affected.proj 
 
       - name: pack
         run: dotnet pack  affected.proj  --output ./nupkgs 
