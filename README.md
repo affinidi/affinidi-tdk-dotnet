@@ -40,6 +40,47 @@ If you have a technical issue with the Affinidi TDK's codebase, you can also cre
    Be sure to include a **title and clear description**, as much relevant information as possible,
    and a **code sample** or an **executable test case** demonstrating the expected behavior that is not occurring.
 
+## Tests
+
+Follow the steps below to install dependencies and run the test suite
+
+### Environment Setup
+
+Copy the example environment configuration file and provide necessary credentials:
+
+```bash
+cd tests
+
+cp .env.example .env
+
+cd ..
+```
+
+Update only your PROJECT_ID ([link to docs how to create a project](https://docs.affinidi.com/docs/get-started/create-project/)) and PAT details (KEY_ID, PASSPHRASE, PRIVATE_KEY, TOKEN_ID - [link to docs how to create a PAT](https://docs.affinidi.com/dev-tools/affinidi-tdk/get-access-token/)) in your .env file.
+
+Leave all other fields unchanged.
+
+### Run Tests
+
+To buld, compile and run test suite, run the script:
+
+```bash
+chmod +x build.sh
+
+./build.sh
+```
+
+If you don't need to buld and compile Clients and Packages, you can just run:
+
+```bash
+chmod +x test.sh
+
+./test.sh
+```
+
+> ❗️ **Note:**
+> The `chmod +x` commands only need to be run once to make the scripts executable. After that, you can run the scripts directly without `chmod`.
+
 ## Contributing
 
 Want to contribute?

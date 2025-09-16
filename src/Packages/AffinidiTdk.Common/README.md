@@ -7,13 +7,3 @@ Other than that it is usually only used internally by Affinidi as a dependency f
 ## Requirements
 
 - [.NET 8](https://dotnet.microsoft.com/en-us/download/dotnet/8.0)
-
-## Run Tests
-
-Run all tests:
-
-```bash
-cd tests
-
-dotnet test
-```
