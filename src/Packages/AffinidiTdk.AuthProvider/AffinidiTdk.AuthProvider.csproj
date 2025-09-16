@@ -17,7 +17,6 @@
 
   <ItemGroup>
     <!-- TODO: use reference to the Common project, when AffinidiTdk.Common is published -->
-    <!-- <ProjectReference Include="..\src\AffinidiTdk.Common.csproj" /> -->
     <!-- <PackageReference Include="AffinidiTdk.Common" Version="1.0.0" /> -->
     <PackageReference Include="jose-jwt" Version="5.2.0" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />

@@ -3,8 +3,8 @@ name: Integration tests
 on:
   pull_request:
     paths:
-      - 'src/clients/**'
-      - 'src/packages/**'
+      - 'src/Clients/**'
+      - 'src/Packages/**'
       - 'tests/IntegrationTests/**'
 
 permissions:
@@ -23,9 +23,26 @@ jobs:
         with:
           dotnet-version: '8.0.x'
 
-      - name: Restore dependencies
-        run: dotnet restore
-        working-directory: tests/IntegrationTests
+      - name: Clean previous build artifacts
+        run: rm -rf ./nupkgs
+
+      - name: Pack all packages (Auth, Common) to ./nupkgs
+        run: |
+          dotnet pack src/Packages/AffinidiTdk.AuthProvider/AffinidiTdk.AuthProvider.csproj --output ./nupkgs
+          dotnet pack src/Packages/AffinidiTdk.Common/AffinidiTdk.Common.csproj --output ./nupkgs
+
+      - name: Pack all clients to ./nupkgs
+        run: |
+          dotnet pack src/Clients/CredentialIssuanceClient/src/AffinidiTdk.CredentialIssuanceClient/AffinidiTdk.CredentialIssuanceClient.csproj --output ./nupkgs
+          dotnet pack src/Clients/CredentialVerificationClient/src/AffinidiTdk.CredentialVerificationClient/AffinidiTdk.CredentialVerificationClient.csproj --output ./nupkgs
+          dotnet pack src/Clients/IamClient/src/AffinidiTdk.IamClient/AffinidiTdk.IamClient.csproj --output ./nupkgs
+          dotnet pack src/Clients/IotaClient/src/AffinidiTdk.IotaClient/AffinidiTdk.IotaClient.csproj --output ./nupkgs
+          dotnet pack src/Clients/LoginConfigurationClient/src/AffinidiTdk.LoginConfigurationClient/AffinidiTdk.LoginConfigurationClient.csproj --output ./nupkgs
+          dotnet pack src/Clients/VaultDataManagerClient/src/AffinidiTdk.VaultDataManagerClient/AffinidiTdk.VaultDataManagerClient.csproj --output ./nupkgs
+          dotnet pack src/Clients/WalletsClient/src/AffinidiTdk.WalletsClient/AffinidiTdk.WalletsClient.csproj --output ./nupkgs
+
+      - name: Build all projects in solution
+        run: dotnet build AffinidiTdk.sln
 
       - name: Cache testing env file
         uses: actions/cache@v4
@@ -40,6 +57,14 @@ jobs:
           TESTING_ENV_FILE_CONTENT: ${{ secrets.TESTING_ENV_FILE_CONTENT }}
         run: echo $TESTING_ENV_FILE_CONTENT | base64 --decode > tests/.env
 
-      - name: Run integration tests
-        run: dotnet test --logger "console;verbosity=normal"
-        working-directory: tests/IntegrationTests
+      - name: Restore and run tests for packages
+        run: |
+          dotnet restore tests/Packages/AffinidiTdk.AuthProvider.Tests/AffinidiTdk.AuthProvider.Tests.csproj --configfile nuget.config
+          dotnet test tests/Packages/AffinidiTdk.AuthProvider.Tests/AffinidiTdk.AuthProvider.Tests.csproj
+          dotnet restore tests/Packages/AffinidiTdk.Common.Tests/AffinidiTdk.Common.Tests.csproj --configfile nuget.config
+          dotnet test tests/Packages/AffinidiTdk.Common.Tests/AffinidiTdk.Common.Tests.csproj
+
+      - name: Restore and run tests for packages
+        run: |
+          dotnet restore tests/IntegrationTests/IntegrationTests.csproj --configfile nuget.config
+          dotnet test tests/IntegrationTests/IntegrationTests.csproj
