@@ -2,6 +2,7 @@ using Xunit;
 
 using System;
 using System.Collections.Generic;
+using System.Net;
 using System.Net.Http;
 using System.Text.Json;
 using System.Threading.Tasks;
@@ -36,7 +37,6 @@ namespace IntegrationTests.Helpers
             {
                 createWalletInput = new CreateWalletInput
                 {
-                    // DidMethod = "key"
                 };
             }
 
@@ -44,8 +44,6 @@ namespace IntegrationTests.Helpers
 
             Assert.NotNull(result);
             Assert.IsType<CreateWalletResponse>(result);
-
-            Console.WriteLine($"CreateWallet result: {result}");
 
             return result;
         }
@@ -58,13 +56,7 @@ namespace IntegrationTests.Helpers
             var apiInstance = new WalletApi(httpClient, config);
 
             var result = await apiInstance.DeleteWalletWithHttpInfoAsync(walletId);
-
-            // Assert.NotNull(result);
-            // Assert.IsType<CreateWalletResponse>(result);
-
-            Console.WriteLine($"DeleteWallet result: {result}");
-            Console.WriteLine($"DeleteWallet result: {result.StatusCode}");
-            // return result;
+            Assert.Equal(HttpStatusCode.NoContent, result.StatusCode);
         }
     }
 }
