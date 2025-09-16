@@ -23,8 +23,8 @@ jobs:
         with:
           dotnet-version: '8.0.x'
 
-      - name: Clean previous build artifacts
-        run: rm -rf ./nupkgs
+      - name: Clean and prepare nupkgs directory
+        run: rm -rf ./nupkgs && mkdir -p ./nupkgs
 
       - name: Pack all packages to ./nupkgs
         run: |
