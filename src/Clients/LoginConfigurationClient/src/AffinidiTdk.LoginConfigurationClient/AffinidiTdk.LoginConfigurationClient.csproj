@@ -1,0 +1,35 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo><!-- setting GenerateAssemblyInfo to false causes this bug https://github.com/dotnet/project-system/issues/3934 -->
+    <TargetFramework>net8.0</TargetFramework>
+    <AssemblyName>AffinidiTdk.LoginConfigurationClient</AssemblyName>
+    <PackageId>AffinidiTdk.LoginConfigurationClient</PackageId>
+    <OutputType>Library</OutputType>
+    <Authors>OpenAPI</Authors>
+    <Company>OpenAPI</Company>
+    <AssemblyTitle>OpenAPI Library</AssemblyTitle>
+    <Description>Affinidi TDK dotnet client for Affinidi LOGIN CONFIGURATION</Description>
+    <Copyright>No Copyright</Copyright>
+    <RootNamespace>AffinidiTdk.LoginConfigurationClient</RootNamespace>
+    <Version>1.0.0</Version>
+    <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\AffinidiTdk.LoginConfigurationClient.xml</DocumentationFile>
+    <RepositoryUrl>https://github.com/affinidi/affinidi-tdk.git</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageReleaseNotes>Minor update</PackageReleaseNotes>
+    <PackageTags>affinidi-tdk;identity;holistic;network;trust</PackageTags>
+    <Nullable>annotations</Nullable>
+    <ManagePackageVersionsCentrally>false</ManagePackageVersionsCentrally>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="JsonSubTypes" Version="2.0.1" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageReference Include="Polly" Version="8.1.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+  </ItemGroup>
+  <ItemGroup>
+  </ItemGroup>
+</Project>
