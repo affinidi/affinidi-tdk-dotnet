@@ -4,7 +4,7 @@ set -e
 echo "Cleaning previous build artifacts..."
 rm -rf ./nupkgs
 
-echo "Packing all packages (AuthProvider, Common) to ./nupkgs..."
+echo "Packing all packages to ./nupkgs..."
 dotnet pack src/Packages/AffinidiTdk.AuthProvider/AffinidiTdk.AuthProvider.csproj --output ./nupkgs
 dotnet pack src/Packages/AffinidiTdk.Common/AffinidiTdk.Common.csproj --output ./nupkgs
 

@@ -26,7 +26,7 @@ jobs:
       - name: Clean previous build artifacts
         run: rm -rf ./nupkgs
 
-      - name: Pack all packages (Auth, Common) to ./nupkgs
+      - name: Pack all packages to ./nupkgs
         run: |
           dotnet pack src/Packages/AffinidiTdk.AuthProvider/AffinidiTdk.AuthProvider.csproj --output ./nupkgs
           dotnet pack src/Packages/AffinidiTdk.Common/AffinidiTdk.Common.csproj --output ./nupkgs

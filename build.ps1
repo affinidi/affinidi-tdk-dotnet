@@ -6,7 +6,7 @@ $ErrorActionPreference = "Stop"
 Write-Host "Cleaning previous build artifacts..."
 Remove-Item -Recurse -Force -ErrorAction SilentlyContinue .\nupkgs
 
-Write-Host "Packing all packages (AuthProvider, Common) to ./nupkgs..."
+Write-Host "Packing all packages to ./nupkgs..."
 dotnet pack src/Packages/AffinidiTdk.AuthProvider/AffinidiTdk.AuthProvider.csproj --output ./nupkgs
 dotnet pack src/Packages/AffinidiTdk.Common/AffinidiTdk.Common.csproj --output ./nupkgs
 
