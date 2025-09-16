@@ -30,11 +30,12 @@ jobs:
           from: "origin/main"
           to: ${{ steps.set_shas.outputs.head }}
       - name: build
+        if: success() && steps.dotnet_affected.outputs.affected != ''
         run: dotnet build affected.proj 
 
       - name: pack
+        if: success() && steps.dotnet_affected.outputs.affected != ''
         run: dotnet pack  affected.proj  --output ./nupkgs 
-
       - name: Prepare environment file
         env:
           TESTING_ENV_FILE_CONTENT: ${{ secrets.TESTING_ENV_FILE_CONTENT }}
