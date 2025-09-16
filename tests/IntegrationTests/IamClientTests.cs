@@ -28,13 +28,13 @@ namespace IntegrationTests
             Configuration config = new Configuration();
             var apiInstance = new ProjectsApi(httpClient, config);
 
-            var addPrincipalResult = apiInstance.AddPrincipalToProjectWithHttpInfo(addUserToProjectInput);
+            var addPrincipalResult = await apiInstance.AddPrincipalToProjectWithHttpInfoAsync(addUserToProjectInput);
             Assert.Equal(HttpStatusCode.NoContent, addPrincipalResult.StatusCode);
 
-            UserList response = apiInstance.ListPrincipalsOfProject();
+            UserList response = await apiInstance.ListPrincipalsOfProjectAsync();
             Assert.NotEmpty(response.Records);
 
-            var deletePrincipalResult = apiInstance.DeletePrincipalFromProjectWithHttpInfo(principalId, principalType);
+            var deletePrincipalResult = await apiInstance.DeletePrincipalFromProjectWithHttpInfoAsync(principalId, principalType);
             Assert.Equal(HttpStatusCode.NoContent, deletePrincipalResult.StatusCode);
         }
     }

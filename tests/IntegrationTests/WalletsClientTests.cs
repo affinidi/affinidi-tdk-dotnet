@@ -18,6 +18,12 @@ namespace IntegrationTests
         [Fact]
         public async Task ListWallets()
         {
+            // create
+            var result = await WalletsHelper.CreateWallet(true);
+            string walletId = result.Wallet.Id;
+            // delete
+            await WalletsHelper.DeleteWallet(walletId);
+
             HttpClient httpClient = AuthHelper.Instance.HttpClient;
 
             Configuration config = new Configuration();
