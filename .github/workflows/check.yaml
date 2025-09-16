@@ -1,0 +1,50 @@
+name: check
+
+on:
+  pull_request:
+    paths:
+      - 'src/Clients/**'
+      - 'src/Packages/**'
+      - 'tests/IntegrationTests/**'
+
+permissions:
+  actions: read
+  contents: read
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup .NET 8 SDK
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+
+      - name: Calculate affected packages
+        run: dotnet-affected --from origin/main
+
+      - name: build
+        run: dotnet build affected 
+
+      - name: pack
+        run: dotnet pack  affected.proj  --output ./nupkgs 
+
+      - name: Prepare environment file
+        env:
+          TESTING_ENV_FILE_CONTENT: ${{ secrets.TESTING_ENV_FILE_CONTENT }}
+        run: echo $TESTING_ENV_FILE_CONTENT | base64 --decode > tests/.env
+
+      - name: Restore and run tests for packages
+        run: |
+          dotnet restore tests/Packages/AffinidiTdk.AuthProvider.Tests/AffinidiTdk.AuthProvider.Tests.csproj --configfile nuget.config
+          dotnet test tests/Packages/AffinidiTdk.AuthProvider.Tests/AffinidiTdk.AuthProvider.Tests.csproj
+          dotnet restore tests/Packages/AffinidiTdk.Common.Tests/AffinidiTdk.Common.Tests.csproj --configfile nuget.config
+          dotnet test tests/Packages/AffinidiTdk.Common.Tests/AffinidiTdk.Common.Tests.csproj
+
+      - name: Restore and run tests for packages
+        run: |
+          dotnet restore tests/IntegrationTests/IntegrationTests.csproj --configfile nuget.config
+          dotnet test tests/IntegrationTests/IntegrationTests.csproj

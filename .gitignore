@@ -366,3 +366,9 @@ FodyWeavers.xsd
 # System Files
 .DS_Store
 Thumbs.db
+
+
+# TDK
+nupkgs/*
+!nupkgs/.gitkeep
+affected.proj
