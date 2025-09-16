@@ -25,7 +25,7 @@ jobs:
       - uses: leonardochaia/dotnet-affected-action@v1
         id: dotnet_affected
         with:
-          from: ${{ steps.set_shas.outputs.base }}
+          from: "origin/main"
           to: ${{ steps.set_shas.outputs.head }}
       - name: build
         run: dotnet build affected 
