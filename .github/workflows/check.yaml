@@ -2,10 +2,6 @@ name: check
 
 on:
   pull_request:
-    paths:
-      - 'src/Clients/**'
-      - 'src/Packages/**'
-      - 'tests/IntegrationTests/**'
 
 permissions:
   actions: read
