@@ -23,7 +23,7 @@ namespace IntegrationTests
             Configuration config = new Configuration();
             var apiInstance = new ConfigurationsApi(httpClient, config);
 
-            ListConfigurationOK result = apiInstance.ListIotaConfigurations();
+            ListConfigurationOK result = await apiInstance.ListIotaConfigurationsAsync();
 
             Assert.NotNull(result);
             Assert.IsType<ListConfigurationOK>(result);

@@ -18,25 +18,3 @@ To use it in your project, you can install it via NuGet:
 ```bash
 dotnet add package AffinidiTdk.AuthProvider
 ```
-
-## Run Tests
-
-```bash
-cd tests
-```
-
-Copy the example environment configuration file and provide necessary credentials:
-
-```bash
-cp .env.example .env
-```
-
-Update only your PROJECT_ID ([link to docs how to create a project](https://docs.affinidi.com/docs/get-started/create-project/)) and PAT details (KEY_ID, PASSPHRASE, PRIVATE_KEY, TOKEN_ID - [link to docs how to create a PAT](https://docs.affinidi.com/dev-tools/affinidi-tdk/get-access-token/)) in your .env file.
-
-Leave all other fields unchanged.
-
-Run all tests:
-
-```bash
-dotnet test
-```

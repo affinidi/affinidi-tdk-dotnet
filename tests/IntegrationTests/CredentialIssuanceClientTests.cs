@@ -23,7 +23,7 @@ namespace IntegrationTests
             Configuration config = new Configuration();
             var apiInstance = new ConfigurationApi(httpClient, config);
 
-            IssuanceConfigListResponse result = apiInstance.GetIssuanceConfigList();
+            IssuanceConfigListResponse result = await apiInstance.GetIssuanceConfigListAsync();
 
             Assert.NotNull(result);
             Assert.IsType<IssuanceConfigListResponse>(result);

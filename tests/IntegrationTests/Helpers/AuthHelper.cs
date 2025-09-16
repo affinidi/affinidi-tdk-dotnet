@@ -1,6 +1,5 @@
 using Xunit;
 
-using DotNetEnv;
 using AffinidiTdk.AuthProvider;
 using System;
 using System.Net.Http;
@@ -20,15 +19,13 @@ namespace IntegrationTests.Helpers
 
         private AuthHelper()
         {
-            Env.TraversePath().Load();
-
             var authProviderParams = new IAuthProviderParams
             {
-                ProjectId = Environment.GetEnvironmentVariable("PROJECT_ID"),
-                TokenId = Environment.GetEnvironmentVariable("TOKEN_ID"),
-                KeyId = Environment.GetEnvironmentVariable("KEY_ID"),
-                PrivateKey = Environment.GetEnvironmentVariable("PRIVATE_KEY"),
-                Passphrase = Environment.GetEnvironmentVariable("PASSPHRASE")
+                ProjectId = EnvHelper.ProjectId,
+                TokenId = EnvHelper.TokenId,
+                KeyId = EnvHelper.KeyId,
+                PrivateKey = EnvHelper.PrivateKey,
+                Passphrase = EnvHelper.Passphrase
             };
 
             _authProvider = new AuthProvider(authProviderParams);
