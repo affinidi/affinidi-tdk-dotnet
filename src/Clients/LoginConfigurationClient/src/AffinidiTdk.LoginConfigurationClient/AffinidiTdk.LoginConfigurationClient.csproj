@@ -14,7 +14,7 @@
     <RootNamespace>AffinidiTdk.LoginConfigurationClient</RootNamespace>
     <Version>1.0.0</Version>
     <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\AffinidiTdk.LoginConfigurationClient.xml</DocumentationFile>
-    <RepositoryUrl>https://github.com/affinidi/affinidi-tdk.git</RepositoryUrl>
+    <RepositoryUrl>https://github.com/affinidi/affinidi-tdk-dotnet.git</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageReleaseNotes>Minor update</PackageReleaseNotes>
     <PackageTags>affinidi-tdk;identity;holistic;network;trust</PackageTags>
