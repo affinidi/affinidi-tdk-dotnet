@@ -31,13 +31,14 @@ jobs:
         with:
           from: "origin/main"
           to: ${{ steps.set_shas.outputs.head }}
+      - name: pack
+        if: success() && steps.dotnet_affected.outputs.affected != ''
+        run: dotnet pack  affected.proj  --output ./nupkgs
+
       - name: build
         if: success() && steps.dotnet_affected.outputs.affected != ''
         run: dotnet build affected.proj 
 
-      - name: pack
-        if: success() && steps.dotnet_affected.outputs.affected != ''
-        run: dotnet pack  affected.proj  --output ./nupkgs
         
       - name: format
         if: success() && steps.dotnet_affected.outputs.affected != ''
