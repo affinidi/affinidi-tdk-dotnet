@@ -13,18 +13,18 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
+using System.ComponentModel.DataAnnotations;
 using System.IO;
+using System.Linq;
+using System.Reflection;
 using System.Runtime.Serialization;
 using System.Text;
 using System.Text.RegularExpressions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using Newtonsoft.Json.Linq;
-using System.ComponentModel.DataAnnotations;
 using FileParameter = AffinidiTdk.CredentialVerificationClient.Client.FileParameter;
 using OpenAPIDateConverter = AffinidiTdk.CredentialVerificationClient.Client.OpenAPIDateConverter;
-using System.Reflection;
 
 namespace AffinidiTdk.CredentialVerificationClient.Model
 {
@@ -43,7 +43,7 @@ namespace AffinidiTdk.CredentialVerificationClient.Model
         public FilterConst(decimal actualInstance)
         {
             this.IsNullable = false;
-            this.SchemaType= "oneOf";
+            this.SchemaType = "oneOf";
             this.ActualInstance = actualInstance;
         }
 
@@ -55,7 +55,7 @@ namespace AffinidiTdk.CredentialVerificationClient.Model
         public FilterConst(string actualInstance)
         {
             this.IsNullable = false;
-            this.SchemaType= "oneOf";
+            this.SchemaType = "oneOf";
             this.ActualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
         }
 
@@ -237,11 +237,11 @@ namespace AffinidiTdk.CredentialVerificationClient.Model
         /// <returns>The object converted from the JSON string</returns>
         public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
         {
-            switch(reader.TokenType) 
+            switch (reader.TokenType)
             {
-                case JsonToken.Float: 
+                case JsonToken.Float:
                     return new FilterConst(Convert.ToDecimal(reader.Value));
-                case JsonToken.String: 
+                case JsonToken.String:
                     return new FilterConst(Convert.ToString(reader.Value));
                 case JsonToken.StartObject:
                     return FilterConst.FromJson(JObject.Load(reader).ToString(Formatting.None));

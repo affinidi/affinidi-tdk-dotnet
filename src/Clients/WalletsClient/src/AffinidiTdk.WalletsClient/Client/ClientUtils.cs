@@ -58,13 +58,15 @@ namespace AffinidiTdk.WalletsClient.Client
             }
             else if (value is IDictionary dictionary)
             {
-                if(collectionFormat == "deepObject") {
+                if (collectionFormat == "deepObject")
+                {
                     foreach (DictionaryEntry entry in dictionary)
                     {
                         parameters.Add(name + "[" + entry.Key + "]", ParameterToString(entry.Value));
                     }
                 }
-                else {
+                else
+                {
                     foreach (DictionaryEntry entry in dictionary)
                     {
                         parameters.Add(entry.Key.ToString(), ParameterToString(entry.Value));
@@ -109,7 +111,8 @@ namespace AffinidiTdk.WalletsClient.Client
                 return dateOnly.ToString((configuration ?? GlobalConfiguration.Instance).DateTimeFormat);
             if (obj is bool boolean)
                 return boolean ? "true" : "false";
-            if (obj is ICollection collection) {
+            if (obj is ICollection collection)
+            {
                 List<string> entries = new List<string>();
                 foreach (var entry in collection)
                     entries.Add(ParameterToString(entry, configuration));
@@ -229,7 +232,7 @@ namespace AffinidiTdk.WalletsClient.Client
             var memInfo = enumType.GetMember(enumVal.ToString() ?? throw new InvalidOperationException());
             var attr = memInfo.FirstOrDefault()?.GetCustomAttributes(false).OfType<EnumMemberAttribute>().FirstOrDefault();
             if (attr != null) return true;
-                return false;
+            return false;
         }
 
         /// <summary>

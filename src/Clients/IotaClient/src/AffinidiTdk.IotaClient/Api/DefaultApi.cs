@@ -136,7 +136,7 @@ namespace AffinidiTdk.IotaClient.Api
                 new AffinidiTdk.IotaClient.Client.Configuration { BasePath = basePath }
             );
             this.ApiClient = new AffinidiTdk.IotaClient.Client.ApiClient(this.Configuration.BasePath);
-            this.Client =  this.ApiClient;
+            this.Client = this.ApiClient;
             this.AsynchronousClient = this.ApiClient;
             this.ExceptionFactory = AffinidiTdk.IotaClient.Client.Configuration.DefaultExceptionFactory;
         }
@@ -200,7 +200,7 @@ namespace AffinidiTdk.IotaClient.Api
                 new AffinidiTdk.IotaClient.Client.Configuration { BasePath = basePath }
             );
             this.ApiClient = new AffinidiTdk.IotaClient.Client.ApiClient(client, this.Configuration.BasePath, handler);
-            this.Client =  this.ApiClient;
+            this.Client = this.ApiClient;
             this.AsynchronousClient = this.ApiClient;
             this.ExceptionFactory = AffinidiTdk.IotaClient.Client.Configuration.DefaultExceptionFactory;
         }

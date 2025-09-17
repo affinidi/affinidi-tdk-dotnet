@@ -1,16 +1,13 @@
-using Xunit;
-
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Text.Json;
 using System.Threading.Tasks;
-
 using AffinidiTdk.CredentialVerificationClient.Api;
 using AffinidiTdk.CredentialVerificationClient.Client;
 using AffinidiTdk.CredentialVerificationClient.Model;
-
 using IntegrationTests.Helpers;
+using Xunit;
 
 namespace IntegrationTests
 {

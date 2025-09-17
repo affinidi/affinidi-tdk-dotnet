@@ -1,15 +1,12 @@
-using Xunit;
-
 using System;
 using System.Net.Http;
 using System.Text.Json;
 using System.Threading.Tasks;
-
 using AffinidiTdk.LoginConfigurationClient.Api;
 using AffinidiTdk.LoginConfigurationClient.Client;
 using AffinidiTdk.LoginConfigurationClient.Model;
-
 using IntegrationTests.Helpers;
+using Xunit;
 
 namespace IntegrationTests
 {

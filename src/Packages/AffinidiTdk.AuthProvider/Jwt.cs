@@ -1,11 +1,11 @@
-using Jose;
 using System;
 using System.Collections.Generic;
-using System.Security.Cryptography;
 using System.Net.Http;
+using System.Security.Cryptography;
 using System.Text;
-using System.Threading.Tasks;
 using System.Text.Json;
+using System.Threading.Tasks;
+using Jose;
 
 namespace AffinidiTdk.AuthProvider
 {

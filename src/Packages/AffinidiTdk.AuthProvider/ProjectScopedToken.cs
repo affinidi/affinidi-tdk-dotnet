@@ -92,7 +92,8 @@ namespace AffinidiTdk.AuthProvider
                 return null;
             }
 
-            try {
+            try
+            {
                 using var httpClient = new HttpClient();
                 var requestUrl = $"{apiGatewayUrl}/iam/v1/sts/create-project-scoped-token";
                 var payload = new { projectId };

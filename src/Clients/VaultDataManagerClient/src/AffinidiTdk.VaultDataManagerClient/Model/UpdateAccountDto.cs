@@ -13,15 +13,15 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
+using System.ComponentModel.DataAnnotations;
 using System.IO;
+using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
 using System.Text.RegularExpressions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using Newtonsoft.Json.Linq;
-using System.ComponentModel.DataAnnotations;
 using FileParameter = AffinidiTdk.VaultDataManagerClient.Client.FileParameter;
 using OpenAPIDateConverter = AffinidiTdk.VaultDataManagerClient.Client.OpenAPIDateConverter;
 
@@ -106,12 +106,13 @@ namespace AffinidiTdk.VaultDataManagerClient.Model
         /// <returns>Validation Result</returns>
         IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
-            if (this.AccountDid != null) {
+            if (this.AccountDid != null)
+            {
                 // AccountDid (string) pattern
                 Regex regexAccountDid = new Regex(@"^did:.*$", RegexOptions.CultureInvariant);
                 if (!regexAccountDid.Match(this.AccountDid).Success)
                 {
-                    yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for AccountDid, must match a pattern of " + regexAccountDid, new [] { "AccountDid" });
+                    yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for AccountDid, must match a pattern of " + regexAccountDid, new[] { "AccountDid" });
                 }
             }
 

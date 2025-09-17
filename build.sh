@@ -1,24 +1,21 @@
 #!/bin/bash
-set -e
+set -eu -o pipefail
 
 echo "Cleaning previous build artifacts..."
+dotnet clean
 rm -rf ./nupkgs
 
-echo "Packing all packages to ./nupkgs..."
-dotnet pack src/Packages/AffinidiTdk.AuthProvider/AffinidiTdk.AuthProvider.csproj --output ./nupkgs
-dotnet pack src/Packages/AffinidiTdk.Common/AffinidiTdk.Common.csproj --output ./nupkgs
+dotnet new sln --name AffinidiTdk --force
+dotnet sln AffinidiTdk.sln add $(find . -name "*.csproj")
 
-echo "Packing all clients to ./nupkgs..."
-dotnet pack src/Clients/CredentialIssuanceClient/src/AffinidiTdk.CredentialIssuanceClient/AffinidiTdk.CredentialIssuanceClient.csproj --output ./nupkgs
-dotnet pack src/Clients/CredentialVerificationClient/src/AffinidiTdk.CredentialVerificationClient/AffinidiTdk.CredentialVerificationClient.csproj --output ./nupkgs
-dotnet pack src/Clients/IamClient/src/AffinidiTdk.IamClient/AffinidiTdk.IamClient.csproj --output ./nupkgs
-dotnet pack src/Clients/IotaClient/src/AffinidiTdk.IotaClient/AffinidiTdk.IotaClient.csproj --output ./nupkgs
-dotnet pack src/Clients/LoginConfigurationClient/src/AffinidiTdk.LoginConfigurationClient/AffinidiTdk.LoginConfigurationClient.csproj --output ./nupkgs
-dotnet pack src/Clients/VaultDataManagerClient/src/AffinidiTdk.VaultDataManagerClient/AffinidiTdk.VaultDataManagerClient.csproj --output ./nupkgs
-dotnet pack src/Clients/WalletsClient/src/AffinidiTdk.WalletsClient/AffinidiTdk.WalletsClient.csproj --output ./nupkgs
+echo "Lint"
+dotnet format --verify-no-changes  AffinidiTdk.sln
 
 echo "Building all projects in solution..."
 dotnet build AffinidiTdk.sln
+
+echo "Packing all packages to ./nupkgs..."
+dotnet pack AffinidiTdk.sln --output nupkgs/
 
 echo "Restoring and running tests for packages..."
 dotnet restore tests/Packages/AffinidiTdk.AuthProvider.Tests/AffinidiTdk.AuthProvider.Tests.csproj --configfile nuget.config

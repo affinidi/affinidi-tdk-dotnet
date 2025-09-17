@@ -1,15 +1,12 @@
-using Xunit;
-
 using System;
 using System.Net.Http;
 using System.Text.Json;
 using System.Threading.Tasks;
-
 using AffinidiTdk.CredentialIssuanceClient.Api;
 using AffinidiTdk.CredentialIssuanceClient.Client;
 using AffinidiTdk.CredentialIssuanceClient.Model;
-
 using IntegrationTests.Helpers;
+using Xunit;
 
 namespace IntegrationTests
 {

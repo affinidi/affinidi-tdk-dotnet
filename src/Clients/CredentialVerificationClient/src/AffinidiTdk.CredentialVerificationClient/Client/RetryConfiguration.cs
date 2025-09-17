@@ -9,8 +9,8 @@
  */
 
 
-using Polly;
 using System.Net.Http;
+using Polly;
 
 namespace AffinidiTdk.CredentialVerificationClient.Client
 {

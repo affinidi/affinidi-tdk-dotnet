@@ -1,16 +1,13 @@
-using Xunit;
-
 using System;
 using System.Net;
 using System.Net.Http;
 using System.Text.Json;
 using System.Threading.Tasks;
-
 using AffinidiTdk.IamClient.Api;
 using AffinidiTdk.IamClient.Client;
 using AffinidiTdk.IamClient.Model;
-
 using IntegrationTests.Helpers;
+using Xunit;
 
 namespace IntegrationTests
 {

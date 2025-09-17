@@ -1,11 +1,12 @@
-using Xunit;
-
 using System;
+
+
 using System.Net.Http;
 using System.Text.Json;
 using System.Threading.Tasks;
-
 using AffinidiTdk.AuthProvider.Tests.Helpers;
+
+using Xunit;
 
 namespace AffinidiTdk.AuthProvider.Tests
 {

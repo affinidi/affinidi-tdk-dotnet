@@ -13,15 +13,15 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
+using System.ComponentModel.DataAnnotations;
 using System.IO;
+using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
 using System.Text.RegularExpressions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using Newtonsoft.Json.Linq;
-using System.ComponentModel.DataAnnotations;
 using FileParameter = AffinidiTdk.CredentialIssuanceClient.Client.FileParameter;
 using OpenAPIDateConverter = AffinidiTdk.CredentialIssuanceClient.Client.OpenAPIDateConverter;
 
@@ -190,25 +190,26 @@ namespace AffinidiTdk.CredentialIssuanceClient.Model
         /// <returns>Validation Result</returns>
         IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
-            if (this.Name != null) {
+            if (this.Name != null)
+            {
                 // Name (string) pattern
                 Regex regexName = new Regex(@"^(?!\s*$).+", RegexOptions.CultureInvariant);
                 if (!regexName.Match(this.Name).Success)
                 {
-                    yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Name, must match a pattern of " + regexName, new [] { "Name" });
+                    yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Name, must match a pattern of " + regexName, new[] { "Name" });
                 }
             }
 
             // CredentialOfferDuration (decimal) maximum
             if (this.CredentialOfferDuration > (decimal)604801)
             {
-                yield return new ValidationResult("Invalid value for CredentialOfferDuration, must be a value less than or equal to 604801.", new [] { "CredentialOfferDuration" });
+                yield return new ValidationResult("Invalid value for CredentialOfferDuration, must be a value less than or equal to 604801.", new[] { "CredentialOfferDuration" });
             }
 
             // CredentialOfferDuration (decimal) minimum
             if (this.CredentialOfferDuration < (decimal)1)
             {
-                yield return new ValidationResult("Invalid value for CredentialOfferDuration, must be a value greater than or equal to 1.", new [] { "CredentialOfferDuration" });
+                yield return new ValidationResult("Invalid value for CredentialOfferDuration, must be a value greater than or equal to 1.", new[] { "CredentialOfferDuration" });
             }
 
             yield break;

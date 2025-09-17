@@ -1,15 +1,12 @@
-using Xunit;
-
 using System;
 using System.Net.Http;
 using System.Text.Json;
 using System.Threading.Tasks;
-
 using AffinidiTdk.WalletsClient.Api;
 using AffinidiTdk.WalletsClient.Client;
 using AffinidiTdk.WalletsClient.Model;
-
 using IntegrationTests.Helpers;
+using Xunit;
 
 namespace IntegrationTests
 {
