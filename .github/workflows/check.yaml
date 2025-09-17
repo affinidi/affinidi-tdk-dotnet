@@ -22,7 +22,7 @@ jobs:
         with:
           dotnet-version: '8.0.x'
       - name: Create solution file
-        run: dotnet new sln --name AffinidiTdk && dotnet sln AffinidiTdk.sln   add $(ls -r  **/*csproj)
+        run: dotnet new sln --name AffinidiTdk && dotnet sln AffinidiTdk.sln add $(find . -name "*.csproj")
       - uses: nrwl/nx-set-shas@v4
         id: set_shas
 
