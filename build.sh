@@ -2,8 +2,9 @@
 set -eu -o pipefail
 
 echo "Cleaning previous build artifacts..."
+rm -rf affected*
 dotnet clean
-rm -rf ./nupkgs
+rm -rf ./nupkgs/*.nupkgs
 
 dotnet new sln --name AffinidiTdk --force
 dotnet sln AffinidiTdk.sln add $(find . -name "*.csproj")
