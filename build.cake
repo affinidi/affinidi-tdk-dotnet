@@ -2,7 +2,10 @@
 // PREAMBLE
 //////////////////////////////////////////////////////////////////////
 
-#addin nuget: ? package = Newtonsoft.Json & version = 13.0 .4
+#addin nuget:?package=Newtonsoft.Json&version=13.0.4
+
+#tool nuget:?package=Versionize&version=2.3.1
+
 
 #tool nuget: ? package = Versionize & version = 2.3 .1
 
