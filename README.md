@@ -74,18 +74,15 @@ Leave all other fields unchanged.
 To buld, compile and run test suite, run the script:
 
 ```bash
-chmod +x build.sh
-
-./build.sh
+dotnet cake
 ```
 
-If you don't need to buld and compile Clients and Packages, you can just run:
+To run only integration tests:
 
 ```bash
-chmod +x test.sh
-
-./test.sh
+dotnet cake --target IntegrationTest
 ```
+
 
 > ❗️ **Note:**
 > The `chmod +x` commands only need to be run once to make the scripts executable. After that, you can run the scripts directly without `chmod`.
