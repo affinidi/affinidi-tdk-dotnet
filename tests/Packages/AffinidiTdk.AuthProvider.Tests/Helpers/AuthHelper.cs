@@ -18,7 +18,7 @@ namespace AffinidiTdk.AuthProvider.Tests.Helpers
         {
             Env.TraversePath().Load();
 
-            var authProviderParams = new IAuthProviderParams
+            var authProviderParams = new AuthProviderParams
             {
                 ProjectId = Environment.GetEnvironmentVariable("PROJECT_ID"),
                 TokenId = Environment.GetEnvironmentVariable("TOKEN_ID"),
@@ -32,7 +32,7 @@ namespace AffinidiTdk.AuthProvider.Tests.Helpers
 
         public async Task<string> GetProjectScopedToken()
         {
-            return await _authProvider.FetchProjectScopedToken();
+            return await _authProvider.FetchProjectScopedTokenAsync();
         }
     }
 }

@@ -6,7 +6,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="AffinidiTdk.AuthProvider" Version="1.0.0" />
     <!-- xUnit and other testing dependencies -->
     <PackageReference Include="xunit" Version="2.9.3" />
     <PackageReference Include="xunit.runner.visualstudio" Version="3.1.4">
@@ -14,6 +13,10 @@
     </PackageReference>
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.10.0" />
     <PackageReference Include="DotNetEnv" Version="3.1.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\src\Packages\AffinidiTdk.AuthProvider\AffinidiTdk.AuthProvider.csproj" />
   </ItemGroup>
 
 </Project>

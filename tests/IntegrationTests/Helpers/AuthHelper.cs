@@ -19,7 +19,7 @@ namespace IntegrationTests.Helpers
 
         private AuthHelper()
         {
-            var authProviderParams = new IAuthProviderParams
+            var authProviderParams = new AuthProviderParams
             {
                 ProjectId = EnvHelper.ProjectId,
                 TokenId = EnvHelper.TokenId,
@@ -37,7 +37,7 @@ namespace IntegrationTests.Helpers
 
         public async Task<string> GetProjectScopedToken()
         {
-            return await _authProvider.FetchProjectScopedToken();
+            return await _authProvider.FetchProjectScopedTokenAsync();
         }
     }
 }

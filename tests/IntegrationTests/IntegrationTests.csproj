@@ -17,13 +17,15 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="AffinidiTdk.CredentialIssuanceClient" Version="1.0.0" />
-    <PackageReference Include="AffinidiTdk.CredentialVerificationClient" Version="1.0.0" />
-    <PackageReference Include="AffinidiTdk.IamClient" Version="1.0.0" />
-    <PackageReference Include="AffinidiTdk.IotaClient" Version="1.0.0" />
-    <PackageReference Include="AffinidiTdk.LoginConfigurationClient" Version="1.0.0" />
-    <PackageReference Include="AffinidiTdk.WalletsClient" Version="1.0.0" />
-    <PackageReference Include="AffinidiTdk.AuthProvider" Version="1.0.0" />
+    <ProjectReference Include="..\..\src\Clients\VaultDataManagerClient\src\AffinidiTdk.VaultDataManagerClient\AffinidiTdk.VaultDataManagerClient.csproj" />
+    <ProjectReference Include="..\..\src\Clients\CredentialIssuanceClient\src\AffinidiTdk.CredentialIssuanceClient\AffinidiTdk.CredentialIssuanceClient.csproj" />
+    <ProjectReference Include="..\..\src\Clients\IotaClient\src\AffinidiTdk.IotaClient\AffinidiTdk.IotaClient.csproj" />
+    <ProjectReference Include="..\..\src\Clients\CredentialVerificationClient\src\AffinidiTdk.CredentialVerificationClient\AffinidiTdk.CredentialVerificationClient.csproj" />
+    <ProjectReference Include="..\..\src\Clients\WalletsClient\src\AffinidiTdk.WalletsClient\AffinidiTdk.WalletsClient.csproj" />
+    <ProjectReference Include="..\..\src\Clients\IamClient\src\AffinidiTdk.IamClient\AffinidiTdk.IamClient.csproj" />
+    <ProjectReference Include="..\..\src\Clients\LoginConfigurationClient\src\AffinidiTdk.LoginConfigurationClient\AffinidiTdk.LoginConfigurationClient.csproj" />
+    <ProjectReference Include="..\..\src\Packages\AffinidiTdk.AuthProvider\AffinidiTdk.AuthProvider.csproj" />
+    <ProjectReference Include="..\..\src\Packages\AffinidiTdk.Common\AffinidiTdk.Common.csproj" />
   </ItemGroup>
 
 </Project>
