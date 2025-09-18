@@ -3,7 +3,7 @@ set -eu -o pipefail
 
 echo "Cleaning previous build artifacts..."
 rm -rf affected*
-dotnet clean
+dotnet clean || true
 rm -rf ./nupkgs/*.nupkg
 
 dotnet new sln --name AffinidiTdk --force
