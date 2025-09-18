@@ -2,16 +2,25 @@
 
 The Affinidi Trust Development Kit (Affinidi TDK) is a modern interface that allows you to easily manage and integrate [Affinidi Elements](https://docs.affinidi.com/docs/affinidi-elements/) and [Frameworks](https://docs.affinidi.com/frameworks/iota-framework/) into your application. It minimises dependencies and enables developers to integrate seamlessly into the [Affinidi Trust Network (ATN)](https://docs.affinidi.com/docs/).
 
+## Requirements
+
+- [.NET 8 SDK](https://dotnet.microsoft.com/en-us/download/dotnet/8.0) **(minimum version: `8.0.400`)**
+- Compatible OS: Windows, macOS, or Linux
+
+You can check your installed version using:
+
+```bash
+dotnet --version
+```
+
+💡 This project uses a `global.json` to enforce SDK version consistency. If you don’t have the specified version installed, the build may fail.
+
 ## How do I use Affinidi TDK?
 
 The Affinidi TDK provides three types of modules:
 
 - [Clients](clients), which offer methods to access Affinidi Elements services like Credential Issuance, Credential Verification, and Login Configurations, among others.
 - [Packages](packages), which are commonly used utilities/helpers that are self-contained and composable.
-
-## Requirements
-
-- [.NET 8](https://dotnet.microsoft.com/en-us/download/dotnet/8.0)
 
 ## Documentation
 

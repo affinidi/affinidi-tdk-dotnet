@@ -1,9 +1,5 @@
 # Tests for Affinidi TDK
 
-## Requirements
-
-- [.NET 8](https://dotnet.microsoft.com/en-us/download/dotnet/8.0)
-
 ## Setup Instructions
 
 Follow the steps below to install dependencies and run the test suite
