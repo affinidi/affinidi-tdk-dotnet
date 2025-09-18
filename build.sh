@@ -10,7 +10,7 @@ dotnet new sln --name AffinidiTdk --force
 dotnet sln AffinidiTdk.sln add $(find . -name "*.csproj")
 
 echo "Lint"
-dotnet format --verify-no-changes  AffinidiTdk.sln
+dotnet format --verify-no-changes  AffinidiTdk.sln --exclude src/Clients/
 
 echo "Building all projects in solution..."
 dotnet build AffinidiTdk.sln

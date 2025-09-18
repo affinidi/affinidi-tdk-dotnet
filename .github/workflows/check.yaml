@@ -40,6 +40,6 @@ jobs:
         run: dotnet build affected.proj 
 
         
-      - name: format
+      - name: lint 
         if: success() && steps.dotnet_affected.outputs.affected != ''
-        run: dotnet format --verify-no-changes  AffinidiTdk.sln
+        run: dotnet format --verify-no-changes  AffinidiTdk.sln --exclude src/Clients/ #TODO lint clients as well

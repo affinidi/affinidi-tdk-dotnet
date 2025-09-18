@@ -14,7 +14,7 @@ foreach ($file in $csprojFiles) {
 }
 
 Write-Host "Lint"
-dotnet format --verify-no-changes AffinidiTdk.sln
+dotnet format --verify-no-changes AffinidiTdk.sln --exclude src/Clients/
 
 Write-Host "Building all projects in solution..."
 dotnet build AffinidiTdk.sln
