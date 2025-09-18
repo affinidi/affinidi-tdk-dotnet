@@ -1,8 +1,9 @@
-using System;
-using System.Collections.Generic;
+using Xunit;
+
 using System.Net.Http;
-using System.Text.Json;
 using System.Threading.Tasks;
+using System.Collections.Generic;
+
 using AffinidiTdk.CredentialVerificationClient.Api;
 using AffinidiTdk.CredentialVerificationClient.Client;
 using AffinidiTdk.CredentialVerificationClient.Model;
@@ -10,23 +11,24 @@ using Xunit;
 
 namespace IntegrationTests.Helpers
 {
-    public class VerificationHelper
+    public static class VerificationHelper
     {
         public static async Task<bool> IsValid(object vc)
         {
-            VerifyCredentialInput verifyCredentialInput = new VerifyCredentialInput(new List<object> { vc });
+            var input = new VerifyCredentialInput([vc]);
 
-            HttpClient httpClient = AuthHelper.Instance.HttpClient;
-
-            Configuration config = new Configuration();
-            var apiInstance = new DefaultApi(httpClient, config);
-
-            VerifyCredentialOutput result = await apiInstance.VerifyCredentialsAsync(verifyCredentialInput);
+            var api = GetVerificationApi();
+            var result = await api.VerifyCredentialsAsync(input);
 
             Assert.NotNull(result);
-            Assert.IsType<VerifyCredentialOutput>(result);
-
             return result.IsValid;
+        }
+
+        private static DefaultApi GetVerificationApi()
+        {
+            var httpClient = AuthHelper.Instance.HttpClient;
+            var config = new Configuration();
+            return new DefaultApi(httpClient, config);
         }
     }
 }

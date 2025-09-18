@@ -22,6 +22,7 @@ namespace IntegrationTests.Helpers
             _ = VerifiableCredential;
             _ = VerifiablePresentation;
             _ = CredentialIssuanceData;
+            _ = CredentialIssuanceConfiguration;
             _ = UnsignedCredentialParams;
             _ = IotaConfiguration;
             _ = IotaPresentationSubmission;
@@ -68,18 +69,21 @@ namespace IntegrationTests.Helpers
         public static string PrivateKey => GetEnvVar("PRIVATE_KEY", required: true);
         public static string ProjectId => GetEnvVar("PROJECT_ID", required: true);
 
+        // To be converted to DTO class
+        public static string UnsignedCredentialParams => GetEnvVar("UNSIGNED_CREDENTIAL_PARAMS", required: true);
+        public static string IotaConfiguration => GetEnvVar("IOTA_CONFIGURATION", required: true);
+        public static string VerifiablePresentation => GetEnvVar("VERIFIABLE_PRESENTATION", required: true);
+        public static string IotaPresentationSubmission => GetEnvVar("IOTA_PRESENTATION_SUBMISSION", required: true);
+        public static string IotaPresentationDefinition => GetEnvVar("IOTA_PRESENTATION_DEFINITION", required: true);
+        public static string CredentialIssuanceConfiguration => GetEnvVar("CREDENTIAL_ISSUANCE_CONFIGURATION", required: true);
+
+        public static string CredentialIssuanceData => GetEnvVar("CREDENTIAL_ISSUANCE_DATA", required: true);
+
         // Optional string vars
         public static string KeyId => GetEnvVar("KEY_ID");
         public static string Passphrase => GetEnvVar("PASSPHRASE");
 
         // Required JSON env vars
         public static JObject VerifiableCredential => GetJsonObject("VERIFIABLE_CREDENTIAL");
-        public static JObject VerifiablePresentation => GetJsonObject("VERIFIABLE_PRESENTATION");
-        public static JObject CredentialIssuanceData => GetJsonObject("CREDENTIAL_ISSUANCE_DATA");
-        public static JObject UnsignedCredentialParams => GetJsonObject("UNSIGNED_CREDENTIAL_PARAMS");
-
-        public static JObject IotaConfiguration => GetJsonObject("IOTA_CONFIGURATION");
-        public static JObject IotaPresentationSubmission => GetJsonObject("IOTA_PRESENTATION_SUBMISSION");
-        public static JObject IotaPresentationDefinition => GetJsonObject("IOTA_PRESENTATION_DEFINITION");
     }
 }

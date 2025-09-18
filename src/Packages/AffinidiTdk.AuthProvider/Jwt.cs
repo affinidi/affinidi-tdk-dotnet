@@ -4,146 +4,108 @@ using System.Net.Http;
 using System.Security.Cryptography;
 using System.Text;
 using System.Text.Json;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
-using Jose;
 
 namespace AffinidiTdk.AuthProvider
 {
-    public interface ISignPayload
+    public class ValidateTokenResult
     {
-        string TokenId { get; set; }
-        string Audience { get; set; }
-        string PrivateKey { get; set; }
-        string Passphrase { get; set; }
-        string KeyId { get; set; }
-    }
-
-    public class IValidateToken
-    {
-        public bool IsValid { get; set; }
-        public bool IsExpired { get; set; }
+        public bool IsValid { get; init; }
+        public bool IsExpired { get; init; }
     }
 
     public class Jwt
     {
-        private readonly HttpClient _httpClient;
+        private readonly HttpClient _httpClient = new();
 
-        public Jwt()
-        {
-            _httpClient = new HttpClient();
-        }
-
-        public IValidateToken ValidateToken(string token, string publicKey)
+        public ValidateTokenResult ValidateToken(string token, string publicKey)
         {
             try
             {
-                // Parse the PEM public key
                 using var ecdsa = ECDsa.Create();
                 ecdsa.ImportFromPem(publicKey);
 
-                // jose-jwt expects the raw key object
-                var payload = JWT.Decode<IDictionary<string, object>>(
-                    token,
-                    ecdsa,
-                    JwsAlgorithm.ES256
-                );
+                var payload = JWT.Decode<Dictionary<string, object>>(token, ecdsa, JwsAlgorithm.ES256);
 
-                bool isExpired = false;
+                var isExpired = payload.TryGetValue("exp", out var exp) &&
+                                DateTimeOffset.UtcNow >= DateTimeOffset.FromUnixTimeSeconds(Convert.ToInt64(exp));
 
-                if (payload.TryGetValue("exp", out var expValue))
-                {
-                    long expUnix = Convert.ToInt64(expValue);
-                    DateTimeOffset expTime = DateTimeOffset.FromUnixTimeSeconds(expUnix);
-                    isExpired = DateTimeOffset.UtcNow >= expTime;
-                }
-
-                return new IValidateToken { IsValid = true, IsExpired = isExpired };
+                return new ValidateTokenResult { IsValid = true, IsExpired = isExpired };
             }
             catch (IntegrityException)
             {
-                // Signature is invalid
-                return new IValidateToken
-                {
-                    IsValid = false,
-                    IsExpired = false
-                };
+                return new ValidateTokenResult { IsValid = false, IsExpired = false };
             }
-            catch (Exception)
+            catch
             {
-                // Any other failure (malformed token, parse error)
-                return new IValidateToken
-                {
-                    IsValid = false,
-                    IsExpired = false
-                };
+                return new ValidateTokenResult { IsValid = false, IsExpired = false };
             }
         }
 
-        public async Task<string> FetchPublicKey(string apiGatewayUrl)
+        public async Task<string> FetchPublicKeyAsync(string apiGatewayUrl)
         {
             var response = await _httpClient.GetStringAsync($"{apiGatewayUrl}/iam/.well-known/jwks.json");
-            // TODO: refactor using JsonSerializer.Deserialize faster, core
-            //       instead of JsonSerializer.Deserialize<JsonElement>(jwkJson)
-            dynamic data = Newtonsoft.Json.JsonConvert.DeserializeObject(response);
-            // dynamic data = JsonSerializer.Deserialize<JsonElement>(response);
 
-            var jwk = data.keys[0];
+            var jwks = JsonSerializer.Deserialize<JwksResponse>(response);
 
-            string publicKeyPem = JwkToPem(jwk);
+            var jwk = jwks?.Keys?.Count > 0 ? jwks.Keys[0] : throw new InvalidOperationException("No JWKs found");
 
-            return publicKeyPem;
+            return JwkToPem(jwk);
         }
 
-        public string JwkToPem(dynamic jwk)
+        public string JwkToPem(JwkKey jwk)
         {
-            string crv = jwk.crv;
-            string x = jwk.x;
-            string y = jwk.y;
-
-            // Decode base64url (note: not base64, this is url-safe)
-            byte[] xBytes = Base64UrlDecode(x);
-            byte[] yBytes = Base64UrlDecode(y);
-
-            // Create EC parameters
-            ECParameters ecParams = new ECParameters
+            var ecParams = new ECParameters
             {
                 Curve = ECCurve.NamedCurves.nistP256,
                 Q =
                 {
-                    X = xBytes,
-                    Y = yBytes
+                    X = Base64UrlDecode(jwk.X),
+                    Y = Base64UrlDecode(jwk.Y)
                 }
             };
 
             using var ecdsa = ECDsa.Create(ecParams);
-            byte[] derBytes = ecdsa.ExportSubjectPublicKeyInfo(); // X.509 SPKI
-
+            var derBytes = ecdsa.ExportSubjectPublicKeyInfo();
             return ExportToPem("PUBLIC KEY", derBytes);
         }
 
-        // TODO: Do I need BEGIN, END?
-        private string ExportToPem(string label, byte[] der)
+        private static string ExportToPem(string label, byte[] der)
         {
-            string base64 = Convert.ToBase64String(der);
-            StringBuilder sb = new StringBuilder();
+            var base64 = Convert.ToBase64String(der);
+            var sb = new StringBuilder();
             sb.AppendLine($"-----BEGIN {label}-----");
+
             for (int i = 0; i < base64.Length; i += 64)
-            {
                 sb.AppendLine(base64.Substring(i, Math.Min(64, base64.Length - i)));
-            }
+
             sb.AppendLine($"-----END {label}-----");
             return sb.ToString();
         }
 
-        private byte[] Base64UrlDecode(string base64Url)
+        private static byte[] Base64UrlDecode(string input)
         {
-            string padded = base64Url.Replace('-', '+').Replace('_', '/');
-            switch (padded.Length % 4)
-            {
-                case 2: padded += "=="; break;
-                case 3: padded += "="; break;
-            }
-            return Convert.FromBase64String(padded);
+            input = input.Replace('-', '+').Replace('_', '/');
+            return Convert.FromBase64String(input.PadRight(input.Length + (4 - input.Length % 4) % 4, '='));
         }
+    }
+
+    public class JwksResponse
+    {
+        [JsonPropertyName("keys")]
+        public List<JwkKey> Keys { get; set; } = [];
+    }
+
+    public class JwkKey
+    {
+        [JsonPropertyName("crv")]
+        public string Crv { get; set; }
+
+        [JsonPropertyName("x")]
+        public string X { get; set; }
+
+        [JsonPropertyName("y")]
+        public string Y { get; set; }
     }
 }

@@ -3,13 +3,11 @@ using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Net.Http;
 using System.Net.Http.Headers;
-using System.Security.Claims;
 using System.Security.Cryptography;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 using Microsoft.IdentityModel.Tokens;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 
 namespace AffinidiTdk.AuthProvider
 {
@@ -17,22 +15,17 @@ namespace AffinidiTdk.AuthProvider
     {
         public string SignPayload(string tokenId, string audience, string privateKey, string keyId, string? passphrase)
         {
-            var issueTimeInSeconds = DateTimeOffset.UtcNow.ToUnixTimeSeconds();
+            var issuedAt = DateTimeOffset.UtcNow.ToUnixTimeSeconds();
 
-            var rsa = RSA.Create();
+            using var rsa = RSA.Create();
+
             if (!string.IsNullOrEmpty(passphrase))
-            {
                 rsa.ImportFromEncryptedPem(privateKey, passphrase);
-            }
             else
-            {
                 rsa.ImportFromPem(privateKey);
-            }
 
             var securityKey = new RsaSecurityKey(rsa) { KeyId = keyId };
             var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.RsaSha256);
-
-            var header = new JwtHeader(credentials);
 
             var payload = new JwtPayload
             {
@@ -40,11 +33,12 @@ namespace AffinidiTdk.AuthProvider
                 { "sub", tokenId },
                 { "aud", audience },
                 { "jti", Guid.NewGuid().ToString() },
-                { "exp", issueTimeInSeconds + 5 * 60 },
-                { "iat", issueTimeInSeconds }
+                { "exp", issuedAt + 300 },
+                { "iat", issuedAt }
             };
 
-            var token = new JwtSecurityToken(header, payload);
+            var token = new JwtSecurityToken(new JwtHeader(credentials), payload);
+
             return new JwtSecurityTokenHandler().WriteToken(token);
         }
 
@@ -52,68 +46,65 @@ namespace AffinidiTdk.AuthProvider
         {
             var jwt = SignPayload(tokenId, audience, privateKey, keyId, passphrase);
 
-            var input = new Dictionary<string, string>
+            var formData = new Dictionary<string, string>
             {
-                {"grant_type", "client_credentials"},
-                {"scope", "openid"},
-                {"client_assertion_type", "urn:ietf:params:oauth:client-assertion-type:jwt-bearer"},
-                {"client_assertion", jwt},
-                {"client_id", tokenId}
+                ["grant_type"] = "client_credentials",
+                ["scope"] = "openid",
+                ["client_assertion_type"] = "urn:ietf:params:oauth:client-assertion-type:jwt-bearer",
+                ["client_assertion"] = jwt,
+                ["client_id"] = tokenId
             };
+
+            using var httpClient = new HttpClient();
 
             try
             {
-                using var httpClient = new HttpClient();
-                var request = new HttpRequestMessage(HttpMethod.Post, audience)
-                {
-                    Content = new FormUrlEncodedContent(input)
-                };
-
-                var response = await httpClient.SendAsync(request);
+                var response = await httpClient.PostAsync(audience, new FormUrlEncodedContent(formData));
                 response.EnsureSuccessStatusCode();
 
-                var responseBody = await response.Content.ReadAsStringAsync();
-                JObject jsonResponse = JObject.Parse(responseBody);
+                using var content = await response.Content.ReadAsStreamAsync();
+                using var json = await JsonDocument.ParseAsync(content);
 
-                return jsonResponse["access_token"]?.ToString();
+                return json.RootElement.GetProperty("access_token").GetString();
             }
-            catch (HttpRequestException ex)
+            catch (Exception ex)
             {
-                Console.WriteLine($"HTTP request failed: {ex.Message}");
+                Console.WriteLine($"Failed to get user access token: {ex.Message}");
                 return null;
             }
         }
 
         public async Task<string?> FetchProjectScopedToken(string apiGatewayUrl, string projectId, string tokenId, string audience, string privateKey, string keyId, string? passphrase)
         {
-            string? userAccessToken = await GetUserAccessToken(tokenId, audience, privateKey, passphrase, keyId);
+            var userAccessToken = await GetUserAccessToken(tokenId, audience, privateKey, passphrase, keyId);
             if (userAccessToken == null)
-            {
                 return null;
-            }
+
+            using var httpClient = new HttpClient();
+
+            var requestUrl = $"{apiGatewayUrl}/iam/v1/sts/create-project-scoped-token";
+            var payloadJson = JsonSerializer.Serialize(new { projectId });
+
+            var request = new HttpRequestMessage(HttpMethod.Post, requestUrl)
+            {
+                Content = new StringContent(payloadJson, Encoding.UTF8, "application/json")
+            };
+
+            request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", userAccessToken);
 
             try
             {
-                using var httpClient = new HttpClient();
-                var requestUrl = $"{apiGatewayUrl}/iam/v1/sts/create-project-scoped-token";
-                var payload = new { projectId };
-                var jsonPayload = JsonConvert.SerializeObject(payload);
-
-                var request = new HttpRequestMessage(HttpMethod.Post, requestUrl);
-                request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", userAccessToken);
-                request.Content = new StringContent(jsonPayload, Encoding.UTF8, "application/json");
-
                 var response = await httpClient.SendAsync(request);
                 response.EnsureSuccessStatusCode();
 
-                var responseBody = await response.Content.ReadAsStringAsync();
-                JObject tokenResponse = JObject.Parse(responseBody);
+                using var content = await response.Content.ReadAsStreamAsync();
+                using var json = await JsonDocument.ParseAsync(content);
 
-                return tokenResponse?["accessToken"]?.ToString();
+                return json.RootElement.GetProperty("accessToken").GetString();
             }
-            catch (HttpRequestException ex)
+            catch (Exception ex)
             {
-                Console.WriteLine($"HTTP request failed: {ex.Message}");
+                Console.WriteLine($"Failed to fetch project scoped token: {ex.Message}");
                 return null;
             }
         }
