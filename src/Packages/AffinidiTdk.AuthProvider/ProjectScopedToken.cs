@@ -17,7 +17,7 @@ namespace AffinidiTdk.AuthProvider
         {
             var issuedAt = DateTimeOffset.UtcNow.ToUnixTimeSeconds();
 
-            using var rsa = RSA.Create();
+            var rsa = RSA.Create();
 
             if (!string.IsNullOrEmpty(passphrase))
                 rsa.ImportFromEncryptedPem(privateKey, passphrase);
