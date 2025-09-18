@@ -1,5 +1,5 @@
 #!/bin/bash
-set -e
+set -eu -o pipefail
 
 echo "Restoring and running tests for packages..."
 dotnet restore tests/Packages/AffinidiTdk.AuthProvider.Tests/AffinidiTdk.AuthProvider.Tests.csproj --configfile nuget.config

@@ -1,13 +1,11 @@
-using Xunit;
 using System;
+using System.Threading.Tasks;
+using AffinidiTdk.WalletsClient.Model;
+using IntegrationTests.Fixtures;
+using IntegrationTests.Helpers;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using System.Threading.Tasks;
-
-using AffinidiTdk.WalletsClient.Model;
-
-using IntegrationTests.Helpers;
-using IntegrationTests.Fixtures;
+using Xunit;
 
 namespace IntegrationTests
 {
@@ -56,7 +54,8 @@ namespace IntegrationTests
 
             // Assert.True(isValid);
             // NOTE: why sometimes it is NOT valid?
-            if (!isValid) {
+            if (!isValid)
+            {
                 Console.WriteLine("[WARN] credential is not valid");
             }
         }

@@ -26,6 +26,7 @@
     <ProjectReference Include="..\..\src\Clients\LoginConfigurationClient\src\AffinidiTdk.LoginConfigurationClient\AffinidiTdk.LoginConfigurationClient.csproj" />
     <ProjectReference Include="..\..\src\Packages\AffinidiTdk.AuthProvider\AffinidiTdk.AuthProvider.csproj" />
     <ProjectReference Include="..\..\src\Packages\AffinidiTdk.Common\AffinidiTdk.Common.csproj" />
+
   </ItemGroup>
 
 </Project>

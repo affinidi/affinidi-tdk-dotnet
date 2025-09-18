@@ -1,15 +1,12 @@
-using Xunit;
-using Xunit.Abstractions;
-
 using System;
 using System.Net.Http;
 using System.Threading.Tasks;
-
 using AffinidiTdk.WalletsClient.Api;
 using AffinidiTdk.WalletsClient.Client;
 using AffinidiTdk.WalletsClient.Model;
-
 using IntegrationTests.Helpers;
+using Xunit;
+using Xunit.Abstractions;
 
 namespace IntegrationTests.Fixtures
 {

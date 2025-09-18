@@ -1,9 +1,8 @@
-using Xunit;
-
-using DotNetEnv;
-using AffinidiTdk.AuthProvider;
 using System;
 using System.Threading.Tasks;
+using AffinidiTdk.AuthProvider;
+using DotNetEnv;
+using Xunit;
 
 namespace AffinidiTdk.AuthProvider.Tests.Helpers
 {

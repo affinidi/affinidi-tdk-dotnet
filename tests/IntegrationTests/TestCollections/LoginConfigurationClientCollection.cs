@@ -1,5 +1,5 @@
-using Xunit;
 using IntegrationTests.Fixtures;
+using Xunit;
 
 namespace IntegrationTests.TestCollections
 {

@@ -1,0 +1,38 @@
+name: integration
+
+on:
+  pull_request:
+    paths:
+      - 'src/Clients/**'
+      - 'src/Packages/**'
+      - 'tests/**'
+
+permissions:
+  actions: read
+  contents: read
+
+jobs:
+  integration-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ github.head_ref }}
+
+      - name: Setup .NET 8 SDK
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+
+      - name: Create solution file
+        run: dotnet new sln --name AffinidiTdk && dotnet sln AffinidiTdk.sln add $(find . -name "*.csproj")
+
+      - name: Prepare environment file
+        env:
+          TESTING_ENV_FILE_CONTENT: ${{ secrets.TESTING_ENV_FILE_CONTENT }}
+        run: echo $TESTING_ENV_FILE_CONTENT | base64 --decode > tests/.env
+
+      - name:  Run all tests for packages
+        run: dotnet test # --filter "FullyQualifiedName~IntegrationTests"
