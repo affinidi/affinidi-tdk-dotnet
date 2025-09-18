@@ -12,7 +12,7 @@
     <Description>Affinidi TDK dotnet client for Affinidi WALLETS</Description>
     <Copyright>No Copyright</Copyright>
     <RootNamespace>AffinidiTdk.WalletsClient</RootNamespace>
-    <Version>0.0.0</Version>
+    <Version>1.0.0</Version>
     <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\AffinidiTdk.WalletsClient.xml</DocumentationFile>
     <RepositoryUrl>https://github.com/affinidi/affinidi-tdk-dotnet.git</RepositoryUrl>
     <RepositoryType>git</RepositoryType>

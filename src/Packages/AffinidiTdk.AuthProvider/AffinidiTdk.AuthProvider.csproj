@@ -5,7 +5,7 @@
     <RootNamespace>AffinidiTdk.AuthProvider</RootNamespace>
     <AssemblyName>AffinidiTdk.AuthProvider</AssemblyName>
     <PackageId>AffinidiTdk.AuthProvider</PackageId>
-    <Version>0.0.0</Version>
+    <Version>0.0.2</Version>
     <Authors>Affinidi</Authors>
     <Company>Affinidi</Company>
     <Description>Internal module for managing access tokens</Description>
