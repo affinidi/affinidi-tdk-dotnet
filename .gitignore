@@ -373,3 +373,5 @@ nupkgs/*
 !nupkgs/.gitkeep
 affected.proj
 AffinidiTdk.sln
+.versionize
+tools/

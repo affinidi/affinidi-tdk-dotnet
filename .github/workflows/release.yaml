@@ -1,0 +1,47 @@
+name: release
+
+on:
+  push:
+    branches:
+      - 'main'
+
+jobs:
+  release:
+    concurrency: release
+    runs-on: ubuntu-latest
+    environment: main
+    permissions:
+      contents: write
+    
+    steps:
+      - name: Generate token from app token #https://github.com/tibdex/github-app-token
+        id: generate_token
+        uses: tibdex/github-app-token@v2
+        with:
+          app_id: ${{ secrets.RELEASE_BOT_APP_ID }}
+          private_key: ${{ secrets.RELEASE_BOT_PKEY }}
+
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ steps.generate_token.outputs.token }}
+
+      - name: configure git
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+      - name: Setup .NET 8 SDK
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+      - name: Run the Cake script
+        uses: cake-build/cake-action@v3
+        with:
+            target: Release
+      - name: Push changes to GitHub
+        uses: ad-m/github-push-action@master
+        with:
+          token: ${{ steps.generate_token.outputs.token }}
+          branch: main
+          tags: true

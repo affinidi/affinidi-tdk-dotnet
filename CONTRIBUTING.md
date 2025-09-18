@@ -7,6 +7,7 @@ Clients are generated intenally by Affinidi based on our API's. So, please don't
 ## Requirements
 
 - [.NET 8](https://dotnet.microsoft.com/en-us/download/dotnet/8.0)
+- [Cake](https://github.com/cake-build/cake)
 
 ### Code quality expectations
 
