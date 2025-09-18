@@ -13,15 +13,15 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.ComponentModel.DataAnnotations;
-using System.IO;
 using System.Linq;
+using System.IO;
 using System.Runtime.Serialization;
 using System.Text;
 using System.Text.RegularExpressions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using Newtonsoft.Json.Linq;
+using System.ComponentModel.DataAnnotations;
 using FileParameter = AffinidiTdk.IotaClient.Client.FileParameter;
 using OpenAPIDateConverter = AffinidiTdk.IotaClient.Client.OpenAPIDateConverter;
 
@@ -220,7 +220,7 @@ namespace AffinidiTdk.IotaClient.Model
             // TokenMaxAge (decimal) minimum
             if (this.TokenMaxAge < (decimal)1)
             {
-                yield return new ValidationResult("Invalid value for TokenMaxAge, must be a value greater than or equal to 1.", new[] { "TokenMaxAge" });
+                yield return new ValidationResult("Invalid value for TokenMaxAge, must be a value greater than or equal to 1.", new [] { "TokenMaxAge" });
             }
 
             yield break;

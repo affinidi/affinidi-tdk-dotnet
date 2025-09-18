@@ -13,18 +13,18 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.ComponentModel.DataAnnotations;
-using System.IO;
 using System.Linq;
-using System.Reflection;
+using System.IO;
 using System.Runtime.Serialization;
 using System.Text;
 using System.Text.RegularExpressions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using Newtonsoft.Json.Linq;
+using System.ComponentModel.DataAnnotations;
 using FileParameter = AffinidiTdk.CredentialIssuanceClient.Client.FileParameter;
 using OpenAPIDateConverter = AffinidiTdk.CredentialIssuanceClient.Client.OpenAPIDateConverter;
+using System.Reflection;
 
 namespace AffinidiTdk.CredentialIssuanceClient.Model
 {
@@ -43,7 +43,7 @@ namespace AffinidiTdk.CredentialIssuanceClient.Model
         public CredentialResponseImmediateCNonceExpiresIn(decimal actualInstance)
         {
             this.IsNullable = false;
-            this.SchemaType = "oneOf";
+            this.SchemaType= "oneOf";
             this.ActualInstance = actualInstance;
         }
 
@@ -55,7 +55,7 @@ namespace AffinidiTdk.CredentialIssuanceClient.Model
         public CredentialResponseImmediateCNonceExpiresIn(string actualInstance)
         {
             this.IsNullable = false;
-            this.SchemaType = "oneOf";
+            this.SchemaType= "oneOf";
             this.ActualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
         }
 
@@ -237,11 +237,11 @@ namespace AffinidiTdk.CredentialIssuanceClient.Model
         /// <returns>The object converted from the JSON string</returns>
         public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
         {
-            switch (reader.TokenType)
+            switch(reader.TokenType) 
             {
-                case JsonToken.Float:
+                case JsonToken.Float: 
                     return new CredentialResponseImmediateCNonceExpiresIn(Convert.ToDecimal(reader.Value));
-                case JsonToken.String:
+                case JsonToken.String: 
                     return new CredentialResponseImmediateCNonceExpiresIn(Convert.ToString(reader.Value));
                 case JsonToken.StartObject:
                     return CredentialResponseImmediateCNonceExpiresIn.FromJson(JObject.Load(reader).ToString(Formatting.None));

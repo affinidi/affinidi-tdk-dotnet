@@ -13,15 +13,15 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.ComponentModel.DataAnnotations;
-using System.IO;
 using System.Linq;
+using System.IO;
 using System.Runtime.Serialization;
 using System.Text;
 using System.Text.RegularExpressions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using Newtonsoft.Json.Linq;
+using System.ComponentModel.DataAnnotations;
 using FileParameter = AffinidiTdk.LoginConfigurationClient.Client.FileParameter;
 using OpenAPIDateConverter = AffinidiTdk.LoginConfigurationClient.Client.OpenAPIDateConverter;
 
@@ -109,16 +109,15 @@ namespace AffinidiTdk.LoginConfigurationClient.Model
             // GroupName (string) maxLength
             if (this.GroupName != null && this.GroupName.Length > 24)
             {
-                yield return new ValidationResult("Invalid value for GroupName, length must be less than 24.", new[] { "GroupName" });
+                yield return new ValidationResult("Invalid value for GroupName, length must be less than 24.", new [] { "GroupName" });
             }
 
-            if (this.GroupName != null)
-            {
+            if (this.GroupName != null) {
                 // GroupName (string) pattern
                 Regex regexGroupName = new Regex(@"^[a-z_]+$", RegexOptions.CultureInvariant);
                 if (!regexGroupName.Match(this.GroupName).Success)
                 {
-                    yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for GroupName, must match a pattern of " + regexGroupName, new[] { "GroupName" });
+                    yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for GroupName, must match a pattern of " + regexGroupName, new [] { "GroupName" });
                 }
             }
 

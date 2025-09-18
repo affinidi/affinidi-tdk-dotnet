@@ -13,15 +13,15 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.ComponentModel.DataAnnotations;
-using System.IO;
 using System.Linq;
+using System.IO;
 using System.Runtime.Serialization;
 using System.Text;
 using System.Text.RegularExpressions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using Newtonsoft.Json.Linq;
+using System.ComponentModel.DataAnnotations;
 using FileParameter = AffinidiTdk.CredentialIssuanceClient.Client.FileParameter;
 using OpenAPIDateConverter = AffinidiTdk.CredentialIssuanceClient.Client.OpenAPIDateConverter;
 
@@ -126,13 +126,13 @@ namespace AffinidiTdk.CredentialIssuanceClient.Model
             // Name (string) maxLength
             if (this.Name != null && this.Name.Length > 64)
             {
-                yield return new ValidationResult("Invalid value for Name, length must be less than 64.", new[] { "Name" });
+                yield return new ValidationResult("Invalid value for Name, length must be less than 64.", new [] { "Name" });
             }
 
             // Locale (string) maxLength
             if (this.Locale != null && this.Locale.Length > 16)
             {
-                yield return new ValidationResult("Invalid value for Locale, length must be less than 16.", new[] { "Locale" });
+                yield return new ValidationResult("Invalid value for Locale, length must be less than 16.", new [] { "Locale" });
             }
 
             yield break;

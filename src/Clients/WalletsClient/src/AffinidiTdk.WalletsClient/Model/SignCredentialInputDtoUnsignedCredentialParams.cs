@@ -13,15 +13,15 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.ComponentModel.DataAnnotations;
-using System.IO;
 using System.Linq;
+using System.IO;
 using System.Runtime.Serialization;
 using System.Text;
 using System.Text.RegularExpressions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using Newtonsoft.Json.Linq;
+using System.ComponentModel.DataAnnotations;
 using FileParameter = AffinidiTdk.WalletsClient.Client.FileParameter;
 using OpenAPIDateConverter = AffinidiTdk.WalletsClient.Client.OpenAPIDateConverter;
 
@@ -157,13 +157,12 @@ namespace AffinidiTdk.WalletsClient.Model
         /// <returns>Validation Result</returns>
         IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
-            if (this.HolderDid != null)
-            {
+            if (this.HolderDid != null) {
                 // HolderDid (string) pattern
                 Regex regexHolderDid = new Regex(@"^did:.*$", RegexOptions.CultureInvariant);
                 if (!regexHolderDid.Match(this.HolderDid).Success)
                 {
-                    yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for HolderDid, must match a pattern of " + regexHolderDid, new[] { "HolderDid" });
+                    yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for HolderDid, must match a pattern of " + regexHolderDid, new [] { "HolderDid" });
                 }
             }
 

@@ -13,15 +13,15 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.ComponentModel.DataAnnotations;
-using System.IO;
 using System.Linq;
+using System.IO;
 using System.Runtime.Serialization;
 using System.Text;
 using System.Text.RegularExpressions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using Newtonsoft.Json.Linq;
+using System.ComponentModel.DataAnnotations;
 using FileParameter = AffinidiTdk.CredentialIssuanceClient.Client.FileParameter;
 using OpenAPIDateConverter = AffinidiTdk.CredentialIssuanceClient.Client.OpenAPIDateConverter;
 
@@ -127,23 +127,21 @@ namespace AffinidiTdk.CredentialIssuanceClient.Model
         /// <returns>Validation Result</returns>
         IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
-            if (this.JsonSchemaUrl != null)
-            {
+            if (this.JsonSchemaUrl != null) {
                 // JsonSchemaUrl (string) pattern
                 Regex regexJsonSchemaUrl = new Regex(@"^https:\/\/(.+)\.json$", RegexOptions.CultureInvariant);
                 if (!regexJsonSchemaUrl.Match(this.JsonSchemaUrl).Success)
                 {
-                    yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for JsonSchemaUrl, must match a pattern of " + regexJsonSchemaUrl, new[] { "JsonSchemaUrl" });
+                    yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for JsonSchemaUrl, must match a pattern of " + regexJsonSchemaUrl, new [] { "JsonSchemaUrl" });
                 }
             }
 
-            if (this.JsonLdContextUrl != null)
-            {
+            if (this.JsonLdContextUrl != null) {
                 // JsonLdContextUrl (string) pattern
                 Regex regexJsonLdContextUrl = new Regex(@"^https:\/\/(.+)\.jsonld$", RegexOptions.CultureInvariant);
                 if (!regexJsonLdContextUrl.Match(this.JsonLdContextUrl).Success)
                 {
-                    yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for JsonLdContextUrl, must match a pattern of " + regexJsonLdContextUrl, new[] { "JsonLdContextUrl" });
+                    yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for JsonLdContextUrl, must match a pattern of " + regexJsonLdContextUrl, new [] { "JsonLdContextUrl" });
                 }
             }
 

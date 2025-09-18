@@ -121,7 +121,7 @@ namespace AffinidiTdk.CredentialIssuanceClient.Api
                 new AffinidiTdk.CredentialIssuanceClient.Client.Configuration { BasePath = basePath }
             );
             this.ApiClient = new AffinidiTdk.CredentialIssuanceClient.Client.ApiClient(this.Configuration.BasePath);
-            this.Client = this.ApiClient;
+            this.Client =  this.ApiClient;
             this.AsynchronousClient = this.ApiClient;
             this.ExceptionFactory = AffinidiTdk.CredentialIssuanceClient.Client.Configuration.DefaultExceptionFactory;
         }
@@ -185,7 +185,7 @@ namespace AffinidiTdk.CredentialIssuanceClient.Api
                 new AffinidiTdk.CredentialIssuanceClient.Client.Configuration { BasePath = basePath }
             );
             this.ApiClient = new AffinidiTdk.CredentialIssuanceClient.Client.ApiClient(client, this.Configuration.BasePath, handler);
-            this.Client = this.ApiClient;
+            this.Client =  this.ApiClient;
             this.AsynchronousClient = this.ApiClient;
             this.ExceptionFactory = AffinidiTdk.CredentialIssuanceClient.Client.Configuration.DefaultExceptionFactory;
         }

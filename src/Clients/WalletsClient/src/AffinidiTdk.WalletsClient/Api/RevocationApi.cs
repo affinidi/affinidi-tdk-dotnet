@@ -232,7 +232,7 @@ namespace AffinidiTdk.WalletsClient.Api
                 new AffinidiTdk.WalletsClient.Client.Configuration { BasePath = basePath }
             );
             this.ApiClient = new AffinidiTdk.WalletsClient.Client.ApiClient(this.Configuration.BasePath);
-            this.Client = this.ApiClient;
+            this.Client =  this.ApiClient;
             this.AsynchronousClient = this.ApiClient;
             this.ExceptionFactory = AffinidiTdk.WalletsClient.Client.Configuration.DefaultExceptionFactory;
         }
@@ -296,7 +296,7 @@ namespace AffinidiTdk.WalletsClient.Api
                 new AffinidiTdk.WalletsClient.Client.Configuration { BasePath = basePath }
             );
             this.ApiClient = new AffinidiTdk.WalletsClient.Client.ApiClient(client, this.Configuration.BasePath, handler);
-            this.Client = this.ApiClient;
+            this.Client =  this.ApiClient;
             this.AsynchronousClient = this.ApiClient;
             this.ExceptionFactory = AffinidiTdk.WalletsClient.Client.Configuration.DefaultExceptionFactory;
         }

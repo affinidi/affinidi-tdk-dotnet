@@ -13,15 +13,15 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.ComponentModel.DataAnnotations;
-using System.IO;
 using System.Linq;
+using System.IO;
 using System.Runtime.Serialization;
 using System.Text;
 using System.Text.RegularExpressions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using Newtonsoft.Json.Linq;
+using System.ComponentModel.DataAnnotations;
 using FileParameter = AffinidiTdk.IamClient.Client.FileParameter;
 using OpenAPIDateConverter = AffinidiTdk.IamClient.Client.OpenAPIDateConverter;
 
@@ -99,16 +99,15 @@ namespace AffinidiTdk.IamClient.Model
             // Name (string) maxLength
             if (this.Name != null && this.Name.Length > 100)
             {
-                yield return new ValidationResult("Invalid value for Name, length must be less than 100.", new[] { "Name" });
+                yield return new ValidationResult("Invalid value for Name, length must be less than 100.", new [] { "Name" });
             }
 
-            if (this.Name != null)
-            {
+            if (this.Name != null) {
                 // Name (string) pattern
                 Regex regexName = new Regex(@"^[a-zA-Z0-9][a-zA-Z0-9._ -]{0,98}[a-zA-Z0-9._-]$", RegexOptions.CultureInvariant);
                 if (!regexName.Match(this.Name).Success)
                 {
-                    yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Name, must match a pattern of " + regexName, new[] { "Name" });
+                    yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Name, must match a pattern of " + regexName, new [] { "Name" });
                 }
             }
 

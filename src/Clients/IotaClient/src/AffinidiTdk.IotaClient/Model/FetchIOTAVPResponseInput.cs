@@ -13,15 +13,15 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.ComponentModel.DataAnnotations;
-using System.IO;
 using System.Linq;
+using System.IO;
 using System.Runtime.Serialization;
 using System.Text;
 using System.Text.RegularExpressions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using Newtonsoft.Json.Linq;
+using System.ComponentModel.DataAnnotations;
 using FileParameter = AffinidiTdk.IotaClient.Client.FileParameter;
 using OpenAPIDateConverter = AffinidiTdk.IotaClient.Client.OpenAPIDateConverter;
 
@@ -136,13 +136,13 @@ namespace AffinidiTdk.IotaClient.Model
             // ResponseCode (string) maxLength
             if (this.ResponseCode != null && this.ResponseCode.Length > 255)
             {
-                yield return new ValidationResult("Invalid value for ResponseCode, length must be less than 255.", new[] { "ResponseCode" });
+                yield return new ValidationResult("Invalid value for ResponseCode, length must be less than 255.", new [] { "ResponseCode" });
             }
 
             // ResponseCode (string) minLength
             if (this.ResponseCode != null && this.ResponseCode.Length < 1)
             {
-                yield return new ValidationResult("Invalid value for ResponseCode, length must be greater than 1.", new[] { "ResponseCode" });
+                yield return new ValidationResult("Invalid value for ResponseCode, length must be greater than 1.", new [] { "ResponseCode" });
             }
 
             yield break;

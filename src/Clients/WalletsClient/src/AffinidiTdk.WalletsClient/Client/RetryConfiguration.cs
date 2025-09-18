@@ -9,8 +9,8 @@
  */
 
 
-using System.Net.Http;
 using Polly;
+using System.Net.Http;
 
 namespace AffinidiTdk.WalletsClient.Client
 {

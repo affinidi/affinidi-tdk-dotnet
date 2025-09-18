@@ -13,18 +13,18 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.ComponentModel.DataAnnotations;
-using System.IO;
 using System.Linq;
-using System.Reflection;
+using System.IO;
 using System.Runtime.Serialization;
 using System.Text;
 using System.Text.RegularExpressions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using Newtonsoft.Json.Linq;
+using System.ComponentModel.DataAnnotations;
 using FileParameter = AffinidiTdk.LoginConfigurationClient.Client.FileParameter;
 using OpenAPIDateConverter = AffinidiTdk.LoginConfigurationClient.Client.OpenAPIDateConverter;
+using System.Reflection;
 
 namespace AffinidiTdk.LoginConfigurationClient.Model
 {
@@ -43,7 +43,7 @@ namespace AffinidiTdk.LoginConfigurationClient.Model
         public CreateLoginConfigurations400Response(InvalidParameterError actualInstance)
         {
             this.IsNullable = false;
-            this.SchemaType = "oneOf";
+            this.SchemaType= "oneOf";
             this.ActualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
         }
 
@@ -55,7 +55,7 @@ namespace AffinidiTdk.LoginConfigurationClient.Model
         public CreateLoginConfigurations400Response(CreateHydraNetworkError actualInstance)
         {
             this.IsNullable = false;
-            this.SchemaType = "oneOf";
+            this.SchemaType= "oneOf";
             this.ActualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
         }
 
@@ -67,7 +67,7 @@ namespace AffinidiTdk.LoginConfigurationClient.Model
         public CreateLoginConfigurations400Response(CreateProjectNetworkError actualInstance)
         {
             this.IsNullable = false;
-            this.SchemaType = "oneOf";
+            this.SchemaType= "oneOf";
             this.ActualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
         }
 
@@ -283,7 +283,7 @@ namespace AffinidiTdk.LoginConfigurationClient.Model
         /// <returns>The object converted from the JSON string</returns>
         public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
         {
-            switch (reader.TokenType)
+            switch(reader.TokenType) 
             {
                 case JsonToken.StartObject:
                     return CreateLoginConfigurations400Response.FromJson(JObject.Load(reader).ToString(Formatting.None));

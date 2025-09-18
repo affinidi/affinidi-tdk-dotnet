@@ -13,15 +13,15 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.ComponentModel.DataAnnotations;
-using System.IO;
 using System.Linq;
+using System.IO;
 using System.Runtime.Serialization;
 using System.Text;
 using System.Text.RegularExpressions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using Newtonsoft.Json.Linq;
+using System.ComponentModel.DataAnnotations;
 using FileParameter = AffinidiTdk.IamClient.Client.FileParameter;
 using OpenAPIDateConverter = AffinidiTdk.IamClient.Client.OpenAPIDateConverter;
 
@@ -113,13 +113,12 @@ namespace AffinidiTdk.IamClient.Model
         /// <returns>Validation Result</returns>
         IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
-            if (this.Name != null)
-            {
+            if (this.Name != null) {
                 // Name (string) pattern
                 Regex regexName = new Regex(@".{3,}", RegexOptions.CultureInvariant);
                 if (!regexName.Match(this.Name).Success)
                 {
-                    yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Name, must match a pattern of " + regexName, new[] { "Name" });
+                    yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Name, must match a pattern of " + regexName, new [] { "Name" });
                 }
             }
 

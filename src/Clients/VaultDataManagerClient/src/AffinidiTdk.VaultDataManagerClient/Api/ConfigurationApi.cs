@@ -120,7 +120,7 @@ namespace AffinidiTdk.VaultDataManagerClient.Api
                 new AffinidiTdk.VaultDataManagerClient.Client.Configuration { BasePath = basePath }
             );
             this.ApiClient = new AffinidiTdk.VaultDataManagerClient.Client.ApiClient(this.Configuration.BasePath);
-            this.Client = this.ApiClient;
+            this.Client =  this.ApiClient;
             this.AsynchronousClient = this.ApiClient;
             this.ExceptionFactory = AffinidiTdk.VaultDataManagerClient.Client.Configuration.DefaultExceptionFactory;
         }
@@ -184,7 +184,7 @@ namespace AffinidiTdk.VaultDataManagerClient.Api
                 new AffinidiTdk.VaultDataManagerClient.Client.Configuration { BasePath = basePath }
             );
             this.ApiClient = new AffinidiTdk.VaultDataManagerClient.Client.ApiClient(client, this.Configuration.BasePath, handler);
-            this.Client = this.ApiClient;
+            this.Client =  this.ApiClient;
             this.AsynchronousClient = this.ApiClient;
             this.ExceptionFactory = AffinidiTdk.VaultDataManagerClient.Client.Configuration.DefaultExceptionFactory;
         }

@@ -383,7 +383,7 @@ namespace AffinidiTdk.LoginConfigurationClient.Api
                 new AffinidiTdk.LoginConfigurationClient.Client.Configuration { BasePath = basePath }
             );
             this.ApiClient = new AffinidiTdk.LoginConfigurationClient.Client.ApiClient(this.Configuration.BasePath);
-            this.Client = this.ApiClient;
+            this.Client =  this.ApiClient;
             this.AsynchronousClient = this.ApiClient;
             this.ExceptionFactory = AffinidiTdk.LoginConfigurationClient.Client.Configuration.DefaultExceptionFactory;
         }
@@ -447,7 +447,7 @@ namespace AffinidiTdk.LoginConfigurationClient.Api
                 new AffinidiTdk.LoginConfigurationClient.Client.Configuration { BasePath = basePath }
             );
             this.ApiClient = new AffinidiTdk.LoginConfigurationClient.Client.ApiClient(client, this.Configuration.BasePath, handler);
-            this.Client = this.ApiClient;
+            this.Client =  this.ApiClient;
             this.AsynchronousClient = this.ApiClient;
             this.ExceptionFactory = AffinidiTdk.LoginConfigurationClient.Client.Configuration.DefaultExceptionFactory;
         }

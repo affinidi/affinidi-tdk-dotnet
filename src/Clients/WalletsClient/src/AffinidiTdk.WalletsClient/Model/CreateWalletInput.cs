@@ -13,15 +13,15 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.ComponentModel.DataAnnotations;
-using System.IO;
 using System.Linq;
+using System.IO;
 using System.Runtime.Serialization;
 using System.Text;
 using System.Text.RegularExpressions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using Newtonsoft.Json.Linq;
+using System.ComponentModel.DataAnnotations;
 using FileParameter = AffinidiTdk.WalletsClient.Client.FileParameter;
 using OpenAPIDateConverter = AffinidiTdk.WalletsClient.Client.OpenAPIDateConverter;
 
@@ -137,16 +137,15 @@ namespace AffinidiTdk.WalletsClient.Model
             // DidWebUrl (string) maxLength
             if (this.DidWebUrl != null && this.DidWebUrl.Length > 300)
             {
-                yield return new ValidationResult("Invalid value for DidWebUrl, length must be less than 300.", new[] { "DidWebUrl" });
+                yield return new ValidationResult("Invalid value for DidWebUrl, length must be less than 300.", new [] { "DidWebUrl" });
             }
 
-            if (this.DidWebUrl != null)
-            {
+            if (this.DidWebUrl != null) {
                 // DidWebUrl (string) pattern
                 Regex regexDidWebUrl = new Regex(@"^(?!:\/\/)([a-zA-Z0-9\-\.]+)(:[0-9]+)?(\/[a-zA-Z0-9\-\/]*)?$", RegexOptions.CultureInvariant);
                 if (!regexDidWebUrl.Match(this.DidWebUrl).Success)
                 {
-                    yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for DidWebUrl, must match a pattern of " + regexDidWebUrl, new[] { "DidWebUrl" });
+                    yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for DidWebUrl, must match a pattern of " + regexDidWebUrl, new [] { "DidWebUrl" });
                 }
             }
 
