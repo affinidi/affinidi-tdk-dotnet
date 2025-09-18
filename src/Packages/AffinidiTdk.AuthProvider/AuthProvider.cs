@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 
 namespace AffinidiTdk.AuthProvider
 {
-    public class IAuthProviderParams
+    public class AuthProviderParams
     {
         public string? ProjectId { get; set; }
         public string? TokenId { get; set; }
@@ -16,64 +16,62 @@ namespace AffinidiTdk.AuthProvider
 
     public class AuthProvider
     {
-        private string publicKey = string.Empty;
-        private string projectScopedToken = string.Empty;
+        private string _publicKey = string.Empty;
+        private string _projectScopedToken = string.Empty;
 
-        private readonly string keyId;
-        private readonly string tokenId;
-        private readonly string passphrase;
-        private readonly string privateKey;
-        private readonly string projectId;
+        private readonly string _keyId;
+        private readonly string _tokenId;
+        private readonly string? _passphrase;
+        private readonly string _privateKey;
+        private readonly string _projectId;
+        private readonly string _apiGatewayUrl;
+        private readonly string _tokenEndpoint;
 
-        private readonly string apiGatewayUrl;
-        private readonly string tokenEndpoint;
+        private readonly ProjectScopedToken _projectScopedTokenClient = new();
+        private readonly Jwt _jwt = new();
 
-        private readonly ProjectScopedToken projectScopedTokenInstance;
-        private readonly Jwt jwt;
-
-        public AuthProvider(IAuthProviderParams param)
+        public AuthProvider(AuthProviderParams param)
         {
-            apiGatewayUrl = param.ApiGatewayUrl ?? "https://apse1.api.affinidi.io";
-            tokenEndpoint = param.TokenEndpoint ?? "https://apse1.auth.developer.affinidi.io/auth/oauth2/token";
+            _apiGatewayUrl = param.ApiGatewayUrl ?? "https://apse1.api.affinidi.io";
+            _tokenEndpoint = param.TokenEndpoint ?? "https://apse1.auth.developer.affinidi.io/auth/oauth2/token";
 
-            if (string.IsNullOrEmpty(param.PrivateKey) || string.IsNullOrEmpty(param.ProjectId) || string.IsNullOrEmpty(param.TokenId))
-            {
-                throw new ArgumentException("Missing parameters. Please provide privateKey, projectId, and tokenId.");
-            }
+            _projectId = param.ProjectId ?? throw new ArgumentException("Missing parameter: ProjectId");
+            _tokenId = param.TokenId ?? throw new ArgumentException("Missing parameter: TokenId");
+            _privateKey = param.PrivateKey ?? throw new ArgumentException("Missing parameter: PrivateKey");
 
-            projectId = param.ProjectId;
-            tokenId = param.TokenId;
-            keyId = param.KeyId ?? param.TokenId;
-            privateKey = param.PrivateKey;
-            passphrase = param.Passphrase;
-
-            projectScopedTokenInstance = new ProjectScopedToken();
-            jwt = new Jwt();
+            _keyId = param.KeyId ?? _tokenId;
+            _passphrase = param.Passphrase;
         }
 
-        private async Task<bool> ShouldRefreshToken()
+        private async Task<bool> ShouldRefreshTokenAsync()
         {
-            if (string.IsNullOrEmpty(publicKey))
+            if (string.IsNullOrEmpty(_publicKey))
             {
-                publicKey = await jwt.FetchPublicKey(apiGatewayUrl);
+                _publicKey = await _jwt.FetchPublicKeyAsync(_apiGatewayUrl);
             }
 
-            var isTokenExpired = !string.IsNullOrEmpty(projectScopedToken) &&
-                                 jwt.ValidateToken(projectScopedToken, publicKey).IsExpired;
+            var tokenIsEmpty = string.IsNullOrEmpty(_projectScopedToken);
+            var tokenExpired = !tokenIsEmpty && _jwt.ValidateToken(_projectScopedToken, _publicKey).IsExpired;
 
-            return string.IsNullOrEmpty(projectScopedToken) || isTokenExpired;
+            return tokenIsEmpty || tokenExpired;
         }
 
-        public async Task<string> FetchProjectScopedToken()
+        public async Task<string> FetchProjectScopedTokenAsync()
         {
-            bool shouldRefresh = await ShouldRefreshToken();
-
-            if (shouldRefresh)
+            if (await ShouldRefreshTokenAsync())
             {
-                projectScopedToken = await projectScopedTokenInstance.FetchProjectScopedToken(apiGatewayUrl, projectId, tokenId, tokenEndpoint, privateKey, keyId, passphrase);
+                _projectScopedToken = await _projectScopedTokenClient.FetchProjectScopedToken(
+                    _apiGatewayUrl,
+                    _projectId,
+                    _tokenId,
+                    _tokenEndpoint,
+                    _privateKey,
+                    _keyId,
+                    _passphrase
+                );
             }
 
-            return projectScopedToken;
+            return _projectScopedToken;
         }
     }
 }
