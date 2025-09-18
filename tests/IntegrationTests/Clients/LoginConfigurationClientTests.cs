@@ -1,17 +1,14 @@
-using Xunit;
-
 using System;
-using System.Diagnostics;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
-
 using AffinidiTdk.LoginConfigurationClient.Client;
 using AffinidiTdk.LoginConfigurationClient.Model;
-
-using IntegrationTests.Helpers;
 using IntegrationTests.Fixtures;
+using IntegrationTests.Helpers;
+using Xunit;
 
 namespace IntegrationTests
 {

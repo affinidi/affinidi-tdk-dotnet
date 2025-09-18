@@ -1,12 +1,10 @@
-using Xunit;
-
+using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
-using System.Collections.Generic;
-
 using AffinidiTdk.CredentialVerificationClient.Api;
 using AffinidiTdk.CredentialVerificationClient.Client;
 using AffinidiTdk.CredentialVerificationClient.Model;
+using Xunit;
 using Xunit;
 
 namespace IntegrationTests.Helpers

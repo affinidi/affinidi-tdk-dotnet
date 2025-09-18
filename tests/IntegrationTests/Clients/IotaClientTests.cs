@@ -1,15 +1,12 @@
-using Xunit;
-
 using System;
+using System.IdentityModel.Tokens.Jwt;
 using System.Net.Http;
 using System.Threading.Tasks;
-using System.IdentityModel.Tokens.Jwt;
-using Newtonsoft.Json.Linq;
-
 using AffinidiTdk.IotaClient.Model;
-
-using IntegrationTests.Helpers;
 using IntegrationTests.Fixtures;
+using IntegrationTests.Helpers;
+using Newtonsoft.Json.Linq;
+using Xunit;
 
 namespace IntegrationTests
 {

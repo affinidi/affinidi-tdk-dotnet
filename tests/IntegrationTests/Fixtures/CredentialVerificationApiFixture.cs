@@ -1,15 +1,12 @@
-using Xunit;
-using Xunit.Abstractions;
-
 using System;
 using System.Net.Http;
 using System.Threading.Tasks;
-
 using AffinidiTdk.CredentialVerificationClient.Api;
 using AffinidiTdk.CredentialVerificationClient.Client;
 using AffinidiTdk.CredentialVerificationClient.Model;
-
 using IntegrationTests.Helpers;
+using Xunit;
+using Xunit.Abstractions;
 
 namespace IntegrationTests.Fixtures
 {

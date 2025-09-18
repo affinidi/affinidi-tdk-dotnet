@@ -2,11 +2,11 @@ using System;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
-using Newtonsoft.Json.Linq;
-
 using AffinidiTdk.CredentialVerificationClient.Model;
-using IntegrationTests.Helpers;
 using IntegrationTests.Fixtures;
+using IntegrationTests.Helpers;
+using Newtonsoft.Json.Linq;
+using Xunit;
 
 namespace IntegrationTests
 {

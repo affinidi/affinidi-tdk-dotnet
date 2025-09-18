@@ -1,17 +1,14 @@
-using Xunit;
-using Xunit.Abstractions;
-
 using System;
 using System.Net.Http;
 using System.Threading.Tasks;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-
 using AffinidiTdk.CredentialIssuanceClient.Api;
 using AffinidiTdk.CredentialIssuanceClient.Client;
 using AffinidiTdk.CredentialIssuanceClient.Model;
-
 using IntegrationTests.Helpers;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using Xunit;
+using Xunit.Abstractions;
 
 namespace IntegrationTests.Fixtures
 {

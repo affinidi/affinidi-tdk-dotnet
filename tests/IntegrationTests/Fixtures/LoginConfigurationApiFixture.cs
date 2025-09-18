@@ -1,17 +1,14 @@
-using Xunit;
-using Xunit.Abstractions;
-
 using System;
 using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
-
 using AffinidiTdk.LoginConfigurationClient.Api;
 using AffinidiTdk.LoginConfigurationClient.Client;
 using AffinidiTdk.LoginConfigurationClient.Model;
-
 using IntegrationTests.Helpers;
+using Xunit;
+using Xunit.Abstractions;
 
 namespace IntegrationTests.Fixtures
 {

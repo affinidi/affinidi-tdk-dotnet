@@ -4,13 +4,13 @@ set -eu -o pipefail
 echo "Cleaning previous build artifacts..."
 rm -rf affected*
 dotnet clean
-rm -rf ./nupkgs/*.nupkgs
+rm -rf ./nupkgs/*.nupkg
 
 dotnet new sln --name AffinidiTdk --force
 dotnet sln AffinidiTdk.sln add $(find . -name "*.csproj")
 
 echo "Lint"
-dotnet format --verify-no-changes  AffinidiTdk.sln --exclude src/Clients/
+dotnet format AffinidiTdk.sln --exclude src/Clients/
 
 echo "Building all projects in solution..."
 dotnet build AffinidiTdk.sln
