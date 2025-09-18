@@ -4,6 +4,8 @@
 
 #addin nuget:?package=Newtonsoft.Json&version=13.0.4
 
+#tool nuget:?package=Versionize&version=2.3.1
+
 
 
 using Newtonsoft.Json;
@@ -157,7 +159,7 @@ Task("Release")
     {
         var name = project["name"].ToString();
         Information($"🚀 Releasing {name}");
-        StartProcess("versionize", $"--proj-name \"{name}\"");
+        StartProcess("dotnet", $"versionize --proj-name \"{name}\"");
     }
 });
 
