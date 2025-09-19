@@ -48,48 +48,7 @@ If you have a technical issue with the Affinidi TDK's codebase, you can also cre
    [open a new one](https://github.com/affinidi/affinidi-tdk-dotnet/issues/new).
    Be sure to include a **title and clear description**, as much relevant information as possible,
    and a **code sample** or an **executable test case** demonstrating the expected behavior that is not occurring.
-
-## Tests
-
-Follow the steps below to install dependencies and run the test suite
-
-### Environment Setup
-
-Navigate to the tests folder and copy the example environment file:
-
-```bash
-cd tests
-
-cp .env.example .env
-
-cd ..
-```
-
-Edit .env file and update only the following fields with your credentials:
-
-- PROJECT_ID – [Getting started and how to create a project](https://docs.affinidi.com/docs/get-started/create-project/)
-
-- KEY_ID, PASSPHRASE, PRIVATE_KEY, TOKEN_ID – [How to generate PAT credentials](https://docs.affinidi.com/dev-tools/affinidi-tdk/get-access-token/)
-
-Leave all other fields in the .env file unchanged.
-
-📌 The .env.example file must be copied and modified within the /tests folder.
-All scripts should be run from the root folder of the project.
-
-### Run Tests
-
-To buld, compile and run test suite, run the script:
-
-```bash
-dotnet cake
-```
-
-To run only integration tests:
-
-```bash
-dotnet cake --target IntegrationTest
-```
-
+   
 ## Contributing
 
 Want to contribute?
