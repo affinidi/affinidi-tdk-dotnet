@@ -8,12 +8,12 @@
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
-var isCI = EnvironmentVariable("CI") != null;
 
 //////////////////////////////////////////////////////////////////////
 // ARGUMENTS
 //////////////////////////////////////////////////////////////////////
 
+var isCI = EnvironmentVariable("CI") != null;
 var target = Argument("target", "Default");
 
 //////////////////////////////////////////////////////////////////////
@@ -105,12 +105,14 @@ Task("Lint")
   .IsDependentOn("Generate-Solution")
   .Does(() => {
     Information("Running dotnet format...");
-    StartProcess("dotnet", "format AffinidiTdk.sln --exclude src/Clients/");
+    StartProcess("dotnet", "format AffinidiTdk.sln --verify-no-changes --exclude src/Clients/");
   });
 
 Task("Format")
-  .IsDependentOn("Lint");
-
+  .Does(() => {
+    Information("Running dotnet format...");
+    StartProcess("dotnet", "format AffinidiTdk.sln --exclude src/Clients/");
+  });
 
 Task("Build")
   .IsDependentOn("Lint")
