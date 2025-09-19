@@ -5,7 +5,7 @@
     <RootNamespace>AffinidiTdk.Common</RootNamespace>
     <AssemblyName>AffinidiTdk.Common</AssemblyName>
     <PackageId>AffinidiTdk.Common</PackageId>
-    <PackageVersion>1.0.0</PackageVersion>
+    <Version>1.0.0</Version>
     <Authors>Affinidi</Authors>
     <Company>Affinidi</Company>
     <Description>Common utilities for Affinidi TDK</Description>
