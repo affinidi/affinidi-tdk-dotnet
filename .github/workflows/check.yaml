@@ -21,25 +21,5 @@ jobs:
         uses: actions/setup-dotnet@v4
         with:
           dotnet-version: '8.0.x'
-      - name: Create solution file
-        run: dotnet new sln --name AffinidiTdk && dotnet sln AffinidiTdk.sln add $(find . -name "*.csproj")
-      - uses: nrwl/nx-set-shas@v4
-        id: set_shas
-
-      - uses: leonardochaia/dotnet-affected-action@v1
-        id: dotnet_affected
-        with:
-          from: "origin/main"
-          to: ${{ steps.set_shas.outputs.head }}
-      - name: pack
-        if: success() && steps.dotnet_affected.outputs.affected != ''
-        run: dotnet pack  affected.proj  --output ./nupkgs
-
-      - name: build
-        if: success() && steps.dotnet_affected.outputs.affected != ''
-        run: dotnet build affected.proj 
-
-        
-      - name: lint 
-        if: success() && steps.dotnet_affected.outputs.affected != ''
-        run: dotnet format --verify-no-changes  AffinidiTdk.sln --exclude src/Clients/ #TODO lint clients as well
+      - name: cake default
+        uses: cake-build/cake-action@v3
