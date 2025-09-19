@@ -66,6 +66,9 @@ Task("Generate-Versionize-Config")
 
 Task("Clean")
   .Does(() => {
+    if (FileExists("./AffinidiTdk.sln")) {
+        return;
+    }
     Information("Cleaning previous build artifacts...");
     DeleteDirectories(GetDirectories("./affected*"), new DeleteDirectorySettings {
       Recursive = true,
@@ -84,6 +87,11 @@ Task("Clean")
 Task("Generate-Solution")
   .IsDependentOn("Clean")
   .Does(() => {
+
+    if (FileExists("./AffinidiTdk.sln")) {
+        return;
+    }
+
     Information("Generating solution file...");
     StartProcess("dotnet", "new sln --name AffinidiTdk --force");
 
@@ -99,6 +107,10 @@ Task("Lint")
     Information("Running dotnet format...");
     StartProcess("dotnet", "format AffinidiTdk.sln --exclude src/Clients/");
   });
+
+Task("Format")
+  .IsDependentOn("Lint");
+
 
 Task("Build")
   .IsDependentOn("Lint")

@@ -4,10 +4,64 @@ When contributing to this repository, please first discuss the change you wish t
 
 Clients are generated intenally by Affinidi based on our API's. So, please don't update the client code and instead create an issue.
 
-## Requirements
 
-- [.NET 8](https://dotnet.microsoft.com/en-us/download/dotnet/8.0)
-- [Cake](https://github.com/cake-build/cake)
+### Installing requirements
+
+1. Install [.NET 8 SDK](https://dotnet.microsoft.com/en-us/download)
+2. Install [Cake](https://github.com/cake-build/cake) tool:
+
+```bash
+dotnet tool install --global Cake.Tool
+```
+
+## Developing
+
+Follow the steps below to install dependencies and run the test suite
+
+### Environment Setup
+
+Navigate to the tests folder and copy the example environment file:
+
+```bash
+cd tests
+
+cp .env.example .env
+
+cd ..
+```
+
+Edit .env file and update only the following fields with your credentials:
+
+- PROJECT_ID – [Getting started and how to create a project](https://docs.affinidi.com/docs/get-started/create-project/)
+
+- KEY_ID, PASSPHRASE, PRIVATE_KEY, TOKEN_ID – [How to generate PAT credentials](https://docs.affinidi.com/dev-tools/affinidi-tdk/get-access-token/)
+
+Leave all other fields in the .env file unchanged.
+
+📌 The .env.example file must be copied and modified within the /tests folder.
+All scripts should be run from the root folder of the project.
+
+### Run Tests
+
+To buld, compile and run test suite, run the script:
+
+```bash
+dotnet cake
+```
+
+To run only integration tests:
+
+```bash
+dotnet cake --target IntegrationTest
+```
+
+### Formating and fixing lint issues
+
+Before pushing code, please make sure to propperly format.
+
+```bash
+dotnet cake --target Format
+```
 
 ### Code quality expectations
 
@@ -16,6 +70,8 @@ Clients are generated intenally by Affinidi based on our API's. So, please don't
 3. Ensure your code is covered with unit and integration tests (NOTE: no mocks/stubs in integration tests).
 4. Avoid adding comments to explain what code does, code should be self-explanatory and clean.
 5. Avoid using variable names like `i` or abbreviations - names should be simple and unambiguous.
+6. Follow [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) guide for commit messages writing
+7. Make sure commits are signed
 
 ## Code of Conduct
 
