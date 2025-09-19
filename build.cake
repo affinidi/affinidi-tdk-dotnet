@@ -135,7 +135,7 @@ Task("Release")
 
       Information($"🚀 Releasing {name} {(isCI ? "" : "(dry run mode)")}");
       var settings = new ProcessSettings {
-        Arguments = $"tool run versionize --proj-name \"{name}\" {dryRunFlag}",
+        Arguments = $"tool run versionize --proj-name \"{name}\" {dryRunFlag} --commit-suffix=\"{name} [skip ci]\"",
         RedirectStandardError = false,
         RedirectStandardOutput = false
       };
