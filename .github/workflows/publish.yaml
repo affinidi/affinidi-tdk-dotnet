@@ -41,18 +41,3 @@ jobs:
             arguments: |
                 projectName: {{ steps.parse_tag.outputs.project }}
                 secrets: {{ secrets.NUGET_API_KEY }}
-
-      - name: Run Cake Build
-        run: |
-          cake build.cake --target=PublishNuget \
-            --projectName=${{ steps.parse_tag.outputs.project }} \
-            --version=${{ steps.parse_tag.outputs.version }} \
-            --nugetApiKey=${{ secrets.NUGET_API_KEY }}
-
-      - name: Push to NuGet
-        run: |
-          for pkg in ./nupkgs/*.nupkg; do
-            dotnet nuget push "$pkg" \
-              --source "https://api.nuget.org/v3/index.json" \
-              --api-key "${{ secrets.NUGET_API_KEY }}"
-          done
