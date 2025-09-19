@@ -3,11 +3,7 @@
 //////////////////////////////////////////////////////////////////////
 
 #addin nuget:?package=Newtonsoft.Json&version=13.0.4
-
 #tool nuget:?package=Versionize&version=2.3.1
-
-
-#tool nuget: ? package = Versionize & version = 2.3 .1
 
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
@@ -31,25 +27,17 @@ Task("Restore-DotNet-Tools")
 
 Task("Generate-Versionize-Config")
   .Does(() => {
-
     var srcDir = Directory("./src");
-    var changelogSections = new [] {
-      new {
-        type = "feat", section = "✨ Features", hidden = false
-      },
-      new {
-        type = "fix", section = "🐛 Bug Fixes", hidden = false
-      },
-      new {
-        type = "perf", section = "🚀 Performance", hidden = false
-      }
+    var changelogSections = new[] {
+      new { type = "feat", section = "✨ Features", hidden = false },
+      new { type = "fix", section = "🐛 Bug Fixes", hidden = false },
+      new { type = "perf", section = "🚀 Performance", hidden = false }
     };
 
-    var projects = new List < object > ();
-
+    var projects = new List<object>();
     var projectFiles = GetFiles("./src/**/*.csproj");
 
-    foreach(var projectFile in projectFiles) {
+    foreach (var projectFile in projectFiles) {
       var projectDir = projectFile.GetDirectory();
       var name = System.IO.Path.GetFileNameWithoutExtension(projectFile.FullPath);
       var path = projectDir.FullPath.Replace("\\", "/");
@@ -57,19 +45,19 @@ Task("Generate-Versionize-Config")
 
       projects.Add(new {
         name = name,
-          path = path,
-          tagTemplate = "{name}-v{version}",
-          changelog = new {
-            header = $ "{name} Changelog",
-              sections = changelogSections
-          }
+        path = path,
+        tagTemplate = "{name}-v{version}",
+        changelog = new {
+          header = $"{name} Changelog",
+          sections = changelogSections
+        }
       });
     }
 
     var config = new {
       skipDirty = true,
-        silent = false,
-        projects = projects
+      silent = false,
+      projects = projects
     };
 
     var json = JsonConvert.SerializeObject(config, Formatting.Indented);
@@ -81,8 +69,9 @@ Task("Clean")
     Information("Cleaning previous build artifacts...");
     DeleteDirectories(GetDirectories("./affected*"), new DeleteDirectorySettings {
       Recursive = true,
-        Force = true
+      Force = true
     });
+
     try {
       DotNetClean("./");
     } catch (Exception ex) {
@@ -99,8 +88,8 @@ Task("Generate-Solution")
     StartProcess("dotnet", "new sln --name AffinidiTdk --force");
 
     var projects = GetFiles("**/*.csproj");
-    foreach(var project in projects) {
-      StartProcess("dotnet", $ "sln AffinidiTdk.sln add \"{project.FullPath}\"");
+    foreach (var project in projects) {
+      StartProcess("dotnet", $"sln AffinidiTdk.sln add \"{project.FullPath}\"");
     }
   });
 
@@ -136,22 +125,19 @@ Task("Release")
   .IsDependentOn("Restore-DotNet-Tools")
   .IsDependentOn("Generate-Versionize-Config")
   .Does(() => {
-
     var jsonText = System.IO.File.ReadAllText(".versionize");
     var json = JObject.Parse(jsonText);
     var projects = json["projects"];
     var dryRunFlag = isCI ? "" : "--dry-run";
 
-    foreach(var project in projects) {
+    foreach (var project in projects) {
       var name = project["name"].ToString();
 
-      Information($"🚀 Releasing {name} {(isCI ? "
-        " : "(dry run mode)
-        ")}");
+      Information($"🚀 Releasing {name} {(isCI ? "" : "(dry run mode)")}");
       var settings = new ProcessSettings {
-        Arguments = $ "tool run versionize --proj-name \"{name}\" {dryRunFlag}",
-          RedirectStandardError = false,
-          RedirectStandardOutput = false
+        Arguments = $"tool run versionize --proj-name \"{name}\" {dryRunFlag}",
+        RedirectStandardError = false,
+        RedirectStandardOutput = false
       };
 
       var process = StartAndReturnProcess("dotnet", settings);
@@ -160,7 +146,6 @@ Task("Release")
       if (process.GetExitCode() != 0) {
         throw new Exception($"❌ Versionize failed for project {name}");
       }
-
     }
   });
 
