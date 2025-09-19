@@ -33,6 +33,7 @@ jobs:
         env:
           TESTING_ENV_FILE_CONTENT: ${{ secrets.TESTING_ENV_FILE_CONTENT }}
         run: echo $TESTING_ENV_FILE_CONTENT | base64 --decode > tests/.env
-
-      - name:  Run all tests for packages
-        run: dotnet test # --filter "FullyQualifiedName~IntegrationTests"
+      - name: cake integration test
+        uses: cake-build/cake-action@v3
+        with:
+          target: IntegrationTest
