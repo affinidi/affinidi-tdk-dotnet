@@ -35,12 +35,26 @@ namespace AffinidiTdk.AuthProvider
             _apiGatewayUrl = param.ApiGatewayUrl ?? "https://apse1.api.affinidi.io";
             _tokenEndpoint = param.TokenEndpoint ?? "https://apse1.auth.developer.affinidi.io/auth/oauth2/token";
 
-            _projectId = param.ProjectId ?? throw new ArgumentException("Missing parameter: ProjectId");
-            _tokenId = param.TokenId ?? throw new ArgumentException("Missing parameter: TokenId");
-            _privateKey = param.PrivateKey ?? throw new ArgumentException("Missing parameter: PrivateKey");
+            _projectId = ValidateUuidOrThrow(param.ProjectId, "ProjectId");
+            _tokenId = ValidateUuidOrThrow(param.TokenId, "TokenId");
+            _privateKey = ValidatePemOrThrow(param.PrivateKey, "PrivateKey");
 
-            _keyId = param.KeyId ?? _tokenId;
+            _keyId = string.IsNullOrEmpty(param.KeyId) ? _tokenId : ValidateUuidOrThrow(param.KeyId, "KeyId");
             _passphrase = param.Passphrase;
+        }
+
+        private static string ValidateUuidOrThrow(string? value, string fieldName)
+        {
+            if (string.IsNullOrWhiteSpace(value) || !Guid.TryParse(value, out _))
+                throw new AuthProviderException($"Invalid or missing {fieldName}. Expected a UUID.");
+            return value!;
+        }
+
+        private static string ValidatePemOrThrow(string? value, string fieldName)
+        {
+            if (string.IsNullOrWhiteSpace(value) || !value.TrimStart().StartsWith("-----BEGIN"))
+                throw new AuthProviderException($"Invalid or missing {fieldName}. Expected a PEM-formatted string.");
+            return value!;
         }
 
         private async Task<bool> ShouldRefreshTokenAsync()

@@ -19,10 +19,17 @@ namespace AffinidiTdk.AuthProvider
 
             var rsa = RSA.Create();
 
-            if (!string.IsNullOrEmpty(passphrase))
-                rsa.ImportFromEncryptedPem(privateKey, passphrase);
-            else
-                rsa.ImportFromPem(privateKey);
+            try
+            {
+                if (!string.IsNullOrEmpty(passphrase))
+                    rsa.ImportFromEncryptedPem(privateKey, passphrase);
+                else
+                    rsa.ImportFromPem(privateKey);
+            }
+            catch (Exception ex)
+            {
+                throw new AuthProviderException($"Failed to import private key: {ex.Message}");
+            }
 
             var securityKey = new RsaSecurityKey(rsa) { KeyId = keyId };
             var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.RsaSha256);
@@ -69,8 +76,7 @@ namespace AffinidiTdk.AuthProvider
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Failed to get user access token: {ex.Message}");
-                return null;
+                throw new AuthProviderException($"Failed to get user access token: {ex.Message}");
             }
         }
 
@@ -104,8 +110,7 @@ namespace AffinidiTdk.AuthProvider
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Failed to fetch project scoped token: {ex.Message}");
-                return null;
+                throw new AuthProviderException($"Failed to fetch project scoped token: {ex.Message}");
             }
         }
     }
