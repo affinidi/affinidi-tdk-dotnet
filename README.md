@@ -55,7 +55,7 @@ Follow the steps below to install dependencies and run the test suite
 
 ### Environment Setup
 
-Copy the example environment configuration file and provide necessary credentials:
+Navigate to the tests folder and copy the example environment file:
 
 ```bash
 cd tests
@@ -65,9 +65,16 @@ cp .env.example .env
 cd ..
 ```
 
-Update only your PROJECT_ID ([link to docs how to create a project](https://docs.affinidi.com/docs/get-started/create-project/)) and PAT details (KEY_ID, PASSPHRASE, PRIVATE_KEY, TOKEN_ID - [link to docs how to create a PAT](https://docs.affinidi.com/dev-tools/affinidi-tdk/get-access-token/)) in your .env file.
+Edit .env file and update only the following fields with your credentials:
 
-Leave all other fields unchanged.
+- PROJECT_ID – [Getting started and how to create a project](https://docs.affinidi.com/docs/get-started/create-project/)
+
+- KEY_ID, PASSPHRASE, PRIVATE_KEY, TOKEN_ID – [How to generate PAT credentials](https://docs.affinidi.com/dev-tools/affinidi-tdk/get-access-token/)
+
+Leave all other fields in the .env file unchanged.
+
+📌 The .env.example file must be copied and modified within the /tests folder.
+All scripts should be run from the root folder of the project.
 
 ### Run Tests
 
@@ -82,10 +89,6 @@ To run only integration tests:
 ```bash
 dotnet cake --target IntegrationTest
 ```
-
-
-> ❗️ **Note:**
-> The `chmod +x` commands only need to be run once to make the scripts executable. After that, you can run the scripts directly without `chmod`.
 
 ## Contributing
 
