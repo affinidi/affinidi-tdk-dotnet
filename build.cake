@@ -130,7 +130,7 @@ Task("Build")
   });
 
 Task("Pack")
-  // .IsDependentOn("Build")
+  .IsDependentOn("Generate-Solution")
   .Does(() => {
     if(projectName == "") {
       Information("Packing all projects...");
@@ -205,7 +205,9 @@ Task("Release")
   });
 
 Task("Default")
-  .IsDependentOn("Pack");
+  .IsDependentOn("Build")
+  .IsDependentOn("Pack")
+  .IsDependentOn("Lint");
 
 //////////////////////////////////////////////////////////////////////
 // EXECUTION
