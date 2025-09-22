@@ -1,4 +1,7 @@
 AffinidiTdk.CredentialVerificationClient Changelog
+<a name="0.0.5"></a>
+## [0.0.5](https://www.github.com/affinidi/affinidi-tdk-dotnet/releases/tag/v0.0.5) (2025-09-22)
+
 <a name="0.0.4"></a>
 ## [0.0.4](https://www.github.com/affinidi/affinidi-tdk-dotnet/releases/tag/v0.0.4) (2025-09-22)
 
