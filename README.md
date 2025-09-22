@@ -4,7 +4,7 @@ The Affinidi Trust Development Kit (Affinidi TDK) is a modern interface that all
 
 ## How do I use Affinidi TDK?
 
-The Affinidi TDK provides three types of modules:
+The Affinidi TDK provides two types of modules:
 
 - [Clients](src/Clients), which offer methods to access Affinidi Elements services like Credential Issuance, Credential Verification, and Login Configurations, among others.
 - [Packages](src/Packages), which are commonly used utilities/helpers that are self-contained and composable.
