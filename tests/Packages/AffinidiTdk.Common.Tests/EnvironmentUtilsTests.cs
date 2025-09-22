@@ -1,4 +1,4 @@
-using Common.Helpers;
+using AffinidiTdk.Common;
 using Xunit;
 
 namespace AffinidiTdk.Common.Tests

@@ -19,8 +19,8 @@ namespace IntegrationTests.Fixtures
         public DenyListApi DenyListApi { get; private set; }
         public GroupApi GroupApi { get; private set; }
 
-        public string LoginConfigurationId { get; private set; }
-        public string GroupName { get; private set; }
+        public string? LoginConfigurationId { get; private set; }
+        public string? GroupName { get; private set; }
 
         public LoginConfigurationApiFixture()
         {
@@ -44,7 +44,7 @@ namespace IntegrationTests.Fixtures
             CreateLoginConfigurationOutput result = ConfigurationApi.CreateLoginConfigurations(config);
             LoginConfigurationId = result.ConfigurationId;
 
-            GroupName = Utils.GenerateRandomString();
+            GroupName = Utils.GenerateRandomString()!;
 
             var createGroupInput = new CreateGroupInput(
                 groupName: GroupName,
@@ -58,10 +58,10 @@ namespace IntegrationTests.Fixtures
         // Runs AFTER all tests are done (clean up)
         public async Task DisposeAsync()
         {
-            ApiResponse<object> deleteGroupResult = await GroupApi.DeleteGroupWithHttpInfoAsync(GroupName);
+            ApiResponse<object> deleteGroupResult = await GroupApi.DeleteGroupWithHttpInfoAsync(GroupName!);
             Assert.Equal(HttpStatusCode.NoContent, deleteGroupResult.StatusCode);
 
-            var deleteConfigResponse = await ConfigurationApi.DeleteLoginConfigurationsByIdWithHttpInfoAsync(LoginConfigurationId);
+            var deleteConfigResponse = await ConfigurationApi.DeleteLoginConfigurationsByIdWithHttpInfoAsync(LoginConfigurationId!);
             Assert.Equal(HttpStatusCode.NoContent, deleteConfigResponse.StatusCode);
         }
     }

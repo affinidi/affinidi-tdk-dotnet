@@ -1,5 +1,6 @@
 using System;
 using System.Threading.Tasks;
+using AffinidiTdk.Common;
 using AffinidiTdk.WalletsClient.Model;
 using IntegrationTests.Fixtures;
 using IntegrationTests.Helpers;
@@ -33,9 +34,9 @@ namespace IntegrationTests
         {
             var expiresAt = DateTime.UtcNow.AddMinutes(10).ToString("yyyy-MM-dd'T'HH:mm:ss.fff'Z'");
             var unsignedParamsString = EnvHelper.UnsignedCredentialParams;
-            var unsignedParams = JsonConvert.DeserializeObject<SignCredentialInputDtoUnsignedCredentialParams>(unsignedParamsString);
+            var unsignedParams = JsonConvert.DeserializeObject<SignCredentialInputDtoUnsignedCredentialParams>(unsignedParamsString)!;
 
-            unsignedParams.HolderDid = _fixture.WalletDid;
+            unsignedParams.HolderDid = _fixture.WalletDid!;
             unsignedParams.ExpiresAt = expiresAt;
 
             var signCredentialInputDto = new SignCredentialInputDto
@@ -44,7 +45,7 @@ namespace IntegrationTests
                 Revocable = true
             };
 
-            var result = await _fixture.WalletApi.SignCredentialAsync(_fixture.WalletId, signCredentialInputDto);
+            var result = await _fixture.WalletApi.SignCredentialAsync(_fixture.WalletId!, signCredentialInputDto);
 
             Assert.NotNull(result.SignedCredential);
 
@@ -56,7 +57,7 @@ namespace IntegrationTests
             // NOTE: why sometimes it is NOT valid?
             if (!isValid)
             {
-                Console.WriteLine("[WARN] credential is not valid");
+                Logger.Warn("Credential is not valid");
             }
         }
 
@@ -66,9 +67,9 @@ namespace IntegrationTests
             var expiresAt = DateTime.UtcNow.ToString("yyyy-MM-dd'T'HH:mm:ss.fff'Z'");
 
             var unsignedParamsString = EnvHelper.UnsignedCredentialParams;
-            var unsignedParams = JsonConvert.DeserializeObject<SignCredentialInputDtoUnsignedCredentialParams>(unsignedParamsString);
+            var unsignedParams = JsonConvert.DeserializeObject<SignCredentialInputDtoUnsignedCredentialParams>(unsignedParamsString)!;
 
-            unsignedParams.HolderDid = _fixture.WalletDid;
+            unsignedParams.HolderDid = _fixture.WalletDid!;
             unsignedParams.ExpiresAt = expiresAt;
 
             var signCredentialInputDto = new SignCredentialInputDto
@@ -77,7 +78,7 @@ namespace IntegrationTests
                 Revocable = true
             };
 
-            var result = await _fixture.WalletApi.SignCredentialAsync(_fixture.WalletId, signCredentialInputDto);
+            var result = await _fixture.WalletApi.SignCredentialAsync(_fixture.WalletId!, signCredentialInputDto);
 
             Assert.NotNull(result.SignedCredential);
 
@@ -89,11 +90,11 @@ namespace IntegrationTests
         [Fact]
         public async Task Test4_GetsRevocationListCredential()
         {
-            var signedCredentialJObject = JObject.FromObject(_fixture.SignedCredential.SignedCredential);
+            var signedCredentialJObject = JObject.FromObject(_fixture.SignedCredential!.SignedCredential!);
             var revocationListCredential = signedCredentialJObject["credentialStatus"]?["revocationListCredential"]?.ToString();
-            var statusId = WalletsHelper.ExtractRevocationStatusId(revocationListCredential);
+            var statusId = WalletsHelper.ExtractRevocationStatusId(revocationListCredential!);
 
-            GetRevocationListCredentialResultDto result = await _fixture.RevocationApi.GetRevocationCredentialStatusAsync(EnvHelper.ProjectId, _fixture.WalletId, statusId);
+            GetRevocationListCredentialResultDto result = await _fixture.RevocationApi.GetRevocationCredentialStatusAsync(EnvHelper.ProjectId, _fixture.WalletId!, statusId!);
 
             Assert.NotNull(result.RevocationListCredential);
 
@@ -109,8 +110,8 @@ namespace IntegrationTests
         [Fact]
         public async Task Test5_RevokesVerifiableCredential()
         {
-            var signedCredentialJObject = JObject.FromObject(_fixture.SignedCredential.SignedCredential);
-            var credentialId = signedCredentialJObject["id"].ToString();
+            var signedCredentialJObject = JObject.FromObject(_fixture.SignedCredential!.SignedCredential!);
+            var credentialId = signedCredentialJObject["id"]!.ToString();
 
             var revokeCredentialInput = new RevokeCredentialInput
             {
@@ -118,9 +119,9 @@ namespace IntegrationTests
                 CredentialId = credentialId
             };
 
-            await _fixture.RevocationApi.RevokeCredentialAsync(_fixture.WalletId, revokeCredentialInput);
+            await _fixture.RevocationApi.RevokeCredentialAsync(_fixture.WalletId!, revokeCredentialInput);
 
-            var isValid = await VerificationHelper.IsValid(_fixture.SignedCredential.SignedCredential);
+            var isValid = await VerificationHelper.IsValid(_fixture.SignedCredential!.SignedCredential);
 
             Assert.False(isValid);
         }
@@ -138,7 +139,7 @@ namespace IntegrationTests
 
             var signJwtToken = new SignJwtToken(header, payload);
 
-            SignJwtTokenOK result = await _fixture.WalletApi.SignJwtTokenAsync(_fixture.WalletId, signJwtToken);
+            SignJwtTokenOK result = await _fixture.WalletApi.SignJwtTokenAsync(_fixture.WalletId!, signJwtToken);
 
             Assert.NotNull(result.SignedJwt);
         }
@@ -146,7 +147,7 @@ namespace IntegrationTests
         [Fact]
         public async Task Test6_GetsWallet()
         {
-            var result = await _fixture.WalletApi.GetWalletAsync(_fixture.WalletId);
+            var result = await _fixture.WalletApi.GetWalletAsync(_fixture.WalletId!);
             Assert.NotNull(result.Id);
         }
 
@@ -161,7 +162,7 @@ namespace IntegrationTests
         public async Task Test8_UpdatesWallet()
         {
             var updatedName = "Updated Wallet";
-            var result = await _fixture.WalletApi.UpdateWalletAsync(_fixture.WalletId, new UpdateWalletInput
+            var result = await _fixture.WalletApi.UpdateWalletAsync(_fixture.WalletId!, new UpdateWalletInput
             {
                 Name = updatedName
             });
@@ -176,12 +177,12 @@ namespace IntegrationTests
         {
             if (_fixture.WalletId != null)
             {
-                await WalletsHelper.DeleteWallet(_fixture.WalletId);
+                await WalletsHelper.DeleteWallet(_fixture.WalletId!);
             }
 
             if (_fixture.WalletIdDidWeb != null)
             {
-                await WalletsHelper.DeleteWallet(_fixture.WalletIdDidWeb);
+                await WalletsHelper.DeleteWallet(_fixture.WalletIdDidWeb!);
             }
         }
     }

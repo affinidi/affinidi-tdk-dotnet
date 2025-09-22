@@ -36,7 +36,7 @@ namespace IntegrationTests
         [Fact]
         public async Task TestReadLoginConfiguration()
         {
-            LoginConfigurationObject result = await _fixture.ConfigurationApi.GetLoginConfigurationsByIdAsync(_fixture.LoginConfigurationId);
+            LoginConfigurationObject result = await _fixture.ConfigurationApi.GetLoginConfigurationsByIdAsync(_fixture.LoginConfigurationId!);
 
             Assert.NotNull(result);
             Assert.IsType<LoginConfigurationObject>(result);
@@ -50,7 +50,7 @@ namespace IntegrationTests
                 name: newName
             );
 
-            LoginConfigurationObject result = await _fixture.ConfigurationApi.UpdateLoginConfigurationsByIdAsync(_fixture.LoginConfigurationId, input);
+            LoginConfigurationObject result = await _fixture.ConfigurationApi.UpdateLoginConfigurationsByIdAsync(_fixture.LoginConfigurationId!, input);
 
             Assert.NotNull(result);
             Assert.IsType<LoginConfigurationObject>(result);
@@ -71,7 +71,7 @@ namespace IntegrationTests
         [Fact]
         public async Task TestReadGroup()
         {
-            GroupDto result = await _fixture.GroupApi.GetGroupByIdAsync(_fixture.GroupName);
+            GroupDto result = await _fixture.GroupApi.GetGroupByIdAsync(_fixture.GroupName!);
 
             Assert.NotNull(result);
             Assert.IsType<GroupDto>(result);
@@ -81,7 +81,7 @@ namespace IntegrationTests
         public async Task TestAllowList()
         {
             var groupNamesInput = new GroupNamesInput(
-                groupNames: new List<string> { _fixture.GroupName }
+                groupNames: new List<string> { _fixture.GroupName! }
             );
 
             ApiResponse<object> allowGroupsResponse = await _fixture.AllowListApi.AllowGroupsWithHttpInfoAsync(groupNamesInput);
@@ -102,7 +102,7 @@ namespace IntegrationTests
             string blockUserId = "test";
 
             var groupNamesInput = new GroupNamesInput(
-                groupNames: new List<string> { _fixture.GroupName }
+                groupNames: new List<string> { _fixture.GroupName! }
             );
 
             var blockedUsersInput = new BlockedUsersInput(

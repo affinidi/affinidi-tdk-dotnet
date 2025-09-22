@@ -19,11 +19,11 @@ namespace IntegrationTests.Fixtures
         public IotaApi IotaApi { get; private set; }
         public PexQueryApi PexQueryApi { get; private set; }
 
-        public string WalletId { get; set; }
-        public string WalletAri { get; set; }
-        public string ConfigurationId { get; set; }
-        public string IotaRedirectUri { get; set; }
-        public string QueryId { get; set; }
+        public string? WalletId { get; set; }
+        public string? WalletAri { get; set; }
+        public string? ConfigurationId { get; set; }
+        public string? IotaRedirectUri { get; set; }
+        public string? QueryId { get; set; }
 
         public IotaApiFixture()
         {
@@ -46,7 +46,7 @@ namespace IntegrationTests.Fixtures
             WalletAri = createWalletResult.Wallet.Ari;
 
             var iotaConfigurationString = EnvHelper.IotaConfiguration;
-            CreateIotaConfigurationInput iotaConfiguration = JsonConvert.DeserializeObject<CreateIotaConfigurationInput>(iotaConfigurationString);
+            CreateIotaConfigurationInput iotaConfiguration = JsonConvert.DeserializeObject<CreateIotaConfigurationInput>(iotaConfigurationString)!;
 
             iotaConfiguration.WalletAri = WalletAri;
 
@@ -66,9 +66,9 @@ namespace IntegrationTests.Fixtures
         // Runs AFTER all tests are done (clean up)
         public async Task DisposeAsync()
         {
-            await WalletsHelper.DeleteWallet(WalletId);
-            await PexQueryApi.DeletePexQueryByIdAsync(ConfigurationId, QueryId);
-            await ConfigurationsApi.DeleteIotaConfigurationByIdAsync(ConfigurationId);
+            await WalletsHelper.DeleteWallet(WalletId!);
+            await PexQueryApi.DeletePexQueryByIdAsync(ConfigurationId!, QueryId!);
+            await ConfigurationsApi.DeleteIotaConfigurationByIdAsync(ConfigurationId!);
         }
     }
 }

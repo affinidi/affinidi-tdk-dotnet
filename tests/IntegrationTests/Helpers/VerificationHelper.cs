@@ -5,7 +5,6 @@ using AffinidiTdk.CredentialVerificationClient.Api;
 using AffinidiTdk.CredentialVerificationClient.Client;
 using AffinidiTdk.CredentialVerificationClient.Model;
 using Xunit;
-using Xunit;
 
 namespace IntegrationTests.Helpers
 {

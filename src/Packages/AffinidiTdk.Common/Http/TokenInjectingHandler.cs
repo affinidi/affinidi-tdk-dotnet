@@ -4,7 +4,7 @@ using System.Net.Http.Headers;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace IntegrationTests.Helpers
+namespace AffinidiTdk.Common.Http
 {
     public class TokenInjectingHandler : DelegatingHandler
     {

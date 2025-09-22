@@ -19,7 +19,7 @@ namespace IntegrationTests.Fixtures
         public OfferApi OfferApi { get; private set; }
         public CredentialsApi CredentialsApi { get; private set; }
 
-        public string ConfigurationId { get; private set; }
+        public string? ConfigurationId { get; private set; }
 
         public CredentialIssuanceApiFixture()
         {
@@ -46,7 +46,7 @@ namespace IntegrationTests.Fixtures
                 var wallet = await WalletsHelper.CreateWallet();
 
                 var issuanceConfigurationString = EnvHelper.CredentialIssuanceConfiguration;
-                CreateIssuanceConfigInput issuanceConfig = JsonConvert.DeserializeObject<CreateIssuanceConfigInput>(issuanceConfigurationString);
+                CreateIssuanceConfigInput issuanceConfig = JsonConvert.DeserializeObject<CreateIssuanceConfigInput>(issuanceConfigurationString)!;
                 issuanceConfig.IssuerWalletId = wallet.Wallet.Id;
 
                 var createResult = await ConfigurationApi.CreateIssuanceConfigAsync(issuanceConfig);

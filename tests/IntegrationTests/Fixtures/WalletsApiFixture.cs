@@ -15,10 +15,10 @@ namespace IntegrationTests.Fixtures
         public WalletApi WalletApi { get; private set; }
         public RevocationApi RevocationApi { get; private set; }
 
-        public SignCredentialResultDto SignedCredential { get; set; }
-        public string WalletId { get; set; }
-        public string WalletDid { get; set; }
-        public string WalletIdDidWeb { get; set; }
+        public SignCredentialResultDto? SignedCredential { get; set; }
+        public string? WalletId { get; set; }
+        public string? WalletDid { get; set; }
+        public string? WalletIdDidWeb { get; set; }
 
         public WalletsApiFixture()
         {
