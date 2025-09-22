@@ -87,8 +87,10 @@ public class ListLoginConfig
         Console.WriteLine("Login Configurations: " + loginConfig.ToJson());
     }
 }
-
 ```
+
+You may find more examples [here](examples).
+
 
 ## Documentation
 
