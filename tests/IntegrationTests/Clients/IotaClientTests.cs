@@ -34,7 +34,7 @@ namespace IntegrationTests
         [Fact]
         public async Task Test_GetIotaConfiguration()
         {
-            IotaConfigurationDto result = _fixture.ConfigurationsApi.GetIotaConfigurationById(_fixture.ConfigurationId);
+            IotaConfigurationDto result = await _fixture.ConfigurationsApi.GetIotaConfigurationByIdAsync(_fixture.ConfigurationId!);
 
             Assert.NotNull(result);
             Assert.IsType<IotaConfigurationDto>(result);
@@ -48,7 +48,7 @@ namespace IntegrationTests
             var updateConfigurationByIdInput = new UpdateConfigurationByIdInput(
                 name: newName
             );
-            IotaConfigurationDto result = _fixture.ConfigurationsApi.UpdateIotaConfigurationById(_fixture.ConfigurationId, updateConfigurationByIdInput);
+            IotaConfigurationDto result = await _fixture.ConfigurationsApi.UpdateIotaConfigurationByIdAsync(_fixture.ConfigurationId!, updateConfigurationByIdInput);
 
             Assert.NotNull(result);
             Assert.IsType<IotaConfigurationDto>(result);
@@ -60,11 +60,11 @@ namespace IntegrationTests
         {
             InitiateDataSharingRequestInput initiateDataSharingRequestInput = new InitiateDataSharingRequestInput
             (
-                queryId: _fixture.QueryId,
+                queryId: _fixture.QueryId!,
                 correlationId: Guid.NewGuid().ToString(),
                 nonce: Guid.NewGuid().ToString().Substring(0, 10),
-                redirectUri: _fixture.IotaRedirectUri,
-                configurationId: _fixture.ConfigurationId,
+                redirectUri: _fixture.IotaRedirectUri!,
+                configurationId: _fixture.ConfigurationId!,
                 mode: InitiateDataSharingRequestInput.ModeEnum.Redirect
             );
 
@@ -79,7 +79,7 @@ namespace IntegrationTests
             var state = token.Payload["state"]?.ToString();
 
             var callbackInput = new CallbackInput(
-                state: state,
+                state: state!,
                 presentationSubmission: EnvHelper.IotaPresentationSubmission,
                 vpToken: EnvHelper.VerifiablePresentation
             );
@@ -91,7 +91,7 @@ namespace IntegrationTests
                 correlationId: correlationId,
                 transactionId: transactionId,
                 responseCode: responseCode,
-                configurationId: _fixture.ConfigurationId
+                configurationId: _fixture.ConfigurationId!
             );
 
             FetchIOTAVPResponseOK iotaResponse = await _fixture.IotaApi.FetchIotaVpResponseAsync(fetchIOTAVPResponseInput);

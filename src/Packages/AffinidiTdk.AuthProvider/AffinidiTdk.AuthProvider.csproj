@@ -13,14 +13,23 @@
     <RepositoryUrl>https://github.com/affinidi/affinidi-tdk-dotnet</RepositoryUrl>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
   </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="jose-jwt" Version="5.2.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.OpenIdConnect" Version="7.0.1" />
+  </ItemGroup>
 
   <ItemGroup>
     <!-- TODO: use reference to the Common project, when AffinidiTdk.Common is published -->
     <!-- <PackageReference Include="AffinidiTdk.Common" Version="1.0.0" /> -->
-    <PackageReference Include="jose-jwt" Version="5.2.0" />
-    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
-    <PackageReference Include="Microsoft.AspNetCore.Authentication.OpenIdConnect" Version="7.0.1" />
+    <ProjectReference Include="..\AffinidiTdk.Common\AffinidiTdk.Common.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="README.md" Pack="true" PackagePath="" />
   </ItemGroup>
 
 </Project>

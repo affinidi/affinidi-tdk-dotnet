@@ -1,4 +1,4 @@
-namespace Common.Helpers
+namespace AffinidiTdk.Common
 {
     public static class VaultUtils
     {
@@ -47,7 +47,7 @@ namespace Common.Helpers
             return this;
         }
 
-        public string ToString()
+        public override string ToString()
         {
             return string.Join("&", _queryParams);
         }

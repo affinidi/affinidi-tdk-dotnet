@@ -1,7 +1,7 @@
 using System;
 using DotNetEnv;
 
-namespace Common.Helpers
+namespace AffinidiTdk.Common
 {
     public static class EnvironmentUtils
     {

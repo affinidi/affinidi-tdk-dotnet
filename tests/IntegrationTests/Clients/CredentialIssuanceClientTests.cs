@@ -39,7 +39,7 @@ namespace IntegrationTests
                 description: newDescription
             );
 
-            IssuanceConfigDto result = await _fixture.ConfigurationApi.UpdateIssuanceConfigByIdAsync(_fixture.ConfigurationId, updateIssuanceConfigInput);
+            IssuanceConfigDto result = await _fixture.ConfigurationApi.UpdateIssuanceConfigByIdAsync(_fixture.ConfigurationId!, updateIssuanceConfigInput);
 
             Assert.NotNull(result);
             Assert.IsType<IssuanceConfigDto>(result);
@@ -49,7 +49,7 @@ namespace IntegrationTests
         [Fact]
         public async Task Test_ReadsConfiguration()
         {
-            IssuanceConfigDto result = await _fixture.ConfigurationApi.GetIssuanceConfigByIdAsync(_fixture.ConfigurationId);
+            IssuanceConfigDto result = await _fixture.ConfigurationApi.GetIssuanceConfigByIdAsync(_fixture.ConfigurationId!);
 
             Assert.NotNull(result);
             Assert.IsType<IssuanceConfigDto>(result);
@@ -59,10 +59,9 @@ namespace IntegrationTests
         public async Task Test_StartIssuance()
         {
             var startIssuanceInput = JsonConvert.DeserializeObject<StartIssuanceInput>(EnvHelper.CredentialIssuanceData);
-            startIssuanceInput.ClaimMode = StartIssuanceInput.ClaimModeEnum.TXCODE;
+            startIssuanceInput!.ClaimMode = StartIssuanceInput.ClaimModeEnum.TXCODE;
 
             StartIssuanceResponse startIssuanceResult = await _fixture.IssuanceApi.StartIssuanceAsync(EnvHelper.ProjectId, startIssuanceInput);
-            Console.WriteLine(startIssuanceResult);
 
             Assert.NotNull(startIssuanceResult);
             Assert.IsType<StartIssuanceResponse>(startIssuanceResult);

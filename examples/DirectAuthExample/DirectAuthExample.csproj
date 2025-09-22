@@ -10,6 +10,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\src\Clients\WalletsClient\src\AffinidiTdk.WalletsClient\AffinidiTdk.WalletsClient.csproj" />
     <ProjectReference Include="..\..\src\Packages\AffinidiTdk.AuthProvider\AffinidiTdk.AuthProvider.csproj" />
+    <ProjectReference Include="..\..\src\Packages\AffinidiTdk.Common\AffinidiTdk.Common.csproj" />
   </ItemGroup>
 
 </Project>

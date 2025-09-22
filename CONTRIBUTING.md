@@ -55,6 +55,8 @@ To run only integration tests:
 dotnet cake --target IntegrationTest
 ```
 
+❗️NOTE: If your project contains more than 7 wallets, all wallets will be deleted 💣 to prevent test failures caused by backend ResourceLimitExceeded errors (maximum of 10 wallets allowed per project).
+
 ### Formating and fixing lint issues
 
 Before pushing code, please make sure to propperly format.

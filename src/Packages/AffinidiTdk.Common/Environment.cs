@@ -1,4 +1,4 @@
-namespace Common.Helpers
+namespace AffinidiTdk.Common
 {
     public class Environment
     {

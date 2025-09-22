@@ -2,6 +2,7 @@ using System;
 using System.Net.Http;
 using System.Threading.Tasks;
 using AffinidiTdk.AuthProvider;
+using AffinidiTdk.Common.Http;
 using Xunit;
 
 namespace IntegrationTests.Helpers

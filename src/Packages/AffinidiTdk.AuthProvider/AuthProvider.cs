@@ -1,5 +1,6 @@
 using System;
 using System.Threading.Tasks;
+using AffinidiTdk.Common;
 
 namespace AffinidiTdk.AuthProvider
 {
@@ -32,8 +33,8 @@ namespace AffinidiTdk.AuthProvider
 
         public AuthProvider(AuthProviderParams param)
         {
-            _apiGatewayUrl = param.ApiGatewayUrl ?? "https://apse1.api.affinidi.io";
-            _tokenEndpoint = param.TokenEndpoint ?? "https://apse1.auth.developer.affinidi.io/auth/oauth2/token";
+            _apiGatewayUrl = param.ApiGatewayUrl ?? EnvironmentUtils.FetchApiGwUrl();
+            _tokenEndpoint = param.TokenEndpoint ?? EnvironmentUtils.FetchElementsAuthTokenUrl();
 
             _projectId = ValidateUuidOrThrow(param.ProjectId, "ProjectId");
             _tokenId = ValidateUuidOrThrow(param.TokenId, "TokenId");
@@ -74,7 +75,7 @@ namespace AffinidiTdk.AuthProvider
         {
             if (await ShouldRefreshTokenAsync())
             {
-                _projectScopedToken = await _projectScopedTokenClient.FetchProjectScopedToken(
+                _projectScopedToken = (await _projectScopedTokenClient.FetchProjectScopedToken(
                     _apiGatewayUrl,
                     _projectId,
                     _tokenId,
@@ -82,10 +83,10 @@ namespace AffinidiTdk.AuthProvider
                     _privateKey,
                     _keyId,
                     _passphrase
-                );
+                ))!;
             }
 
-            return _projectScopedToken;
+            return _projectScopedToken!;
         }
     }
 }

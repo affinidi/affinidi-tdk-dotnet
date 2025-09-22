@@ -101,12 +101,12 @@ namespace AffinidiTdk.AuthProvider
     public class JwkKey
     {
         [JsonPropertyName("crv")]
-        public string Crv { get; set; }
+        public required string Crv { get; set; }
 
         [JsonPropertyName("x")]
-        public string X { get; set; }
+        public required string X { get; set; }
 
         [JsonPropertyName("y")]
-        public string Y { get; set; }
+        public required string Y { get; set; }
     }
 }
