@@ -13,8 +13,16 @@ using Newtonsoft.Json.Linq;
 // ARGUMENTS
 //////////////////////////////////////////////////////////////////////
 
-var isCI = EnvironmentVariable("CI") != null;
 var target = Argument("target", "Default");
+var projectName = Argument("projectName", "");
+
+//////////////////////////////////////////////////////////////////////
+// ENVS
+//////////////////////////////////////////////////////////////////////
+
+
+var isCI = EnvironmentVariable("CI") != null;
+var nugetApiKey = EnvironmentVariable("NUGET_API_KEY") ?? "";
 
 //////////////////////////////////////////////////////////////////////
 // TASKS
@@ -122,13 +130,46 @@ Task("Build")
   });
 
 Task("Pack")
-  .IsDependentOn("Build")
+  .IsDependentOn("Generate-Solution")
   .Does(() => {
-    Information("Packing all projects...");
-    DotNetPack("AffinidiTdk.sln", new DotNetPackSettings {
-      OutputDirectory = "./nupkgs"
+    if(projectName == "") {
+      Information("Packing all projects...");
+
+      DotNetPack("AffinidiTdk.sln", new DotNetPackSettings {
+        OutputDirectory = "./nupkgs"
+      });
+      return;
+    }
+    
+    Information($"Packing {projectName} project");
+
+    var projectPath = GetFiles($"./src/**/{projectName}.csproj").FirstOrDefault();
+
+    DotNetPack(projectPath.FullPath, new DotNetPackSettings {
+        Configuration = "Release",
+        OutputDirectory = "./nupkgs"
     });
+
+
   });
+
+
+Task("Publish")
+    .IsDependentOn("Pack")
+    .Does(() =>
+{
+    var packages = GetFiles($"./nupkgs/{projectName}.*.nupkg");
+
+    foreach (var package in packages)
+    {
+        Information($"Pushing {package.FullPath} to NuGet...");
+        DotNetNuGetPush(package.FullPath, new DotNetNuGetPushSettings {
+            Source = "https://api.nuget.org/v3/index.json",
+            ApiKey = nugetApiKey
+        });
+    }
+});
+
 
 Task("IntegrationTest")
   .Does(() => {
@@ -164,7 +205,9 @@ Task("Release")
   });
 
 Task("Default")
-  .IsDependentOn("Pack");
+  .IsDependentOn("Build")
+  .IsDependentOn("Pack")
+  .IsDependentOn("Lint");
 
 //////////////////////////////////////////////////////////////////////
 // EXECUTION
