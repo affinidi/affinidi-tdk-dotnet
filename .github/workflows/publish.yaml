@@ -1,0 +1,43 @@
+name: Publish
+
+on:
+  push:
+    tags:
+      - '*-v*'
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    environment: publish
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup .NET 8 SDK
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+
+      - name: Run the Cake script
+        uses: cake-build/cake-action@v3
+        with:
+            target: Release
+
+      - name: Install Cake Tool
+        run: dotnet tool install --global Cake.Tool
+
+
+      - name: Parse project name from Tag
+        id: parse_tag
+        run: |
+          TAG_NAME="${GITHUB_REF#refs/tags/}"
+          PROJECT_NAME=$(echo "$TAG_NAME" | sed -E 's/-v[0-9]+\.[0-9]+\.[0-9]+.*$//')
+          echo "project=$PROJECT_NAME" >> $GITHUB_OUTPUT
+
+      - name: Run the Cake script
+        uses: cake-build/cake-action@v3
+        with:
+            target: Release
+            arguments: |
+                projectName: {{ steps.parse_tag.outputs.project }}
+                secrets: {{ secrets.NUGET_API_KEY }}
