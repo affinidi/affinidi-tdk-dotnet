@@ -8,7 +8,7 @@ using AffinidiTdk.WalletsClient.Client;
 
 class Program
 {
-    // ✅ Lazy initialization of AuthProvider
+    // Lazy initialization of AuthProvider
     private static readonly Lazy<AuthProvider> _authProvider = new(() =>
         new AuthProvider(new AuthProviderParams
         {
