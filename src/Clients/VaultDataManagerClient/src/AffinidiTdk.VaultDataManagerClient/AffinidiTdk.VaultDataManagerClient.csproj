@@ -12,7 +12,7 @@
     <Description>Affinidi TDK dotnet client for Affinidi VAULT DATA MANAGER</Description>
     <Copyright>No Copyright</Copyright>
     <RootNamespace>AffinidiTdk.VaultDataManagerClient</RootNamespace>
-    <Version>0.0.4</Version>
+    <Version>0.0.5</Version>
     <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\AffinidiTdk.VaultDataManagerClient.xml</DocumentationFile>
     <RepositoryUrl>https://github.com/affinidi/affinidi-tdk-dotnet.git</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
