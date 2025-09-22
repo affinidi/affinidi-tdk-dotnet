@@ -2,6 +2,13 @@
 
 The Affinidi Trust Development Kit (Affinidi TDK) is a modern interface that allows you to easily manage and integrate [Affinidi Elements](https://docs.affinidi.com/docs/affinidi-elements/) and [Frameworks](https://docs.affinidi.com/frameworks/iota-framework/) into your application. It minimises dependencies and enables developers to integrate seamlessly into the [Affinidi Trust Network (ATN)](https://docs.affinidi.com/docs/).
 
+## How do I use Affinidi TDK?
+
+The Affinidi TDK provides two types of modules:
+
+- [Clients](src/Clients), which offer methods to access Affinidi Elements services like Credential Issuance, Credential Verification, and Login Configurations, among others.
+- [Packages](src/Packages), which are commonly used utilities/helpers that are self-contained and composable.
+
 ## Requirements
 
 - [.NET 8 SDK](https://dotnet.microsoft.com/en-us/download/dotnet/8.0) **(minimum version: `8.0.400`)**
@@ -15,12 +22,75 @@ dotnet --version
 
 💡 This project uses a `global.json` to enforce SDK version consistency. If you don’t have the specified version installed, the build may fail.
 
-## How do I use Affinidi TDK?
+## Installation
 
-The Affinidi TDK provides three types of modules:
+### Creating a New Project
 
-- [Clients](clients), which offer methods to access Affinidi Elements services like Credential Issuance, Credential Verification, and Login Configurations, among others.
-- [Packages](packages), which are commonly used utilities/helpers that are self-contained and composable.
+1. Create a project directory: `mkdir my-dotnet-app`
+2. Create the project: `dotnet create console`
+
+
+### Installing a TDK client or packages with dotnet
+
+To install TDK client or package in dotnet, you need to run the command below:
+`dotnet add package <Affinidi-Package-Name> --version <Package-Version>`
+
+Example (installing the AffinidiTdk.AuthProvider Package):
+`dotnet add package AffinidiTdk.AuthProvider --version 1.0.0`
+
+The Clients and Packages will be available in [nuget.org](https://www.nuget.org/).
+
+
+## Quickstart
+
+Here's a basic example of using the TDK to list Login Configurations:
+
+```dotnet
+using AffinidiTdk.AuthProvider;
+using AffinidiTdk.LoginConfigurationClient.Api;
+using AffinidiTdk.LoginConfigurationClient.Client;
+using AffinidiTdk.LoginConfigurationClient.Model;
+
+public class ListLoginConfig
+{
+    static async Task Main(string[] args)
+    {
+        // Instantiate AuthProviderConfig object to load the AuthProvider.
+        // Ensure that these sensitive information are kept safe. 
+        // You may use `DotNetEnv` to load this info from your .env
+        var authProviderParams = new AuthProviderParams
+        {
+            ProjectId = '<YOUR-PROJECT-ID>',
+            TokenId = '<YOUR-TOKEN-ID>',
+            PrivateKey = '<YOUR-PRIVATE-KEY>'
+        };
+
+        // create an AuthProvider instance
+        AuthProvider authProvider = new AuthProvider(authProviderParams);
+
+        // fetch the projectScopedToken from the authProviderConfig
+        string projecScopedToken = await authProvider.FetchProjectScopedTokenAsync();
+        
+        // create an instance of Configuration from AffinidiTdk.LoginConfigurationClient
+        Configuration config = new Configuration();
+
+        // set the projectScopedToken as apiKey. Note that its using a Map/Dictionary. Key here is "authorization"
+        config.AddApiKey("authorization", projectScopedToken);
+
+        // create an instance of ConfigurationApi (from AffinidTdk.LoginConfigurationClient) and pass the config in the constructor argument.
+        ConfigurationApi api = new ConfigurationApi(config);
+
+        // Call ListLoginConfig from the api
+        ListLoginConfigurationOutput result = api.ListLoginConfigurations();
+
+        // print the result as JSON
+        Console.WriteLine("Login Configurations: " + loginConfig.ToJson());
+    }
+}
+```
+
+You may find more examples [here](examples).
+
 
 ## Documentation
 
@@ -49,11 +119,13 @@ If you have a technical issue with the Affinidi TDK's codebase, you can also cre
    Be sure to include a **title and clear description**, as much relevant information as possible,
    and a **code sample** or an **executable test case** demonstrating the expected behavior that is not occurring.
    
+
 ## Contributing
 
 Want to contribute?
 
 Head over to our [CONTRIBUTING](CONTRIBUTING.md) guidelines.
+
 
 ## FAQ
 
