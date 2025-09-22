@@ -1,4 +1,7 @@
 AffinidiTdk.Common Changelog
+<a name="1.0.5"></a>
+## [1.0.5](https://www.github.com/affinidi/affinidi-tdk-dotnet/releases/tag/v1.0.5) (2025-09-22)
+
 <a name="1.0.4"></a>
 ## [1.0.4](https://www.github.com/affinidi/affinidi-tdk-dotnet/releases/tag/v1.0.4) (2025-09-22)
 
