@@ -15,7 +15,7 @@ using Newtonsoft.Json.Linq;
 
 var target = Argument("target", "Default");
 var projectName = Argument("projectName", "");
-
+var configuration = Argument("configuration", "Release");
 //////////////////////////////////////////////////////////////////////
 // ENVS
 //////////////////////////////////////////////////////////////////////
@@ -23,6 +23,9 @@ var projectName = Argument("projectName", "");
 
 var isCI = EnvironmentVariable("CI") != null;
 var nugetApiKey = EnvironmentVariable("NUGET_API_KEY") ?? "";
+var outputDir = "./nupkgs";
+var solutionFile = "AffinidiTdk.sln";
+
 
 //////////////////////////////////////////////////////////////////////
 // TASKS
@@ -74,7 +77,7 @@ Task("Generate-Versionize-Config")
 
 Task("Clean")
   .Does(() => {
-    if (FileExists("./AffinidiTdk.sln")) {
+    if (FileExists(solutionFile)) {
         return;
     }
     Information("Cleaning previous build artifacts...");
@@ -89,14 +92,14 @@ Task("Clean")
       Warning($"Dotnet clean failed: {ex.Message}");
     }
 
-    DeleteFiles(GetFiles("./nupkgs/*.nupkg"));
+    DeleteFiles(GetFiles($"{outputDir}/*.nupkg"));
   });
 
 Task("Generate-Solution")
   .IsDependentOn("Clean")
   .Does(() => {
 
-    if (FileExists("./AffinidiTdk.sln")) {
+    if (FileExists(solutionFile)) {
         return;
     }
 
@@ -105,7 +108,7 @@ Task("Generate-Solution")
 
     var projects = GetFiles("**/*.csproj");
     foreach (var project in projects) {
-      StartProcess("dotnet", $"sln AffinidiTdk.sln add \"{project.FullPath}\"");
+      StartProcess("dotnet", $"sln {solutionFile} add \"{project.FullPath}\"");
     }
   });
 
@@ -113,31 +116,34 @@ Task("Lint")
   .IsDependentOn("Generate-Solution")
   .Does(() => {
     Information("Running dotnet format...");
-    StartProcess("dotnet", "format AffinidiTdk.sln --verify-no-changes --exclude src/Clients/");
+    StartProcess("dotnet", $"format {solutionFile} --verify-no-changes --exclude src/Clients/");
   });
 
 Task("Format")
   .Does(() => {
     Information("Running dotnet format...");
-    StartProcess("dotnet", "format AffinidiTdk.sln --exclude src/Clients/");
+    StartProcess("dotnet", $"format {solutionFile} --exclude src/Clients/");
   });
 
 Task("Build")
   .IsDependentOn("Lint")
   .Does(() => {
     Information("Building all projects...");
-    DotNetBuild("AffinidiTdk.sln");
+    DotNetBuild(solutionFile);
   });
 
 Task("Pack")
   .IsDependentOn("Generate-Solution")
   .Does(() => {
+    var packSettings = new DotNetPackSettings {
+      Configuration = configuration,
+        OutputDirectory = outputDir,
+        IncludeSymbols = true,
+        SymbolPackageFormat = "snupkg"
+    };
     if(projectName == "") {
       Information("Packing all projects...");
-
-      DotNetPack("AffinidiTdk.sln", new DotNetPackSettings {
-        OutputDirectory = "./nupkgs"
-      });
+      DotNetPack(solutionFile, packSettings);
       return;
     }
     
@@ -145,10 +151,7 @@ Task("Pack")
 
     var projectPath = GetFiles($"./src/**/{projectName}.csproj").FirstOrDefault();
 
-    DotNetPack(projectPath.FullPath, new DotNetPackSettings {
-        Configuration = "Release",
-        OutputDirectory = "./nupkgs"
-    });
+    DotNetPack(projectPath.FullPath, packSettings);
 
 
   });
@@ -158,9 +161,9 @@ Task("Publish")
     .IsDependentOn("Pack")
     .Does(() =>
 {
-    var packages = GetFiles($"./nupkgs/{projectName}.*.nupkg");
+    var package = GetFiles($"{outputDir}/{projectName}.*.nupkg").FirstOrDefault();
 
-    foreach (var package in packages)
+    if (package != null)
     {
         Information($"Pushing {package.FullPath} to NuGet...");
         DotNetNuGetPush(package.FullPath, new DotNetNuGetPushSettings {
@@ -168,12 +171,17 @@ Task("Publish")
             ApiKey = nugetApiKey
         });
     }
+    else
+    {
+      throw new Exception($"❌ {projectName} pkg not found");
+    }
 });
+
 
 
 Task("IntegrationTest")
   .Does(() => {
-    DotNetTest("AffinidiTdk.sln");
+    DotNetTest(solutionFile);
   });
 
 Task("Release")
