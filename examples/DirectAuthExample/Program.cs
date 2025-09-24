@@ -33,7 +33,7 @@ class Program
             WalletApi api = new WalletApi(httpClient, config);
             var result = await api.ListWalletsAsync();
 
-            Logger.Success($"[DirectAuth] You have ${result.Wallets.Count} wallets.");
+            Logger.Info($"[DirectAuth] You have ${result.Wallets.Count} wallets.");
         }
         catch (Exception ex)
         {

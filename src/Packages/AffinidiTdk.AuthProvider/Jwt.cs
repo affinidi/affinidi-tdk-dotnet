@@ -18,7 +18,12 @@ namespace AffinidiTdk.AuthProvider
 
     public class Jwt
     {
-        private readonly HttpClient _httpClient = new();
+        private readonly HttpClient _httpClient;
+
+        public Jwt(HttpClient httpClient)
+        {
+            _httpClient = httpClient;
+        }
 
         public ValidateTokenResult ValidateToken(string token, string publicKey)
         {
@@ -46,13 +51,15 @@ namespace AffinidiTdk.AuthProvider
 
         public async Task<string> FetchPublicKeyAsync(string apiGatewayUrl)
         {
-            var response = await _httpClient.GetStringAsync($"{apiGatewayUrl}/iam/.well-known/jwks.json");
+            return await ExceptionUtils.WrapAsync(async () =>
+            {
+                var response = await _httpClient.GetStringAsync($"{apiGatewayUrl}/iam/.well-known/jwks.json");
 
-            var jwks = JsonSerializer.Deserialize<JwksResponse>(response);
+                var jwks = JsonSerializer.Deserialize<JwksResponse>(response);
+                var jwk = jwks?.Keys?.Count > 0 ? jwks.Keys[0] : throw new InvalidOperationException("No JWKs found");
 
-            var jwk = jwks?.Keys?.Count > 0 ? jwks.Keys[0] : throw new InvalidOperationException("No JWKs found");
-
-            return JwkToPem(jwk);
+                return JwkToPem(jwk);
+            }, "Fetching public key from JWKS endpoint");
         }
 
         public string JwkToPem(JwkKey jwk)
