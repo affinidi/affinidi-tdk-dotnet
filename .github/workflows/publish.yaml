@@ -8,8 +8,10 @@ on:
 jobs:
   publish:
     runs-on: ubuntu-latest
-    if: ${{ !contains(github.event.head_commit.message, 'chore(release):') }}
     environment: publish
+    permissions:
+      id-token: write  # enable GitHub OIDC token issuance for this job
+      contents: write
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -19,14 +21,13 @@ jobs:
         with:
           dotnet-version: '8.0.x'
 
-      - name: Run the Cake script
-        uses: cake-build/cake-action@v3
+      - name: Cache NuGet packages
+        uses: actions/cache@v4
         with:
-            target: Release
-
-      - name: Install Cake Tool
-        run: dotnet tool install --global Cake.Tool
-
+          path: ~/.nuget/packages
+          key: ${{ runner.os }}-nuget-${{ hashFiles('**/*.csproj') }}
+          restore-keys: |
+            ${{ runner.os }}-nuget-
 
       - name: Parse project name from Tag
         id: parse_tag
@@ -35,10 +36,17 @@ jobs:
           PROJECT_NAME=$(echo "$TAG_NAME" | sed -E 's/-v[0-9]+\.[0-9]+\.[0-9]+.*$//')
           echo "project=$PROJECT_NAME" >> $GITHUB_OUTPUT
 
+
+      - name: NuGet login (OIDC → temp API key)
+        uses: NuGet/login@v1
+        id: login
+        with:
+          user: ${{ secrets.NUGET_USER }}
+
       - name: Run the Cake script
         uses: cake-build/cake-action@v3
         with:
             target: Release
             arguments: |
                 projectName: {{ steps.parse_tag.outputs.project }}
-                secrets: {{ secrets.NUGET_API_KEY }}
+                secrets: ${{steps.login.outputs.NUGET_API_KEY}}
