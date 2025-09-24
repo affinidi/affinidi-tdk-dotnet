@@ -192,13 +192,14 @@ Task("Release")
     var json = JObject.Parse(jsonText);
     var projects = json["projects"];
     var dryRunFlag = isCI ? "" : "--dry-run";
+    var skipChangelog = name.Contains("Client") ? "--skip-changelog" : "";
 
     foreach (var project in projects) {
       var name = project["name"].ToString();
 
       Information($"🚀 Releasing {name} {(isCI ? "" : "(dry run mode)")}");
       var settings = new ProcessSettings {
-        Arguments = $"tool run versionize --proj-name \"{name}\" {dryRunFlag} --ignore-insignificant-commits --commit-suffix=\"{name}\"",
+        Arguments = $"tool run versionize --proj-name \"{name}\" {dryRunFlag} --ignore-insignificant-commits --commit-suffix=\"{name}\" {skipChangelog}",
         RedirectStandardError = false,
         RedirectStandardOutput = false
       };
