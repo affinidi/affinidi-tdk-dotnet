@@ -192,10 +192,10 @@ Task("Release")
     var json = JObject.Parse(jsonText);
     var projects = json["projects"];
     var dryRunFlag = isCI ? "" : "--dry-run";
-    var skipChangelog = name.Contains("Client") ? "--skip-changelog" : "";
 
     foreach (var project in projects) {
       var name = project["name"].ToString();
+      var skipChangelog = name.Contains("Client") ? "--skip-changelog" : "";
 
       Information($"🚀 Releasing {name} {(isCI ? "" : "(dry run mode)")}");
       var settings = new ProcessSettings {
