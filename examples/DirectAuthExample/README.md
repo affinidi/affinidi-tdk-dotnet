@@ -10,7 +10,7 @@ This example shows how to interact with `AffinidiTdk.WalletsClient` using **dire
 
 ## Setup
 
-Update `Program.cs` 
+Update `DirectAuthExample.cs` 
 
 ```csharp
 // KeyId = "YOUR_KEY_ID", // [OPTIONAL]

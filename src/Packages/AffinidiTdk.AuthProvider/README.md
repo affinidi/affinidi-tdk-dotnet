@@ -33,17 +33,20 @@ To get ProjectScopedToken you need to initialize AuthProvider. Please check our 
 
 ## Thread Safety
 
-`AuthProvider` is thread-safe.
+The AuthProvider class is thread-safe and designed for high-concurrency environments:
 
-- All token refresh logic is synchronized internally.
-- You can safely reuse a single instance of `AuthProvider` across multiple threads or HTTP requests.
-- The internal token is cached until expired, reducing unnecessary requests.
+- Internally synchronizes token generation using a lock.
+- Automatically caches tokens and refreshes only when expired.
+- You can safely reuse a single AuthProvider instance across multiple threads or HTTP requests.
+- No additional locking or synchronization is required.
 
-### Example
+## Token Management
+
+You can create one shared AuthProvider instance and pass its token generator to multiple API clients (e.g., Wallets, IAM):
 
 ```csharp
 using AffinidiTdk.AuthProvider;
-// ...
+
 AuthProvider authProvider = new AuthProvider(new AuthProviderParams
 {
     ProjectId = "PROJECT_ID",
@@ -52,10 +55,45 @@ AuthProvider authProvider = new AuthProvider(new AuthProviderParams
     KeyId = "KEY_ID", // [OPTIONAL] unless unique value used on for the PAT
     Passphrase = "PASSPHRASE" // [OPTIONAL] unless private key is encrypted
 });
+```
 
+<!-- string token = await authProvider.FetchProjectScopedTokenAsync(); -->
+
+❗️When you call:
+
+```csharp
 string token = await authProvider.FetchProjectScopedTokenAsync();
 ```
 
-No additional locking or synchronization is needed.
+- If a valid (non-expired) token is cached, it will be reused.
+- If no token exists or it has expired, a new one will be fetched.
 
-Refer to Affinidi TDK Clients docs and expore Affinidi TDK tests to see how to use AuthProvider to interact with Clients.
+> ⚠️ Note: You usually don’t need to call this method directly when using TDK clients — use the hook-based pattern instead (see below).
+
+### Integrate with TDK Clients
+
+To use the same AuthProvider across multiple clients (e.g. WalletsClient, IamClient), inject it into a shared HttpClient using TokenInjectingHandler (imported from AffinidiTdk.Common).
+
+```csharp
+using AffinidiTdk.AuthProvider;
+using AffinidiTdk.Common;
+using AffinidiTdk.WalletsClient.Api;
+using AffinidiTdk.WalletsClient.Client;
+
+// init AuthProvider
+
+var tokenHandler = new TokenInjectingHandler(
+    () => authProvider.FetchProjectScopedTokenAsync(),
+    new HttpClientHandler()
+);
+
+var httpClient = new HttpClient(tokenHandler);
+
+// Share httpClient across multiple TDK clients
+var walletApi = new WalletApi(httpClient, new Configuration());
+```
+
+### See Examples and Tests
+
+- [Hook-based usage](https://github.com/affinidi/affinidi-tdk-dotnet/blob/main/examples/HookAuthExample/HookAuthExample.cs)
+- [Tests](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/tests)
