@@ -40,7 +40,7 @@ class HookAuthExample
         }
         catch (Exception ex)
         {
-            Logger.Exception(ex/*, showStackTrace: true*/);
+            Logger.Exception(ex, showStackTrace: false);  // showStackTrace: true by default
         }
     }
 }
