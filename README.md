@@ -4,6 +4,19 @@
 The Affinidi Trust Development Kit (Affinidi TDK) is a modern interface that allows you to build privacy-first identity apps in .NET with minimal setup.
 It allows you to easily manage and integrate [Affinidi Elements](https://docs.affinidi.com/docs/affinidi-elements/) and [Frameworks](https://docs.affinidi.com/frameworks/iota-framework/) into your application. It minimises dependencies and enables developers to integrate seamlessly into the [Affinidi Trust Network (ATN)](https://docs.affinidi.com/docs/).
 
+## Table of Contents
+
+- [How do I use Affinidi TDK?](#how-do-i-use-affinidi-tdk)
+- [Requirements](#requirements)
+- [Installation](#installation)
+- [Quickstart](#quickstart)
+- [Quickstart](#quickstart)
+- [Documentation](#documentation)
+- [Support & Feedback](#support--feedback)
+- [Contributing](#contributing)
+- [FAQ](#faq)
+- [Telemetry](#telemetry)
+
 
 ## How do I use Affinidi TDK?
 
@@ -13,7 +26,7 @@ The Affinidi TDK provides two types of modules:
 - [Packages](src/Packages), which are commonly used utilities/helpers that are self-contained and composable.
 
 
-<a id="requirements"></a>
+
 ## Requirements
 
 - [.NET 8 SDK](https://dotnet.microsoft.com/en-us/download/dotnet/8.0) **(minimum version: `8.0.400`)**
@@ -27,10 +40,10 @@ dotnet --version
 💡 This project uses a `global.json` to enforce SDK version consistency. If you don’t have the specified version installed, the build may fail.
 
 
-[[Back to top]](#top) | [[Requirements]](#requirements) | [[Installation]](#installation) | [[Quickstart]](#quickstart) | [[Documentation]](#documentation) | [[Support & Feedback]](#support_feedback) | [[Contributing]](#contributing) | [[FAQ]](#faq)
+<p align="right">(<a href="#top">back to top</a>)</p>
 
 
-<a id="installation"></a>
+
 ## Installation
 
 ### Creating a New Project
@@ -52,12 +65,10 @@ Example (installing the AffinidiTdk.AuthProvider Package):
 The Clients and Packages will be available in [nuget.org](https://www.nuget.org/).
 
 
-[[Back to top]](#top) | [[Requirements]](#requirements) | [[Installation]](#installation) | [[Quickstart]](#quickstart) | [[Documentation]](#documentation) | [[Support & Feedback]](#support_feedback) | [[Contributing]](#contributing) | [[FAQ]](#faq)
+<p align="right">(<a href="#top">back to top</a>)</p>
 
 
 
-
-<a id="quickstart"></a>
 ## Quickstart
 
 Here's a basic example of using the .NET TDK to create a wallet using **WalletsApi** from **[AffinidiTdk.WalletsClient](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/WalletsClient)**:
@@ -141,11 +152,10 @@ When handling tokens, it is important that your project access token is managed 
 We have created an [example code](https://github.com/affinidi/affinidi-tdk-dotnet/blob/main/examples/HookAuthExample/HookAuthExample.cs) which handles the automatic refresh of tokens to ensure that the token used in the client APIs are fresh.
 
 
-[[Back to top]](#top) | [[Requirements]](#requirements) | [[Installation]](#installation) | [[Quickstart]](#quickstart) | [[Documentation]](#documentation) | [[Support & Feedback]](#support_feedback) | [[Contributing]](#contributing) | [[FAQ]](#faq)
+<p align="right">(<a href="#top">back to top</a>)</p>
 
 
 
-<a id="documentation"></a>
 ## Documentation
 
 Head over to our [Documentation site](https://docs.affinidi.com/dev-tools/affinidi-tdk) to know how to get started with Affinidi TDK.
@@ -159,12 +169,11 @@ To learn how to integrate Affinidi TDK and use the different modules into your a
 
 
 
-[[Back to top]](#top) | [[Requirements]](#requirements) | [[Installation]](#installation) | [[Quickstart]](#quickstart) | [[Documentation]](#documentation) | [[Support & Feedback]](#support_feedback) | [[Contributing]](#contributing) | [[FAQ]](#faq)
+<p align="right">(<a href="#top">back to top</a>)</p>
 
 
 
-<a id="support_feedback"></a>
-## Support & feedback
+## Support & Feedback
 
 If you face any issues or have suggestions, please don't hesitate to contact us using [this link](https://share.hsforms.com/1i-4HKZRXSsmENzXtPdIG4g8oa2v).
 
@@ -182,11 +191,10 @@ If you have a technical issue with the Affinidi TDK's codebase, you can also cre
    
 
 
-[[Back to top]](#top) | [[Requirements]](#requirements) | [[Installation]](#installation) | [[Quickstart]](#quickstart) | [[Documentation]](#documentation) | [[Support & Feedback]](#support_feedback) | [[Contributing]](#contributing) | [[FAQ]](#faq)
+<p align="right">(<a href="#top">back to top</a>)</p>
 
 
 
-<a id="contributing"></a>
 ## Contributing
 
 We enjoy community contributions! Whether it’s bug fixes, feature requests, or improving docs, your input helps shape the Affinidi TDK.
@@ -196,11 +204,11 @@ We enjoy community contributions! Whether it’s bug fixes, feature requests, or
 
 
 
-[[Back to top]](#top) | [[Requirements]](#requirements) | [[Installation]](#installation) | [[Quickstart]](#quickstart) | [[Documentation]](#documentation) | [[Support & Feedback]](#support_feedback) | [[Contributing]](#contributing) | [[FAQ]](#faq)
+<p align="right">(<a href="#top">back to top</a>)</p>
 
 
 
-<a id="faq"></a>
+
 ## FAQ
 
 ### What can I develop?
@@ -237,11 +245,15 @@ From time to time, we may request certain information from you to ensure that yo
 
 When you create a developer's account with us, we will issue you your private login credentials. Please do not share this with anyone else, as you would be responsible for activities that happen under your account. If you have interested friends, ask them to sign up – let's build together!
 
-### Telemetry
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+## Telemetry
 
 Affinidi collects usage data to improve our products and services. For information on what data we collect and how we use your data, please refer to our [Privacy Notice](https://www.affinidi.com/privacy-notice).
 
 _Disclaimer:
 Please note that this FAQ is provided for informational purposes only and is not to be considered a legal document. For the legal terms and conditions governing your use of the Affinidi Services, please refer to our [Terms and Conditions](https://www.affinidi.com/terms-conditions)._
 
-[[Back to top]](#top) | [[Requirements]](#requirements) | [[Installation]](#installation) | [[Quickstart]](#quickstart) | [[Documentation]](#documentation) | [[Support & Feedback]](#support_feedback) | [[Contributing]](#contributing) | [[FAQ]](#faq)
+
+
+<p align="right">(<a href="#top">back to top</a>)</p>
