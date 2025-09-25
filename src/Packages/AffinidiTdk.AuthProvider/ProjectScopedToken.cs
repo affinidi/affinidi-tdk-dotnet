@@ -8,28 +8,42 @@ using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 using Microsoft.IdentityModel.Tokens;
+using AffinidiTdk.Common;
 
 namespace AffinidiTdk.AuthProvider
 {
     public class ProjectScopedToken
     {
+        private readonly HttpClient _httpClient;
+
+        public ProjectScopedToken(HttpClient httpClient)
+        {
+            _httpClient = httpClient;
+        }
+
         public string SignPayload(string tokenId, string audience, string privateKey, string keyId, string? passphrase)
         {
+            Logger.Debug("Signing payload for user access token request.");
+
             var issuedAt = DateTimeOffset.UtcNow.ToUnixTimeSeconds();
 
             var rsa = RSA.Create();
 
-            try
+            Logger.Debug("Importing private key.");
+
+            ExceptionUtils.Wrap(() =>
             {
                 if (!string.IsNullOrEmpty(passphrase))
+                {
                     rsa.ImportFromEncryptedPem(privateKey, passphrase);
+                }
                 else
+                {
                     rsa.ImportFromPem(privateKey);
-            }
-            catch (Exception ex)
-            {
-                throw new AuthProviderException($"Failed to import private key: {ex.Message}");
-            }
+                }
+
+                return true;
+            }, "Importing private key");
 
             var securityKey = new RsaSecurityKey(rsa) { KeyId = keyId };
             var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.RsaSha256);
@@ -51,6 +65,8 @@ namespace AffinidiTdk.AuthProvider
 
         public async Task<string?> GetUserAccessToken(string tokenId, string audience, string privateKey, string? passphrase, string keyId)
         {
+            Logger.Debug("Fetching user access token.");
+
             var jwt = SignPayload(tokenId, audience, privateKey, keyId, passphrase);
 
             var formData = new Dictionary<string, string>
@@ -62,31 +78,25 @@ namespace AffinidiTdk.AuthProvider
                 ["client_id"] = tokenId
             };
 
-            using var httpClient = new HttpClient();
-
-            try
+            return await ExceptionUtils.WrapAsync(async () =>
             {
-                var response = await httpClient.PostAsync(audience, new FormUrlEncodedContent(formData));
+                var response = await _httpClient.PostAsync(audience, new FormUrlEncodedContent(formData));
                 response.EnsureSuccessStatusCode();
 
                 using var content = await response.Content.ReadAsStreamAsync();
                 using var json = await JsonDocument.ParseAsync(content);
 
                 return json.RootElement.GetProperty("access_token").GetString();
-            }
-            catch (Exception ex)
-            {
-                throw new AuthProviderException($"Failed to get user access token: {ex.Message}");
-            }
+            }, "Getting user access token");
         }
 
         public async Task<string?> FetchProjectScopedToken(string apiGatewayUrl, string projectId, string tokenId, string audience, string privateKey, string keyId, string? passphrase)
         {
+            Logger.Debug("Fetching project scoped token.");
+
             var userAccessToken = await GetUserAccessToken(tokenId, audience, privateKey, passphrase, keyId);
             if (userAccessToken == null)
                 return null;
-
-            using var httpClient = new HttpClient();
 
             var requestUrl = $"{apiGatewayUrl}/iam/v1/sts/create-project-scoped-token";
             var payloadJson = JsonSerializer.Serialize(new { projectId });
@@ -98,20 +108,16 @@ namespace AffinidiTdk.AuthProvider
 
             request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", userAccessToken);
 
-            try
+            return await ExceptionUtils.WrapAsync(async () =>
             {
-                var response = await httpClient.SendAsync(request);
+                var response = await _httpClient.SendAsync(request);
                 response.EnsureSuccessStatusCode();
 
                 using var content = await response.Content.ReadAsStreamAsync();
                 using var json = await JsonDocument.ParseAsync(content);
 
                 return json.RootElement.GetProperty("accessToken").GetString();
-            }
-            catch (Exception ex)
-            {
-                throw new AuthProviderException($"Failed to fetch project scoped token: {ex.Message}");
-            }
+            }, "Fetching project scoped token");
         }
     }
 }

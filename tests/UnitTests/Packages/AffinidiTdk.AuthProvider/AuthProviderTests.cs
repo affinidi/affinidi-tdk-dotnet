@@ -2,7 +2,7 @@ using System;
 using AffinidiTdk.AuthProvider;
 using Xunit;
 
-namespace AffinidiTdk.AuthProvider.Tests
+namespace UnitTests.Packages
 {
     public class AuthProviderValidationTests
     {

@@ -28,6 +28,12 @@ with your Affinidi ProjectId and PAT secrets (check [getting started with Affini
 dotnet run
 ```
 
+With logs
+
+```bash
+AFFINIDI_TDK_LOG_LEVEL=info dotnet run
+```
+
 ## Explore more
 
 👀 Explore /src/Clients/WalletsClient/docs for all available methods.
