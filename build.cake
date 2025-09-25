@@ -195,10 +195,11 @@ Task("Release")
 
     foreach (var project in projects) {
       var name = project["name"].ToString();
+      var skipChangelog = name.Contains("Client") ? "--skip-changelog" : "";
 
       Information($"🚀 Releasing {name} {(isCI ? "" : "(dry run mode)")}");
       var settings = new ProcessSettings {
-        Arguments = $"tool run versionize --proj-name \"{name}\" {dryRunFlag} --ignore-insignificant-commits --commit-suffix=\"{name}\"",
+        Arguments = $"tool run versionize --proj-name \"{name}\" {dryRunFlag} --ignore-insignificant-commits --commit-suffix=\"{name}\" {skipChangelog}",
         RedirectStandardError = false,
         RedirectStandardOutput = false
       };
