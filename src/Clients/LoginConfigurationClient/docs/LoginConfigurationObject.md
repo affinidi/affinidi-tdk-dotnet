@@ -15,6 +15,7 @@ Name | Type | Description | Notes
 **CreationDate** | **string** | OAuth 2.0 Client Creation Date | 
 **VpDefinition** | **string** | VP definition in JSON stringify format | [optional] 
 **PresentationDefinition** | **Object** | Presentation Definition | [optional] 
+**DcqlQuery** | **Object** | DCQL query | [optional] 
 **IdTokenMapping** | [**List&lt;IdTokenMappingItem&gt;**](IdTokenMappingItem.md) | Fields name/path mapping between the vp_token and the id_token | 
 **ClientMetadata** | [**LoginConfigurationClientMetadataOutput**](LoginConfigurationClientMetadataOutput.md) |  | 
 **TokenEndpointAuthMethod** | **TokenEndpointAuthMethod** |  | 

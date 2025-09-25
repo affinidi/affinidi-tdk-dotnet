@@ -48,11 +48,12 @@ namespace AffinidiTdk.LoginConfigurationClient.Model
         /// <param name="clientSecret">OAuth2 client secret.</param>
         /// <param name="vpDefinition">VP definition in JSON stringify format.</param>
         /// <param name="presentationDefinition">Presentation Definition.</param>
+        /// <param name="dcqlQuery">DCQL query in JSON stringify format.</param>
         /// <param name="idTokenMapping">Fields name/path mapping between the vp_token and the id_token.</param>
         /// <param name="clientMetadata">clientMetadata.</param>
         /// <param name="tokenEndpointAuthMethod">tokenEndpointAuthMethod.</param>
         /// <param name="failOnMappingConflict">Interrupts login process if duplications of data fields names will be found.</param>
-        public UpdateLoginConfigurationInput(string name = default, List<string> redirectUris = default, List<string> postLogoutRedirectUris = default, string clientSecret = default, string vpDefinition = default, Object presentationDefinition = default, List<IdTokenMappingItem> idTokenMapping = default, LoginConfigurationClientMetadataInput clientMetadata = default, TokenEndpointAuthMethod? tokenEndpointAuthMethod = default, bool failOnMappingConflict = default)
+        public UpdateLoginConfigurationInput(string name = default, List<string> redirectUris = default, List<string> postLogoutRedirectUris = default, string clientSecret = default, string vpDefinition = default, Object presentationDefinition = default, Object dcqlQuery = default, List<IdTokenMappingItem> idTokenMapping = default, LoginConfigurationClientMetadataInput clientMetadata = default, TokenEndpointAuthMethod? tokenEndpointAuthMethod = default, bool failOnMappingConflict = default)
         {
             this.Name = name;
             this.RedirectUris = redirectUris;
@@ -60,6 +61,7 @@ namespace AffinidiTdk.LoginConfigurationClient.Model
             this.ClientSecret = clientSecret;
             this.VpDefinition = vpDefinition;
             this.PresentationDefinition = presentationDefinition;
+            this.DcqlQuery = dcqlQuery;
             this.IdTokenMapping = idTokenMapping;
             this.ClientMetadata = clientMetadata;
             this.TokenEndpointAuthMethod = tokenEndpointAuthMethod;
@@ -109,6 +111,13 @@ namespace AffinidiTdk.LoginConfigurationClient.Model
         public Object PresentationDefinition { get; set; }
 
         /// <summary>
+        /// DCQL query in JSON stringify format
+        /// </summary>
+        /// <value>DCQL query in JSON stringify format</value>
+        [DataMember(Name = "dcqlQuery", EmitDefaultValue = false)]
+        public Object DcqlQuery { get; set; }
+
+        /// <summary>
         /// Fields name/path mapping between the vp_token and the id_token
         /// </summary>
         /// <value>Fields name/path mapping between the vp_token and the id_token</value>
@@ -142,6 +151,7 @@ namespace AffinidiTdk.LoginConfigurationClient.Model
             sb.Append("  ClientSecret: ").Append(ClientSecret).Append("\n");
             sb.Append("  VpDefinition: ").Append(VpDefinition).Append("\n");
             sb.Append("  PresentationDefinition: ").Append(PresentationDefinition).Append("\n");
+            sb.Append("  DcqlQuery: ").Append(DcqlQuery).Append("\n");
             sb.Append("  IdTokenMapping: ").Append(IdTokenMapping).Append("\n");
             sb.Append("  ClientMetadata: ").Append(ClientMetadata).Append("\n");
             sb.Append("  TokenEndpointAuthMethod: ").Append(TokenEndpointAuthMethod).Append("\n");

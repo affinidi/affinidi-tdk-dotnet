@@ -1,5 +1,4 @@
-# AffinidiTdk.LoginConfigurationClient.Model.LoginSessionDtoAuthorizationRequest
-Authorization Request Object
+# AffinidiTdk.LoginConfigurationClient.Model.AuthorizationRequestPex
 
 ## Properties
 
@@ -10,7 +9,6 @@ Name | Type | Description | Notes
 **Ari** | **string** | ARI is used for analytics proposals. | [optional] 
 **ClientId** | **string** | clientId used for detect origin. | [optional] 
 **Nonce** | **string** | nonce for VP Token proof challenge | [optional] 
-**DcqlQuery** | **string** | DCQL query to ask from the user. In JSON Stringify format. | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
