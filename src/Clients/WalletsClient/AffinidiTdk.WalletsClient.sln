@@ -2,7 +2,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 VisualStudioVersion = 12.0.0.0
 MinimumVisualStudioVersion = 10.0.0.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AffinidiTdk.WalletsClient", "src\AffinidiTdk.WalletsClient\AffinidiTdk.WalletsClient.csproj", "{0763482E-631A-40F0-B58E-FF56A74479DD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AffinidiTdk.WalletsClient", "src\AffinidiTdk.WalletsClient\AffinidiTdk.WalletsClient.csproj", "{01C378D8-F74A-4974-8DE7-F5E25B9951B7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -10,10 +10,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{0763482E-631A-40F0-B58E-FF56A74479DD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0763482E-631A-40F0-B58E-FF56A74479DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0763482E-631A-40F0-B58E-FF56A74479DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0763482E-631A-40F0-B58E-FF56A74479DD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{01C378D8-F74A-4974-8DE7-F5E25B9951B7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{01C378D8-F74A-4974-8DE7-F5E25B9951B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{01C378D8-F74A-4974-8DE7-F5E25B9951B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{01C378D8-F74A-4974-8DE7-F5E25B9951B7}.Release|Any CPU.Build.0 = Release|Any CPU
 		{19F1DEBC-DE5E-4517-8062-F000CD499087}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{19F1DEBC-DE5E-4517-8062-F000CD499087}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{19F1DEBC-DE5E-4517-8062-F000CD499087}.Release|Any CPU.ActiveCfg = Release|Any CPU
