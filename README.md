@@ -77,11 +77,11 @@ public class CreateWalletExample
         // You may use `DotNetEnv` to load this info from your .env
         var authProviderParams = new AuthProviderParams
         {
-            // These are sample Values Only, please generate your own Personal Access Tokens (PAT). 
-            // Please refer to https://docs.affinidi.com/dev-tools/affinidi-tdk/get-access-token/#create-a-personal-access-token-pat for the guide on creating your own PAT.
-            ProjectId = "c0be7a6f-36db-41ab-8069-ccfaa30d4a31", 
-            TokenId = "d26653a5-60c3-42eb-824b-d6878ae99c2e", 
-            PrivateKey = "-----BEGIN PRIVATE KEY-----MIICXQIBAAKBgQCWGnSOnz0hCtrdkl7y4dRyR3jAKUjlq1Sx1Zs3pjyZYVO5TDWE6KGwoYxIUBecsKdO98hvIRqI6xXtWNpfb++yldBPbEcH/+Vu3oJGevhrsUCQQCRA4M6Pp8Oe1yWCxmiJyI08xvwwpnABVcXXLAHxq/LX92kJa3s9qXpzbgj8Uwl53B6F2Nzs0NtxQnT73To3fMh-----END PRIVATE KEY-----" 
+            // Please generate your own Personal Access Tokens (PAT). 
+            // Refer to https://docs.affinidi.com/dev-tools/affinidi-tdk/get-access-token/#create-a-personal-access-token-pat for the guide on creating your own PAT.
+            ProjectId = "<YOUR-PROJECT-ID>",
+            TokenId = "<YOUR-TOKEN-ID>",
+            PrivateKey = "<YOUR-PRIVATE-KEY>"
         };
 
         // create an AuthProvider instance
