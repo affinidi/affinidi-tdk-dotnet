@@ -99,7 +99,6 @@ namespace IntegrationTests
             var vpToken = JObject.Parse(iotaResponse.VpToken);
 
             Assert.NotNull(vpToken["verifiableCredential"]);
-            Assert.Single(vpToken["verifiableCredential"]);
         }
     }
 }

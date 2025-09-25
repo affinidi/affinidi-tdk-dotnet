@@ -16,13 +16,18 @@ namespace AffinidiTdk.AuthProvider
         public string? TokenEndpoint { get; set; }
     }
 
+    /// <summary>
+    /// AuthProvider is thread-safe. It caches the public key and project-scoped token
+    /// and synchronizes token refresh using an internal SemaphoreSlim.
+    /// Safe for use in multi-threaded applications.
+    /// </summary>
     public class AuthProvider
     {
         private readonly SemaphoreSlim _tokenLock = new(1, 1);
         private readonly HttpClient _httpClient = new HttpClient();
 
-        private string _publicKey = string.Empty;
-        private string _projectScopedToken = string.Empty;
+        private string? _publicKey;
+        private string? _projectScopedToken;
 
         private readonly string _keyId;
         private readonly string _tokenId;
@@ -69,32 +74,25 @@ namespace AffinidiTdk.AuthProvider
             return value!;
         }
 
-        private async Task<bool> ShouldRefreshTokenAsync()
-        {
-            Logger.Debug("Validating project scoped token.");
-
-            if (string.IsNullOrEmpty(_publicKey))
-            {
-                Logger.Debug("Fetching public key.");
-                _publicKey = await _jwt.FetchPublicKeyAsync(_apiGatewayUrl);
-            }
-
-            var tokenIsEmpty = string.IsNullOrEmpty(_projectScopedToken);
-
-            var tokenExpired = !tokenIsEmpty && _jwt.ValidateToken(_projectScopedToken, _publicKey).IsExpired;
-
-            return tokenIsEmpty || tokenExpired;
-        }
-
         public async Task<string> FetchProjectScopedTokenAsync()
         {
             await _tokenLock.WaitAsync();
             try
             {
-                if (await ShouldRefreshTokenAsync())
+                if (string.IsNullOrEmpty(_publicKey))
                 {
-                    Logger.Debug("Token is expired or missing in cache, requesting a new one.");
-                    _projectScopedToken = (await _projectScopedTokenClient.FetchProjectScopedToken(
+                    Logger.Debug("[AuthProvider] Fetching Affinidi public key.");
+                    _publicKey = await _jwt.FetchPublicKeyAsync(_apiGatewayUrl);
+                }
+
+                var shouldFetchNewToken =
+                    string.IsNullOrEmpty(_projectScopedToken) ||
+                    _jwt.ValidateToken(_projectScopedToken, _publicKey).IsExpired;
+
+                if (shouldFetchNewToken)
+                {
+                    Logger.Debug("[AuthProvider] Project scoped token is expired or missing in cache, requesting a new one.");
+                    _projectScopedToken = await _projectScopedTokenClient.FetchProjectScopedToken(
                         _apiGatewayUrl,
                         _projectId,
                         _tokenId,
@@ -102,11 +100,11 @@ namespace AffinidiTdk.AuthProvider
                         _privateKey,
                         _keyId,
                         _passphrase
-                    ))!;
+                    );
                 }
                 else
                 {
-                    Logger.Debug("Token is valid.");
+                    Logger.Debug("[AuthProvider] Project scoped token is valid.");
                 }
 
                 return _projectScopedToken!;

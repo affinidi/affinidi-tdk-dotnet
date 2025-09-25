@@ -1,6 +1,6 @@
 # AffinidiTdk.AuthProvider
 
-`AffinidiTdk.AuthProvider` is a .NET TDK package for managing authentication tokens, including JWT validation, signing, and fetching project-scoped tokens. It integrates with your API Gateway to help you authenticate and handle tokens securely within your .NET applications.
+This is a .NET TDK package which generates authorisation tokens to initialise TDK clients to access Affinidi services.
 
 ## Requirements
 
@@ -31,6 +31,16 @@ To get ProjectScopedToken you need to initialize AuthProvider. Please check our 
 - [Getting started with Affinidi and how to create a project](https://docs.affinidi.com/docs/get-started/create-project/)
 - [How to generate PAT credentials](https://docs.affinidi.com/dev-tools/affinidi-tdk/get-access-token/)
 
+## Thread Safety
+
+`AuthProvider` is thread-safe.
+
+- All token refresh logic is synchronized internally.
+- You can safely reuse a single instance of `AuthProvider` across multiple threads or HTTP requests.
+- The internal token is cached until expired, reducing unnecessary requests.
+
+### Example
+
 ```csharp
 using AffinidiTdk.AuthProvider;
 // ...
@@ -46,4 +56,6 @@ AuthProvider authProvider = new AuthProvider(new AuthProviderParams
 string token = await authProvider.FetchProjectScopedTokenAsync();
 ```
 
-Refer to docs of AffinidiTdk Clients and expore AffinidiTdk tests to see how to use AuthProvider to interact with Clients.
+No additional locking or synchronization is needed.
+
+Refer to Affinidi TDK Clients docs and expore Affinidi TDK tests to see how to use AuthProvider to interact with Clients.

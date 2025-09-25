@@ -23,13 +23,11 @@ namespace AffinidiTdk.AuthProvider
 
         public string SignPayload(string tokenId, string audience, string privateKey, string keyId, string? passphrase)
         {
-            Logger.Debug("Signing payload for user access token request.");
-
             var issuedAt = DateTimeOffset.UtcNow.ToUnixTimeSeconds();
 
             var rsa = RSA.Create();
 
-            Logger.Debug("Importing private key.");
+            Logger.Debug("[AuthProvider] Importing PAT private key.");
 
             ExceptionUtils.Wrap(() =>
             {
@@ -60,13 +58,13 @@ namespace AffinidiTdk.AuthProvider
 
             var token = new JwtSecurityToken(new JwtHeader(credentials), payload);
 
+            Logger.Debug("[AuthProvider] Signing payload for user access token request.");
+
             return new JwtSecurityTokenHandler().WriteToken(token);
         }
 
         public async Task<string?> GetUserAccessToken(string tokenId, string audience, string privateKey, string? passphrase, string keyId)
         {
-            Logger.Debug("Fetching user access token.");
-
             var jwt = SignPayload(tokenId, audience, privateKey, keyId, passphrase);
 
             var formData = new Dictionary<string, string>
@@ -77,6 +75,8 @@ namespace AffinidiTdk.AuthProvider
                 ["client_assertion"] = jwt,
                 ["client_id"] = tokenId
             };
+
+            Logger.Debug("[AuthProvider] Fetching user access token.");
 
             return await ExceptionUtils.WrapAsync(async () =>
             {
@@ -92,8 +92,6 @@ namespace AffinidiTdk.AuthProvider
 
         public async Task<string?> FetchProjectScopedToken(string apiGatewayUrl, string projectId, string tokenId, string audience, string privateKey, string keyId, string? passphrase)
         {
-            Logger.Debug("Fetching project scoped token.");
-
             var userAccessToken = await GetUserAccessToken(tokenId, audience, privateKey, passphrase, keyId);
             if (userAccessToken == null)
                 return null;
@@ -107,6 +105,8 @@ namespace AffinidiTdk.AuthProvider
             };
 
             request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", userAccessToken);
+
+            Logger.Debug("[AuthProvider] Fetching project scoped token.");
 
             return await ExceptionUtils.WrapAsync(async () =>
             {
