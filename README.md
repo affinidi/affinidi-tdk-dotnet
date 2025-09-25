@@ -17,7 +17,6 @@ The Affinidi TDK provides two types of modules:
 ## Requirements
 
 - [.NET 8 SDK](https://dotnet.microsoft.com/en-us/download/dotnet/8.0) **(minimum version: `8.0.400`)**
-- Compatible OS: Windows, macOS, or Linux
 
 You can check your installed version using:
 
