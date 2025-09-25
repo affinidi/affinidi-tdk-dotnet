@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **PostLogoutRedirectUris** | **List&lt;string&gt;** | Post Logout Redirect URIs, Used to redirect the user&#39;s browser to a specified URL after the logout process is complete. Must match the domain, port, scheme of at least one of the registered redirect URIs | [optional] 
 **VpDefinition** | **string** | VP definition in JSON stringify format | [optional] 
 **PresentationDefinition** | **Object** | Presentation Definition | [optional] 
+**DcqlQuery** | **Object** | DCQL query in JSON stringify format | [optional] 
 **IdTokenMapping** | [**List&lt;IdTokenMappingItem&gt;**](IdTokenMappingItem.md) | Fields name/path mapping between the vp_token and the id_token | [optional] 
 **ClientMetadata** | [**LoginConfigurationClientMetadataInput**](LoginConfigurationClientMetadataInput.md) |  | [optional] 
 **ClaimFormat** | **string** | ID token claims output format. Default is array. | [optional] 
