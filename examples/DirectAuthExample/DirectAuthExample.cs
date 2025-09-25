@@ -6,7 +6,7 @@ using AffinidiTdk.Common;
 using AffinidiTdk.WalletsClient.Api;
 using AffinidiTdk.WalletsClient.Client;
 
-class Program
+class DirectAuthExample
 {
     // Lazy initialization of AuthProvider
     private static readonly Lazy<AuthProvider> _authProvider = new(() =>
