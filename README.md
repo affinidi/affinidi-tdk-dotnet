@@ -40,12 +40,14 @@ dotnet --version
 2. Create the project: `dotnet create console`
 
 
-### Installing a TDK client or packages with dotnet
+### Installing a TDK client or packages with .NET
 
 To install TDK client or package in dotnet, you need to run the command below:
+
 `dotnet add package <Affinidi-Package-Name>`
 
 Example (installing the AffinidiTdk.AuthProvider Package):
+
 `dotnet add package AffinidiTdk.AuthProvider`
 
 The Clients and Packages will be available in [nuget.org](https://www.nuget.org/).
@@ -59,7 +61,7 @@ The Clients and Packages will be available in [nuget.org](https://www.nuget.org/
 <a id="quickstart"></a>
 ## Quickstart
 
-Here's a basic example of using the .NET TDK to Create a Wallet using **WalletsApi** from **[AffinidiTdk.WalletsClient](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/WalletsClient)**:
+Here's a basic example of using the .NET TDK to create a wallet using **WalletsApi** from **[AffinidiTdk.WalletsClient](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/WalletsClient)**:
 
 ```csharp
 using AffinidiTdk.AuthProvider;
@@ -76,11 +78,11 @@ public class CreateWalletExample
         // You may use `DotNetEnv` to load this info from your .env
         var authProviderParams = new AuthProviderParams
         {
-            // Sample Values Only, Please generate your own Personal Access Tokens (PAT). 
+            // These are sample Values Only, please generate your own Personal Access Tokens (PAT). 
             // Please refer to https://docs.affinidi.com/dev-tools/affinidi-tdk/get-access-token/#create-a-personal-access-token-pat for the guide on creating your own PAT.
-            ProjectId = 'c0be7a6f-36db-41ab-8069-ccfaa30d4a31', 
-            TokenId = 'd26653a5-60c3-42eb-824b-d6878ae99c2e', 
-            PrivateKey = '-----BEGIN PRIVATE KEY-----MIICXQIBAAKBgQCWGnSOnz0hCtrdkl7y4dRyR3jAKUjlq1Sx1Zs3pjyZYVO5TDWE6KGwoYxIUBecsKdO98hvIRqI6xXtWNpfb+24yOwNdKGCPzj9ULi17RTsLoq699zJqFnVtz3aK7jslDYRgZdH3x3lPdCSkRNRkipBqkHj1/NczH87iwEqhw6j1QIDAQABAoGANcoDLLy5jiayqaXzKnxswgsEpW/l9I+CCTwvpDCJFLnA4+0AXMF0d7RcbeltnLPdMLowdEpblOcRc31cu8iDWiB2ASgtjQ3BqJSQgYgDKWRjcWhnvJXS+sYJe72kVqdlycvMBOAyDWa4/cnoKkr4yynrpKgs+T6DYDN37wp3110CQQDV9GzXwZz+azF192EWGAqLmMJ5ZKAJ65L0kDZ0dQy5rN9t16khx/bIKn0Mcg3s2Lk5n3wEgX4L7u6qPSifVQvHAkEAs5nPcI5YhftpWr+x/Y6xqDZD1yemqgXTppWutpPZRcgnvK0+yldBPbEcH/xFXdesiO8S7GDh6HbDbGaKVRd7gwJBAJY1m3DCinEIWtpCSlQTntuw7OADKGSukibHVKPgRYXZ+6cHYMPJutV/Fvn03Rfqc+gjsxMKwq6oGcFFXM64C6MCQGe/eCdK8zQicU+s4MLaBSJohnPpQcuBpiva15w8eAxpfRru8RCtqtBaWSbY8bEt/0ry3/mQVa+Vu3oJGevhrsUCQQCRA4M6Pp8Oe1yWCxmiJyI08xvwwpnABVcXXLAHxq/LX92kJa3s9qXpzbgj8Uwl53B6F2Nzs0NtxQnT73To3fMh-----END PRIVATE KEY-----' 
+            ProjectId = "c0be7a6f-36db-41ab-8069-ccfaa30d4a31", 
+            TokenId = "d26653a5-60c3-42eb-824b-d6878ae99c2e", 
+            PrivateKey = "-----BEGIN PRIVATE KEY-----MIICXQIBAAKBgQCWGnSOnz0hCtrdkl7y4dRyR3jAKUjlq1Sx1Zs3pjyZYVO5TDWE6KGwoYxIUBecsKdO98hvIRqI6xXtWNpfb++yldBPbEcH/+Vu3oJGevhrsUCQQCRA4M6Pp8Oe1yWCxmiJyI08xvwwpnABVcXXLAHxq/LX92kJa3s9qXpzbgj8Uwl53B6F2Nzs0NtxQnT73To3fMh-----END PRIVATE KEY-----" 
         };
 
         // create an AuthProvider instance
@@ -137,7 +139,7 @@ You may find more examples [here](examples).
 
 When handling tokens, it is important that your project access token is managed properly to prevent failures due to expired tokens. 
 
-We have created an [example code](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/examples/HookAuthExample) handles the automatic refresh of tokens to ensure that the token used in the client APIs are fresh.
+We have created an [example code](https://github.com/affinidi/affinidi-tdk-dotnet/blob/main/examples/HookAuthExample/HookAuthExample.cs) which handles the automatic refresh of tokens to ensure that the token used in the client APIs are fresh.
 
 
 [[Back to top]](#top) | [[Requirements]](#requirements) | [[Installation]](#installation) | [[Quickstart]](#quickstart) | [[Documentation]](#documentation) | [[Support & Feedback]](#support_feedback) | [[Contributing]](#contributing) | [[FAQ]](#faq)
