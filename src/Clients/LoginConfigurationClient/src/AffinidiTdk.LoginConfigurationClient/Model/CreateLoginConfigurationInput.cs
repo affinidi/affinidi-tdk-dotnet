@@ -80,13 +80,14 @@ namespace AffinidiTdk.LoginConfigurationClient.Model
         /// <param name="postLogoutRedirectUris">Post Logout Redirect URIs, Used to redirect the user&#39;s browser to a specified URL after the logout process is complete. Must match the domain, port, scheme of at least one of the registered redirect URIs.</param>
         /// <param name="vpDefinition">VP definition in JSON stringify format.</param>
         /// <param name="presentationDefinition">Presentation Definition.</param>
+        /// <param name="dcqlQuery">DCQL query in JSON stringify format.</param>
         /// <param name="idTokenMapping">Fields name/path mapping between the vp_token and the id_token.</param>
         /// <param name="clientMetadata">clientMetadata.</param>
         /// <param name="claimFormat">ID token claims output format. Default is array..</param>
         /// <param name="failOnMappingConflict">Interrupts login process if duplications of data fields names will be found (default to true).</param>
         /// <param name="scope">List of groups separated by space.</param>
         /// <param name="tokenEndpointAuthMethod">tokenEndpointAuthMethod.</param>
-        public CreateLoginConfigurationInput(string name = default, string description = default, List<string> redirectUris = default, List<string> postLogoutRedirectUris = default, string vpDefinition = default, Object presentationDefinition = default, List<IdTokenMappingItem> idTokenMapping = default, LoginConfigurationClientMetadataInput clientMetadata = default, ClaimFormatEnum? claimFormat = default, bool failOnMappingConflict = true, string scope = default, TokenEndpointAuthMethod? tokenEndpointAuthMethod = default)
+        public CreateLoginConfigurationInput(string name = default, string description = default, List<string> redirectUris = default, List<string> postLogoutRedirectUris = default, string vpDefinition = default, Object presentationDefinition = default, Object dcqlQuery = default, List<IdTokenMappingItem> idTokenMapping = default, LoginConfigurationClientMetadataInput clientMetadata = default, ClaimFormatEnum? claimFormat = default, bool failOnMappingConflict = true, string scope = default, TokenEndpointAuthMethod? tokenEndpointAuthMethod = default)
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -104,6 +105,7 @@ namespace AffinidiTdk.LoginConfigurationClient.Model
             this.PostLogoutRedirectUris = postLogoutRedirectUris;
             this.VpDefinition = vpDefinition;
             this.PresentationDefinition = presentationDefinition;
+            this.DcqlQuery = dcqlQuery;
             this.IdTokenMapping = idTokenMapping;
             this.ClientMetadata = clientMetadata;
             this.ClaimFormat = claimFormat;
@@ -154,6 +156,13 @@ namespace AffinidiTdk.LoginConfigurationClient.Model
         public Object PresentationDefinition { get; set; }
 
         /// <summary>
+        /// DCQL query in JSON stringify format
+        /// </summary>
+        /// <value>DCQL query in JSON stringify format</value>
+        [DataMember(Name = "dcqlQuery", EmitDefaultValue = false)]
+        public Object DcqlQuery { get; set; }
+
+        /// <summary>
         /// Fields name/path mapping between the vp_token and the id_token
         /// </summary>
         /// <value>Fields name/path mapping between the vp_token and the id_token</value>
@@ -194,6 +203,7 @@ namespace AffinidiTdk.LoginConfigurationClient.Model
             sb.Append("  PostLogoutRedirectUris: ").Append(PostLogoutRedirectUris).Append("\n");
             sb.Append("  VpDefinition: ").Append(VpDefinition).Append("\n");
             sb.Append("  PresentationDefinition: ").Append(PresentationDefinition).Append("\n");
+            sb.Append("  DcqlQuery: ").Append(DcqlQuery).Append("\n");
             sb.Append("  IdTokenMapping: ").Append(IdTokenMapping).Append("\n");
             sb.Append("  ClientMetadata: ").Append(ClientMetadata).Append("\n");
             sb.Append("  ClaimFormat: ").Append(ClaimFormat).Append("\n");

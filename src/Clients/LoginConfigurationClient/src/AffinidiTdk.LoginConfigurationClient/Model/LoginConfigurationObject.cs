@@ -58,10 +58,11 @@ namespace AffinidiTdk.LoginConfigurationClient.Model
         /// <param name="creationDate">OAuth 2.0 Client Creation Date (required).</param>
         /// <param name="vpDefinition">VP definition in JSON stringify format.</param>
         /// <param name="presentationDefinition">Presentation Definition.</param>
+        /// <param name="dcqlQuery">DCQL query.</param>
         /// <param name="idTokenMapping">Fields name/path mapping between the vp_token and the id_token (required).</param>
         /// <param name="clientMetadata">clientMetadata (required).</param>
         /// <param name="tokenEndpointAuthMethod">tokenEndpointAuthMethod (required).</param>
-        public LoginConfigurationObject(string ari = default, string configurationId = default, string projectId = default, string name = default, List<string> redirectUris = default, List<string> postLogoutRedirectUris = default, string scope = default, string clientId = default, string creationDate = default, string vpDefinition = default, Object presentationDefinition = default, List<IdTokenMappingItem> idTokenMapping = default, LoginConfigurationClientMetadataOutput clientMetadata = default, TokenEndpointAuthMethod tokenEndpointAuthMethod = default)
+        public LoginConfigurationObject(string ari = default, string configurationId = default, string projectId = default, string name = default, List<string> redirectUris = default, List<string> postLogoutRedirectUris = default, string scope = default, string clientId = default, string creationDate = default, string vpDefinition = default, Object presentationDefinition = default, Object dcqlQuery = default, List<IdTokenMappingItem> idTokenMapping = default, LoginConfigurationClientMetadataOutput clientMetadata = default, TokenEndpointAuthMethod tokenEndpointAuthMethod = default)
         {
             // to ensure "ari" is required (not null)
             if (ari == null)
@@ -107,6 +108,7 @@ namespace AffinidiTdk.LoginConfigurationClient.Model
             this.ClientId = clientId;
             this.VpDefinition = vpDefinition;
             this.PresentationDefinition = presentationDefinition;
+            this.DcqlQuery = dcqlQuery;
         }
 
         /// <summary>
@@ -187,6 +189,13 @@ namespace AffinidiTdk.LoginConfigurationClient.Model
         public Object PresentationDefinition { get; set; }
 
         /// <summary>
+        /// DCQL query
+        /// </summary>
+        /// <value>DCQL query</value>
+        [DataMember(Name = "dcqlQuery", EmitDefaultValue = false)]
+        public Object DcqlQuery { get; set; }
+
+        /// <summary>
         /// Fields name/path mapping between the vp_token and the id_token
         /// </summary>
         /// <value>Fields name/path mapping between the vp_token and the id_token</value>
@@ -218,6 +227,7 @@ namespace AffinidiTdk.LoginConfigurationClient.Model
             sb.Append("  CreationDate: ").Append(CreationDate).Append("\n");
             sb.Append("  VpDefinition: ").Append(VpDefinition).Append("\n");
             sb.Append("  PresentationDefinition: ").Append(PresentationDefinition).Append("\n");
+            sb.Append("  DcqlQuery: ").Append(DcqlQuery).Append("\n");
             sb.Append("  IdTokenMapping: ").Append(IdTokenMapping).Append("\n");
             sb.Append("  ClientMetadata: ").Append(ClientMetadata).Append("\n");
             sb.Append("  TokenEndpointAuthMethod: ").Append(TokenEndpointAuthMethod).Append("\n");

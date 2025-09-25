@@ -24,81 +24,89 @@ using Newtonsoft.Json.Linq;
 using System.ComponentModel.DataAnnotations;
 using FileParameter = AffinidiTdk.LoginConfigurationClient.Client.FileParameter;
 using OpenAPIDateConverter = AffinidiTdk.LoginConfigurationClient.Client.OpenAPIDateConverter;
+using System.Reflection;
 
 namespace AffinidiTdk.LoginConfigurationClient.Model
 {
     /// <summary>
-    /// LoginSessionDtoAuthorizationRequest
+    /// Authorization Request Object
     /// </summary>
+    [JsonConverter(typeof(LoginSessionDtoAuthorizationRequestJsonConverter))]
     [DataContract(Name = "LoginSessionDto_authorizationRequest")]
-    public partial class LoginSessionDtoAuthorizationRequest : IValidatableObject
+    public partial class LoginSessionDtoAuthorizationRequest : AbstractOpenAPISchema, IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="LoginSessionDtoAuthorizationRequest" /> class.
+        /// Initializes a new instance of the <see cref="LoginSessionDtoAuthorizationRequest" /> class
+        /// with the <see cref="AuthorizationRequestPex" /> class
         /// </summary>
-        [JsonConstructorAttribute]
-        protected LoginSessionDtoAuthorizationRequest() { }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="LoginSessionDtoAuthorizationRequest" /> class.
-        /// </summary>
-        /// <param name="state">State parameter (required).</param>
-        /// <param name="presentationDefinition">Presentation Definition to ask from the user. In JSON Stringify format. (required).</param>
-        /// <param name="ari">ARI is used for analytics proposals..</param>
-        /// <param name="clientId">clientId used for detect origin..</param>
-        /// <param name="nonce">nonce for VP Token proof challenge.</param>
-        public LoginSessionDtoAuthorizationRequest(string state = default, string presentationDefinition = default, string ari = default, string clientId = default, string nonce = default)
+        /// <param name="actualInstance">An instance of AuthorizationRequestPex.</param>
+        public LoginSessionDtoAuthorizationRequest(AuthorizationRequestPex actualInstance)
         {
-            // to ensure "state" is required (not null)
-            if (state == null)
-            {
-                throw new ArgumentNullException("state is a required property for LoginSessionDtoAuthorizationRequest and cannot be null");
-            }
-            this.State = state;
-            // to ensure "presentationDefinition" is required (not null)
-            if (presentationDefinition == null)
-            {
-                throw new ArgumentNullException("presentationDefinition is a required property for LoginSessionDtoAuthorizationRequest and cannot be null");
-            }
-            this.PresentationDefinition = presentationDefinition;
-            this.Ari = ari;
-            this.ClientId = clientId;
-            this.Nonce = nonce;
+            this.IsNullable = false;
+            this.SchemaType= "oneOf";
+            this.ActualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
         }
 
         /// <summary>
-        /// State parameter
+        /// Initializes a new instance of the <see cref="LoginSessionDtoAuthorizationRequest" /> class
+        /// with the <see cref="AuthorizationRequestDcql" /> class
         /// </summary>
-        /// <value>State parameter</value>
-        [DataMember(Name = "state", IsRequired = true, EmitDefaultValue = true)]
-        public string State { get; set; }
+        /// <param name="actualInstance">An instance of AuthorizationRequestDcql.</param>
+        public LoginSessionDtoAuthorizationRequest(AuthorizationRequestDcql actualInstance)
+        {
+            this.IsNullable = false;
+            this.SchemaType= "oneOf";
+            this.ActualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
+        }
+
+
+        private Object _actualInstance;
 
         /// <summary>
-        /// Presentation Definition to ask from the user. In JSON Stringify format.
+        /// Gets or Sets ActualInstance
         /// </summary>
-        /// <value>Presentation Definition to ask from the user. In JSON Stringify format.</value>
-        [DataMember(Name = "presentationDefinition", IsRequired = true, EmitDefaultValue = true)]
-        public string PresentationDefinition { get; set; }
+        public override Object ActualInstance
+        {
+            get
+            {
+                return _actualInstance;
+            }
+            set
+            {
+                if (value.GetType() == typeof(AuthorizationRequestDcql) || value is AuthorizationRequestDcql)
+                {
+                    this._actualInstance = value;
+                }
+                else if (value.GetType() == typeof(AuthorizationRequestPex) || value is AuthorizationRequestPex)
+                {
+                    this._actualInstance = value;
+                }
+                else
+                {
+                    throw new ArgumentException("Invalid instance found. Must be the following types: AuthorizationRequestDcql, AuthorizationRequestPex");
+                }
+            }
+        }
 
         /// <summary>
-        /// ARI is used for analytics proposals.
+        /// Get the actual instance of `AuthorizationRequestPex`. If the actual instance is not `AuthorizationRequestPex`,
+        /// the InvalidClassException will be thrown
         /// </summary>
-        /// <value>ARI is used for analytics proposals.</value>
-        [DataMember(Name = "ari", EmitDefaultValue = false)]
-        public string Ari { get; set; }
+        /// <returns>An instance of AuthorizationRequestPex</returns>
+        public AuthorizationRequestPex GetAuthorizationRequestPex()
+        {
+            return (AuthorizationRequestPex)this.ActualInstance;
+        }
 
         /// <summary>
-        /// clientId used for detect origin.
+        /// Get the actual instance of `AuthorizationRequestDcql`. If the actual instance is not `AuthorizationRequestDcql`,
+        /// the InvalidClassException will be thrown
         /// </summary>
-        /// <value>clientId used for detect origin.</value>
-        [DataMember(Name = "clientId", EmitDefaultValue = false)]
-        public string ClientId { get; set; }
-
-        /// <summary>
-        /// nonce for VP Token proof challenge
-        /// </summary>
-        /// <value>nonce for VP Token proof challenge</value>
-        [DataMember(Name = "nonce", EmitDefaultValue = false)]
-        public string Nonce { get; set; }
+        /// <returns>An instance of AuthorizationRequestDcql</returns>
+        public AuthorizationRequestDcql GetAuthorizationRequestDcql()
+        {
+            return (AuthorizationRequestDcql)this.ActualInstance;
+        }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -106,13 +114,9 @@ namespace AffinidiTdk.LoginConfigurationClient.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            StringBuilder sb = new StringBuilder();
+            var sb = new StringBuilder();
             sb.Append("class LoginSessionDtoAuthorizationRequest {\n");
-            sb.Append("  State: ").Append(State).Append("\n");
-            sb.Append("  PresentationDefinition: ").Append(PresentationDefinition).Append("\n");
-            sb.Append("  Ari: ").Append(Ari).Append("\n");
-            sb.Append("  ClientId: ").Append(ClientId).Append("\n");
-            sb.Append("  Nonce: ").Append(Nonce).Append("\n");
+            sb.Append("  ActualInstance: ").Append(this.ActualInstance).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -121,19 +125,137 @@ namespace AffinidiTdk.LoginConfigurationClient.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public override string ToJson()
         {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
+            return JsonConvert.SerializeObject(this.ActualInstance, LoginSessionDtoAuthorizationRequest.SerializerSettings);
         }
+
+        /// <summary>
+        /// Converts the JSON string into an instance of LoginSessionDtoAuthorizationRequest
+        /// </summary>
+        /// <param name="jsonString">JSON string</param>
+        /// <returns>An instance of LoginSessionDtoAuthorizationRequest</returns>
+        public static LoginSessionDtoAuthorizationRequest FromJson(string jsonString)
+        {
+            LoginSessionDtoAuthorizationRequest newLoginSessionDtoAuthorizationRequest = null;
+
+            if (string.IsNullOrEmpty(jsonString))
+            {
+                return newLoginSessionDtoAuthorizationRequest;
+            }
+            int match = 0;
+            List<string> matchedTypes = new List<string>();
+
+            try
+            {
+                // if it does not contains "AdditionalProperties", use SerializerSettings to deserialize
+                if (typeof(AuthorizationRequestDcql).GetProperty("AdditionalProperties") == null)
+                {
+                    newLoginSessionDtoAuthorizationRequest = new LoginSessionDtoAuthorizationRequest(JsonConvert.DeserializeObject<AuthorizationRequestDcql>(jsonString, LoginSessionDtoAuthorizationRequest.SerializerSettings));
+                }
+                else
+                {
+                    newLoginSessionDtoAuthorizationRequest = new LoginSessionDtoAuthorizationRequest(JsonConvert.DeserializeObject<AuthorizationRequestDcql>(jsonString, LoginSessionDtoAuthorizationRequest.AdditionalPropertiesSerializerSettings));
+                }
+                matchedTypes.Add("AuthorizationRequestDcql");
+                match++;
+            }
+            catch (Exception exception)
+            {
+                // deserialization failed, try the next one
+                System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into AuthorizationRequestDcql: {1}", jsonString, exception.ToString()));
+            }
+
+            try
+            {
+                // if it does not contains "AdditionalProperties", use SerializerSettings to deserialize
+                if (typeof(AuthorizationRequestPex).GetProperty("AdditionalProperties") == null)
+                {
+                    newLoginSessionDtoAuthorizationRequest = new LoginSessionDtoAuthorizationRequest(JsonConvert.DeserializeObject<AuthorizationRequestPex>(jsonString, LoginSessionDtoAuthorizationRequest.SerializerSettings));
+                }
+                else
+                {
+                    newLoginSessionDtoAuthorizationRequest = new LoginSessionDtoAuthorizationRequest(JsonConvert.DeserializeObject<AuthorizationRequestPex>(jsonString, LoginSessionDtoAuthorizationRequest.AdditionalPropertiesSerializerSettings));
+                }
+                matchedTypes.Add("AuthorizationRequestPex");
+                match++;
+            }
+            catch (Exception exception)
+            {
+                // deserialization failed, try the next one
+                System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into AuthorizationRequestPex: {1}", jsonString, exception.ToString()));
+            }
+
+            if (match == 0)
+            {
+                throw new InvalidDataException("The JSON string `" + jsonString + "` cannot be deserialized into any schema defined.");
+            }
+            else if (match > 1)
+            {
+                throw new InvalidDataException("The JSON string `" + jsonString + "` incorrectly matches more than one schema (should be exactly one match): " + String.Join(",", matchedTypes));
+            }
+
+            // deserialization is considered successful at this point if no exception has been thrown.
+            return newLoginSessionDtoAuthorizationRequest;
+        }
+
 
         /// <summary>
         /// To validate all properties of the instance
         /// </summary>
         /// <param name="validationContext">Validation context</param>
         /// <returns>Validation Result</returns>
-        IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
             yield break;
+        }
+    }
+
+    /// <summary>
+    /// Custom JSON converter for LoginSessionDtoAuthorizationRequest
+    /// </summary>
+    public class LoginSessionDtoAuthorizationRequestJsonConverter : JsonConverter
+    {
+        /// <summary>
+        /// To write the JSON string
+        /// </summary>
+        /// <param name="writer">JSON writer</param>
+        /// <param name="value">Object to be converted into a JSON string</param>
+        /// <param name="serializer">JSON Serializer</param>
+        public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
+        {
+            writer.WriteRawValue((string)(typeof(LoginSessionDtoAuthorizationRequest).GetMethod("ToJson").Invoke(value, null)));
+        }
+
+        /// <summary>
+        /// To convert a JSON string into an object
+        /// </summary>
+        /// <param name="reader">JSON reader</param>
+        /// <param name="objectType">Object type</param>
+        /// <param name="existingValue">Existing value</param>
+        /// <param name="serializer">JSON Serializer</param>
+        /// <returns>The object converted from the JSON string</returns>
+        public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
+        {
+            switch(reader.TokenType) 
+            {
+                case JsonToken.StartObject:
+                    return LoginSessionDtoAuthorizationRequest.FromJson(JObject.Load(reader).ToString(Formatting.None));
+                case JsonToken.StartArray:
+                    return LoginSessionDtoAuthorizationRequest.FromJson(JArray.Load(reader).ToString(Formatting.None));
+                default:
+                    return null;
+            }
+        }
+
+        /// <summary>
+        /// Check if the object can be converted
+        /// </summary>
+        /// <param name="objectType">Object type</param>
+        /// <returns>True if the object can be converted</returns>
+        public override bool CanConvert(Type objectType)
+        {
+            return false;
         }
     }
 

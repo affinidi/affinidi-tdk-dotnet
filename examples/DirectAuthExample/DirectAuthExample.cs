@@ -6,7 +6,7 @@ using AffinidiTdk.Common;
 using AffinidiTdk.WalletsClient.Api;
 using AffinidiTdk.WalletsClient.Client;
 
-class Program
+class DirectAuthExample
 {
     // Lazy initialization of AuthProvider
     private static readonly Lazy<AuthProvider> _authProvider = new(() =>
@@ -33,11 +33,11 @@ class Program
             WalletApi api = new WalletApi(httpClient, config);
             var result = await api.ListWalletsAsync();
 
-            Logger.Success($"[DirectAuth] You have ${result.Wallets.Count} wallets.");
+            Logger.Info($"[DirectAuth] You have ${result.Wallets.Count} wallets.");
         }
         catch (Exception ex)
         {
-            Logger.Exception(ex/*, showStackTrace: true*/);
+            Logger.Exception(ex, showStackTrace: false); // showStackTrace: true by default
         }
     }
 }

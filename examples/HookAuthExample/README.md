@@ -10,7 +10,7 @@ This example shows how to interact with `AffinidiTdk.WalletsClient` using a **ho
 
 ## Setup
 
-Update `Program.cs` 
+Update `HookAuthExample.cs` 
 
 ```csharp
 // KeyId = "YOUR_KEY_ID", // [OPTIONAL]
@@ -26,6 +26,12 @@ with your Affinidi ProjectId and PAT secrets (check [getting started with Affini
 
 ```bash
 dotnet run
+```
+
+With logs
+
+```bash
+AFFINIDI_TDK_LOG_LEVEL=info dotnet run
 ```
 
 ## Explore more

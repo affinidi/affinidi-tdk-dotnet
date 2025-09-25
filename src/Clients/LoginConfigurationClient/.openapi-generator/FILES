@@ -5,6 +5,8 @@ appveyor.yml
 docs/ActionForbiddenError.md
 docs/AddUserToGroupInput.md
 docs/AllowListApi.md
+docs/AuthorizationRequestDcql.md
+docs/AuthorizationRequestPex.md
 docs/BlockedUsers.md
 docs/BlockedUsersInput.md
 docs/ConfigurationApi.md
@@ -91,6 +93,8 @@ src/AffinidiTdk.LoginConfigurationClient/Client/WebRequestPathBuilder.cs
 src/AffinidiTdk.LoginConfigurationClient/Model/AbstractOpenAPISchema.cs
 src/AffinidiTdk.LoginConfigurationClient/Model/ActionForbiddenError.cs
 src/AffinidiTdk.LoginConfigurationClient/Model/AddUserToGroupInput.cs
+src/AffinidiTdk.LoginConfigurationClient/Model/AuthorizationRequestDcql.cs
+src/AffinidiTdk.LoginConfigurationClient/Model/AuthorizationRequestPex.cs
 src/AffinidiTdk.LoginConfigurationClient/Model/BlockedUsers.cs
 src/AffinidiTdk.LoginConfigurationClient/Model/BlockedUsersInput.cs
 src/AffinidiTdk.LoginConfigurationClient/Model/CorsLoginSessionAcceptResponseOK.cs

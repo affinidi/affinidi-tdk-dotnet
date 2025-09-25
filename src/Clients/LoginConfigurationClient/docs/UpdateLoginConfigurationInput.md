@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **ClientSecret** | **string** | OAuth2 client secret | [optional] 
 **VpDefinition** | **string** | VP definition in JSON stringify format | [optional] 
 **PresentationDefinition** | **Object** | Presentation Definition | [optional] 
+**DcqlQuery** | **Object** | DCQL query in JSON stringify format | [optional] 
 **IdTokenMapping** | [**List&lt;IdTokenMappingItem&gt;**](IdTokenMappingItem.md) | Fields name/path mapping between the vp_token and the id_token | [optional] 
 **ClientMetadata** | [**LoginConfigurationClientMetadataInput**](LoginConfigurationClientMetadataInput.md) |  | [optional] 
 **TokenEndpointAuthMethod** | **TokenEndpointAuthMethod** |  | [optional] 

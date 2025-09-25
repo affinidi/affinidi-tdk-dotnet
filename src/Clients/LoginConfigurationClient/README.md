@@ -179,6 +179,8 @@ Class | Method | HTTP request | Description
 
  - [Model.ActionForbiddenError](docs/ActionForbiddenError.md)
  - [Model.AddUserToGroupInput](docs/AddUserToGroupInput.md)
+ - [Model.AuthorizationRequestDcql](docs/AuthorizationRequestDcql.md)
+ - [Model.AuthorizationRequestPex](docs/AuthorizationRequestPex.md)
  - [Model.BlockedUsers](docs/BlockedUsers.md)
  - [Model.BlockedUsersInput](docs/BlockedUsersInput.md)
  - [Model.CorsLoginSessionAcceptResponseOK](docs/CorsLoginSessionAcceptResponseOK.md)

@@ -1,7 +1,7 @@
 using AffinidiTdk.Common;
 using Xunit;
 
-namespace AffinidiTdk.Common.Tests
+namespace UnitTests.Packages
 {
     public class EnvironmentUtilsTests
     {
