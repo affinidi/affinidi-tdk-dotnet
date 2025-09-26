@@ -8,7 +8,6 @@ using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 using Microsoft.IdentityModel.Tokens;
-using AffinidiTdk.Common;
 
 namespace AffinidiTdk.AuthProvider
 {
@@ -26,8 +25,6 @@ namespace AffinidiTdk.AuthProvider
             var issuedAt = DateTimeOffset.UtcNow.ToUnixTimeSeconds();
 
             var rsa = RSA.Create();
-
-            Logger.Debug("[AuthProvider] Importing PAT private key.");
 
             ExceptionUtils.Wrap(() =>
             {
@@ -58,8 +55,6 @@ namespace AffinidiTdk.AuthProvider
 
             var token = new JwtSecurityToken(new JwtHeader(credentials), payload);
 
-            Logger.Debug("[AuthProvider] Signing payload for user access token request.");
-
             return new JwtSecurityTokenHandler().WriteToken(token);
         }
 
@@ -75,8 +70,6 @@ namespace AffinidiTdk.AuthProvider
                 ["client_assertion"] = jwt,
                 ["client_id"] = tokenId
             };
-
-            Logger.Debug("[AuthProvider] Fetching user access token.");
 
             return await ExceptionUtils.WrapAsync(async () =>
             {
@@ -105,8 +98,6 @@ namespace AffinidiTdk.AuthProvider
             };
 
             request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", userAccessToken);
-
-            Logger.Debug("[AuthProvider] Fetching project scoped token.");
 
             return await ExceptionUtils.WrapAsync(async () =>
             {
