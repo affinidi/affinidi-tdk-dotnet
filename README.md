@@ -10,7 +10,6 @@ It allows you to easily manage and integrate [Affinidi Elements](https://docs.af
 - [Requirements](#requirements)
 - [Installation](#installation)
 - [Quickstart](#quickstart)
-- [Quickstart](#quickstart)
 - [Documentation](#documentation)
 - [Support & Feedback](#support--feedback)
 - [Contributing](#contributing)
