@@ -2,8 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using AffinidiTdk.AuthProvider;
-using Xunit;
 using IntegrationTests.Helpers;
+using Xunit;
 
 namespace IntegrationTests.Packages
 {
