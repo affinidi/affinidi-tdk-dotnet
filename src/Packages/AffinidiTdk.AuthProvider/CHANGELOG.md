@@ -1,4 +1,11 @@
 AffinidiTdk.AuthProvider Changelog
+<a name="1.1.1"></a>
+## [1.1.1](https://www.github.com/affinidi/affinidi-tdk-dotnet/releases/tag/v1.1.1) (2025-10-01)
+
+### 🐛 Bug Fixes
+
+* add license file ([55ae69d](https://www.github.com/affinidi/affinidi-tdk-dotnet/commit/55ae69d267bb381d16f72c374bd8de9731d98474))
+
 <a name="1.1.0"></a>
 ## [1.1.0](https://www.github.com/affinidi/affinidi-tdk-dotnet/releases/tag/v1.1.0) (2025-10-01)
 
