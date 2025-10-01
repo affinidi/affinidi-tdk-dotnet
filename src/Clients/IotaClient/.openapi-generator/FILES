@@ -19,8 +19,10 @@ docs/CorsFetchIotaVpResponseOK.md
 docs/CorsInitiateDataSharingRequestOK.md
 docs/CorsIotOidc4vpcallbackOK.md
 docs/CorsIotaExchangeCredentialsOK.md
+docs/CreateDcqlQueryInput.md
 docs/CreateIotaConfigurationInput.md
 docs/CreatePexQueryInput.md
+docs/DcqlQueryDto.md
 docs/DefaultApi.md
 docs/DeletePexQueriesInput.md
 docs/FetchIOTAVPResponseInput.md
@@ -38,6 +40,7 @@ docs/IotaExchangeCredentials.md
 docs/IotaExchangeCredentialsOK.md
 docs/IotaExchangeCredentialsOKCredentials.md
 docs/ListConfigurationOK.md
+docs/ListDcqlQueriesOK.md
 docs/ListLoggedConsentsOK.md
 docs/ListPexQueriesOK.md
 docs/MessagePublishingError.md
@@ -53,6 +56,7 @@ docs/SavePexQueriesUpdateInput.md
 docs/SavePexQueriesUpdateInputQueriesInner.md
 docs/UpdateConfigurationByIdInput.md
 docs/UpdateConfigurationByIdOK.md
+docs/UpdateDcqlQueryInput.md
 docs/UpdatePexQueryInput.md
 docs/VPTokenValidationError.md
 src/AffinidiTdk.IotaClient/AffinidiTdk.IotaClient.csproj
@@ -94,8 +98,10 @@ src/AffinidiTdk.IotaClient/Model/CorsFetchIotaVpResponseOK.cs
 src/AffinidiTdk.IotaClient/Model/CorsInitiateDataSharingRequestOK.cs
 src/AffinidiTdk.IotaClient/Model/CorsIotOidc4vpcallbackOK.cs
 src/AffinidiTdk.IotaClient/Model/CorsIotaExchangeCredentialsOK.cs
+src/AffinidiTdk.IotaClient/Model/CreateDcqlQueryInput.cs
 src/AffinidiTdk.IotaClient/Model/CreateIotaConfigurationInput.cs
 src/AffinidiTdk.IotaClient/Model/CreatePexQueryInput.cs
+src/AffinidiTdk.IotaClient/Model/DcqlQueryDto.cs
 src/AffinidiTdk.IotaClient/Model/DeletePexQueriesInput.cs
 src/AffinidiTdk.IotaClient/Model/FetchIOTAVPResponseInput.cs
 src/AffinidiTdk.IotaClient/Model/FetchIOTAVPResponseOK.cs
@@ -111,6 +117,7 @@ src/AffinidiTdk.IotaClient/Model/IotaExchangeCredentials.cs
 src/AffinidiTdk.IotaClient/Model/IotaExchangeCredentialsOK.cs
 src/AffinidiTdk.IotaClient/Model/IotaExchangeCredentialsOKCredentials.cs
 src/AffinidiTdk.IotaClient/Model/ListConfigurationOK.cs
+src/AffinidiTdk.IotaClient/Model/ListDcqlQueriesOK.cs
 src/AffinidiTdk.IotaClient/Model/ListLoggedConsentsOK.cs
 src/AffinidiTdk.IotaClient/Model/ListPexQueriesOK.cs
 src/AffinidiTdk.IotaClient/Model/MessagePublishingError.cs
@@ -125,5 +132,6 @@ src/AffinidiTdk.IotaClient/Model/SavePexQueriesUpdateInput.cs
 src/AffinidiTdk.IotaClient/Model/SavePexQueriesUpdateInputQueriesInner.cs
 src/AffinidiTdk.IotaClient/Model/UpdateConfigurationByIdInput.cs
 src/AffinidiTdk.IotaClient/Model/UpdateConfigurationByIdOK.cs
+src/AffinidiTdk.IotaClient/Model/UpdateDcqlQueryInput.cs
 src/AffinidiTdk.IotaClient/Model/UpdatePexQueryInput.cs
 src/AffinidiTdk.IotaClient/Model/VPTokenValidationError.cs
