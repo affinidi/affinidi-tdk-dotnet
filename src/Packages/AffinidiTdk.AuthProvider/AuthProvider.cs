@@ -81,7 +81,6 @@ namespace AffinidiTdk.AuthProvider
             {
                 if (string.IsNullOrEmpty(_publicKey))
                 {
-                    Logger.Debug("[AuthProvider] Fetching Affinidi public key.");
                     _publicKey = await _jwt.FetchPublicKeyAsync(_apiGatewayUrl);
                 }
 
@@ -91,7 +90,6 @@ namespace AffinidiTdk.AuthProvider
 
                 if (shouldFetchNewToken)
                 {
-                    Logger.Debug("[AuthProvider] Project scoped token is expired or missing in cache, requesting a new one.");
                     _projectScopedToken = await _projectScopedTokenClient.FetchProjectScopedToken(
                         _apiGatewayUrl,
                         _projectId,
@@ -101,10 +99,6 @@ namespace AffinidiTdk.AuthProvider
                         _keyId,
                         _passphrase
                     );
-                }
-                else
-                {
-                    Logger.Debug("[AuthProvider] Project scoped token is valid.");
                 }
 
                 return _projectScopedToken!;

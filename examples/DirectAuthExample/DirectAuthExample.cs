@@ -2,7 +2,6 @@ using System;
 using System.Threading.Tasks;
 
 using AffinidiTdk.AuthProvider;
-using AffinidiTdk.Common;
 using AffinidiTdk.WalletsClient.Api;
 using AffinidiTdk.WalletsClient.Client;
 
@@ -22,22 +21,14 @@ class DirectAuthExample
 
     public static async Task Main(string[] args)
     {
-        try
-        {
-            string token = await _authProvider.Value.FetchProjectScopedTokenAsync();
+        string token = await _authProvider.Value.FetchProjectScopedTokenAsync();
 
-            HttpClient httpClient = new HttpClient();
-            Configuration config = new Configuration();
-            config.AddApiKey("authorization", token);
+        HttpClient httpClient = new HttpClient();
+        Configuration config = new Configuration();
+        config.AddApiKey("authorization", token);
 
-            WalletApi api = new WalletApi(httpClient, config);
-            var result = await api.ListWalletsAsync();
-
-            Logger.Info($"[DirectAuth] You have ${result.Wallets.Count} wallets.");
-        }
-        catch (Exception ex)
-        {
-            Logger.Exception(ex, showStackTrace: false); // showStackTrace: true by default
-        }
+        WalletApi api = new WalletApi(httpClient, config);
+        var result = await api.ListWalletsAsync();
+        // Console.WriteLine($"[DirectAuth] You have ${result.Wallets.Count} wallets.");
     }
 }

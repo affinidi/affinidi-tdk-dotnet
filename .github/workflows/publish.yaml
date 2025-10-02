@@ -3,24 +3,23 @@ name: Publish
 on:
   push:
     tags:
-      - '*-v*'
-
+      - "**-v**"
+  workflow_dispatch:
+        
 jobs:
   publish:
     runs-on: ubuntu-latest
     environment: publish
     permissions:
-      id-token: write  # enable GitHub OIDC token issuance for this job
+      id-token: write # enable GitHub OIDC token issuance for this job
       contents: write
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-
       - name: Setup .NET 8 SDK
         uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: '8.0.x'
-
+          dotnet-version: "8.0.x"
       - name: Cache NuGet packages
         uses: actions/cache@v4
         with:
@@ -28,25 +27,22 @@ jobs:
           key: ${{ runner.os }}-nuget-${{ hashFiles('**/*.csproj') }}
           restore-keys: |
             ${{ runner.os }}-nuget-
-
       - name: Parse project name from Tag
         id: parse_tag
         run: |
           TAG_NAME="${GITHUB_REF#refs/tags/}"
           PROJECT_NAME=$(echo "$TAG_NAME" | sed -E 's/-v[0-9]+\.[0-9]+\.[0-9]+.*$//')
           echo "project=$PROJECT_NAME" >> $GITHUB_OUTPUT
-
-
       - name: NuGet login (OIDC → temp API key)
         uses: NuGet/login@v1
         id: login
         with:
           user: ${{ secrets.NUGET_USER }}
-
       - name: Run the Cake script
         uses: cake-build/cake-action@v3
         with:
-            target: Release
-            arguments: |
-                projectName: {{ steps.parse_tag.outputs.project }}
-                secrets: ${{steps.login.outputs.NUGET_API_KEY}}
+          target: Publish
+          arguments: |
+            projectName: ${{ steps.parse_tag.outputs.project }}
+        env:
+          NUGET_API_KEY: ${{steps.login.outputs.NUGET_API_KEY}}
