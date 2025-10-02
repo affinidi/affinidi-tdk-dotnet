@@ -1,4 +1,3 @@
-<a id="top"></a>
 # Affinidi TDK .NET client for VaultDataManager
 
 Affinidi TDK dotnet client for Affinidi VAULT DATA MANAGER
@@ -20,7 +19,7 @@ dotnet --version
 ### Installation
 
 These are the steps to get you started with a dotnet project and integration with **AffinidiTdk.VaultDataManagerClient**. 
-**Note:** *Steps 1 & 2 are optional if you have already created a project.*
+> *Steps 1 & 2 are optional if you have already created a project.*
 
 1. **Create a new project directory**
 
@@ -43,14 +42,18 @@ dotnet new console
 dotnet add package AffinidiTdk.VaultDataManagerClient
 ```
 
-<p align="right">(<a href="#top">back to top</a>)</p>
 
 
 ## Usage
 
+The **AffinidiTdk.VaultDataManagerClient** uses authorisation token to authenticate client requests. You can generate a token with the use of the **AuthProvider** package which is also available in [nuget.org](https://www.nuget.org//packages/AffinidiTdk.AuthProvider).
+
+> To generate a token, you first need to create your Personal Access Token (PAT). Please refer to this [link](https://docs.affinidi.com/dev-tools/affinidi-tdk/get-access-token/#create-a-personal-access-token-pat).
+
 1. **Import the required dependencies**
 
-The dependencies required may differ based on the Client Api used in your application. 
+The dependencies required may differ based on the Client API used in your application. 
+
 
 ```csharp
 using AffinidiTdk.AuthProvider;
@@ -60,9 +63,6 @@ using AffinidiTdk.VaultDataManagerClient.Model;
 ```
 
 2. **Create an AuthProvider**
-
-- The **AuthProvider** is a separate package which you will need to install. Get it from [nuget.org](https://www.nuget.org//packages/AffinidiTdk.AuthProvider).
-*NOTE: This step requires you to first create your Personal Access Token (PAT). Please refer to this [link](https://docs.affinidi.com/dev-tools/affinidi-tdk/get-access-token/#create-a-personal-access-token-pat)*
 
 ```csharp
 var authProvider = new AuthProvider(new AuthProviderParams
@@ -94,10 +94,10 @@ config.AddApiKey("authorization", projectScopedToken);
 
 ```
 
-5. **Create an instance of the Client Api you intend to use**
+5. **Create an instance of the Client API you intend to use**
 
-- In this step, you should pass the config as a constructor argument in the Client Api.
-*NOTE: Each Operation requires different input. Please refer to the <a href="#documentation">operation documentation</a> for the details.*
+- In this step, you should pass the config as a constructor argument in the Client API.
+*NOTE: Each Operation requires different input. Please refer to the [operation documentation](#documentation) for the details.*
 
 ```csharp
 
@@ -122,103 +122,99 @@ When handling tokens, it is important that your project access token is managed 
 
 We have created an [example code](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/examples/HookAuthExample/HookAuthExample.cs) which handles the automatic refresh of tokens to ensure that the token used in the client APIs are fresh.
 
-<p align="right">(<a href="#top">back to top</a>)</p>
-
 
 ## Documentation
 
-### Client Api Documentation
+### Client API Documentation
 
-ClientApi | Operation | Description
+ClientAPI | Operation | Description
 ------------ | ------------- | -------------
-[*AccountsApi*](docs/AccountsApi.md) | [*CreateAccount*](docs/AccountsApi.md#createaccount) | 
-[*AccountsApi*](docs/AccountsApi.md) | [*DeleteAccount*](docs/AccountsApi.md#deleteaccount) | 
-[*AccountsApi*](docs/AccountsApi.md) | [*ListAccounts*](docs/AccountsApi.md#listaccounts) | 
-[*AccountsApi*](docs/AccountsApi.md) | [*UpdateAccount*](docs/AccountsApi.md#updateaccount) | 
-[*ConfigurationApi*](docs/ConfigurationApi.md) | [*GetConfiguration*](docs/ConfigurationApi.md#getconfiguration) | 
-[*FilesApi*](docs/FilesApi.md) | [*GetScannedFileInfo*](docs/FilesApi.md#getscannedfileinfo) | 
-[*FilesApi*](docs/FilesApi.md) | [*ListScannedFiles*](docs/FilesApi.md#listscannedfiles) | 
-[*FilesApi*](docs/FilesApi.md) | [*StartFileScan*](docs/FilesApi.md#startfilescan) | 
-[*NodesApi*](docs/NodesApi.md) | [*CreateChildNode*](docs/NodesApi.md#createchildnode) | 
-[*NodesApi*](docs/NodesApi.md) | [*CreateNode*](docs/NodesApi.md#createnode) | 
-[*NodesApi*](docs/NodesApi.md) | [*DeleteNode*](docs/NodesApi.md#deletenode) | 
-[*NodesApi*](docs/NodesApi.md) | [*GetDetailedNodeInfo*](docs/NodesApi.md#getdetailednodeinfo) | 
-[*NodesApi*](docs/NodesApi.md) | [*InitNodes*](docs/NodesApi.md#initnodes) | 
-[*NodesApi*](docs/NodesApi.md) | [*ListNodeChildren*](docs/NodesApi.md#listnodechildren) | 
-[*NodesApi*](docs/NodesApi.md) | [*ListRootNodeChildren*](docs/NodesApi.md#listrootnodechildren) | 
-[*NodesApi*](docs/NodesApi.md) | [*MoveNode*](docs/NodesApi.md#movenode) | 
-[*NodesApi*](docs/NodesApi.md) | [*PermanentlyDeleteNode*](docs/NodesApi.md#permanentlydeletenode) | 
-[*NodesApi*](docs/NodesApi.md) | [*RestoreNodeFromTrashbin*](docs/NodesApi.md#restorenodefromtrashbin) | 
-[*NodesApi*](docs/NodesApi.md) | [*UpdateNode*](docs/NodesApi.md#updatenode) | 
-[*ProfileDataApi*](docs/ProfileDataApi.md) | [*QueryProfileData*](docs/ProfileDataApi.md#queryprofiledata) | 
-[*ProfileDataApi*](docs/ProfileDataApi.md) | [*UpdateProfileData*](docs/ProfileDataApi.md#updateprofiledata) | 
-[*WellKnownApi*](docs/WellKnownApi.md) | [*GetWellKnownJwks*](docs/WellKnownApi.md#getwellknownjwks) | 
+[*AccountsApi*](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/VaultDataManagerClient/docs/AccountsApi.md) | [*CreateAccount*](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/VaultDataManagerClient/docs/AccountsApi.md#createaccount) | 
+[*AccountsApi*](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/VaultDataManagerClient/docs/AccountsApi.md) | [*DeleteAccount*](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/VaultDataManagerClient/docs/AccountsApi.md#deleteaccount) | 
+[*AccountsApi*](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/VaultDataManagerClient/docs/AccountsApi.md) | [*ListAccounts*](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/VaultDataManagerClient/docs/AccountsApi.md#listaccounts) | 
+[*AccountsApi*](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/VaultDataManagerClient/docs/AccountsApi.md) | [*UpdateAccount*](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/VaultDataManagerClient/docs/AccountsApi.md#updateaccount) | 
+[*ConfigurationApi*](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/VaultDataManagerClient/docs/ConfigurationApi.md) | [*GetConfiguration*](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/VaultDataManagerClient/docs/ConfigurationApi.md#getconfiguration) | 
+[*FilesApi*](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/VaultDataManagerClient/docs/FilesApi.md) | [*GetScannedFileInfo*](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/VaultDataManagerClient/docs/FilesApi.md#getscannedfileinfo) | 
+[*FilesApi*](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/VaultDataManagerClient/docs/FilesApi.md) | [*ListScannedFiles*](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/VaultDataManagerClient/docs/FilesApi.md#listscannedfiles) | 
+[*FilesApi*](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/VaultDataManagerClient/docs/FilesApi.md) | [*StartFileScan*](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/VaultDataManagerClient/docs/FilesApi.md#startfilescan) | 
+[*NodesApi*](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/VaultDataManagerClient/docs/NodesApi.md) | [*CreateChildNode*](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/VaultDataManagerClient/docs/NodesApi.md#createchildnode) | 
+[*NodesApi*](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/VaultDataManagerClient/docs/NodesApi.md) | [*CreateNode*](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/VaultDataManagerClient/docs/NodesApi.md#createnode) | 
+[*NodesApi*](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/VaultDataManagerClient/docs/NodesApi.md) | [*DeleteNode*](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/VaultDataManagerClient/docs/NodesApi.md#deletenode) | 
+[*NodesApi*](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/VaultDataManagerClient/docs/NodesApi.md) | [*GetDetailedNodeInfo*](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/VaultDataManagerClient/docs/NodesApi.md#getdetailednodeinfo) | 
+[*NodesApi*](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/VaultDataManagerClient/docs/NodesApi.md) | [*InitNodes*](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/VaultDataManagerClient/docs/NodesApi.md#initnodes) | 
+[*NodesApi*](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/VaultDataManagerClient/docs/NodesApi.md) | [*ListNodeChildren*](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/VaultDataManagerClient/docs/NodesApi.md#listnodechildren) | 
+[*NodesApi*](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/VaultDataManagerClient/docs/NodesApi.md) | [*ListRootNodeChildren*](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/VaultDataManagerClient/docs/NodesApi.md#listrootnodechildren) | 
+[*NodesApi*](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/VaultDataManagerClient/docs/NodesApi.md) | [*MoveNode*](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/VaultDataManagerClient/docs/NodesApi.md#movenode) | 
+[*NodesApi*](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/VaultDataManagerClient/docs/NodesApi.md) | [*PermanentlyDeleteNode*](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/VaultDataManagerClient/docs/NodesApi.md#permanentlydeletenode) | 
+[*NodesApi*](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/VaultDataManagerClient/docs/NodesApi.md) | [*RestoreNodeFromTrashbin*](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/VaultDataManagerClient/docs/NodesApi.md#restorenodefromtrashbin) | 
+[*NodesApi*](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/VaultDataManagerClient/docs/NodesApi.md) | [*UpdateNode*](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/VaultDataManagerClient/docs/NodesApi.md#updatenode) | 
+[*ProfileDataApi*](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/VaultDataManagerClient/docs/ProfileDataApi.md) | [*QueryProfileData*](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/VaultDataManagerClient/docs/ProfileDataApi.md#queryprofiledata) | 
+[*ProfileDataApi*](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/VaultDataManagerClient/docs/ProfileDataApi.md) | [*UpdateProfileData*](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/VaultDataManagerClient/docs/ProfileDataApi.md#updateprofiledata) | 
+[*WellKnownApi*](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/VaultDataManagerClient/docs/WellKnownApi.md) | [*GetWellKnownJwks*](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/VaultDataManagerClient/docs/WellKnownApi.md#getwellknownjwks) | 
 
 
 **Note:** *Each Client API operation requires a different authorization token. Please check the operation details for the type of token required to use the operation properly.*
 
 ### Documentation For Models
 
- - [AccountDto](docs/AccountDto.md)
- - [AwsCredentialExchangeOperationOK](docs/AwsCredentialExchangeOperationOK.md)
- - [ConsumerMetadataDto](docs/ConsumerMetadataDto.md)
- - [CorsAwsCredentialExchangeOK](docs/CorsAwsCredentialExchangeOK.md)
- - [CorsDeleteAccountOK](docs/CorsDeleteAccountOK.md)
- - [CorsDeleteNodeOK](docs/CorsDeleteNodeOK.md)
- - [CorsGetConfigOK](docs/CorsGetConfigOK.md)
- - [CorsGetConfigurationOK](docs/CorsGetConfigurationOK.md)
- - [CorsGetScannedFileInfoOK](docs/CorsGetScannedFileInfoOK.md)
- - [CorsGetWellKnownJwksOK](docs/CorsGetWellKnownJwksOK.md)
- - [CorsInitNodesOK](docs/CorsInitNodesOK.md)
- - [CorsListAccountsOK](docs/CorsListAccountsOK.md)
- - [CorsListNodeChildrenOK](docs/CorsListNodeChildrenOK.md)
- - [CorsListRootNodeChildrenOK](docs/CorsListRootNodeChildrenOK.md)
- - [CorsListScannedFilesOK](docs/CorsListScannedFilesOK.md)
- - [CorsMoveNodeOK](docs/CorsMoveNodeOK.md)
- - [CorsPermanentlyDeleteNodeOK](docs/CorsPermanentlyDeleteNodeOK.md)
- - [CorsRestoreNodeFromTrashbinOK](docs/CorsRestoreNodeFromTrashbinOK.md)
- - [CorsStartFileScanOK](docs/CorsStartFileScanOK.md)
- - [CorsUpdateProfileDataOK](docs/CorsUpdateProfileDataOK.md)
- - [CreateAccountInput](docs/CreateAccountInput.md)
- - [CreateAccountOK](docs/CreateAccountOK.md)
- - [CreateChildNodeInput](docs/CreateChildNodeInput.md)
- - [CreateNodeInput](docs/CreateNodeInput.md)
- - [CreateNodeOK](docs/CreateNodeOK.md)
- - [DeleteAccountDto](docs/DeleteAccountDto.md)
- - [DeleteNodeDto](docs/DeleteNodeDto.md)
- - [EdekInfo](docs/EdekInfo.md)
- - [GetConfigOK](docs/GetConfigOK.md)
- - [GetDetailedNodeInfoOK](docs/GetDetailedNodeInfoOK.md)
- - [GetScannedFileInfoOK](docs/GetScannedFileInfoOK.md)
- - [InitNodesOK](docs/InitNodesOK.md)
- - [InvalidParameterError](docs/InvalidParameterError.md)
- - [InvalidParameterErrorDetailsInner](docs/InvalidParameterErrorDetailsInner.md)
- - [JsonWebKeyDto](docs/JsonWebKeyDto.md)
- - [JsonWebKeySetDto](docs/JsonWebKeySetDto.md)
- - [ListAccountsDto](docs/ListAccountsDto.md)
- - [ListNodeChildrenOK](docs/ListNodeChildrenOK.md)
- - [ListRootNodeChildrenOK](docs/ListRootNodeChildrenOK.md)
- - [ListScannedFilesOK](docs/ListScannedFilesOK.md)
- - [ListScannedFilesOKScannedFilesInner](docs/ListScannedFilesOKScannedFilesInner.md)
- - [MoveNodeDto](docs/MoveNodeDto.md)
- - [MoveNodeInput](docs/MoveNodeInput.md)
- - [NodeDto](docs/NodeDto.md)
- - [NodeStatus](docs/NodeStatus.md)
- - [NodeType](docs/NodeType.md)
- - [NotFoundError](docs/NotFoundError.md)
- - [QueryProfileDataOK](docs/QueryProfileDataOK.md)
- - [RestoreNodeFromTrashbin](docs/RestoreNodeFromTrashbin.md)
- - [StartFileScanInput](docs/StartFileScanInput.md)
- - [StartFileScanOK](docs/StartFileScanOK.md)
- - [UnexpectedError](docs/UnexpectedError.md)
- - [UpdateAccountDto](docs/UpdateAccountDto.md)
- - [UpdateAccountInput](docs/UpdateAccountInput.md)
- - [UpdateNodeInput](docs/UpdateNodeInput.md)
- - [UpdateProfileDataInput](docs/UpdateProfileDataInput.md)
- - [UpdateProfileDataOK](docs/UpdateProfileDataOK.md)
+ - [AccountDto](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/VaultDataManagerClient/docs/AccountDto.md)
+ - [AwsCredentialExchangeOperationOK](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/VaultDataManagerClient/docs/AwsCredentialExchangeOperationOK.md)
+ - [ConsumerMetadataDto](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/VaultDataManagerClient/docs/ConsumerMetadataDto.md)
+ - [CorsAwsCredentialExchangeOK](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/VaultDataManagerClient/docs/CorsAwsCredentialExchangeOK.md)
+ - [CorsDeleteAccountOK](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/VaultDataManagerClient/docs/CorsDeleteAccountOK.md)
+ - [CorsDeleteNodeOK](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/VaultDataManagerClient/docs/CorsDeleteNodeOK.md)
+ - [CorsGetConfigOK](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/VaultDataManagerClient/docs/CorsGetConfigOK.md)
+ - [CorsGetConfigurationOK](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/VaultDataManagerClient/docs/CorsGetConfigurationOK.md)
+ - [CorsGetScannedFileInfoOK](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/VaultDataManagerClient/docs/CorsGetScannedFileInfoOK.md)
+ - [CorsGetWellKnownJwksOK](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/VaultDataManagerClient/docs/CorsGetWellKnownJwksOK.md)
+ - [CorsInitNodesOK](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/VaultDataManagerClient/docs/CorsInitNodesOK.md)
+ - [CorsListAccountsOK](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/VaultDataManagerClient/docs/CorsListAccountsOK.md)
+ - [CorsListNodeChildrenOK](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/VaultDataManagerClient/docs/CorsListNodeChildrenOK.md)
+ - [CorsListRootNodeChildrenOK](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/VaultDataManagerClient/docs/CorsListRootNodeChildrenOK.md)
+ - [CorsListScannedFilesOK](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/VaultDataManagerClient/docs/CorsListScannedFilesOK.md)
+ - [CorsMoveNodeOK](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/VaultDataManagerClient/docs/CorsMoveNodeOK.md)
+ - [CorsPermanentlyDeleteNodeOK](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/VaultDataManagerClient/docs/CorsPermanentlyDeleteNodeOK.md)
+ - [CorsRestoreNodeFromTrashbinOK](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/VaultDataManagerClient/docs/CorsRestoreNodeFromTrashbinOK.md)
+ - [CorsStartFileScanOK](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/VaultDataManagerClient/docs/CorsStartFileScanOK.md)
+ - [CorsUpdateProfileDataOK](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/VaultDataManagerClient/docs/CorsUpdateProfileDataOK.md)
+ - [CreateAccountInput](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/VaultDataManagerClient/docs/CreateAccountInput.md)
+ - [CreateAccountOK](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/VaultDataManagerClient/docs/CreateAccountOK.md)
+ - [CreateChildNodeInput](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/VaultDataManagerClient/docs/CreateChildNodeInput.md)
+ - [CreateNodeInput](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/VaultDataManagerClient/docs/CreateNodeInput.md)
+ - [CreateNodeOK](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/VaultDataManagerClient/docs/CreateNodeOK.md)
+ - [DeleteAccountDto](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/VaultDataManagerClient/docs/DeleteAccountDto.md)
+ - [DeleteNodeDto](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/VaultDataManagerClient/docs/DeleteNodeDto.md)
+ - [EdekInfo](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/VaultDataManagerClient/docs/EdekInfo.md)
+ - [GetConfigOK](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/VaultDataManagerClient/docs/GetConfigOK.md)
+ - [GetDetailedNodeInfoOK](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/VaultDataManagerClient/docs/GetDetailedNodeInfoOK.md)
+ - [GetScannedFileInfoOK](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/VaultDataManagerClient/docs/GetScannedFileInfoOK.md)
+ - [InitNodesOK](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/VaultDataManagerClient/docs/InitNodesOK.md)
+ - [InvalidParameterError](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/VaultDataManagerClient/docs/InvalidParameterError.md)
+ - [InvalidParameterErrorDetailsInner](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/VaultDataManagerClient/docs/InvalidParameterErrorDetailsInner.md)
+ - [JsonWebKeyDto](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/VaultDataManagerClient/docs/JsonWebKeyDto.md)
+ - [JsonWebKeySetDto](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/VaultDataManagerClient/docs/JsonWebKeySetDto.md)
+ - [ListAccountsDto](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/VaultDataManagerClient/docs/ListAccountsDto.md)
+ - [ListNodeChildrenOK](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/VaultDataManagerClient/docs/ListNodeChildrenOK.md)
+ - [ListRootNodeChildrenOK](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/VaultDataManagerClient/docs/ListRootNodeChildrenOK.md)
+ - [ListScannedFilesOK](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/VaultDataManagerClient/docs/ListScannedFilesOK.md)
+ - [ListScannedFilesOKScannedFilesInner](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/VaultDataManagerClient/docs/ListScannedFilesOKScannedFilesInner.md)
+ - [MoveNodeDto](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/VaultDataManagerClient/docs/MoveNodeDto.md)
+ - [MoveNodeInput](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/VaultDataManagerClient/docs/MoveNodeInput.md)
+ - [NodeDto](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/VaultDataManagerClient/docs/NodeDto.md)
+ - [NodeStatus](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/VaultDataManagerClient/docs/NodeStatus.md)
+ - [NodeType](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/VaultDataManagerClient/docs/NodeType.md)
+ - [NotFoundError](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/VaultDataManagerClient/docs/NotFoundError.md)
+ - [QueryProfileDataOK](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/VaultDataManagerClient/docs/QueryProfileDataOK.md)
+ - [RestoreNodeFromTrashbin](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/VaultDataManagerClient/docs/RestoreNodeFromTrashbin.md)
+ - [StartFileScanInput](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/VaultDataManagerClient/docs/StartFileScanInput.md)
+ - [StartFileScanOK](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/VaultDataManagerClient/docs/StartFileScanOK.md)
+ - [UnexpectedError](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/VaultDataManagerClient/docs/UnexpectedError.md)
+ - [UpdateAccountDto](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/VaultDataManagerClient/docs/UpdateAccountDto.md)
+ - [UpdateAccountInput](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/VaultDataManagerClient/docs/UpdateAccountInput.md)
+ - [UpdateNodeInput](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/VaultDataManagerClient/docs/UpdateNodeInput.md)
+ - [UpdateProfileDataInput](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/VaultDataManagerClient/docs/UpdateProfileDataInput.md)
+ - [UpdateProfileDataOK](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/VaultDataManagerClient/docs/UpdateProfileDataOK.md)
 
-
-<p align="right">(<a href="#top">back to top</a>)</p>
 
 
 ## Support & Feedback
@@ -233,7 +229,6 @@ If you have a technical issue with the Affinidi TDK's codebase, you can also cre
 
 2. If you're unable to find an open issue addressing the problem, [open a new one](https://github.com/affinidi/affinidi-tdk-dotnet/issues/new). Be sure to include a **title and clear description**, as much relevant information as possible, and a **code sample** or an **executable test case** demonstrating the expected behavior that is not occurring.
 
-<p align="right">(<a href="#top">back to top</a>)</p>
 
 
 ## Contributing
@@ -243,4 +238,4 @@ We enjoy community contributions! Whether it’s bug fixes, feature requests, or
 - Head over to our [CONTRIBUTING](CONTRIBUTING.md) to get started.
 - Have an idea? Start a discussion in [GitHub Discussions](https://github.com/affinidi/affinidi-tdk-dotnet/issues) or [Discord](https://discord.com/invite/hGVVSEASPQ)
 
-<p align="right">(<a href="#top">back to top</a>)</p>
+
