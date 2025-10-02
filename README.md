@@ -1,8 +1,10 @@
 <a id="top"></a>
 # Affinidi Trust Development Kit (TDK) for .NET
 
-The Affinidi Trust Development Kit (Affinidi TDK) is a modern interface that allows you to build privacy-first identity apps in .NET with minimal setup.
-It allows you to easily manage and integrate [Affinidi Elements](https://docs.affinidi.com/docs/affinidi-elements/) and [Frameworks](https://docs.affinidi.com/frameworks/iota-framework/) into your application. It minimises dependencies and enables developers to integrate seamlessly into the [Affinidi Trust Network (ATN)](https://docs.affinidi.com/docs/).
+The Affinidi Trust Development Kit (TDK) empowers developers to streamline the integration of Affinidi services into their applications with comprehensive libraries and tools, boosting their productivity. 
+This toolkit also makes it easy to easily and integrate [Affinidi Elements](https://docs.affinidi.com/docs/affinidi-elements/) and [Frameworks](https://docs.affinidi.com/frameworks/iota-framework/) into your application. It minimises dependencies and enables developers to integrate seamlessly into the [Affinidi Trust Network (ATN)](https://docs.affinidi.com/docs/).
+
+With TDK, developers can build privacy-first identity applications in .NET, supporting use cases such as issuing verifiable credentials for identity verification, verifying credentials, and enabling secure data sharing.
 
 ## Table of Contents
 
