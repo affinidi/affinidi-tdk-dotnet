@@ -5,7 +5,7 @@
     <RootNamespace>AffinidiTdk.AuthProvider</RootNamespace>
     <AssemblyName>AffinidiTdk.AuthProvider</AssemblyName>
     <PackageId>AffinidiTdk.AuthProvider</PackageId>
-    <Version>1.0.6</Version>
+    <Version>1.1.1</Version>
     <Authors>Affinidi</Authors>
     <Company>Affinidi</Company>
     <Description>Internal module for managing access tokens</Description>
@@ -14,6 +14,7 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
   </PropertyGroup>
 
   <ItemGroup>

@@ -2,7 +2,6 @@ using System;
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
-using AffinidiTdk.Common;
 using AffinidiTdk.WalletsClient.Api;
 using AffinidiTdk.WalletsClient.Client;
 using AffinidiTdk.WalletsClient.Model;
@@ -63,7 +62,7 @@ namespace IntegrationTests.Helpers
 
             if (result.Wallets.Count >= WalletsLimitThreshold)
             {
-                Logger.Warn($"❗️Number of wallets reaching the limit ({WalletsHardLimit}). Deleting all wallets.");
+                Console.WriteLine($"❗️Number of wallets reaching the limit ({WalletsHardLimit}). Deleting all wallets.");
 
                 foreach (var wallet in result.Wallets)
                 {

@@ -47,22 +47,30 @@ Task("Generate-Versionize-Config")
 
     var projects = new List<object>();
     var projectFiles = GetFiles("./src/**/*.csproj");
+    var rootDir = DirectoryPath.FromString("./").MakeAbsolute(Context.Environment).FullPath;
 
     foreach (var projectFile in projectFiles) {
-      var projectDir = projectFile.GetDirectory();
-      var name = System.IO.Path.GetFileNameWithoutExtension(projectFile.FullPath);
-      var path = projectDir.FullPath.Replace("\\", "/");
-      Information($"Adding {name} at {path}");
+        var name = System.IO.Path.GetFileNameWithoutExtension(projectFile.FullPath);
 
-      projects.Add(new {
-        name = name,
-        path = path,
-        tagTemplate = "{name}-v{version}",
-        changelog = new {
-          header = $"{name} Changelog",
-          sections = changelogSections
-        }
-      });
+        var projectDir = projectFile.GetDirectory().FullPath.Replace("\\", "/");
+
+        var relativeDir = projectDir.StartsWith(rootDir)
+            ? projectDir.Substring(rootDir.Length).TrimStart('/')
+            : projectDir;
+
+        var path = $"{relativeDir}";
+
+        Information($"Adding {name} at {path}");
+
+        projects.Add(new {
+            name = name,
+            path = path,
+            tagTemplate = "{name}-v{version}",
+            changelog = new {
+                header = $"{name} Changelog",
+                sections = changelogSections
+            }
+        });
     }
 
     var config = new {
@@ -146,7 +154,7 @@ Task("Pack")
       DotNetPack(solutionFile, packSettings);
       return;
     }
-    
+
     Information($"Packing {projectName} project");
 
     var projectPath = GetFiles($"./src/**/{projectName}.csproj").FirstOrDefault();
@@ -195,10 +203,11 @@ Task("Release")
 
     foreach (var project in projects) {
       var name = project["name"].ToString();
+      var skipChangelog = name.Contains("Client") ? "--skip-changelog" : "";
 
       Information($"🚀 Releasing {name} {(isCI ? "" : "(dry run mode)")}");
       var settings = new ProcessSettings {
-        Arguments = $"tool run versionize --proj-name \"{name}\" {dryRunFlag} --ignore-insignificant-commits --commit-suffix=\"{name}\"",
+        Arguments = $"tool run versionize --proj-name \"{name}\" {dryRunFlag} --ignore-insignificant-commits --commit-suffix=\"{name}\" {skipChangelog}",
         RedirectStandardError = false,
         RedirectStandardOutput = false
       };

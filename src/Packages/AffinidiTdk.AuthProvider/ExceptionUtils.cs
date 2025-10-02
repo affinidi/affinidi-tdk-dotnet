@@ -1,6 +1,5 @@
 using System;
 using System.Threading.Tasks;
-using AffinidiTdk.Common;
 
 namespace AffinidiTdk.AuthProvider
 {
@@ -14,8 +13,6 @@ namespace AffinidiTdk.AuthProvider
             }
             catch (Exception ex)
             {
-                Logger.Error($"Exception in: {context}");
-                Logger.Exception(ex, showStackTrace: true);
                 throw new AuthProviderException($"[{context}] {ex.Message}", ex);
             }
         }
@@ -28,8 +25,6 @@ namespace AffinidiTdk.AuthProvider
             }
             catch (Exception ex)
             {
-                Logger.Error($"Exception in: {context}");
-                Logger.Exception(ex, showStackTrace: true);
                 throw new AuthProviderException($"[{context}] {ex.Message}", ex);
             }
         }
