@@ -1,5 +1,5 @@
 <a id="top"></a>
-# Affinidi Trust Development Kit (Affinidi TDK) for .NET
+# Affinidi Trust Development Kit (TDK) for .NET
 
 The Affinidi Trust Development Kit (Affinidi TDK) is a modern interface that allows you to build privacy-first identity apps in .NET with minimal setup.
 It allows you to easily manage and integrate [Affinidi Elements](https://docs.affinidi.com/docs/affinidi-elements/) and [Frameworks](https://docs.affinidi.com/frameworks/iota-framework/) into your application. It minimises dependencies and enables developers to integrate seamlessly into the [Affinidi Trust Network (ATN)](https://docs.affinidi.com/docs/).
@@ -47,6 +47,8 @@ dotnet --version
 
 ### Creating a New Project
 
+> **Note:** These are optional if you have already created a project.
+
 1. Create a project directory: `mkdir my-dotnet-app`
 2. Create the project: `dotnet create console`
 
@@ -70,9 +72,12 @@ The Clients and Packages will be available in [nuget.org](https://www.nuget.org/
 
 ## Quickstart
 
+> **Note:** When handling tokens, it is important that your project access token is managed properly to prevent failures due to expired tokens. We have created an [example code](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/examples/HookAuthExample/HookAuthExample.cs) which handles the automatic refresh of tokens to ensure that the token used in the client APIs are fresh.
+
 Here's a basic example of using the .NET TDK to create a wallet using **WalletsApi** from **[AffinidiTdk.WalletsClient](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/WalletsClient)**:
 
 ```csharp
+
 using AffinidiTdk.AuthProvider;
 using AffinidiTdk.WalletsClient.Client;
 using AffinidiTdk.WalletsClient.Api;
@@ -106,7 +111,7 @@ public class CreateWalletExample
         // set the projectScopedToken as apiKey. Note that its using a Map/Dictionary. Key here is "authorization"
         config.AddApiKey("authorization", projectScopedToken);
 
-        // create an instance of ConfigurationApi (from AffinidiTdk.WalletsClient.Api) and pass the config in the constructor argument.
+        // create an instance of WalletApi (from AffinidiTdk.WalletsClient.Api) and pass the config in the constructor argument.
         WalletApi api = new WalletApi(config);
 
         // prepare the input data to create a wallet
@@ -144,11 +149,6 @@ CreateWallet Result: {
 
 You may find more examples [here](examples).
 
-### Important Reminder
-
-When handling tokens, it is important that your project access token is managed properly to prevent failures due to expired tokens. 
-
-We have created an [example code](https://github.com/affinidi/affinidi-tdk-dotnet/blob/main/examples/HookAuthExample/HookAuthExample.cs) which handles the automatic refresh of tokens to ensure that the token used in the client APIs are fresh.
 
 
 <p align="right">(<a href="#top">back to top</a>)</p>
