@@ -1,4 +1,3 @@
-<a id="top"></a>
 # Affinidi TDK .NET client for Wallets
 
 Affinidi TDK dotnet client for Affinidi WALLETS
@@ -20,7 +19,7 @@ dotnet --version
 ### Installation
 
 These are the steps to get you started with a dotnet project and integration with **AffinidiTdk.WalletsClient**. 
-**Note:** *Steps 1 & 2 are optional if you have already created a project.*
+> *Steps 1 & 2 are optional if you have already created a project.*
 
 1. **Create a new project directory**
 
@@ -43,14 +42,18 @@ dotnet new console
 dotnet add package AffinidiTdk.WalletsClient
 ```
 
-<p align="right">(<a href="#top">back to top</a>)</p>
 
 
 ## Usage
 
+The **AffinidiTdk.WalletsClient** uses authorisation token to authenticate client requests. You can generate a token with the use of the **AuthProvider** package which is also available in [nuget.org](https://www.nuget.org//packages/AffinidiTdk.AuthProvider).
+
+> To generate a token, you first need to create your Personal Access Token (PAT). Please refer to this [link](https://docs.affinidi.com/dev-tools/affinidi-tdk/get-access-token/#create-a-personal-access-token-pat).
+
 1. **Import the required dependencies**
 
-The dependencies required may differ based on the Client Api used in your application. 
+The dependencies required may differ based on the Client API used in your application. 
+
 
 ```csharp
 using AffinidiTdk.AuthProvider;
@@ -60,9 +63,6 @@ using AffinidiTdk.WalletsClient.Model;
 ```
 
 2. **Create an AuthProvider**
-
-- The **AuthProvider** is a separate package which you will need to install. Get it from [nuget.org](https://www.nuget.org//packages/AffinidiTdk.AuthProvider).
-*NOTE: This step requires you to first create your Personal Access Token (PAT). Please refer to this [link](https://docs.affinidi.com/dev-tools/affinidi-tdk/get-access-token/#create-a-personal-access-token-pat)*
 
 ```csharp
 var authProvider = new AuthProvider(new AuthProviderParams
@@ -94,10 +94,10 @@ config.AddApiKey("authorization", projectScopedToken);
 
 ```
 
-5. **Create an instance of the Client Api you intend to use**
+5. **Create an instance of the Client API you intend to use**
 
-- In this step, you should pass the config as a constructor argument in the Client Api.
-*NOTE: Each Operation requires different input. Please refer to the <a href="#documentation">operation documentation</a> for the details.*
+- In this step, you should pass the config as a constructor argument in the Client API.
+*NOTE: Each Operation requires different input. Please refer to the [operation documentation](#documentation) for the details.*
 
 ```csharp
 
@@ -124,68 +124,64 @@ When handling tokens, it is important that your project access token is managed 
 
 We have created an [example code](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/examples/HookAuthExample/HookAuthExample.cs) which handles the automatic refresh of tokens to ensure that the token used in the client APIs are fresh.
 
-<p align="right">(<a href="#top">back to top</a>)</p>
-
 
 ## Documentation
 
-### Client Api Documentation
+### Client API Documentation
 
-ClientApi | Operation | Description
+ClientAPI | Operation | Description
 ------------ | ------------- | -------------
-[*RevocationApi*](docs/RevocationApi.md) | [*GetRevocationCredentialStatus*](docs/RevocationApi.md#getrevocationcredentialstatus) | 
-[*RevocationApi*](docs/RevocationApi.md) | [*GetRevocationListCredential*](docs/RevocationApi.md#getrevocationlistcredential) | Return revocation list credential.
-[*RevocationApi*](docs/RevocationApi.md) | [*RevokeCredential*](docs/RevocationApi.md#revokecredential) | Revoke Credential.
-[*WalletApi*](docs/WalletApi.md) | [*CreateWallet*](docs/WalletApi.md#createwallet) | 
-[*WalletApi*](docs/WalletApi.md) | [*DeleteWallet*](docs/WalletApi.md#deletewallet) | 
-[*WalletApi*](docs/WalletApi.md) | [*GetWallet*](docs/WalletApi.md#getwallet) | 
-[*WalletApi*](docs/WalletApi.md) | [*ListWallets*](docs/WalletApi.md#listwallets) | 
-[*WalletApi*](docs/WalletApi.md) | [*SignCredential*](docs/WalletApi.md#signcredential) | 
-[*WalletApi*](docs/WalletApi.md) | [*SignJwtToken*](docs/WalletApi.md#signjwttoken) | 
-[*WalletApi*](docs/WalletApi.md) | [*UpdateWallet*](docs/WalletApi.md#updatewallet) | 
+[*RevocationApi*](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/WalletsClient/docs/RevocationApi.md) | [*GetRevocationCredentialStatus*](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/WalletsClient/docs/RevocationApi.md#getrevocationcredentialstatus) | 
+[*RevocationApi*](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/WalletsClient/docs/RevocationApi.md) | [*GetRevocationListCredential*](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/WalletsClient/docs/RevocationApi.md#getrevocationlistcredential) | Return revocation list credential.
+[*RevocationApi*](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/WalletsClient/docs/RevocationApi.md) | [*RevokeCredential*](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/WalletsClient/docs/RevocationApi.md#revokecredential) | Revoke Credential.
+[*WalletApi*](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/WalletsClient/docs/WalletApi.md) | [*CreateWallet*](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/WalletsClient/docs/WalletApi.md#createwallet) | 
+[*WalletApi*](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/WalletsClient/docs/WalletApi.md) | [*DeleteWallet*](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/WalletsClient/docs/WalletApi.md#deletewallet) | 
+[*WalletApi*](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/WalletsClient/docs/WalletApi.md) | [*GetWallet*](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/WalletsClient/docs/WalletApi.md#getwallet) | 
+[*WalletApi*](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/WalletsClient/docs/WalletApi.md) | [*ListWallets*](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/WalletsClient/docs/WalletApi.md#listwallets) | 
+[*WalletApi*](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/WalletsClient/docs/WalletApi.md) | [*SignCredential*](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/WalletsClient/docs/WalletApi.md#signcredential) | 
+[*WalletApi*](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/WalletsClient/docs/WalletApi.md) | [*SignJwtToken*](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/WalletsClient/docs/WalletApi.md#signjwttoken) | 
+[*WalletApi*](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/WalletsClient/docs/WalletApi.md) | [*UpdateWallet*](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/WalletsClient/docs/WalletApi.md#updatewallet) | 
 
 
 **Note:** *Each Client API operation requires a different authorization token. Please check the operation details for the type of token required to use the operation properly.*
 
 ### Documentation For Models
 
- - [CreateWalletInput](docs/CreateWalletInput.md)
- - [CreateWalletResponse](docs/CreateWalletResponse.md)
- - [EntityNotFoundError](docs/EntityNotFoundError.md)
- - [GetRevocationCredentialStatusOK](docs/GetRevocationCredentialStatusOK.md)
- - [GetRevocationListCredentialResultDto](docs/GetRevocationListCredentialResultDto.md)
- - [InvalidDidParameterError](docs/InvalidDidParameterError.md)
- - [InvalidParameterError](docs/InvalidParameterError.md)
- - [KeyNotFoundError](docs/KeyNotFoundError.md)
- - [NotFoundError](docs/NotFoundError.md)
- - [OperationForbiddenError](docs/OperationForbiddenError.md)
- - [RevokeCredentialInput](docs/RevokeCredentialInput.md)
- - [ServiceErrorResponse](docs/ServiceErrorResponse.md)
- - [ServiceErrorResponseDetailsInner](docs/ServiceErrorResponseDetailsInner.md)
- - [SignCredential400Response](docs/SignCredential400Response.md)
- - [SignCredentialInputDto](docs/SignCredentialInputDto.md)
- - [SignCredentialInputDtoUnsignedCredentialParams](docs/SignCredentialInputDtoUnsignedCredentialParams.md)
- - [SignCredentialResultDto](docs/SignCredentialResultDto.md)
- - [SignCredentialsDm1JwtInputDto](docs/SignCredentialsDm1JwtInputDto.md)
- - [SignCredentialsDm1JwtResultDto](docs/SignCredentialsDm1JwtResultDto.md)
- - [SignCredentialsDm1LdInputDto](docs/SignCredentialsDm1LdInputDto.md)
- - [SignCredentialsDm1LdResultDto](docs/SignCredentialsDm1LdResultDto.md)
- - [SignCredentialsDm2LdInputDto](docs/SignCredentialsDm2LdInputDto.md)
- - [SignCredentialsDm2LdResultDto](docs/SignCredentialsDm2LdResultDto.md)
- - [SignCredentialsDm2SdJwtInputDto](docs/SignCredentialsDm2SdJwtInputDto.md)
- - [SignCredentialsDm2SdJwtResultDto](docs/SignCredentialsDm2SdJwtResultDto.md)
- - [SignJwtToken](docs/SignJwtToken.md)
- - [SignJwtTokenOK](docs/SignJwtTokenOK.md)
- - [SignPresentationLdpInputDto](docs/SignPresentationLdpInputDto.md)
- - [SignPresentationLdpResultDto](docs/SignPresentationLdpResultDto.md)
- - [SigningFailedError](docs/SigningFailedError.md)
- - [UpdateWalletInput](docs/UpdateWalletInput.md)
- - [WalletDto](docs/WalletDto.md)
- - [WalletDtoKeysInner](docs/WalletDtoKeysInner.md)
- - [WalletsListDto](docs/WalletsListDto.md)
+ - [CreateWalletInput](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/WalletsClient/docs/CreateWalletInput.md)
+ - [CreateWalletResponse](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/WalletsClient/docs/CreateWalletResponse.md)
+ - [EntityNotFoundError](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/WalletsClient/docs/EntityNotFoundError.md)
+ - [GetRevocationCredentialStatusOK](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/WalletsClient/docs/GetRevocationCredentialStatusOK.md)
+ - [GetRevocationListCredentialResultDto](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/WalletsClient/docs/GetRevocationListCredentialResultDto.md)
+ - [InvalidDidParameterError](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/WalletsClient/docs/InvalidDidParameterError.md)
+ - [InvalidParameterError](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/WalletsClient/docs/InvalidParameterError.md)
+ - [KeyNotFoundError](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/WalletsClient/docs/KeyNotFoundError.md)
+ - [NotFoundError](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/WalletsClient/docs/NotFoundError.md)
+ - [OperationForbiddenError](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/WalletsClient/docs/OperationForbiddenError.md)
+ - [RevokeCredentialInput](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/WalletsClient/docs/RevokeCredentialInput.md)
+ - [ServiceErrorResponse](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/WalletsClient/docs/ServiceErrorResponse.md)
+ - [ServiceErrorResponseDetailsInner](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/WalletsClient/docs/ServiceErrorResponseDetailsInner.md)
+ - [SignCredential400Response](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/WalletsClient/docs/SignCredential400Response.md)
+ - [SignCredentialInputDto](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/WalletsClient/docs/SignCredentialInputDto.md)
+ - [SignCredentialInputDtoUnsignedCredentialParams](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/WalletsClient/docs/SignCredentialInputDtoUnsignedCredentialParams.md)
+ - [SignCredentialResultDto](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/WalletsClient/docs/SignCredentialResultDto.md)
+ - [SignCredentialsDm1JwtInputDto](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/WalletsClient/docs/SignCredentialsDm1JwtInputDto.md)
+ - [SignCredentialsDm1JwtResultDto](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/WalletsClient/docs/SignCredentialsDm1JwtResultDto.md)
+ - [SignCredentialsDm1LdInputDto](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/WalletsClient/docs/SignCredentialsDm1LdInputDto.md)
+ - [SignCredentialsDm1LdResultDto](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/WalletsClient/docs/SignCredentialsDm1LdResultDto.md)
+ - [SignCredentialsDm2LdInputDto](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/WalletsClient/docs/SignCredentialsDm2LdInputDto.md)
+ - [SignCredentialsDm2LdResultDto](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/WalletsClient/docs/SignCredentialsDm2LdResultDto.md)
+ - [SignCredentialsDm2SdJwtInputDto](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/WalletsClient/docs/SignCredentialsDm2SdJwtInputDto.md)
+ - [SignCredentialsDm2SdJwtResultDto](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/WalletsClient/docs/SignCredentialsDm2SdJwtResultDto.md)
+ - [SignJwtToken](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/WalletsClient/docs/SignJwtToken.md)
+ - [SignJwtTokenOK](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/WalletsClient/docs/SignJwtTokenOK.md)
+ - [SignPresentationLdpInputDto](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/WalletsClient/docs/SignPresentationLdpInputDto.md)
+ - [SignPresentationLdpResultDto](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/WalletsClient/docs/SignPresentationLdpResultDto.md)
+ - [SigningFailedError](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/WalletsClient/docs/SigningFailedError.md)
+ - [UpdateWalletInput](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/WalletsClient/docs/UpdateWalletInput.md)
+ - [WalletDto](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/WalletsClient/docs/WalletDto.md)
+ - [WalletDtoKeysInner](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/WalletsClient/docs/WalletDtoKeysInner.md)
+ - [WalletsListDto](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/WalletsClient/docs/WalletsListDto.md)
 
-
-<p align="right">(<a href="#top">back to top</a>)</p>
 
 
 ## Support & Feedback
@@ -200,7 +196,6 @@ If you have a technical issue with the Affinidi TDK's codebase, you can also cre
 
 2. If you're unable to find an open issue addressing the problem, [open a new one](https://github.com/affinidi/affinidi-tdk-dotnet/issues/new). Be sure to include a **title and clear description**, as much relevant information as possible, and a **code sample** or an **executable test case** demonstrating the expected behavior that is not occurring.
 
-<p align="right">(<a href="#top">back to top</a>)</p>
 
 
 ## Contributing
@@ -210,4 +205,4 @@ We enjoy community contributions! Whether it’s bug fixes, feature requests, or
 - Head over to our [CONTRIBUTING](CONTRIBUTING.md) to get started.
 - Have an idea? Start a discussion in [GitHub Discussions](https://github.com/affinidi/affinidi-tdk-dotnet/issues) or [Discord](https://discord.com/invite/hGVVSEASPQ)
 
-<p align="right">(<a href="#top">back to top</a>)</p>
+
