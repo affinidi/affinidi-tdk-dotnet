@@ -65,7 +65,7 @@ Example (installing the AffinidiTdk.AuthProvider Package):
 
 `dotnet add package AffinidiTdk.AuthProvider`
 
-The Clients and Packages will be available in [nuget.org](https://www.nuget.org/).
+The Clients and Packages will be available in [nuget.org](https://www.nuget.org/profiles/affinidi).
 
 
 <p align="right">(<a href="#top">back to top</a>)</p>
