@@ -1,4 +1,3 @@
-<a id="top"></a>
 # Affinidi TDK .NET client for CredentialVerification
 
 Affinidi TDK dotnet client for Affinidi CREDENTIAL VERIFICATION
@@ -20,7 +19,7 @@ dotnet --version
 ### Installation
 
 These are the steps to get you started with a dotnet project and integration with **AffinidiTdk.CredentialVerificationClient**. 
-**Note:** *Steps 1 & 2 are optional if you have already created a project.*
+> *Steps 1 & 2 are optional if you have already created a project.*
 
 1. **Create a new project directory**
 
@@ -43,14 +42,18 @@ dotnet new console
 dotnet add package AffinidiTdk.CredentialVerificationClient
 ```
 
-<p align="right">(<a href="#top">back to top</a>)</p>
 
 
 ## Usage
 
+The **AffinidiTdk.CredentialVerificationClient** uses authorisation token to authenticate client requests. You can generate a token with the use of the **AuthProvider** package which is also available in [nuget.org](https://www.nuget.org//packages/AffinidiTdk.AuthProvider).
+
+> To generate a token, you first need to create your Personal Access Token (PAT). Please refer to this [link](https://docs.affinidi.com/dev-tools/affinidi-tdk/get-access-token/#create-a-personal-access-token-pat).
+
 1. **Import the required dependencies**
 
-The dependencies required may differ based on the Client Api used in your application. 
+The dependencies required may differ based on the Client API used in your application. 
+
 
 ```csharp
 using AffinidiTdk.AuthProvider;
@@ -60,9 +63,6 @@ using AffinidiTdk.CredentialVerificationClient.Model;
 ```
 
 2. **Create an AuthProvider**
-
-- The **AuthProvider** is a separate package which you will need to install. Get it from [nuget.org](https://www.nuget.org//packages/AffinidiTdk.AuthProvider).
-*NOTE: This step requires you to first create your Personal Access Token (PAT). Please refer to this [link](https://docs.affinidi.com/dev-tools/affinidi-tdk/get-access-token/#create-a-personal-access-token-pat)*
 
 ```csharp
 var authProvider = new AuthProvider(new AuthProviderParams
@@ -94,10 +94,10 @@ config.AddApiKey("authorization", projectScopedToken);
 
 ```
 
-5. **Create an instance of the Client Api you intend to use**
+5. **Create an instance of the Client API you intend to use**
 
-- In this step, you should pass the config as a constructor argument in the Client Api.
-*NOTE: Each Operation requires different input. Please refer to the <a href="#documentation">operation documentation</a> for the details.*
+- In this step, you should pass the config as a constructor argument in the Client API.
+*NOTE: Each Operation requires different input. Please refer to the [operation documentation](#documentation) for the details.*
 
 ```csharp
 
@@ -122,59 +122,55 @@ When handling tokens, it is important that your project access token is managed 
 
 We have created an [example code](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/examples/HookAuthExample/HookAuthExample.cs) which handles the automatic refresh of tokens to ensure that the token used in the client APIs are fresh.
 
-<p align="right">(<a href="#top">back to top</a>)</p>
-
 
 ## Documentation
 
-### Client Api Documentation
+### Client API Documentation
 
-ClientApi | Operation | Description
+ClientAPI | Operation | Description
 ------------ | ------------- | -------------
-[*DefaultApi*](docs/DefaultApi.md) | [*VerifyCredentials*](docs/DefaultApi.md#verifycredentials) | Verifying VC
-[*DefaultApi*](docs/DefaultApi.md) | [*VerifyPresentation*](docs/DefaultApi.md#verifypresentation) | Verifying VP
+[*DefaultApi*](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/CredentialVerificationClient/docs/DefaultApi.md) | [*VerifyCredentials*](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/CredentialVerificationClient/docs/DefaultApi.md#verifycredentials) | Verifying VC
+[*DefaultApi*](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/CredentialVerificationClient/docs/DefaultApi.md) | [*VerifyPresentation*](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/CredentialVerificationClient/docs/DefaultApi.md#verifypresentation) | Verifying VP
 
 
 **Note:** *Each Client API operation requires a different authorization token. Please check the operation details for the type of token required to use the operation properly.*
 
 ### Documentation For Models
 
- - [Constraints](docs/Constraints.md)
- - [ConstraintsStatuses](docs/ConstraintsStatuses.md)
- - [Descriptor](docs/Descriptor.md)
- - [Error](docs/Error.md)
- - [ErrorDetail](docs/ErrorDetail.md)
- - [EvaluateVpOutput](docs/EvaluateVpOutput.md)
- - [Field](docs/Field.md)
- - [Filter](docs/Filter.md)
- - [FilterConst](docs/FilterConst.md)
- - [FilterItems](docs/FilterItems.md)
- - [Format](docs/Format.md)
- - [HolderSubject](docs/HolderSubject.md)
- - [InputDescriptor](docs/InputDescriptor.md)
- - [InvalidParameterError](docs/InvalidParameterError.md)
- - [JwtObject](docs/JwtObject.md)
- - [LdpObject](docs/LdpObject.md)
- - [NestedDescriptor](docs/NestedDescriptor.md)
- - [NotFoundError](docs/NotFoundError.md)
- - [NotFoundErrorDetailsInner](docs/NotFoundErrorDetailsInner.md)
- - [PdStatus](docs/PdStatus.md)
- - [PresentationDefinition](docs/PresentationDefinition.md)
- - [PresentationSubmission](docs/PresentationSubmission.md)
- - [SubmissionRequirement](docs/SubmissionRequirement.md)
- - [ValidateJwtInput](docs/ValidateJwtInput.md)
- - [ValidateJwtOutput](docs/ValidateJwtOutput.md)
- - [VerifyCredentialInput](docs/VerifyCredentialInput.md)
- - [VerifyCredentialOutput](docs/VerifyCredentialOutput.md)
- - [VerifyCredentialV2Input](docs/VerifyCredentialV2Input.md)
- - [VerifyPresentationInput](docs/VerifyPresentationInput.md)
- - [VerifyPresentationOutput](docs/VerifyPresentationOutput.md)
- - [VerifyPresentationV2Input](docs/VerifyPresentationV2Input.md)
- - [W3cCredentialStatus](docs/W3cCredentialStatus.md)
- - [W3cProof](docs/W3cProof.md)
+ - [Constraints](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/CredentialVerificationClient/docs/Constraints.md)
+ - [ConstraintsStatuses](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/CredentialVerificationClient/docs/ConstraintsStatuses.md)
+ - [Descriptor](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/CredentialVerificationClient/docs/Descriptor.md)
+ - [Error](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/CredentialVerificationClient/docs/Error.md)
+ - [ErrorDetail](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/CredentialVerificationClient/docs/ErrorDetail.md)
+ - [EvaluateVpOutput](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/CredentialVerificationClient/docs/EvaluateVpOutput.md)
+ - [Field](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/CredentialVerificationClient/docs/Field.md)
+ - [Filter](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/CredentialVerificationClient/docs/Filter.md)
+ - [FilterConst](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/CredentialVerificationClient/docs/FilterConst.md)
+ - [FilterItems](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/CredentialVerificationClient/docs/FilterItems.md)
+ - [Format](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/CredentialVerificationClient/docs/Format.md)
+ - [HolderSubject](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/CredentialVerificationClient/docs/HolderSubject.md)
+ - [InputDescriptor](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/CredentialVerificationClient/docs/InputDescriptor.md)
+ - [InvalidParameterError](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/CredentialVerificationClient/docs/InvalidParameterError.md)
+ - [JwtObject](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/CredentialVerificationClient/docs/JwtObject.md)
+ - [LdpObject](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/CredentialVerificationClient/docs/LdpObject.md)
+ - [NestedDescriptor](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/CredentialVerificationClient/docs/NestedDescriptor.md)
+ - [NotFoundError](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/CredentialVerificationClient/docs/NotFoundError.md)
+ - [NotFoundErrorDetailsInner](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/CredentialVerificationClient/docs/NotFoundErrorDetailsInner.md)
+ - [PdStatus](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/CredentialVerificationClient/docs/PdStatus.md)
+ - [PresentationDefinition](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/CredentialVerificationClient/docs/PresentationDefinition.md)
+ - [PresentationSubmission](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/CredentialVerificationClient/docs/PresentationSubmission.md)
+ - [SubmissionRequirement](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/CredentialVerificationClient/docs/SubmissionRequirement.md)
+ - [ValidateJwtInput](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/CredentialVerificationClient/docs/ValidateJwtInput.md)
+ - [ValidateJwtOutput](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/CredentialVerificationClient/docs/ValidateJwtOutput.md)
+ - [VerifyCredentialInput](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/CredentialVerificationClient/docs/VerifyCredentialInput.md)
+ - [VerifyCredentialOutput](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/CredentialVerificationClient/docs/VerifyCredentialOutput.md)
+ - [VerifyCredentialV2Input](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/CredentialVerificationClient/docs/VerifyCredentialV2Input.md)
+ - [VerifyPresentationInput](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/CredentialVerificationClient/docs/VerifyPresentationInput.md)
+ - [VerifyPresentationOutput](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/CredentialVerificationClient/docs/VerifyPresentationOutput.md)
+ - [VerifyPresentationV2Input](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/CredentialVerificationClient/docs/VerifyPresentationV2Input.md)
+ - [W3cCredentialStatus](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/CredentialVerificationClient/docs/W3cCredentialStatus.md)
+ - [W3cProof](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/CredentialVerificationClient/docs/W3cProof.md)
 
-
-<p align="right">(<a href="#top">back to top</a>)</p>
 
 
 ## Support & Feedback
@@ -189,7 +185,6 @@ If you have a technical issue with the Affinidi TDK's codebase, you can also cre
 
 2. If you're unable to find an open issue addressing the problem, [open a new one](https://github.com/affinidi/affinidi-tdk-dotnet/issues/new). Be sure to include a **title and clear description**, as much relevant information as possible, and a **code sample** or an **executable test case** demonstrating the expected behavior that is not occurring.
 
-<p align="right">(<a href="#top">back to top</a>)</p>
 
 
 ## Contributing
@@ -199,4 +194,4 @@ We enjoy community contributions! Whether it’s bug fixes, feature requests, or
 - Head over to our [CONTRIBUTING](CONTRIBUTING.md) to get started.
 - Have an idea? Start a discussion in [GitHub Discussions](https://github.com/affinidi/affinidi-tdk-dotnet/issues) or [Discord](https://discord.com/invite/hGVVSEASPQ)
 
-<p align="right">(<a href="#top">back to top</a>)</p>
+
