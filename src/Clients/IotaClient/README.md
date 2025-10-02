@@ -1,4 +1,3 @@
-<a id="top"></a>
 # Affinidi TDK .NET client for Iota
 
 Affinidi TDK dotnet client for Affinidi IOTA
@@ -20,7 +19,7 @@ dotnet --version
 ### Installation
 
 These are the steps to get you started with a dotnet project and integration with **AffinidiTdk.IotaClient**. 
-**Note:** *Steps 1 & 2 are optional if you have already created a project.*
+> *Steps 1 & 2 are optional if you have already created a project.*
 
 1. **Create a new project directory**
 
@@ -43,14 +42,18 @@ dotnet new console
 dotnet add package AffinidiTdk.IotaClient
 ```
 
-<p align="right">(<a href="#top">back to top</a>)</p>
 
 
 ## Usage
 
+The **AffinidiTdk.IotaClient** uses authorisation token to authenticate client requests. You can generate a token with the use of the **AuthProvider** package which is also available in [nuget.org](https://www.nuget.org//packages/AffinidiTdk.AuthProvider).
+
+> To generate a token, you first need to create your Personal Access Token (PAT). Please refer to this [link](https://docs.affinidi.com/dev-tools/affinidi-tdk/get-access-token/#create-a-personal-access-token-pat).
+
 1. **Import the required dependencies**
 
-The dependencies required may differ based on the Client Api used in your application. 
+The dependencies required may differ based on the Client API used in your application. 
+
 
 ```csharp
 using AffinidiTdk.AuthProvider;
@@ -60,9 +63,6 @@ using AffinidiTdk.IotaClient.Model;
 ```
 
 2. **Create an AuthProvider**
-
-- The **AuthProvider** is a separate package which you will need to install. Get it from [nuget.org](https://www.nuget.org//packages/AffinidiTdk.AuthProvider).
-*NOTE: This step requires you to first create your Personal Access Token (PAT). Please refer to this [link](https://docs.affinidi.com/dev-tools/affinidi-tdk/get-access-token/#create-a-personal-access-token-pat)*
 
 ```csharp
 var authProvider = new AuthProvider(new AuthProviderParams
@@ -94,10 +94,10 @@ config.AddApiKey("authorization", projectScopedToken);
 
 ```
 
-5. **Create an instance of the Client Api you intend to use**
+5. **Create an instance of the Client API you intend to use**
 
-- In this step, you should pass the config as a constructor argument in the Client Api.
-*NOTE: Each Operation requires different input. Please refer to the <a href="#documentation">operation documentation</a> for the details.*
+- In this step, you should pass the config as a constructor argument in the Client API.
+*NOTE: Each Operation requires different input. Please refer to the [operation documentation](#documentation) for the details.*
 
 ```csharp
 
@@ -122,96 +122,92 @@ When handling tokens, it is important that your project access token is managed 
 
 We have created an [example code](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/examples/HookAuthExample/HookAuthExample.cs) which handles the automatic refresh of tokens to ensure that the token used in the client APIs are fresh.
 
-<p align="right">(<a href="#top">back to top</a>)</p>
-
 
 ## Documentation
 
-### Client Api Documentation
+### Client API Documentation
 
-ClientApi | Operation | Description
+ClientAPI | Operation | Description
 ------------ | ------------- | -------------
-[*CallbackApi*](docs/CallbackApi.md) | [*IotOIDC4VPCallback*](docs/CallbackApi.md#iotoidc4vpcallback) | 
-[*ConfigurationsApi*](docs/ConfigurationsApi.md) | [*CreateIotaConfiguration*](docs/ConfigurationsApi.md#createiotaconfiguration) | 
-[*ConfigurationsApi*](docs/ConfigurationsApi.md) | [*DeleteIotaConfigurationById*](docs/ConfigurationsApi.md#deleteiotaconfigurationbyid) | 
-[*ConfigurationsApi*](docs/ConfigurationsApi.md) | [*GetIotaConfigurationById*](docs/ConfigurationsApi.md#getiotaconfigurationbyid) | 
-[*ConfigurationsApi*](docs/ConfigurationsApi.md) | [*GetIotaConfigurationMetaData*](docs/ConfigurationsApi.md#getiotaconfigurationmetadata) | 
-[*ConfigurationsApi*](docs/ConfigurationsApi.md) | [*ListIotaConfigurations*](docs/ConfigurationsApi.md#listiotaconfigurations) | 
-[*ConfigurationsApi*](docs/ConfigurationsApi.md) | [*UpdateIotaConfigurationById*](docs/ConfigurationsApi.md#updateiotaconfigurationbyid) | 
-[*DefaultApi*](docs/DefaultApi.md) | [*ListLoggedConsents*](docs/DefaultApi.md#listloggedconsents) | 
-[*IotaApi*](docs/IotaApi.md) | [*AwsExchangeCredentials*](docs/IotaApi.md#awsexchangecredentials) | 
-[*IotaApi*](docs/IotaApi.md) | [*AwsExchangeCredentialsProjectToken*](docs/IotaApi.md#awsexchangecredentialsprojecttoken) | 
-[*IotaApi*](docs/IotaApi.md) | [*FetchIotaVpResponse*](docs/IotaApi.md#fetchiotavpresponse) | 
-[*IotaApi*](docs/IotaApi.md) | [*InitiateDataSharingRequest*](docs/IotaApi.md#initiatedatasharingrequest) | 
-[*IotaApi*](docs/IotaApi.md) | [*IotaExchangeCredentials*](docs/IotaApi.md#iotaexchangecredentials) | 
-[*PexQueryApi*](docs/PexQueryApi.md) | [*CreatePexQuery*](docs/PexQueryApi.md#createpexquery) | 
-[*PexQueryApi*](docs/PexQueryApi.md) | [*DeletePexQueries*](docs/PexQueryApi.md#deletepexqueries) | 
-[*PexQueryApi*](docs/PexQueryApi.md) | [*DeletePexQueryById*](docs/PexQueryApi.md#deletepexquerybyid) | 
-[*PexQueryApi*](docs/PexQueryApi.md) | [*GetPexQueryById*](docs/PexQueryApi.md#getpexquerybyid) | 
-[*PexQueryApi*](docs/PexQueryApi.md) | [*ListPexQueries*](docs/PexQueryApi.md#listpexqueries) | 
-[*PexQueryApi*](docs/PexQueryApi.md) | [*SavePexQueries*](docs/PexQueryApi.md#savepexqueries) | 
-[*PexQueryApi*](docs/PexQueryApi.md) | [*UpdatePexQueryById*](docs/PexQueryApi.md#updatepexquerybyid) | 
+[*CallbackApi*](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/IotaClient/docs/CallbackApi.md) | [*IotOIDC4VPCallback*](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/IotaClient/docs/CallbackApi.md#iotoidc4vpcallback) | 
+[*ConfigurationsApi*](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/IotaClient/docs/ConfigurationsApi.md) | [*CreateIotaConfiguration*](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/IotaClient/docs/ConfigurationsApi.md#createiotaconfiguration) | 
+[*ConfigurationsApi*](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/IotaClient/docs/ConfigurationsApi.md) | [*DeleteIotaConfigurationById*](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/IotaClient/docs/ConfigurationsApi.md#deleteiotaconfigurationbyid) | 
+[*ConfigurationsApi*](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/IotaClient/docs/ConfigurationsApi.md) | [*GetIotaConfigurationById*](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/IotaClient/docs/ConfigurationsApi.md#getiotaconfigurationbyid) | 
+[*ConfigurationsApi*](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/IotaClient/docs/ConfigurationsApi.md) | [*GetIotaConfigurationMetaData*](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/IotaClient/docs/ConfigurationsApi.md#getiotaconfigurationmetadata) | 
+[*ConfigurationsApi*](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/IotaClient/docs/ConfigurationsApi.md) | [*ListIotaConfigurations*](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/IotaClient/docs/ConfigurationsApi.md#listiotaconfigurations) | 
+[*ConfigurationsApi*](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/IotaClient/docs/ConfigurationsApi.md) | [*UpdateIotaConfigurationById*](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/IotaClient/docs/ConfigurationsApi.md#updateiotaconfigurationbyid) | 
+[*DefaultApi*](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/IotaClient/docs/DefaultApi.md) | [*ListLoggedConsents*](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/IotaClient/docs/DefaultApi.md#listloggedconsents) | 
+[*IotaApi*](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/IotaClient/docs/IotaApi.md) | [*AwsExchangeCredentials*](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/IotaClient/docs/IotaApi.md#awsexchangecredentials) | 
+[*IotaApi*](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/IotaClient/docs/IotaApi.md) | [*AwsExchangeCredentialsProjectToken*](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/IotaClient/docs/IotaApi.md#awsexchangecredentialsprojecttoken) | 
+[*IotaApi*](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/IotaClient/docs/IotaApi.md) | [*FetchIotaVpResponse*](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/IotaClient/docs/IotaApi.md#fetchiotavpresponse) | 
+[*IotaApi*](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/IotaClient/docs/IotaApi.md) | [*InitiateDataSharingRequest*](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/IotaClient/docs/IotaApi.md#initiatedatasharingrequest) | 
+[*IotaApi*](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/IotaClient/docs/IotaApi.md) | [*IotaExchangeCredentials*](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/IotaClient/docs/IotaApi.md#iotaexchangecredentials) | 
+[*PexQueryApi*](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/IotaClient/docs/PexQueryApi.md) | [*CreatePexQuery*](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/IotaClient/docs/PexQueryApi.md#createpexquery) | 
+[*PexQueryApi*](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/IotaClient/docs/PexQueryApi.md) | [*DeletePexQueries*](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/IotaClient/docs/PexQueryApi.md#deletepexqueries) | 
+[*PexQueryApi*](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/IotaClient/docs/PexQueryApi.md) | [*DeletePexQueryById*](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/IotaClient/docs/PexQueryApi.md#deletepexquerybyid) | 
+[*PexQueryApi*](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/IotaClient/docs/PexQueryApi.md) | [*GetPexQueryById*](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/IotaClient/docs/PexQueryApi.md#getpexquerybyid) | 
+[*PexQueryApi*](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/IotaClient/docs/PexQueryApi.md) | [*ListPexQueries*](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/IotaClient/docs/PexQueryApi.md#listpexqueries) | 
+[*PexQueryApi*](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/IotaClient/docs/PexQueryApi.md) | [*SavePexQueries*](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/IotaClient/docs/PexQueryApi.md#savepexqueries) | 
+[*PexQueryApi*](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/IotaClient/docs/PexQueryApi.md) | [*UpdatePexQueryById*](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/IotaClient/docs/PexQueryApi.md#updatepexquerybyid) | 
 
 
 **Note:** *Each Client API operation requires a different authorization token. Please check the operation details for the type of token required to use the operation properly.*
 
 ### Documentation For Models
 
- - [AlreadyExistsError](docs/AlreadyExistsError.md)
- - [AwsExchangeCredentials](docs/AwsExchangeCredentials.md)
- - [AwsExchangeCredentialsOK](docs/AwsExchangeCredentialsOK.md)
- - [AwsExchangeCredentialsProjectToken](docs/AwsExchangeCredentialsProjectToken.md)
- - [AwsExchangeCredentialsProjectTokenOK](docs/AwsExchangeCredentialsProjectTokenOK.md)
- - [AwsExchangeCredentialsProjectTokenOKCredentials](docs/AwsExchangeCredentialsProjectTokenOKCredentials.md)
- - [CallbackInput](docs/CallbackInput.md)
- - [CallbackResponseOK](docs/CallbackResponseOK.md)
- - [ConsentDto](docs/ConsentDto.md)
- - [CorsAwsExchangeCredentialsOK](docs/CorsAwsExchangeCredentialsOK.md)
- - [CorsAwsExchangeCredentialsProjectTokenOK](docs/CorsAwsExchangeCredentialsProjectTokenOK.md)
- - [CorsFetchIotaVpResponseOK](docs/CorsFetchIotaVpResponseOK.md)
- - [CorsInitiateDataSharingRequestOK](docs/CorsInitiateDataSharingRequestOK.md)
- - [CorsIotOidc4vpcallbackOK](docs/CorsIotOidc4vpcallbackOK.md)
- - [CorsIotaExchangeCredentialsOK](docs/CorsIotaExchangeCredentialsOK.md)
- - [CreateDcqlQueryInput](docs/CreateDcqlQueryInput.md)
- - [CreateIotaConfigurationInput](docs/CreateIotaConfigurationInput.md)
- - [CreatePexQueryInput](docs/CreatePexQueryInput.md)
- - [DcqlQueryDto](docs/DcqlQueryDto.md)
- - [DeletePexQueriesInput](docs/DeletePexQueriesInput.md)
- - [FetchIOTAVPResponseInput](docs/FetchIOTAVPResponseInput.md)
- - [FetchIOTAVPResponseOK](docs/FetchIOTAVPResponseOK.md)
- - [GetIotaConfigurationMetaDataOK](docs/GetIotaConfigurationMetaDataOK.md)
- - [InitiateDataSharingRequestInput](docs/InitiateDataSharingRequestInput.md)
- - [InitiateDataSharingRequestOK](docs/InitiateDataSharingRequestOK.md)
- - [InitiateDataSharingRequestOKData](docs/InitiateDataSharingRequestOKData.md)
- - [InvalidParameterError](docs/InvalidParameterError.md)
- - [InvalidParameterErrorDetailsInner](docs/InvalidParameterErrorDetailsInner.md)
- - [IotaConfigurationDto](docs/IotaConfigurationDto.md)
- - [IotaConfigurationDtoClientMetadata](docs/IotaConfigurationDtoClientMetadata.md)
- - [IotaExchangeCredentials](docs/IotaExchangeCredentials.md)
- - [IotaExchangeCredentialsOK](docs/IotaExchangeCredentialsOK.md)
- - [IotaExchangeCredentialsOKCredentials](docs/IotaExchangeCredentialsOKCredentials.md)
- - [ListConfigurationOK](docs/ListConfigurationOK.md)
- - [ListDcqlQueriesOK](docs/ListDcqlQueriesOK.md)
- - [ListLoggedConsentsOK](docs/ListLoggedConsentsOK.md)
- - [ListPexQueriesOK](docs/ListPexQueriesOK.md)
- - [MessagePublishingError](docs/MessagePublishingError.md)
- - [NotFoundError](docs/NotFoundError.md)
- - [OperationForbiddenError](docs/OperationForbiddenError.md)
- - [PexQueryDto](docs/PexQueryDto.md)
- - [PrepareRequest](docs/PrepareRequest.md)
- - [PrepareRequestCreated](docs/PrepareRequestCreated.md)
- - [PrepareRequestCreatedData](docs/PrepareRequestCreatedData.md)
- - [ResourceLimitExceededError](docs/ResourceLimitExceededError.md)
- - [SavePexQueriesUpdateInput](docs/SavePexQueriesUpdateInput.md)
- - [SavePexQueriesUpdateInputQueriesInner](docs/SavePexQueriesUpdateInputQueriesInner.md)
- - [UpdateConfigurationByIdInput](docs/UpdateConfigurationByIdInput.md)
- - [UpdateConfigurationByIdOK](docs/UpdateConfigurationByIdOK.md)
- - [UpdateDcqlQueryInput](docs/UpdateDcqlQueryInput.md)
- - [UpdatePexQueryInput](docs/UpdatePexQueryInput.md)
- - [VPTokenValidationError](docs/VPTokenValidationError.md)
+ - [AlreadyExistsError](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/IotaClient/docs/AlreadyExistsError.md)
+ - [AwsExchangeCredentials](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/IotaClient/docs/AwsExchangeCredentials.md)
+ - [AwsExchangeCredentialsOK](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/IotaClient/docs/AwsExchangeCredentialsOK.md)
+ - [AwsExchangeCredentialsProjectToken](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/IotaClient/docs/AwsExchangeCredentialsProjectToken.md)
+ - [AwsExchangeCredentialsProjectTokenOK](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/IotaClient/docs/AwsExchangeCredentialsProjectTokenOK.md)
+ - [AwsExchangeCredentialsProjectTokenOKCredentials](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/IotaClient/docs/AwsExchangeCredentialsProjectTokenOKCredentials.md)
+ - [CallbackInput](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/IotaClient/docs/CallbackInput.md)
+ - [CallbackResponseOK](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/IotaClient/docs/CallbackResponseOK.md)
+ - [ConsentDto](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/IotaClient/docs/ConsentDto.md)
+ - [CorsAwsExchangeCredentialsOK](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/IotaClient/docs/CorsAwsExchangeCredentialsOK.md)
+ - [CorsAwsExchangeCredentialsProjectTokenOK](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/IotaClient/docs/CorsAwsExchangeCredentialsProjectTokenOK.md)
+ - [CorsFetchIotaVpResponseOK](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/IotaClient/docs/CorsFetchIotaVpResponseOK.md)
+ - [CorsInitiateDataSharingRequestOK](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/IotaClient/docs/CorsInitiateDataSharingRequestOK.md)
+ - [CorsIotOidc4vpcallbackOK](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/IotaClient/docs/CorsIotOidc4vpcallbackOK.md)
+ - [CorsIotaExchangeCredentialsOK](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/IotaClient/docs/CorsIotaExchangeCredentialsOK.md)
+ - [CreateDcqlQueryInput](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/IotaClient/docs/CreateDcqlQueryInput.md)
+ - [CreateIotaConfigurationInput](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/IotaClient/docs/CreateIotaConfigurationInput.md)
+ - [CreatePexQueryInput](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/IotaClient/docs/CreatePexQueryInput.md)
+ - [DcqlQueryDto](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/IotaClient/docs/DcqlQueryDto.md)
+ - [DeletePexQueriesInput](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/IotaClient/docs/DeletePexQueriesInput.md)
+ - [FetchIOTAVPResponseInput](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/IotaClient/docs/FetchIOTAVPResponseInput.md)
+ - [FetchIOTAVPResponseOK](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/IotaClient/docs/FetchIOTAVPResponseOK.md)
+ - [GetIotaConfigurationMetaDataOK](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/IotaClient/docs/GetIotaConfigurationMetaDataOK.md)
+ - [InitiateDataSharingRequestInput](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/IotaClient/docs/InitiateDataSharingRequestInput.md)
+ - [InitiateDataSharingRequestOK](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/IotaClient/docs/InitiateDataSharingRequestOK.md)
+ - [InitiateDataSharingRequestOKData](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/IotaClient/docs/InitiateDataSharingRequestOKData.md)
+ - [InvalidParameterError](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/IotaClient/docs/InvalidParameterError.md)
+ - [InvalidParameterErrorDetailsInner](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/IotaClient/docs/InvalidParameterErrorDetailsInner.md)
+ - [IotaConfigurationDto](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/IotaClient/docs/IotaConfigurationDto.md)
+ - [IotaConfigurationDtoClientMetadata](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/IotaClient/docs/IotaConfigurationDtoClientMetadata.md)
+ - [IotaExchangeCredentials](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/IotaClient/docs/IotaExchangeCredentials.md)
+ - [IotaExchangeCredentialsOK](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/IotaClient/docs/IotaExchangeCredentialsOK.md)
+ - [IotaExchangeCredentialsOKCredentials](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/IotaClient/docs/IotaExchangeCredentialsOKCredentials.md)
+ - [ListConfigurationOK](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/IotaClient/docs/ListConfigurationOK.md)
+ - [ListDcqlQueriesOK](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/IotaClient/docs/ListDcqlQueriesOK.md)
+ - [ListLoggedConsentsOK](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/IotaClient/docs/ListLoggedConsentsOK.md)
+ - [ListPexQueriesOK](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/IotaClient/docs/ListPexQueriesOK.md)
+ - [MessagePublishingError](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/IotaClient/docs/MessagePublishingError.md)
+ - [NotFoundError](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/IotaClient/docs/NotFoundError.md)
+ - [OperationForbiddenError](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/IotaClient/docs/OperationForbiddenError.md)
+ - [PexQueryDto](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/IotaClient/docs/PexQueryDto.md)
+ - [PrepareRequest](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/IotaClient/docs/PrepareRequest.md)
+ - [PrepareRequestCreated](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/IotaClient/docs/PrepareRequestCreated.md)
+ - [PrepareRequestCreatedData](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/IotaClient/docs/PrepareRequestCreatedData.md)
+ - [ResourceLimitExceededError](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/IotaClient/docs/ResourceLimitExceededError.md)
+ - [SavePexQueriesUpdateInput](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/IotaClient/docs/SavePexQueriesUpdateInput.md)
+ - [SavePexQueriesUpdateInputQueriesInner](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/IotaClient/docs/SavePexQueriesUpdateInputQueriesInner.md)
+ - [UpdateConfigurationByIdInput](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/IotaClient/docs/UpdateConfigurationByIdInput.md)
+ - [UpdateConfigurationByIdOK](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/IotaClient/docs/UpdateConfigurationByIdOK.md)
+ - [UpdateDcqlQueryInput](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/IotaClient/docs/UpdateDcqlQueryInput.md)
+ - [UpdatePexQueryInput](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/IotaClient/docs/UpdatePexQueryInput.md)
+ - [VPTokenValidationError](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/IotaClient/docs/VPTokenValidationError.md)
 
-
-<p align="right">(<a href="#top">back to top</a>)</p>
 
 
 ## Support & Feedback
@@ -226,7 +222,6 @@ If you have a technical issue with the Affinidi TDK's codebase, you can also cre
 
 2. If you're unable to find an open issue addressing the problem, [open a new one](https://github.com/affinidi/affinidi-tdk-dotnet/issues/new). Be sure to include a **title and clear description**, as much relevant information as possible, and a **code sample** or an **executable test case** demonstrating the expected behavior that is not occurring.
 
-<p align="right">(<a href="#top">back to top</a>)</p>
 
 
 ## Contributing
@@ -236,4 +231,4 @@ We enjoy community contributions! Whether it’s bug fixes, feature requests, or
 - Head over to our [CONTRIBUTING](CONTRIBUTING.md) to get started.
 - Have an idea? Start a discussion in [GitHub Discussions](https://github.com/affinidi/affinidi-tdk-dotnet/issues) or [Discord](https://discord.com/invite/hGVVSEASPQ)
 
-<p align="right">(<a href="#top">back to top</a>)</p>
+
