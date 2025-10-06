@@ -84,6 +84,7 @@ Here's a basic example of using the .NET TDK to issue a verifiable credential us
 
 ```csharp
 
+using AffinidiTdk.AuthProvider;
 using AffinidiTdk.Common;
 using AffinidiTdk.CredentialIssuanceClient.Api;
 using AffinidiTdk.CredentialIssuanceClient.Client;
