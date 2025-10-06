@@ -80,7 +80,7 @@ All Affinidi TDK Clients and Packages are available in [nuget.org](https://www.n
 > **Note:** When working with tokens, it’s crucial to manage your project access token properly to avoid failures caused by expiration. To help with this, we’ve provided [example code](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/examples/HookAuthExample/HookAuthExample.cs) that automatically refreshes tokens, ensuring that the client APIs always use a valid, up-to-date token.
 
 
-Here's a basic example of using the .NET TDK to create a wallet using **IssuanceApi** from **[AffinidiTdk.CredentialIssuanceClient](https://www.nuget.org/packages/AffinidiTdk.CredentialIssuanceClient)**:
+Here's a basic example of using the .NET TDK to issue a verifiable credential using the **IssuanceApi** from **[AffinidiTdk.CredentialIssuanceClient](https://www.nuget.org/packages/AffinidiTdk.CredentialIssuanceClient)**:
 
 ```csharp
 
