@@ -24,8 +24,8 @@ With Affinidi TDK, developers can build privacy-first identity applications in .
 
 The Affinidi TDK provides two types of modules:
 
-- [Clients](https://docs.affinidi.com/dev-tools/affinidi-tdk/dotnet/clients/), which offer methods to access Affinidi Elements services like Credential Issuance, Credential Verification, and Login Configurations, among others.
-- [Packages](https://docs.affinidi.com/dev-tools/affinidi-tdk/dotnet/packages/), which are commonly used utilities/helpers that are self-contained and composable.
+- [Clients](https://docs.affinidi.com/dev-tools/affinidi-tdk/dotnet/clients/) - offer methods to access Affinidi Elements services like Credential Issuance, Credential Verification, and Login Configurations, among others.
+- [Packages](https://docs.affinidi.com/dev-tools/affinidi-tdk/dotnet/packages/) - are commonly used utilities/helpers that are self-contained and composable.
 
 
 
@@ -58,7 +58,7 @@ dotnet --version
 
 ### Installing a TDK client or packages with .NET
 
-> **Note:** The Affinidi TDK Clients use authorisation token to authenticate client requests. You can generate a token with the use of the **AuthProvider** package.
+> **Note:** The Affinidi TDK clients use authorisation token to authenticate client requests. You can generate a token with the use of the **AuthProvider** package.
 
 To install TDK client or package in dotnet, you need to run the command below:
 
