@@ -12,7 +12,7 @@
     <Description>Affinidi TDK dotnet client for Affinidi IOTA</Description>
     <Copyright>No Copyright</Copyright>
     <RootNamespace>AffinidiTdk.IotaClient</RootNamespace>
-    <Version>1.1.0</Version>
+    <Version>1.2.0</Version>
     <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\AffinidiTdk.IotaClient.xml</DocumentationFile>
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
     <RepositoryUrl>https://github.com/affinidi/affinidi-tdk-dotnet.git</RepositoryUrl>
