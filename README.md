@@ -1,18 +1,37 @@
-# Affinidi Trust Development Kit (Affinidi TDK)
+<a id="top"></a>
+# Affinidi Trust Development Kit (TDK) for .NET
 
-The Affinidi Trust Development Kit (Affinidi TDK) is a modern interface that allows you to easily manage and integrate [Affinidi Elements](https://docs.affinidi.com/docs/affinidi-elements/) and [Frameworks](https://docs.affinidi.com/frameworks/iota-framework/) into your application. It minimises dependencies and enables developers to integrate seamlessly into the [Affinidi Trust Network (ATN)](https://docs.affinidi.com/docs/).
+The Affinidi TDK empowers developers to streamline the integration of Affinidi services into their applications with comprehensive tools, reducing integration effort and improving productivity.
+This toolkit also makes it easy to integrate [Affinidi Elements](https://docs.affinidi.com/docs/affinidi-elements/) and [Frameworks](https://docs.affinidi.com/frameworks/iota-framework/) into your application. It enables developers to integrate seamlessly into the [Affinidi Trust Network (ATN)](https://docs.affinidi.com/docs/).
+
+With Affinidi TDK, developers can build privacy-first identity applications in .NET, supporting use-cases such as [enabling passwordless login experience for your users](https://docs.affinidi.com/docs/affinidi-login/), [implementing consent-driven data sharing](https://docs.affinidi.com/frameworks/iota-framework/), and [issuing verifiable credentials (VCs) to your users](https://docs.affinidi.com/docs/affinidi-elements/credential-issuance/).
+
+
+## Table of Contents
+
+- [How do I use Affinidi TDK?](#how-do-i-use-affinidi-tdk)
+- [Requirements](#requirements)
+- [Installation](#installation)
+- [Quickstart](#quickstart)
+- [Documentation](#documentation)
+- [Support & Feedback](#support--feedback)
+- [Contributing](#contributing)
+- [FAQ](#faq)
+- [Telemetry](#telemetry)
+
 
 ## How do I use Affinidi TDK?
 
 The Affinidi TDK provides two types of modules:
 
-- [Clients](src/Clients), which offer methods to access Affinidi Elements services like Credential Issuance, Credential Verification, and Login Configurations, among others.
-- [Packages](src/Packages), which are commonly used utilities/helpers that are self-contained and composable.
+- [Clients](https://docs.affinidi.com/dev-tools/affinidi-tdk/dotnet/clients/) - offer methods to access Affinidi Elements services like Credential Issuance, Credential Verification, and Login Configurations, among others.
+- [Packages](https://docs.affinidi.com/dev-tools/affinidi-tdk/dotnet/packages/) - are commonly used utilities/helpers that are self-contained and composable.
+
+
 
 ## Requirements
 
 - [.NET 8 SDK](https://dotnet.microsoft.com/en-us/download/dotnet/8.0) **(minimum version: `8.0.400`)**
-- Compatible OS: Windows, macOS, or Linux
 
 You can check your installed version using:
 
@@ -22,36 +41,56 @@ dotnet --version
 
 💡 This project uses a `global.json` to enforce SDK version consistency. If you don’t have the specified version installed, the build may fail.
 
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+
+
 ## Installation
 
 ### Creating a New Project
+
+> **Note:** These are optional if you have already created a project.
 
 1. Create a project directory: `mkdir my-dotnet-app`
 2. Create the project: `dotnet create console`
 
 
-### Installing a TDK client or packages with dotnet
+### Installing a TDK client or packages with .NET
+
+> **Note:** The Affinidi TDK clients use authorisation token to authenticate client requests. You can generate a token with the use of the **AuthProvider** package.
 
 To install TDK client or package in dotnet, you need to run the command below:
-`dotnet add package <Affinidi-Package-Name> --version <Package-Version>`
+
+`dotnet add package <Affinidi-Package-Name>`
 
 Example (installing the AffinidiTdk.AuthProvider Package):
-`dotnet add package AffinidiTdk.AuthProvider --version 1.0.0`
 
-The Clients and Packages will be available in [nuget.org](https://www.nuget.org/).
+`dotnet add package AffinidiTdk.AuthProvider`
+
+All Affinidi TDK Clients and Packages are available in [nuget.org](https://www.nuget.org/profiles/affinidi). 
+
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
 
 
 ## Quickstart
 
-Here's a basic example of using the TDK to list Login Configurations:
+> **Note:** When working with tokens, it’s crucial to manage your project access token properly to avoid failures caused by expiration. To help with this, we’ve provided [example code](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/examples/HookAuthExample/HookAuthExample.cs) that automatically refreshes tokens, ensuring that the client APIs always use a valid, up-to-date token.
 
-```dotnet
+
+Here's a basic example of using the .NET TDK to issue a verifiable credential using the **IssuanceApi** from **[AffinidiTdk.CredentialIssuanceClient](https://www.nuget.org/packages/AffinidiTdk.CredentialIssuanceClient)**:
+
+```csharp
+
 using AffinidiTdk.AuthProvider;
-using AffinidiTdk.LoginConfigurationClient.Api;
-using AffinidiTdk.LoginConfigurationClient.Client;
-using AffinidiTdk.LoginConfigurationClient.Model;
+using AffinidiTdk.Common;
+using AffinidiTdk.CredentialIssuanceClient.Api;
+using AffinidiTdk.CredentialIssuanceClient.Client;
+using AffinidiTdk.CredentialIssuanceClient.Model;
 
-public class ListLoginConfig
+public class StartIssuanceExample
 {
     static async Task Main(string[] args)
     {
@@ -60,9 +99,11 @@ public class ListLoginConfig
         // You may use `DotNetEnv` to load this info from your .env
         var authProviderParams = new AuthProviderParams
         {
-            ProjectId = '<YOUR-PROJECT-ID>',
-            TokenId = '<YOUR-TOKEN-ID>',
-            PrivateKey = '<YOUR-PRIVATE-KEY>'
+            // Please generate your own Personal Access Tokens (PAT). 
+            // Refer to https://docs.affinidi.com/dev-tools/affinidi-tdk/get-access-token/#create-a-personal-access-token-pat for the guide on creating your own PAT.
+            ProjectId = "<YOUR-PROJECT-ID>",
+            TokenId = "<YOUR-TOKEN-ID>",
+            PrivateKey = "<YOUR-PRIVATE-KEY>"
         };
 
         // create an AuthProvider instance
@@ -71,25 +112,69 @@ public class ListLoginConfig
         // fetch the projectScopedToken from the authProviderConfig
         string projecScopedToken = await authProvider.FetchProjectScopedTokenAsync();
         
-        // create an instance of Configuration from AffinidiTdk.LoginConfigurationClient
+        // create an instance of Configuration from AffinidiTdk.CredentialIssuanceClient
         Configuration config = new Configuration();
 
         // set the projectScopedToken as apiKey. Note that its using a Map/Dictionary. Key here is "authorization"
         config.AddApiKey("authorization", projectScopedToken);
 
-        // create an instance of ConfigurationApi (from AffinidTdk.LoginConfigurationClient) and pass the config in the constructor argument.
-        ConfigurationApi api = new ConfigurationApi(config);
+        // create an instance of IssuanceApi (from using AffinidiTdk.CredentialIssuanceClient.Api) and pass the config in the constructor argument.
+        IssuanceApi api = new IssuanceApi(config);
 
-        // Call ListLoginConfig from the api
-        ListLoginConfigurationOutput result = api.ListLoginConfigurations();
+        // Build the sample verifiable credential data to be issued.
+        // Note: You need to create first your schema similar which follows the sample attributes provided below.
+        StartIssuanceInputDataInner inpuData =
+            new StartIssuanceInputDataInner
+                (credentialTypeId: "MyPersonalInfo", credentialData: new Dictionary<string, object>()
+        {
+            { "firstname", "John" },
+            { "lastname", "Doe" },
+            { "dateofbirth", "1970-01-01" },
+        });
 
-        // print the result as JSON
-        Console.WriteLine("Login Configurations: " + loginConfig.ToJson());
+        // Create a StartIssuanceInput
+        StartIssuanceInput input = 
+            new StartIssuanceInput
+                (claimMode: StartIssuanceInput.ClaimModeEnum.TXCODE, data: [inpuData]);
+
+        // Define the project ID
+        var projectId = "<YOUR-PROJECT-ID>";
+
+        // Call the StartIssuance operation
+        StartIssuanceResponse result = api.StartIssuance(projectId, input);
+
+        // Display the Start Issuance result
+        Console.WriteLine("StartIssuance Result: " + result.ToJson());
+
+        // Use VaultUtils to create the claim url
+        string claimUrl = VaultUtils.BuildClaimLink(result.CredentialOfferUri);
+        
+        // Display the Claim Link URL
+        Console.WriteLine("ClaimURL: " + claimUrl);
     }
 }
 ```
 
-You may find more examples [here](examples).
+Running the code will display the result similar to below:
+
+```bash
+
+StartIssuance Result: {
+  "credentialOfferUri": "https://<YOUR-PROJECT-ID>.apse1.issuance.affinidi.io/offers/<OFFER-ID>",
+  "txCode": "<TXCODE>",
+  "issuanceId": "<ISSUANCE-ID>",
+  "expiresIn": 60000.0
+}
+ClaimURL: https://vault.affinidi.com/claim?credential_offer_uri=https%3A%2F%2F<YOUR-PROJECT-ID>.apse1.issuance.affinidi.io%2Foffers%2F<OFFER-ID>
+
+```
+
+You may find more client operation examples in our [documentation site](https://docs.affinidi.com/dev-tools/affinidi-tdk/dotnet/clients/).
+
+
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
 
 
 ## Documentation
@@ -103,7 +188,13 @@ To learn how to integrate Affinidi TDK and use the different modules into your a
 - [Affinidi TDK Clients](https://docs.affinidi.com/dev-tools/affinidi-tdk/overview/#clients)
 - [Affinidi TDK Packages](https://docs.affinidi.com/dev-tools/affinidi-tdk/overview/#packages)
 
-## Support & feedback
+
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+
+
+## Support & Feedback
 
 If you face any issues or have suggestions, please don't hesitate to contact us using [this link](https://share.hsforms.com/1i-4HKZRXSsmENzXtPdIG4g8oa2v).
 
@@ -120,11 +211,23 @@ If you have a technical issue with the Affinidi TDK's codebase, you can also cre
    and a **code sample** or an **executable test case** demonstrating the expected behavior that is not occurring.
    
 
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+
+
 ## Contributing
 
-Want to contribute?
+We enjoy community contributions! Whether it’s bug fixes, feature requests, or improving docs, your input helps shape the Affinidi TDK.
 
-Head over to our [CONTRIBUTING](CONTRIBUTING.md) guidelines.
+- Head over to our [CONTRIBUTING](CONTRIBUTING.md) to get started.
+- Have an idea? Start a discussion in [GitHub Discussions](https://github.com/affinidi/affinidi-tdk-dotnet/issues) or [Discord](https://discord.com/invite/hGVVSEASPQ)
+
+
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+
 
 
 ## FAQ
@@ -163,13 +266,15 @@ From time to time, we may request certain information from you to ensure that yo
 
 When you create a developer's account with us, we will issue you your private login credentials. Please do not share this with anyone else, as you would be responsible for activities that happen under your account. If you have interested friends, ask them to sign up – let's build together!
 
-### Telemetry
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+## Telemetry
 
 Affinidi collects usage data to improve our products and services. For information on what data we collect and how we use your data, please refer to our [Privacy Notice](https://www.affinidi.com/privacy-notice).
 
 _Disclaimer:
 Please note that this FAQ is provided for informational purposes only and is not to be considered a legal document. For the legal terms and conditions governing your use of the Affinidi Services, please refer to our [Terms and Conditions](https://www.affinidi.com/terms-conditions)._
 
-## Contributors ✨
 
-Contributions of any kind welcome!
+
+<p align="right">(<a href="#top">back to top</a>)</p>
