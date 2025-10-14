@@ -24,8 +24,8 @@ With Affinidi TDK, developers can build privacy-first identity applications in .
 
 The Affinidi TDK provides two types of modules:
 
-- [Clients](https://docs.affinidi.com/dev-tools/affinidi-tdk/dotnet/clients/) - offer methods to access Affinidi Elements services like Credential Issuance, Credential Verification, and Login Configurations, among others.
-- [Packages](https://docs.affinidi.com/dev-tools/affinidi-tdk/dotnet/packages/) - are commonly used utilities/helpers that are self-contained and composable.
+- [Clients](https://docs.affinidi.com/dev-tools/affinidi-tdk/dotnet/clients/): offer methods to access Affinidi Elements services like Credential Issuance, Credential Verification, and Login Configurations, among others.
+- [Packages](https://docs.affinidi.com/dev-tools/affinidi-tdk/dotnet/packages/): are commonly used utilities/helpers that are self-contained and composable.
 
 
 
@@ -80,17 +80,16 @@ All Affinidi TDK Clients and Packages are available in [nuget.org](https://www.n
 > **Note:** When working with tokens, it’s crucial to manage your project access token properly to avoid failures caused by expiration. To help with this, we’ve provided [example code](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/examples/HookAuthExample/HookAuthExample.cs) that automatically refreshes tokens, ensuring that the client APIs always use a valid, up-to-date token.
 
 
-Here's a basic example of using the .NET TDK to issue a verifiable credential using the **IssuanceApi** from **[AffinidiTdk.CredentialIssuanceClient](https://www.nuget.org/packages/AffinidiTdk.CredentialIssuanceClient)**:
+Here's a basic example of using the .NET TDK to create a wallet for signing verifiable credentials using the **WalletApi** from **[AffinidiTdk.WalletsClient](https://www.nuget.org/packages/AffinidiTdk.WalletsClient)**:
 
 ```csharp
 
 using AffinidiTdk.AuthProvider;
-using AffinidiTdk.Common;
-using AffinidiTdk.CredentialIssuanceClient.Api;
-using AffinidiTdk.CredentialIssuanceClient.Client;
-using AffinidiTdk.CredentialIssuanceClient.Model;
+using AffinidiTdk.WalletsClient.Client;
+using AffinidiTdk.WalletsClient.Api;
+using AffinidiTdk.WalletsClient.Model;
 
-public class StartIssuanceExample
+public class CreateWalletExample
 {
     static async Task Main(string[] args)
     {
@@ -118,39 +117,16 @@ public class StartIssuanceExample
         // set the projectScopedToken as apiKey. Note that its using a Map/Dictionary. Key here is "authorization"
         config.AddApiKey("authorization", projectScopedToken);
 
-        // create an instance of IssuanceApi (from using AffinidiTdk.CredentialIssuanceClient.Api) and pass the config in the constructor argument.
-        IssuanceApi api = new IssuanceApi(config);
+        // create an instance of WalletApi (from using AffinidiTdk.WalletsClient.Api) and pass the config in the constructor argument.
+        WalletApi api = new WalletApi(config);
 
-        // Build the sample verifiable credential data to be issued.
-        // Note: You need to create first your schema similar which follows the sample attributes provided below.
-        StartIssuanceInputDataInner inpuData =
-            new StartIssuanceInputDataInner
-                (credentialTypeId: "MyPersonalInfo", credentialData: new Dictionary<string, object>()
-        {
-            { "firstname", "John" },
-            { "lastname", "Doe" },
-            { "dateofbirth", "1970-01-01" },
-        });
+        // create a CreateWalletInput object with the name and did method
+        CreateWalletInput input = new CreateWalletInput(name: "DotNet Wallet", didMethod: CreateWalletInput.DidMethodEnum.Key); 
 
-        // Create a StartIssuanceInput
-        StartIssuanceInput input = 
-            new StartIssuanceInput
-                (claimMode: StartIssuanceInput.ClaimModeEnum.TXCODE, data: [inpuData]);
-
-        // Define the project ID
-        var projectId = "<YOUR-PROJECT-ID>";
-
-        // Call the StartIssuance operation
-        StartIssuanceResponse result = api.StartIssuance(projectId, input);
-
-        // Display the Start Issuance result
-        Console.WriteLine("StartIssuance Result: " + result.ToJson());
-
-        // Use VaultUtils to create the claim url
-        string claimUrl = VaultUtils.BuildClaimLink(result.CredentialOfferUri);
+        // call the CreateWallet api and pass the CreateWalletInput as argument
+        CreateWalletResponse result  = api.CreateWallet(input);
         
-        // Display the Claim Link URL
-        Console.WriteLine("ClaimURL: " + claimUrl);
+        Console.WriteLine("CreateWallet Result: " + result.ToJson());
     }
 }
 ```
@@ -159,18 +135,18 @@ Running the code will display the result similar to below:
 
 ```bash
 
-StartIssuance Result: {
-  "credentialOfferUri": "https://<YOUR-PROJECT-ID>.apse1.issuance.affinidi.io/offers/<OFFER-ID>",
-  "txCode": "<TXCODE>",
-  "issuanceId": "<ISSUANCE-ID>",
-  "expiresIn": 60000.0
+CreateWallet Result: {
+  "wallet": {
+    "id": "<WALLET-ID>",
+    "did": "<WALLET-DID>",
+    "name": "DotNet Wallet",
+    ...
+  }
 }
-ClaimURL: https://vault.affinidi.com/claim?credential_offer_uri=https%3A%2F%2F<YOUR-PROJECT-ID>.apse1.issuance.affinidi.io%2Foffers%2F<OFFER-ID>
 
 ```
 
-You may find more client operation examples in our [documentation site](https://docs.affinidi.com/dev-tools/affinidi-tdk/dotnet/clients/).
-
+Get to know more about other .NET TDK clients and operations from our [documentation site](https://docs.affinidi.com/dev-tools/affinidi-tdk/dotnet/clients/).
 
 
 <p align="right">(<a href="#top">back to top</a>)</p>
