@@ -149,6 +149,8 @@ ClientAPI | Operation | Description
 
  - [CreateWalletInput](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/WalletsClient/docs/CreateWalletInput.md)
  - [CreateWalletResponse](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/WalletsClient/docs/CreateWalletResponse.md)
+ - [CreateWalletV2Input](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/WalletsClient/docs/CreateWalletV2Input.md)
+ - [CreateWalletV2Response](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/WalletsClient/docs/CreateWalletV2Response.md)
  - [EntityNotFoundError](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/WalletsClient/docs/EntityNotFoundError.md)
  - [GetRevocationCredentialStatusOK](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/WalletsClient/docs/GetRevocationCredentialStatusOK.md)
  - [GetRevocationListCredentialResultDto](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/WalletsClient/docs/GetRevocationListCredentialResultDto.md)
@@ -180,6 +182,7 @@ ClientAPI | Operation | Description
  - [UpdateWalletInput](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/WalletsClient/docs/UpdateWalletInput.md)
  - [WalletDto](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/WalletsClient/docs/WalletDto.md)
  - [WalletDtoKeysInner](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/WalletsClient/docs/WalletDtoKeysInner.md)
+ - [WalletV2Dto](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/WalletsClient/docs/WalletV2Dto.md)
  - [WalletsListDto](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/WalletsClient/docs/WalletsListDto.md)
 
 
