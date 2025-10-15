@@ -4,6 +4,8 @@ README.md
 appveyor.yml
 docs/CreateWalletInput.md
 docs/CreateWalletResponse.md
+docs/CreateWalletV2Input.md
+docs/CreateWalletV2Response.md
 docs/EntityNotFoundError.md
 docs/GetRevocationCredentialStatusOK.md
 docs/GetRevocationListCredentialResultDto.md
@@ -37,6 +39,7 @@ docs/UpdateWalletInput.md
 docs/WalletApi.md
 docs/WalletDto.md
 docs/WalletDtoKeysInner.md
+docs/WalletV2Dto.md
 docs/WalletsListDto.md
 src/AffinidiTdk.WalletsClient/AffinidiTdk.WalletsClient.csproj
 src/AffinidiTdk.WalletsClient/Api/RevocationApi.cs
@@ -61,6 +64,8 @@ src/AffinidiTdk.WalletsClient/Client/WebRequestPathBuilder.cs
 src/AffinidiTdk.WalletsClient/Model/AbstractOpenAPISchema.cs
 src/AffinidiTdk.WalletsClient/Model/CreateWalletInput.cs
 src/AffinidiTdk.WalletsClient/Model/CreateWalletResponse.cs
+src/AffinidiTdk.WalletsClient/Model/CreateWalletV2Input.cs
+src/AffinidiTdk.WalletsClient/Model/CreateWalletV2Response.cs
 src/AffinidiTdk.WalletsClient/Model/EntityNotFoundError.cs
 src/AffinidiTdk.WalletsClient/Model/GetRevocationCredentialStatusOK.cs
 src/AffinidiTdk.WalletsClient/Model/GetRevocationListCredentialResultDto.cs
@@ -92,4 +97,5 @@ src/AffinidiTdk.WalletsClient/Model/SigningFailedError.cs
 src/AffinidiTdk.WalletsClient/Model/UpdateWalletInput.cs
 src/AffinidiTdk.WalletsClient/Model/WalletDto.cs
 src/AffinidiTdk.WalletsClient/Model/WalletDtoKeysInner.cs
+src/AffinidiTdk.WalletsClient/Model/WalletV2Dto.cs
 src/AffinidiTdk.WalletsClient/Model/WalletsListDto.cs
