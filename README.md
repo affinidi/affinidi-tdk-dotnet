@@ -1,107 +1,16 @@
-# Affinidi Trust Development Kit (Affinidi TDK)
+# Affinidi TDK for .NET
 
-The Affinidi Trust Development Kit (Affinidi TDK) is a modern interface that allows you to easily manage and integrate [Affinidi Elements](https://docs.affinidi.com/docs/affinidi-elements/) and [Frameworks](https://docs.affinidi.com/frameworks/iota-framework/) into your application. It minimises dependencies and enables developers to integrate seamlessly into the [Affinidi Trust Network (ATN)](https://docs.affinidi.com/docs/).
+**Affinidi Trust Development Kit (Affinidi TDK)** provides developers with a set of building blocks to create privacy-preserving applications powered by the [Affinidi Trust Network (ATN)](https://docs.affinidi.com/docs/).
 
-## How do I use Affinidi TDK?
+With the TDK, you can enable:
 
-The Affinidi TDK provides two types of modules:
+- Verifiable Credential issuance and verification
+- Secure data sharing
+- Vault management
+- Passwordless login
+- and more
 
-- [Clients](src/Clients), which offer methods to access Affinidi Elements services like Credential Issuance, Credential Verification, and Login Configurations, among others.
-- [Packages](src/Packages), which are commonly used utilities/helpers that are self-contained and composable.
-
-## Requirements
-
-- [.NET 8 SDK](https://dotnet.microsoft.com/en-us/download/dotnet/8.0) **(minimum version: `8.0.400`)**
-- Compatible OS: Windows, macOS, or Linux
-
-You can check your installed version using:
-
-```bash
-dotnet --version
-```
-
-💡 This project uses a `global.json` to enforce SDK version consistency. If you don’t have the specified version installed, the build may fail.
-
-## Installation
-
-### Creating a New Project
-
-1. Create a project directory: `mkdir my-dotnet-app`
-2. Create the project: `dotnet create console`
-
-
-### Installing a TDK client or packages with dotnet
-
-To install TDK client or package in dotnet, you need to run the command below:
-`dotnet add package <Affinidi-Package-Name> --version <Package-Version>`
-
-Example (installing the AffinidiTdk.AuthProvider Package):
-`dotnet add package AffinidiTdk.AuthProvider --version 1.0.0`
-
-The Clients and Packages will be available in [nuget.org](https://www.nuget.org/).
-
-
-## Quickstart
-
-Here's a basic example of using the TDK to list Login Configurations:
-
-```dotnet
-using AffinidiTdk.AuthProvider;
-using AffinidiTdk.LoginConfigurationClient.Api;
-using AffinidiTdk.LoginConfigurationClient.Client;
-using AffinidiTdk.LoginConfigurationClient.Model;
-
-public class ListLoginConfig
-{
-    static async Task Main(string[] args)
-    {
-        // Instantiate AuthProviderConfig object to load the AuthProvider.
-        // Ensure that these sensitive information are kept safe. 
-        // You may use `DotNetEnv` to load this info from your .env
-        var authProviderParams = new AuthProviderParams
-        {
-            ProjectId = '<YOUR-PROJECT-ID>',
-            TokenId = '<YOUR-TOKEN-ID>',
-            PrivateKey = '<YOUR-PRIVATE-KEY>'
-        };
-
-        // create an AuthProvider instance
-        AuthProvider authProvider = new AuthProvider(authProviderParams);
-
-        // fetch the projectScopedToken from the authProviderConfig
-        string projecScopedToken = await authProvider.FetchProjectScopedTokenAsync();
-        
-        // create an instance of Configuration from AffinidiTdk.LoginConfigurationClient
-        Configuration config = new Configuration();
-
-        // set the projectScopedToken as apiKey. Note that its using a Map/Dictionary. Key here is "authorization"
-        config.AddApiKey("authorization", projectScopedToken);
-
-        // create an instance of ConfigurationApi (from AffinidTdk.LoginConfigurationClient) and pass the config in the constructor argument.
-        ConfigurationApi api = new ConfigurationApi(config);
-
-        // Call ListLoginConfig from the api
-        ListLoginConfigurationOutput result = api.ListLoginConfigurations();
-
-        // print the result as JSON
-        Console.WriteLine("Login Configurations: " + loginConfig.ToJson());
-    }
-}
-```
-
-You may find more examples [here](examples).
-
-
-## Documentation
-
-Head over to our [Documentation site](https://docs.affinidi.com/dev-tools/affinidi-tdk) to know how to get started with Affinidi TDK.
-
-Use [this document](https://docs.affinidi.com/dev-tools/affinidi-tdk/overview/#prerequisites) to learn more about how to work with Affinidi TDK, including generating the Authorisation Token and calling the methods.
-
-To learn how to integrate Affinidi TDK and use the different modules into your application, you can explore the following:
-
-- [Affinidi TDK Clients](https://docs.affinidi.com/dev-tools/affinidi-tdk/overview/#clients)
-- [Affinidi TDK Packages](https://docs.affinidi.com/dev-tools/affinidi-tdk/overview/#packages)
+Get started by exploring our [Documentation site](https://docs.affinidi.com/dev-tools/affinidi-tdk/overview) for detailed guides, setup instructions, and end-to-end examples of what you can build using Affinidi tools.
 
 ## Support & feedback
 
@@ -118,14 +27,6 @@ If you have a technical issue with the Affinidi TDK's codebase, you can also cre
    [open a new one](https://github.com/affinidi/affinidi-tdk-dotnet/issues/new).
    Be sure to include a **title and clear description**, as much relevant information as possible,
    and a **code sample** or an **executable test case** demonstrating the expected behavior that is not occurring.
-   
-
-## Contributing
-
-Want to contribute?
-
-Head over to our [CONTRIBUTING](CONTRIBUTING.md) guidelines.
-
 
 ## FAQ
 
@@ -169,7 +70,3 @@ Affinidi collects usage data to improve our products and services. For informati
 
 _Disclaimer:
 Please note that this FAQ is provided for informational purposes only and is not to be considered a legal document. For the legal terms and conditions governing your use of the Affinidi Services, please refer to our [Terms and Conditions](https://www.affinidi.com/terms-conditions)._
-
-## Contributors ✨
-
-Contributions of any kind welcome!
