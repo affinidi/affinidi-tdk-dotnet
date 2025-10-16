@@ -42,7 +42,9 @@ namespace AffinidiTdk.WalletsClient.Model
         /// Initializes a new instance of the <see cref="SignPresentationLdpInputDto" /> class.
         /// </summary>
         /// <param name="unsignedPresentation">Unsigned presentation in Dm1 format (required).</param>
-        public SignPresentationLdpInputDto(Object unsignedPresentation = default)
+        /// <param name="domain">Domain(s) for which the presentation is intended.</param>
+        /// <param name="challenge">Challenge string.</param>
+        public SignPresentationLdpInputDto(Object unsignedPresentation = default, List<string> domain = default, string challenge = default)
         {
             // to ensure "unsignedPresentation" is required (not null)
             if (unsignedPresentation == null)
@@ -50,6 +52,8 @@ namespace AffinidiTdk.WalletsClient.Model
                 throw new ArgumentNullException("unsignedPresentation is a required property for SignPresentationLdpInputDto and cannot be null");
             }
             this.UnsignedPresentation = unsignedPresentation;
+            this.Domain = domain;
+            this.Challenge = challenge;
         }
 
         /// <summary>
@@ -60,6 +64,20 @@ namespace AffinidiTdk.WalletsClient.Model
         public Object UnsignedPresentation { get; set; }
 
         /// <summary>
+        /// Domain(s) for which the presentation is intended
+        /// </summary>
+        /// <value>Domain(s) for which the presentation is intended</value>
+        [DataMember(Name = "domain", EmitDefaultValue = false)]
+        public List<string> Domain { get; set; }
+
+        /// <summary>
+        /// Challenge string
+        /// </summary>
+        /// <value>Challenge string</value>
+        [DataMember(Name = "challenge", EmitDefaultValue = false)]
+        public string Challenge { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -68,6 +86,8 @@ namespace AffinidiTdk.WalletsClient.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class SignPresentationLdpInputDto {\n");
             sb.Append("  UnsignedPresentation: ").Append(UnsignedPresentation).Append("\n");
+            sb.Append("  Domain: ").Append(Domain).Append("\n");
+            sb.Append("  Challenge: ").Append(Challenge).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
