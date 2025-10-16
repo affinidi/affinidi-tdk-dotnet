@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 **EnableVerification** | **bool** | Cryptographically verifies the data shared by the user when enabled. | 
 **EnableConsentAuditLog** | **bool** | Records the consent the user gave when they shared their data, including the type of data shared. | 
 **ClientMetadata** | [**IotaConfigurationDtoClientMetadata**](IotaConfigurationDtoClientMetadata.md) |  | 
-**Mode** | **string** | Determines whether to handle the data-sharing request using the WebSocket or Redirect flow. | [optional] [default to ModeEnum.Websocket]
+**Mode** | **string** | Determines whether to handle the data-sharing request using the WebSocket, Redirect or Didcomm messaging flow. | [optional] [default to ModeEnum.Websocket]
 **RedirectUris** | **List&lt;string&gt;** | List of allowed URLs to redirect users, including the response from the request. This is required if the selected data-sharing mode is Redirect. | [optional] 
 **EnableIdvProviders** | **bool** | Enables identity verification from user with a 3rd-party provider when a verified identity document is not found. | [optional] 
 

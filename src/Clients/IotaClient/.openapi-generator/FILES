@@ -22,6 +22,7 @@ docs/CorsIotaExchangeCredentialsOK.md
 docs/CreateDcqlQueryInput.md
 docs/CreateIotaConfigurationInput.md
 docs/CreatePexQueryInput.md
+docs/DcqlQueryApi.md
 docs/DcqlQueryDto.md
 docs/DefaultApi.md
 docs/DeletePexQueriesInput.md
@@ -62,6 +63,7 @@ docs/VPTokenValidationError.md
 src/AffinidiTdk.IotaClient/AffinidiTdk.IotaClient.csproj
 src/AffinidiTdk.IotaClient/Api/CallbackApi.cs
 src/AffinidiTdk.IotaClient/Api/ConfigurationsApi.cs
+src/AffinidiTdk.IotaClient/Api/DcqlQueryApi.cs
 src/AffinidiTdk.IotaClient/Api/DefaultApi.cs
 src/AffinidiTdk.IotaClient/Api/IotaApi.cs
 src/AffinidiTdk.IotaClient/Api/PexQueryApi.cs
