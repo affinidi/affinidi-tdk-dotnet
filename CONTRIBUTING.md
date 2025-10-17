@@ -4,7 +4,6 @@ When contributing to this repository, please first discuss the change you wish t
 
 Clients are generated intenally by Affinidi based on our API's. So, please don't update the client code and instead create an issue.
 
-
 ### Installing requirements
 
 1. Install [.NET 8 SDK](https://dotnet.microsoft.com/en-us/download)
