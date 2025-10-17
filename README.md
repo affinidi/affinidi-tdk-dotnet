@@ -12,6 +12,8 @@ With the TDK, you can enable:
 
 Get started by exploring our [Documentation site](https://docs.affinidi.com/dev-tools/affinidi-tdk/overview) for detailed guides, setup instructions, and end-to-end examples of what you can build using Affinidi tools.
 
+See also:
+
 - [Contributing](./CONTRIBUTING.md)
 - [FAQ](./FAQ.md)
 - [Support](./SUPPORT.md)
