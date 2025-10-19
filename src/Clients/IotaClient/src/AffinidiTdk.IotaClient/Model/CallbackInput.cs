@@ -44,10 +44,11 @@ namespace AffinidiTdk.IotaClient.Model
         /// <param name="state">A randomly generated string that follows a valid UUID (version 1-5) format to validate the session. (required).</param>
         /// <param name="presentationSubmission">A JSON string format that describes the link between the Verifiable Presentation and Presentation Definition for the verifier. The presentation submission follows the OID4VP standard..</param>
         /// <param name="vpToken">A JSON string format containing the data the user consented to share in a Verifiable Presentation format. The VP Token follows the OID4VP standard..</param>
+        /// <param name="responseCode">Used only for internal system flows. This field is not applicable  for external client integrations and will not produce valid results  when used outside of internal contexts..</param>
         /// <param name="error">A short string indicating the error code reported by the service. It follows the OAuth 2.0 error code format (e.g., invalid_request, access_denied). The default is access_denied..</param>
         /// <param name="errorDescription">A human-readable description that provides detailed information about the error..</param>
         /// <param name="onboarded">It specifies whether the data sharing flow triggered an onboarding process to the Affinidi Vault [New User]..</param>
-        public CallbackInput(string state = default, string presentationSubmission = default, string vpToken = default, string error = default, string errorDescription = default, bool onboarded = default)
+        public CallbackInput(string state = default, string presentationSubmission = default, string vpToken = default, string responseCode = default, string error = default, string errorDescription = default, bool onboarded = default)
         {
             // to ensure "state" is required (not null)
             if (state == null)
@@ -57,6 +58,7 @@ namespace AffinidiTdk.IotaClient.Model
             this.State = state;
             this.PresentationSubmission = presentationSubmission;
             this.VpToken = vpToken;
+            this.ResponseCode = responseCode;
             this.Error = error;
             this.ErrorDescription = errorDescription;
             this.Onboarded = onboarded;
@@ -82,6 +84,13 @@ namespace AffinidiTdk.IotaClient.Model
         /// <value>A JSON string format containing the data the user consented to share in a Verifiable Presentation format. The VP Token follows the OID4VP standard.</value>
         [DataMember(Name = "vp_token", EmitDefaultValue = false)]
         public string VpToken { get; set; }
+
+        /// <summary>
+        /// Used only for internal system flows. This field is not applicable  for external client integrations and will not produce valid results  when used outside of internal contexts.
+        /// </summary>
+        /// <value>Used only for internal system flows. This field is not applicable  for external client integrations and will not produce valid results  when used outside of internal contexts.</value>
+        [DataMember(Name = "response_code", EmitDefaultValue = false)]
+        public string ResponseCode { get; set; }
 
         /// <summary>
         /// A short string indicating the error code reported by the service. It follows the OAuth 2.0 error code format (e.g., invalid_request, access_denied). The default is access_denied.
@@ -115,6 +124,7 @@ namespace AffinidiTdk.IotaClient.Model
             sb.Append("  State: ").Append(State).Append("\n");
             sb.Append("  PresentationSubmission: ").Append(PresentationSubmission).Append("\n");
             sb.Append("  VpToken: ").Append(VpToken).Append("\n");
+            sb.Append("  ResponseCode: ").Append(ResponseCode).Append("\n");
             sb.Append("  Error: ").Append(Error).Append("\n");
             sb.Append("  ErrorDescription: ").Append(ErrorDescription).Append("\n");
             sb.Append("  Onboarded: ").Append(Onboarded).Append("\n");

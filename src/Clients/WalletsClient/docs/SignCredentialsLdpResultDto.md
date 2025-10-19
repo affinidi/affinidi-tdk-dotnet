@@ -1,12 +1,11 @@
-# AffinidiTdk.WalletsClient.Model.SignCredentialsDm2LdInputDto
-DTO contains params to sign credential
+# AffinidiTdk.WalletsClient.Model.SignCredentialsLdpResultDto
+DTO contains signed credential
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**UnsignedCredential** | **Object** | Unsigned Credential in Dm2 format  | 
-**Revocable** | **bool** |  | [optional] 
+**Credential** | **Object** | Signed credential can be in Dm2Ld format | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
