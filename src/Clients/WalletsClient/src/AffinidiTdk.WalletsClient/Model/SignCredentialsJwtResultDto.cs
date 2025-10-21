@@ -30,24 +30,24 @@ namespace AffinidiTdk.WalletsClient.Model
     /// <summary>
     /// DTO contains signed credential
     /// </summary>
-    [DataContract(Name = "SignCredentialsDm1JwtResultDto")]
-    public partial class SignCredentialsDm1JwtResultDto : IValidatableObject
+    [DataContract(Name = "signCredentialsJwtResultDto")]
+    public partial class SignCredentialsJwtResultDto : IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="SignCredentialsDm1JwtResultDto" /> class.
+        /// Initializes a new instance of the <see cref="SignCredentialsJwtResultDto" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        protected SignCredentialsDm1JwtResultDto() { }
+        protected SignCredentialsJwtResultDto() { }
         /// <summary>
-        /// Initializes a new instance of the <see cref="SignCredentialsDm1JwtResultDto" /> class.
+        /// Initializes a new instance of the <see cref="SignCredentialsJwtResultDto" /> class.
         /// </summary>
         /// <param name="credential">Signed credential in DM2 jwt format (required).</param>
-        public SignCredentialsDm1JwtResultDto(string credential = default)
+        public SignCredentialsJwtResultDto(string credential = default)
         {
             // to ensure "credential" is required (not null)
             if (credential == null)
             {
-                throw new ArgumentNullException("credential is a required property for SignCredentialsDm1JwtResultDto and cannot be null");
+                throw new ArgumentNullException("credential is a required property for SignCredentialsJwtResultDto and cannot be null");
             }
             this.Credential = credential;
         }
@@ -66,7 +66,7 @@ namespace AffinidiTdk.WalletsClient.Model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class SignCredentialsDm1JwtResultDto {\n");
+            sb.Append("class SignCredentialsJwtResultDto {\n");
             sb.Append("  Credential: ").Append(Credential).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
