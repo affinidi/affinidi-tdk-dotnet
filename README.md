@@ -109,7 +109,7 @@ public class CreateWalletExample
         AuthProvider authProvider = new AuthProvider(authProviderParams);
 
         // fetch the projectScopedToken from the authProviderConfig
-        string projecScopedToken = await authProvider.FetchProjectScopedTokenAsync();
+        string projectScopedToken = await authProvider.FetchProjectScopedTokenAsync();
         
         // create an instance of Configuration from AffinidiTdk.CredentialIssuanceClient
         Configuration config = new Configuration();
