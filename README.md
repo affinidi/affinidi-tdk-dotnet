@@ -1,16 +1,16 @@
 <a id="top"></a>
 # Affinidi Trust Development Kit (TDK) for .NET
 
-The Affinidi TDK empowers developers to streamline the integration of Affinidi services into their applications with comprehensive tools, reducing integration effort and improving productivity.
-This toolkit also makes it easy to integrate [Affinidi Elements](https://docs.affinidi.com/docs/affinidi-elements/) and [Frameworks](https://docs.affinidi.com/frameworks/iota-framework/) into your application. It enables developers to integrate seamlessly into the [Affinidi Trust Network (ATN)](https://docs.affinidi.com/docs/).
+The Affinidi TDK for .NET is designed to enable .NET developers to seamlessly integrate Affinidi's services such as Credential Issuance, Credential Verification and Iota Framework for secure data sharing into their applications with minimal effort. Built for developers who value security, privacy and speed, this toolkit simplifies the use of Decentralised Identifiers (DIDs) and Verifiable Credentials (VCs) standards, allowing you to focus on delivering value for users.
 
-With Affinidi TDK, developers can build privacy-first identity applications in .NET, supporting use-cases such as [enabling passwordless login experience for your users](https://docs.affinidi.com/docs/affinidi-login/), [implementing consent-driven data sharing](https://docs.affinidi.com/frameworks/iota-framework/), and [issuing verifiable credentials (VCs) to your users](https://docs.affinidi.com/docs/affinidi-elements/credential-issuance/).
+With the .NET TDK, you can build secure, consent-driven, and user-centric experiences, from **[enabling passwordless authentication](https://docs.affinidi.com/docs/affinidi-login)** to **[issuing](https://docs.affinidi.com/docs/affinidi-elements/credential-issuance)** or **[verifying](https://docs.affinidi.com/docs/affinidi-elements/credential-verification)** VCs, and implementing **[VC sharing with user consent](https://docs.affinidi.com/frameworks/iota-framework)** at scale.
 
 
 ## Table of Contents
 
-- [How do I use Affinidi TDK?](#how-do-i-use-affinidi-tdk)
+- [Prerequisites](#prerequisites)
 - [Requirements](#requirements)
+- [How do I use Affinidi TDK?](#how-do-i-use-affinidi-tdk)
 - [Installation](#installation)
 - [Quickstart](#quickstart)
 - [Documentation](#documentation)
@@ -20,12 +20,11 @@ With Affinidi TDK, developers can build privacy-first identity applications in .
 - [Telemetry](#telemetry)
 
 
-## How do I use Affinidi TDK?
+## Prerequisites
 
-The Affinidi TDK provides two types of modules:
-
-- [Clients](https://docs.affinidi.com/dev-tools/affinidi-tdk/dotnet/clients/): offer methods to access Affinidi Elements services like Credential Issuance, Credential Verification, and Login Configurations, among others.
-- [Packages](https://docs.affinidi.com/dev-tools/affinidi-tdk/dotnet/packages/): are commonly used utilities/helpers that are self-contained and composable.
+Before getting started, ensure you have:
+- An [Affinidi Portal Account](https://portal.affinidi.com/) 
+- A Personal Access Token (PAT) - [Learn how to create one](https://docs.affinidi.com/dev-tools/affinidi-tdk/get-access-token/#create-a-personal-access-token-pat)
 
 
 
@@ -39,10 +38,14 @@ You can check your installed version using:
 dotnet --version
 ```
 
-💡 This project uses a `global.json` to enforce SDK version consistency. If you don’t have the specified version installed, the build may fail.
 
 
-<p align="right">(<a href="#top">back to top</a>)</p>
+## How do I use Affinidi TDK?
+
+The Affinidi TDK provides two types of modules:
+
+- [Clients](https://docs.affinidi.com/dev-tools/affinidi-tdk/dotnet/clients/): offer methods to access Affinidi Elements services like Credential Issuance, Credential Verification, and Login Configurations, among others.
+- [Packages](https://docs.affinidi.com/dev-tools/affinidi-tdk/dotnet/packages/): are commonly used utilities/helpers that are self-contained and composable.
 
 
 
@@ -71,19 +74,14 @@ Example (installing the AffinidiTdk.AuthProvider Package):
 All Affinidi TDK Clients and Packages are available in [nuget.org](https://www.nuget.org/profiles/affinidi). 
 
 
-<p align="right">(<a href="#top">back to top</a>)</p>
-
-
 
 ## Quickstart
-
-> **Note:** When working with tokens, it’s crucial to manage your project access token properly to avoid failures caused by expiration. To help with this, we’ve provided [example code](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/examples/HookAuthExample/HookAuthExample.cs) that automatically refreshes tokens, ensuring that the client APIs always use a valid, up-to-date token.
-
 
 Here's a basic example of using the .NET TDK to create a wallet for signing verifiable credentials using the **WalletApi** from **[AffinidiTdk.WalletsClient](https://www.nuget.org/packages/AffinidiTdk.WalletsClient)**:
 
 ```csharp
 
+using DotNetEnv;
 using AffinidiTdk.AuthProvider;
 using AffinidiTdk.WalletsClient.Client;
 using AffinidiTdk.WalletsClient.Api;
@@ -93,16 +91,20 @@ public class CreateWalletExample
 {
     static async Task Main(string[] args)
     {
+        // Use DotEnv to load environment variables
+        // Ensure that you have a .env in place with the values before proceeding
+        Env.Load();
+
         // Instantiate AuthProviderConfig object to load the AuthProvider.
-        // Ensure that these sensitive information are kept safe. 
-        // You may use `DotNetEnv` to load this info from your .env
+        // Never hardcode sensitive values in production
+        // Use environment variables or secure configuration management
         var authProviderParams = new AuthProviderParams
         {
             // Please generate your own Personal Access Tokens (PAT). 
             // Refer to https://docs.affinidi.com/dev-tools/affinidi-tdk/get-access-token/#create-a-personal-access-token-pat for the guide on creating your own PAT.
-            ProjectId = "<YOUR-PROJECT-ID>",
-            TokenId = "<YOUR-TOKEN-ID>",
-            PrivateKey = "<YOUR-PRIVATE-KEY>"
+            ProjectId = Environment.GetEnvironmentVariable("PROJECT_ID"),
+            TokenId = Environment.GetEnvironmentVariable("TOKEN_ID"),
+            PrivateKey = Environment.GetEnvironmentVariable("PRIVATE_KEY")
         };
 
         // create an AuthProvider instance
@@ -123,10 +125,17 @@ public class CreateWalletExample
         // create a CreateWalletInput object with the name and did method
         CreateWalletInput input = new CreateWalletInput(name: "DotNet Wallet", didMethod: CreateWalletInput.DidMethodEnum.Key); 
 
-        // call the CreateWallet api and pass the CreateWalletInput as argument
-        CreateWalletResponse result  = api.CreateWallet(input);
+        try
+        {
+          // call the CreateWallet api and pass the CreateWalletInput as argument
+          CreateWalletResponse result  = api.CreateWallet(input);
         
-        Console.WriteLine("CreateWallet Result: " + result.ToJson());
+          Console.WriteLine("CreateWallet Result: " + result.ToJson());
+        }
+        catch (Exception ex)
+        {
+          Console.WriteLine($"Error creating wallet: {ex.Message}");
+        }
     }
 }
 ```
@@ -146,10 +155,10 @@ CreateWallet Result: {
 
 ```
 
-Get to know more about other .NET TDK clients and operations from our [documentation site](https://docs.affinidi.com/dev-tools/affinidi-tdk/dotnet/clients/).
+
+*We've provided a feature to manage your project access token lifecycle by automatically refreshing it, ensuring the client APIs always use a valid, up-to-date token. Refer to the [example code](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/examples/HookAuthExample/HookAuthExample.cs)*.
 
 
-<p align="right">(<a href="#top">back to top</a>)</p>
 
 
 
@@ -161,12 +170,8 @@ Use [this document](https://docs.affinidi.com/dev-tools/affinidi-tdk/overview/#p
 
 To learn how to integrate Affinidi TDK and use the different modules into your application, you can explore the following:
 
-- [Affinidi TDK Clients](https://docs.affinidi.com/dev-tools/affinidi-tdk/overview/#clients)
-- [Affinidi TDK Packages](https://docs.affinidi.com/dev-tools/affinidi-tdk/overview/#packages)
-
-
-
-<p align="right">(<a href="#top">back to top</a>)</p>
+- [Affinidi TDK Clients](https://docs.affinidi.com/dev-tools/affinidi-tdk/dotnet/clients/)
+- [Affinidi TDK Packages](https://docs.affinidi.com/dev-tools/affinidi-tdk/dotnet/packages/)
 
 
 
@@ -188,9 +193,6 @@ If you have a technical issue with the Affinidi TDK's codebase, you can also cre
    
 
 
-<p align="right">(<a href="#top">back to top</a>)</p>
-
-
 
 ## Contributing
 
@@ -198,11 +200,6 @@ We enjoy community contributions! Whether it’s bug fixes, feature requests, or
 
 - Head over to our [CONTRIBUTING](CONTRIBUTING.md) to get started.
 - Have an idea? Start a discussion in [GitHub Discussions](https://github.com/affinidi/affinidi-tdk-dotnet/issues) or [Discord](https://discord.com/invite/hGVVSEASPQ)
-
-
-
-<p align="right">(<a href="#top">back to top</a>)</p>
-
 
 
 
@@ -242,7 +239,6 @@ From time to time, we may request certain information from you to ensure that yo
 
 When you create a developer's account with us, we will issue you your private login credentials. Please do not share this with anyone else, as you would be responsible for activities that happen under your account. If you have interested friends, ask them to sign up – let's build together!
 
-<p align="right">(<a href="#top">back to top</a>)</p>
 
 ## Telemetry
 
@@ -250,7 +246,3 @@ Affinidi collects usage data to improve our products and services. For informati
 
 _Disclaimer:
 Please note that this FAQ is provided for informational purposes only and is not to be considered a legal document. For the legal terms and conditions governing your use of the Affinidi Services, please refer to our [Terms and Conditions](https://www.affinidi.com/terms-conditions)._
-
-
-
-<p align="right">(<a href="#top">back to top</a>)</p>
