@@ -28,41 +28,35 @@ using OpenAPIDateConverter = AffinidiTdk.CredentialVerificationClient.Client.Ope
 namespace AffinidiTdk.CredentialVerificationClient.Model
 {
     /// <summary>
-    /// Request model of /v2/verify-vp
+    /// Presentation Exchange Query containing presentation definition and submission
     /// </summary>
-    [DataContract(Name = "VerifyPresentationV2Input")]
-    public partial class VerifyPresentationV2Input : IValidatableObject
+    [DataContract(Name = "VerifyPresentationV2Input_pexQuery")]
+    public partial class VerifyPresentationV2InputPexQuery : IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="VerifyPresentationV2Input" /> class.
+        /// Initializes a new instance of the <see cref="VerifyPresentationV2InputPexQuery" /> class.
         /// </summary>
-        /// <param name="verifiablePresentation">verifiablePresentation.</param>
-        /// <param name="pexQuery">pexQuery.</param>
-        /// <param name="challenge">challenge.</param>
-        public VerifyPresentationV2Input(Object verifiablePresentation = default, VerifyPresentationV2InputPexQuery pexQuery = default, string challenge = default)
+        /// <param name="presentationDefinition">Presentation definition for the verification request.</param>
+        /// <param name="presentationSubmission">Presentation submission for the verification request.</param>
+        public VerifyPresentationV2InputPexQuery(Object presentationDefinition = default, Object presentationSubmission = default)
         {
-            this.VerifiablePresentation = verifiablePresentation;
-            this.PexQuery = pexQuery;
-            this.Challenge = challenge;
+            this.PresentationDefinition = presentationDefinition;
+            this.PresentationSubmission = presentationSubmission;
         }
 
         /// <summary>
-        /// Gets or Sets VerifiablePresentation
+        /// Presentation definition for the verification request
         /// </summary>
-        [DataMember(Name = "verifiablePresentation", EmitDefaultValue = false)]
-        public Object VerifiablePresentation { get; set; }
+        /// <value>Presentation definition for the verification request</value>
+        [DataMember(Name = "presentationDefinition", EmitDefaultValue = false)]
+        public Object PresentationDefinition { get; set; }
 
         /// <summary>
-        /// Gets or Sets PexQuery
+        /// Presentation submission for the verification request
         /// </summary>
-        [DataMember(Name = "pexQuery", EmitDefaultValue = false)]
-        public VerifyPresentationV2InputPexQuery PexQuery { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Challenge
-        /// </summary>
-        [DataMember(Name = "challenge", EmitDefaultValue = false)]
-        public string Challenge { get; set; }
+        /// <value>Presentation submission for the verification request</value>
+        [DataMember(Name = "presentationSubmission", EmitDefaultValue = false)]
+        public Object PresentationSubmission { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -71,10 +65,9 @@ namespace AffinidiTdk.CredentialVerificationClient.Model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class VerifyPresentationV2Input {\n");
-            sb.Append("  VerifiablePresentation: ").Append(VerifiablePresentation).Append("\n");
-            sb.Append("  PexQuery: ").Append(PexQuery).Append("\n");
-            sb.Append("  Challenge: ").Append(Challenge).Append("\n");
+            sb.Append("class VerifyPresentationV2InputPexQuery {\n");
+            sb.Append("  PresentationDefinition: ").Append(PresentationDefinition).Append("\n");
+            sb.Append("  PresentationSubmission: ").Append(PresentationSubmission).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
