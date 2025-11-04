@@ -1,11 +1,11 @@
-# AffinidiTdk.WalletsClient.Model.SignCredentialsDm2LdResultDto
-DTO contains signed credential
+# AffinidiTdk.WalletsClient.Model.CreateWalletV2Response
+wallet dto
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Credential** | **Object** | Signed credential can be in Dm2Ld format | 
+**Wallet** | [**WalletV2Dto**](WalletV2Dto.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
