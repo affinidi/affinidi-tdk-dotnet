@@ -34,9 +34,9 @@ namespace AffinidiTdk.IotaClient.Model
     public partial class InitiateDataSharingRequestInput : IValidatableObject
     {
         /// <summary>
-        /// Determines whether to handle the data-sharing request using the WebSocket or Redirect flow.
+        /// Determines whether to handle the data-sharing request using the WebSocket, Redirect or Didcomm messaging flow.
         /// </summary>
-        /// <value>Determines whether to handle the data-sharing request using the WebSocket or Redirect flow.</value>
+        /// <value>Determines whether to handle the data-sharing request using the WebSocket, Redirect or Didcomm messaging flow.</value>
         [JsonConverter(typeof(StringEnumConverter))]
         public enum ModeEnum
         {
@@ -50,14 +50,20 @@ namespace AffinidiTdk.IotaClient.Model
             /// Enum Websocket for value: websocket
             /// </summary>
             [EnumMember(Value = "websocket")]
-            Websocket = 2
+            Websocket = 2,
+
+            /// <summary>
+            /// Enum Didcomm for value: didcomm
+            /// </summary>
+            [EnumMember(Value = "didcomm")]
+            Didcomm = 3
         }
 
 
         /// <summary>
-        /// Determines whether to handle the data-sharing request using the WebSocket or Redirect flow.
+        /// Determines whether to handle the data-sharing request using the WebSocket, Redirect or Didcomm messaging flow.
         /// </summary>
-        /// <value>Determines whether to handle the data-sharing request using the WebSocket or Redirect flow.</value>
+        /// <value>Determines whether to handle the data-sharing request using the WebSocket, Redirect or Didcomm messaging flow.</value>
         [DataMember(Name = "mode", IsRequired = true, EmitDefaultValue = true)]
         public ModeEnum Mode { get; set; }
         /// <summary>
@@ -74,8 +80,9 @@ namespace AffinidiTdk.IotaClient.Model
         /// <param name="nonce">A randomly generated value that is added in the request and response to prevent replay attacks. (required).</param>
         /// <param name="redirectUri">List of allowed URLs to redirect users, including the response from the request. This is required if the selected data-sharing mode is Redirect. (required).</param>
         /// <param name="configurationId">ID of the Affinidi Iota Framework configuration. (required).</param>
-        /// <param name="mode">Determines whether to handle the data-sharing request using the WebSocket or Redirect flow. (required).</param>
-        public InitiateDataSharingRequestInput(string queryId = default, string correlationId = default, decimal tokenMaxAge = default, string nonce = default, string redirectUri = default, string configurationId = default, ModeEnum mode = default)
+        /// <param name="userDid">User DID to send the initiating request to. Only required if mode is didcomm.</param>
+        /// <param name="mode">Determines whether to handle the data-sharing request using the WebSocket, Redirect or Didcomm messaging flow. (required).</param>
+        public InitiateDataSharingRequestInput(string queryId = default, string correlationId = default, decimal tokenMaxAge = default, string nonce = default, string redirectUri = default, string configurationId = default, string userDid = default, ModeEnum mode = default)
         {
             // to ensure "queryId" is required (not null)
             if (queryId == null)
@@ -109,6 +116,7 @@ namespace AffinidiTdk.IotaClient.Model
             this.ConfigurationId = configurationId;
             this.Mode = mode;
             this.TokenMaxAge = tokenMaxAge;
+            this.UserDid = userDid;
         }
 
         /// <summary>
@@ -154,6 +162,13 @@ namespace AffinidiTdk.IotaClient.Model
         public string ConfigurationId { get; set; }
 
         /// <summary>
+        /// User DID to send the initiating request to. Only required if mode is didcomm
+        /// </summary>
+        /// <value>User DID to send the initiating request to. Only required if mode is didcomm</value>
+        [DataMember(Name = "userDid", EmitDefaultValue = false)]
+        public string UserDid { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -167,6 +182,7 @@ namespace AffinidiTdk.IotaClient.Model
             sb.Append("  Nonce: ").Append(Nonce).Append("\n");
             sb.Append("  RedirectUri: ").Append(RedirectUri).Append("\n");
             sb.Append("  ConfigurationId: ").Append(ConfigurationId).Append("\n");
+            sb.Append("  UserDid: ").Append(UserDid).Append("\n");
             sb.Append("  Mode: ").Append(Mode).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
