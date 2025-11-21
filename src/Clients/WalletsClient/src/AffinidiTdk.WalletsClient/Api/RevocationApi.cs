@@ -101,6 +101,29 @@ namespace AffinidiTdk.WalletsClient.Api
         /// <param name="revokeCredentialInput">RevokeCredential</param>
         /// <returns>ApiResponse of Object(void)</returns>
         ApiResponse<Object> RevokeCredentialWithHttpInfo(string walletId, RevokeCredentialInput revokeCredentialInput);
+        /// <summary>
+        /// Revoke Credentials.
+        /// </summary>
+        /// <remarks>
+        /// Update index/credential at appropriate revocation list (set revoked is true).
+        /// </remarks>
+        /// <exception cref="AffinidiTdk.WalletsClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="walletId">id of the wallet</param>
+        /// <param name="revokeCredentialsInput">RevokeCredentials</param>
+        /// <returns></returns>
+        void RevokeCredentials(string walletId, RevokeCredentialsInput revokeCredentialsInput);
+
+        /// <summary>
+        /// Revoke Credentials.
+        /// </summary>
+        /// <remarks>
+        /// Update index/credential at appropriate revocation list (set revoked is true).
+        /// </remarks>
+        /// <exception cref="AffinidiTdk.WalletsClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="walletId">id of the wallet</param>
+        /// <param name="revokeCredentialsInput">RevokeCredentials</param>
+        /// <returns>ApiResponse of Object(void)</returns>
+        ApiResponse<Object> RevokeCredentialsWithHttpInfo(string walletId, RevokeCredentialsInput revokeCredentialsInput);
         #endregion Synchronous Operations
     }
 
@@ -189,6 +212,31 @@ namespace AffinidiTdk.WalletsClient.Api
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse</returns>
         System.Threading.Tasks.Task<ApiResponse<Object>> RevokeCredentialWithHttpInfoAsync(string walletId, RevokeCredentialInput revokeCredentialInput, System.Threading.CancellationToken cancellationToken = default);
+        /// <summary>
+        /// Revoke Credentials.
+        /// </summary>
+        /// <remarks>
+        /// Update index/credential at appropriate revocation list (set revoked is true).
+        /// </remarks>
+        /// <exception cref="AffinidiTdk.WalletsClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="walletId">id of the wallet</param>
+        /// <param name="revokeCredentialsInput">RevokeCredentials</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of void</returns>
+        System.Threading.Tasks.Task RevokeCredentialsAsync(string walletId, RevokeCredentialsInput revokeCredentialsInput, System.Threading.CancellationToken cancellationToken = default);
+
+        /// <summary>
+        /// Revoke Credentials.
+        /// </summary>
+        /// <remarks>
+        /// Update index/credential at appropriate revocation list (set revoked is true).
+        /// </remarks>
+        /// <exception cref="AffinidiTdk.WalletsClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="walletId">id of the wallet</param>
+        /// <param name="revokeCredentialsInput">RevokeCredentials</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse</returns>
+        System.Threading.Tasks.Task<ApiResponse<Object>> RevokeCredentialsWithHttpInfoAsync(string walletId, RevokeCredentialsInput revokeCredentialsInput, System.Threading.CancellationToken cancellationToken = default);
         #endregion Asynchronous Operations
     }
 
@@ -831,6 +879,145 @@ namespace AffinidiTdk.WalletsClient.Api
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("RevokeCredential", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Revoke Credentials. Update index/credential at appropriate revocation list (set revoked is true).
+        /// </summary>
+        /// <exception cref="AffinidiTdk.WalletsClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="walletId">id of the wallet</param>
+        /// <param name="revokeCredentialsInput">RevokeCredentials</param>
+        /// <returns></returns>
+        public void RevokeCredentials(string walletId, RevokeCredentialsInput revokeCredentialsInput)
+        {
+            RevokeCredentialsWithHttpInfo(walletId, revokeCredentialsInput);
+        }
+
+        /// <summary>
+        /// Revoke Credentials. Update index/credential at appropriate revocation list (set revoked is true).
+        /// </summary>
+        /// <exception cref="AffinidiTdk.WalletsClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="walletId">id of the wallet</param>
+        /// <param name="revokeCredentialsInput">RevokeCredentials</param>
+        /// <returns>ApiResponse of Object(void)</returns>
+        public AffinidiTdk.WalletsClient.Client.ApiResponse<Object> RevokeCredentialsWithHttpInfo(string walletId, RevokeCredentialsInput revokeCredentialsInput)
+        {
+            // verify the required parameter 'walletId' is set
+            if (walletId == null)
+                throw new AffinidiTdk.WalletsClient.Client.ApiException(400, "Missing required parameter 'walletId' when calling RevocationApi->RevokeCredentials");
+
+            // verify the required parameter 'revokeCredentialsInput' is set
+            if (revokeCredentialsInput == null)
+                throw new AffinidiTdk.WalletsClient.Client.ApiException(400, "Missing required parameter 'revokeCredentialsInput' when calling RevocationApi->RevokeCredentials");
+
+            AffinidiTdk.WalletsClient.Client.RequestOptions localVarRequestOptions = new AffinidiTdk.WalletsClient.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = AffinidiTdk.WalletsClient.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = AffinidiTdk.WalletsClient.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+            localVarRequestOptions.PathParameters.Add("walletId", AffinidiTdk.WalletsClient.Client.ClientUtils.ParameterToString(walletId)); // path parameter
+            localVarRequestOptions.Data = revokeCredentialsInput;
+
+            // authentication (ProjectTokenAuth) required
+            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
+            {
+                localVarRequestOptions.HeaderParameters.Add("authorization", this.Configuration.GetApiKeyWithPrefix("authorization"));
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<Object>("/v2/wallets/{walletId}/credentials/revoke", localVarRequestOptions, this.Configuration);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("RevokeCredentials", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Revoke Credentials. Update index/credential at appropriate revocation list (set revoked is true).
+        /// </summary>
+        /// <exception cref="AffinidiTdk.WalletsClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="walletId">id of the wallet</param>
+        /// <param name="revokeCredentialsInput">RevokeCredentials</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of void</returns>
+        public async System.Threading.Tasks.Task RevokeCredentialsAsync(string walletId, RevokeCredentialsInput revokeCredentialsInput, System.Threading.CancellationToken cancellationToken = default)
+        {
+            await RevokeCredentialsWithHttpInfoAsync(walletId, revokeCredentialsInput, cancellationToken).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Revoke Credentials. Update index/credential at appropriate revocation list (set revoked is true).
+        /// </summary>
+        /// <exception cref="AffinidiTdk.WalletsClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="walletId">id of the wallet</param>
+        /// <param name="revokeCredentialsInput">RevokeCredentials</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse</returns>
+        public async System.Threading.Tasks.Task<AffinidiTdk.WalletsClient.Client.ApiResponse<Object>> RevokeCredentialsWithHttpInfoAsync(string walletId, RevokeCredentialsInput revokeCredentialsInput, System.Threading.CancellationToken cancellationToken = default)
+        {
+            // verify the required parameter 'walletId' is set
+            if (walletId == null)
+                throw new AffinidiTdk.WalletsClient.Client.ApiException(400, "Missing required parameter 'walletId' when calling RevocationApi->RevokeCredentials");
+
+            // verify the required parameter 'revokeCredentialsInput' is set
+            if (revokeCredentialsInput == null)
+                throw new AffinidiTdk.WalletsClient.Client.ApiException(400, "Missing required parameter 'revokeCredentialsInput' when calling RevocationApi->RevokeCredentials");
+
+
+            AffinidiTdk.WalletsClient.Client.RequestOptions localVarRequestOptions = new AffinidiTdk.WalletsClient.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+
+            var localVarContentType = AffinidiTdk.WalletsClient.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = AffinidiTdk.WalletsClient.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+            localVarRequestOptions.PathParameters.Add("walletId", AffinidiTdk.WalletsClient.Client.ClientUtils.ParameterToString(walletId)); // path parameter
+            localVarRequestOptions.Data = revokeCredentialsInput;
+
+            // authentication (ProjectTokenAuth) required
+            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
+            {
+                localVarRequestOptions.HeaderParameters.Add("authorization", this.Configuration.GetApiKeyWithPrefix("authorization"));
+            }
+
+            // make the HTTP request
+
+            var localVarResponse = await this.AsynchronousClient.PostAsync<Object>("/v2/wallets/{walletId}/credentials/revoke", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("RevokeCredentials", localVarResponse);
                 if (_exception != null) throw _exception;
             }
 

@@ -7,6 +7,7 @@ All URIs are relative to *https://apse1.api.affinidi.io/cwe*
 | [**GetRevocationCredentialStatus**](RevocationApi.md#getrevocationcredentialstatus) | **GET** /v1/projects/{projectId}/wallets/{walletId}/revocation-statuses/{statusId} |  |
 | [**GetRevocationListCredential**](RevocationApi.md#getrevocationlistcredential) | **GET** /v1/wallets/{walletId}/revocation-list/{listId} | Return revocation list credential. |
 | [**RevokeCredential**](RevocationApi.md#revokecredential) | **POST** /v1/wallets/{walletId}/revoke | Revoke Credential. |
+| [**RevokeCredentials**](RevocationApi.md#revokecredentials) | **POST** /v2/wallets/{walletId}/credentials/revoke | Revoke Credentials. |
 
 <a id="getrevocationcredentialstatus"></a>
 # **GetRevocationCredentialStatus**
@@ -312,6 +313,106 @@ void (empty response body)
 | **200** | Ok |  -  |
 | **400** | BadRequestError |  -  |
 | **403** | ForbiddenError |  -  |
+| **404** | NotFoundError |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a id="revokecredentials"></a>
+# **RevokeCredentials**
+> void RevokeCredentials (string walletId, RevokeCredentialsInput revokeCredentialsInput)
+
+Revoke Credentials.
+
+Update index/credential at appropriate revocation list (set revoked is true).
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Net.Http;
+using AffinidiTdk.WalletsClient.Api;
+using AffinidiTdk.WalletsClient.Client;
+using AffinidiTdk.WalletsClient.Model;
+
+namespace Example
+{
+    public class RevokeCredentialsExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://apse1.api.affinidi.io/cwe";
+            // Configure API key authorization: ProjectTokenAuth
+            config.AddApiKey("authorization", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // config.AddApiKeyPrefix("authorization", "Bearer");
+
+            // create instances of HttpClient, HttpClientHandler to be reused later with different Api classes
+            HttpClient httpClient = new HttpClient();
+            HttpClientHandler httpClientHandler = new HttpClientHandler();
+            var apiInstance = new RevocationApi(httpClient, config, httpClientHandler);
+            var walletId = "walletId_example";  // string | id of the wallet
+            var revokeCredentialsInput = new RevokeCredentialsInput(); // RevokeCredentialsInput | RevokeCredentials
+
+            try
+            {
+                // Revoke Credentials.
+                apiInstance.RevokeCredentials(walletId, revokeCredentialsInput);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling RevocationApi.RevokeCredentials: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the RevokeCredentialsWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    // Revoke Credentials.
+    apiInstance.RevokeCredentialsWithHttpInfo(walletId, revokeCredentialsInput);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling RevocationApi.RevokeCredentialsWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **walletId** | **string** | id of the wallet |  |
+| **revokeCredentialsInput** | [**RevokeCredentialsInput**](RevokeCredentialsInput.md) | RevokeCredentials |  |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[ProjectTokenAuth](../README.md#ProjectTokenAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Ok |  -  |
+| **400** | BadRequestError |  -  |
 | **404** | NotFoundError |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

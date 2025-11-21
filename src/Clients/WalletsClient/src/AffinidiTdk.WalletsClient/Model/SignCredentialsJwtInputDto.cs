@@ -30,28 +30,61 @@ namespace AffinidiTdk.WalletsClient.Model
     /// <summary>
     /// DTO contains params to sign credential
     /// </summary>
-    [DataContract(Name = "SignCredentialsDm1JwtInputDto")]
-    public partial class SignCredentialsDm1JwtInputDto : IValidatableObject
+    [DataContract(Name = "signCredentialsJwtInputDto")]
+    public partial class SignCredentialsJwtInputDto : IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="SignCredentialsDm1JwtInputDto" /> class.
+        /// Defines SignatureScheme
+        /// </summary>
+        [JsonConverter(typeof(StringEnumConverter))]
+        public enum SignatureSchemeEnum
+        {
+            /// <summary>
+            /// Enum EcdsaSecp256k1Sha256 for value: ecdsa_secp256k1_sha256
+            /// </summary>
+            [EnumMember(Value = "ecdsa_secp256k1_sha256")]
+            EcdsaSecp256k1Sha256 = 1,
+
+            /// <summary>
+            /// Enum EcdsaP256Sha256 for value: ecdsa_p256_sha256
+            /// </summary>
+            [EnumMember(Value = "ecdsa_p256_sha256")]
+            EcdsaP256Sha256 = 2,
+
+            /// <summary>
+            /// Enum Ed25519 for value: ed25519
+            /// </summary>
+            [EnumMember(Value = "ed25519")]
+            Ed25519 = 3
+        }
+
+
+        /// <summary>
+        /// Gets or Sets SignatureScheme
+        /// </summary>
+        [DataMember(Name = "signatureScheme", EmitDefaultValue = false)]
+        public SignatureSchemeEnum? SignatureScheme { get; set; }
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SignCredentialsJwtInputDto" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        protected SignCredentialsDm1JwtInputDto() { }
+        protected SignCredentialsJwtInputDto() { }
         /// <summary>
-        /// Initializes a new instance of the <see cref="SignCredentialsDm1JwtInputDto" /> class.
+        /// Initializes a new instance of the <see cref="SignCredentialsJwtInputDto" /> class.
         /// </summary>
         /// <param name="unsignedCredential">Unsigned Credential in Dm1 format (required).</param>
         /// <param name="revocable">revocable.</param>
-        public SignCredentialsDm1JwtInputDto(Object unsignedCredential = default, bool revocable = default)
+        /// <param name="signatureScheme">signatureScheme.</param>
+        public SignCredentialsJwtInputDto(Object unsignedCredential = default, bool revocable = default, SignatureSchemeEnum? signatureScheme = default)
         {
             // to ensure "unsignedCredential" is required (not null)
             if (unsignedCredential == null)
             {
-                throw new ArgumentNullException("unsignedCredential is a required property for SignCredentialsDm1JwtInputDto and cannot be null");
+                throw new ArgumentNullException("unsignedCredential is a required property for SignCredentialsJwtInputDto and cannot be null");
             }
             this.UnsignedCredential = unsignedCredential;
             this.Revocable = revocable;
+            this.SignatureScheme = signatureScheme;
         }
 
         /// <summary>
@@ -74,9 +107,10 @@ namespace AffinidiTdk.WalletsClient.Model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class SignCredentialsDm1JwtInputDto {\n");
+            sb.Append("class SignCredentialsJwtInputDto {\n");
             sb.Append("  UnsignedCredential: ").Append(UnsignedCredential).Append("\n");
             sb.Append("  Revocable: ").Append(Revocable).Append("\n");
+            sb.Append("  SignatureScheme: ").Append(SignatureScheme).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }

@@ -34,6 +34,37 @@ namespace AffinidiTdk.WalletsClient.Model
     public partial class SignCredentialsDm1LdInputDto : IValidatableObject
     {
         /// <summary>
+        /// Defines SignatureScheme
+        /// </summary>
+        [JsonConverter(typeof(StringEnumConverter))]
+        public enum SignatureSchemeEnum
+        {
+            /// <summary>
+            /// Enum EcdsaSecp256k1Sha256 for value: ecdsa_secp256k1_sha256
+            /// </summary>
+            [EnumMember(Value = "ecdsa_secp256k1_sha256")]
+            EcdsaSecp256k1Sha256 = 1,
+
+            /// <summary>
+            /// Enum EcdsaP256Sha256 for value: ecdsa_p256_sha256
+            /// </summary>
+            [EnumMember(Value = "ecdsa_p256_sha256")]
+            EcdsaP256Sha256 = 2,
+
+            /// <summary>
+            /// Enum Ed25519 for value: ed25519
+            /// </summary>
+            [EnumMember(Value = "ed25519")]
+            Ed25519 = 3
+        }
+
+
+        /// <summary>
+        /// Gets or Sets SignatureScheme
+        /// </summary>
+        [DataMember(Name = "signatureScheme", EmitDefaultValue = false)]
+        public SignatureSchemeEnum? SignatureScheme { get; set; }
+        /// <summary>
         /// Initializes a new instance of the <see cref="SignCredentialsDm1LdInputDto" /> class.
         /// </summary>
         [JsonConstructorAttribute]
@@ -43,7 +74,8 @@ namespace AffinidiTdk.WalletsClient.Model
         /// </summary>
         /// <param name="unsignedCredential">Unsigned Credential in Dm1 format (required).</param>
         /// <param name="revocable">revocable.</param>
-        public SignCredentialsDm1LdInputDto(Object unsignedCredential = default, bool revocable = default)
+        /// <param name="signatureScheme">signatureScheme.</param>
+        public SignCredentialsDm1LdInputDto(Object unsignedCredential = default, bool revocable = default, SignatureSchemeEnum? signatureScheme = default)
         {
             // to ensure "unsignedCredential" is required (not null)
             if (unsignedCredential == null)
@@ -52,6 +84,7 @@ namespace AffinidiTdk.WalletsClient.Model
             }
             this.UnsignedCredential = unsignedCredential;
             this.Revocable = revocable;
+            this.SignatureScheme = signatureScheme;
         }
 
         /// <summary>
@@ -77,6 +110,7 @@ namespace AffinidiTdk.WalletsClient.Model
             sb.Append("class SignCredentialsDm1LdInputDto {\n");
             sb.Append("  UnsignedCredential: ").Append(UnsignedCredential).Append("\n");
             sb.Append("  Revocable: ").Append(Revocable).Append("\n");
+            sb.Append("  SignatureScheme: ").Append(SignatureScheme).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }

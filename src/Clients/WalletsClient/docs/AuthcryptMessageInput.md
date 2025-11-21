@@ -1,11 +1,12 @@
-# AffinidiTdk.WalletsClient.Model.SignCredentialsDm2LdResultDto
-DTO contains signed credential
+# AffinidiTdk.WalletsClient.Model.AuthcryptMessageInput
+DTO contains params to authcrypt plain text DIDComm message
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Credential** | **Object** | Signed credential can be in Dm2Ld format | 
+**PlainTextMessage** | **Object** | Unsigned plain text DIDComm message | 
+**SignatureScheme** | **string** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -28,10 +28,10 @@ using OpenAPIDateConverter = AffinidiTdk.WalletsClient.Client.OpenAPIDateConvert
 namespace AffinidiTdk.WalletsClient.Model
 {
     /// <summary>
-    /// DTO contains params to sign presentation
+    /// DTO contains params to authcrypt plain text DIDComm message
     /// </summary>
-    [DataContract(Name = "SignPresentationLdpInputDto")]
-    public partial class SignPresentationLdpInputDto : IValidatableObject
+    [DataContract(Name = "AuthcryptMessageInput")]
+    public partial class AuthcryptMessageInput : IValidatableObject
     {
         /// <summary>
         /// Defines SignatureScheme
@@ -65,50 +65,32 @@ namespace AffinidiTdk.WalletsClient.Model
         [DataMember(Name = "signatureScheme", EmitDefaultValue = false)]
         public SignatureSchemeEnum? SignatureScheme { get; set; }
         /// <summary>
-        /// Initializes a new instance of the <see cref="SignPresentationLdpInputDto" /> class.
+        /// Initializes a new instance of the <see cref="AuthcryptMessageInput" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        protected SignPresentationLdpInputDto() { }
+        protected AuthcryptMessageInput() { }
         /// <summary>
-        /// Initializes a new instance of the <see cref="SignPresentationLdpInputDto" /> class.
+        /// Initializes a new instance of the <see cref="AuthcryptMessageInput" /> class.
         /// </summary>
-        /// <param name="unsignedPresentation">Unsigned presentation in Dm1 format (required).</param>
+        /// <param name="plainTextMessage">Unsigned plain text DIDComm message (required).</param>
         /// <param name="signatureScheme">signatureScheme.</param>
-        /// <param name="domain">Domain(s) for which the presentation is intended.</param>
-        /// <param name="challenge">Challenge string.</param>
-        public SignPresentationLdpInputDto(Object unsignedPresentation = default, SignatureSchemeEnum? signatureScheme = default, List<string> domain = default, string challenge = default)
+        public AuthcryptMessageInput(Object plainTextMessage = default, SignatureSchemeEnum? signatureScheme = default)
         {
-            // to ensure "unsignedPresentation" is required (not null)
-            if (unsignedPresentation == null)
+            // to ensure "plainTextMessage" is required (not null)
+            if (plainTextMessage == null)
             {
-                throw new ArgumentNullException("unsignedPresentation is a required property for SignPresentationLdpInputDto and cannot be null");
+                throw new ArgumentNullException("plainTextMessage is a required property for AuthcryptMessageInput and cannot be null");
             }
-            this.UnsignedPresentation = unsignedPresentation;
+            this.PlainTextMessage = plainTextMessage;
             this.SignatureScheme = signatureScheme;
-            this.Domain = domain;
-            this.Challenge = challenge;
         }
 
         /// <summary>
-        /// Unsigned presentation in Dm1 format
+        /// Unsigned plain text DIDComm message
         /// </summary>
-        /// <value>Unsigned presentation in Dm1 format</value>
-        [DataMember(Name = "unsignedPresentation", IsRequired = true, EmitDefaultValue = true)]
-        public Object UnsignedPresentation { get; set; }
-
-        /// <summary>
-        /// Domain(s) for which the presentation is intended
-        /// </summary>
-        /// <value>Domain(s) for which the presentation is intended</value>
-        [DataMember(Name = "domain", EmitDefaultValue = false)]
-        public List<string> Domain { get; set; }
-
-        /// <summary>
-        /// Challenge string
-        /// </summary>
-        /// <value>Challenge string</value>
-        [DataMember(Name = "challenge", EmitDefaultValue = false)]
-        public string Challenge { get; set; }
+        /// <value>Unsigned plain text DIDComm message</value>
+        [DataMember(Name = "plainTextMessage", IsRequired = true, EmitDefaultValue = true)]
+        public Object PlainTextMessage { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -117,11 +99,9 @@ namespace AffinidiTdk.WalletsClient.Model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class SignPresentationLdpInputDto {\n");
-            sb.Append("  UnsignedPresentation: ").Append(UnsignedPresentation).Append("\n");
+            sb.Append("class AuthcryptMessageInput {\n");
+            sb.Append("  PlainTextMessage: ").Append(PlainTextMessage).Append("\n");
             sb.Append("  SignatureScheme: ").Append(SignatureScheme).Append("\n");
-            sb.Append("  Domain: ").Append(Domain).Append("\n");
-            sb.Append("  Challenge: ").Append(Challenge).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
