@@ -36,37 +36,27 @@ namespace AffinidiTdk.CredentialVerificationClient.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="VerifyCredentialV2Input" /> class.
         /// </summary>
-        [JsonConstructorAttribute]
-        protected VerifyCredentialV2Input() { }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="VerifyCredentialV2Input" /> class.
-        /// </summary>
-        /// <param name="verifiableCredentials">List of VC strings (required).</param>
-        /// <param name="issuerDidDocument">Dynamic model.</param>
-        public VerifyCredentialV2Input(List<string> verifiableCredentials = default, Dictionary<string, Object> issuerDidDocument = default)
+        /// <param name="jwtVcs">List of JWT VC strings.</param>
+        /// <param name="ldpVcs">List of LDP VC objects.</param>
+        public VerifyCredentialV2Input(List<string> jwtVcs = default, List<Dictionary<string, Object>> ldpVcs = default)
         {
-            // to ensure "verifiableCredentials" is required (not null)
-            if (verifiableCredentials == null)
-            {
-                throw new ArgumentNullException("verifiableCredentials is a required property for VerifyCredentialV2Input and cannot be null");
-            }
-            this.VerifiableCredentials = verifiableCredentials;
-            this.IssuerDidDocument = issuerDidDocument;
+            this.JwtVcs = jwtVcs;
+            this.LdpVcs = ldpVcs;
         }
 
         /// <summary>
-        /// List of VC strings
+        /// List of JWT VC strings
         /// </summary>
-        /// <value>List of VC strings</value>
-        [DataMember(Name = "verifiableCredentials", IsRequired = true, EmitDefaultValue = true)]
-        public List<string> VerifiableCredentials { get; set; }
+        /// <value>List of JWT VC strings</value>
+        [DataMember(Name = "jwtVcs", EmitDefaultValue = false)]
+        public List<string> JwtVcs { get; set; }
 
         /// <summary>
-        /// Dynamic model
+        /// List of LDP VC objects
         /// </summary>
-        /// <value>Dynamic model</value>
-        [DataMember(Name = "issuerDidDocument", EmitDefaultValue = false)]
-        public Dictionary<string, Object> IssuerDidDocument { get; set; }
+        /// <value>List of LDP VC objects</value>
+        [DataMember(Name = "ldpVcs", EmitDefaultValue = false)]
+        public List<Dictionary<string, Object>> LdpVcs { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -76,8 +66,8 @@ namespace AffinidiTdk.CredentialVerificationClient.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class VerifyCredentialV2Input {\n");
-            sb.Append("  VerifiableCredentials: ").Append(VerifiableCredentials).Append("\n");
-            sb.Append("  IssuerDidDocument: ").Append(IssuerDidDocument).Append("\n");
+            sb.Append("  JwtVcs: ").Append(JwtVcs).Append("\n");
+            sb.Append("  LdpVcs: ").Append(LdpVcs).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }

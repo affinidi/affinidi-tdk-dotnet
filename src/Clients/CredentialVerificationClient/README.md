@@ -168,6 +168,7 @@ ClientAPI | Operation | Description
  - [VerifyPresentationInput](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/CredentialVerificationClient/docs/VerifyPresentationInput.md)
  - [VerifyPresentationOutput](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/CredentialVerificationClient/docs/VerifyPresentationOutput.md)
  - [VerifyPresentationV2Input](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/CredentialVerificationClient/docs/VerifyPresentationV2Input.md)
+ - [VerifyPresentationV2InputPexQuery](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/CredentialVerificationClient/docs/VerifyPresentationV2InputPexQuery.md)
  - [W3cCredentialStatus](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/CredentialVerificationClient/docs/W3cCredentialStatus.md)
  - [W3cProof](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/CredentialVerificationClient/docs/W3cProof.md)
 

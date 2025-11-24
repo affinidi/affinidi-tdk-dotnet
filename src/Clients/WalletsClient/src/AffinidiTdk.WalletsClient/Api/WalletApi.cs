@@ -53,6 +53,25 @@ namespace AffinidiTdk.WalletsClient.Api
         /// 
         /// </summary>
         /// <remarks>
+        /// Create v2 wallet
+        /// </remarks>
+        /// <exception cref="AffinidiTdk.WalletsClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>CreateWalletV2Response</returns>
+        CreateWalletV2Response CreateWalletV2();
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Create v2 wallet
+        /// </remarks>
+        /// <exception cref="AffinidiTdk.WalletsClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ApiResponse of CreateWalletV2Response</returns>
+        ApiResponse<CreateWalletV2Response> CreateWalletV2WithHttpInfo();
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
         /// delete wallet by walletId
         /// </remarks>
         /// <exception cref="AffinidiTdk.WalletsClient.Client.ApiException">Thrown when fails to make API call</exception>
@@ -139,6 +158,75 @@ namespace AffinidiTdk.WalletsClient.Api
         /// 
         /// </summary>
         /// <remarks>
+        /// signs credential with the wallet v2
+        /// </remarks>
+        /// <exception cref="AffinidiTdk.WalletsClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="walletId">id of the wallet</param>
+        /// <param name="signCredentialsJwtInputDto">signCredentialsJwt</param>
+        /// <returns>SignCredentialsJwtResultDto</returns>
+        SignCredentialsJwtResultDto SignCredentialsJwt(string walletId, SignCredentialsJwtInputDto signCredentialsJwtInputDto);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// signs credential with the wallet v2
+        /// </remarks>
+        /// <exception cref="AffinidiTdk.WalletsClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="walletId">id of the wallet</param>
+        /// <param name="signCredentialsJwtInputDto">signCredentialsJwt</param>
+        /// <returns>ApiResponse of SignCredentialsJwtResultDto</returns>
+        ApiResponse<SignCredentialsJwtResultDto> SignCredentialsJwtWithHttpInfo(string walletId, SignCredentialsJwtInputDto signCredentialsJwtInputDto);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// signs credential with the wallet v2
+        /// </remarks>
+        /// <exception cref="AffinidiTdk.WalletsClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="walletId">id of the wallet</param>
+        /// <param name="signCredentialsLdpInputDto">signCredentialsLdp</param>
+        /// <returns>SignCredentialsLdpResultDto</returns>
+        SignCredentialsLdpResultDto SignCredentialsLdp(string walletId, SignCredentialsLdpInputDto signCredentialsLdpInputDto);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// signs credential with the wallet v2
+        /// </remarks>
+        /// <exception cref="AffinidiTdk.WalletsClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="walletId">id of the wallet</param>
+        /// <param name="signCredentialsLdpInputDto">signCredentialsLdp</param>
+        /// <returns>ApiResponse of SignCredentialsLdpResultDto</returns>
+        ApiResponse<SignCredentialsLdpResultDto> SignCredentialsLdpWithHttpInfo(string walletId, SignCredentialsLdpInputDto signCredentialsLdpInputDto);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// signs credential with the wallet v2
+        /// </remarks>
+        /// <exception cref="AffinidiTdk.WalletsClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="walletId">id of the wallet</param>
+        /// <param name="signCredentialsDm2SdJwtInputDto">SignCredentialsDm1SdJwt</param>
+        /// <returns>SignCredentialsDm2SdJwtResultDto</returns>
+        SignCredentialsDm2SdJwtResultDto SignCredentialsSdJwt(string walletId, SignCredentialsDm2SdJwtInputDto signCredentialsDm2SdJwtInputDto);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// signs credential with the wallet v2
+        /// </remarks>
+        /// <exception cref="AffinidiTdk.WalletsClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="walletId">id of the wallet</param>
+        /// <param name="signCredentialsDm2SdJwtInputDto">SignCredentialsDm1SdJwt</param>
+        /// <returns>ApiResponse of SignCredentialsDm2SdJwtResultDto</returns>
+        ApiResponse<SignCredentialsDm2SdJwtResultDto> SignCredentialsSdJwtWithHttpInfo(string walletId, SignCredentialsDm2SdJwtInputDto signCredentialsDm2SdJwtInputDto);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
         /// signs a jwt token with the wallet
         /// </remarks>
         /// <exception cref="AffinidiTdk.WalletsClient.Client.ApiException">Thrown when fails to make API call</exception>
@@ -158,6 +246,29 @@ namespace AffinidiTdk.WalletsClient.Api
         /// <param name="signJwtToken">SignJwtToken</param>
         /// <returns>ApiResponse of SignJwtTokenOK</returns>
         ApiResponse<SignJwtTokenOK> SignJwtTokenWithHttpInfo(string walletId, SignJwtToken signJwtToken);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// signs presentation with the wallet
+        /// </remarks>
+        /// <exception cref="AffinidiTdk.WalletsClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="walletId">id of the wallet</param>
+        /// <param name="signPresentationLdpInputDto">signPresentationLdp</param>
+        /// <returns>SignPresentationLdpResultDto</returns>
+        SignPresentationLdpResultDto SignPresentationsLdp(string walletId, SignPresentationLdpInputDto signPresentationLdpInputDto);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// signs presentation with the wallet
+        /// </remarks>
+        /// <exception cref="AffinidiTdk.WalletsClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="walletId">id of the wallet</param>
+        /// <param name="signPresentationLdpInputDto">signPresentationLdp</param>
+        /// <returns>ApiResponse of SignPresentationLdpResultDto</returns>
+        ApiResponse<SignPresentationLdpResultDto> SignPresentationsLdpWithHttpInfo(string walletId, SignPresentationLdpInputDto signPresentationLdpInputDto);
         /// <summary>
         /// 
         /// </summary>
@@ -213,6 +324,27 @@ namespace AffinidiTdk.WalletsClient.Api
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateWalletResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<CreateWalletResponse>> CreateWalletWithHttpInfoAsync(CreateWalletInput? createWalletInput = default, System.Threading.CancellationToken cancellationToken = default);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Create v2 wallet
+        /// </remarks>
+        /// <exception cref="AffinidiTdk.WalletsClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CreateWalletV2Response</returns>
+        System.Threading.Tasks.Task<CreateWalletV2Response> CreateWalletV2Async(System.Threading.CancellationToken cancellationToken = default);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Create v2 wallet
+        /// </remarks>
+        /// <exception cref="AffinidiTdk.WalletsClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CreateWalletV2Response)</returns>
+        System.Threading.Tasks.Task<ApiResponse<CreateWalletV2Response>> CreateWalletV2WithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// 
         /// </summary>
@@ -311,6 +443,81 @@ namespace AffinidiTdk.WalletsClient.Api
         /// 
         /// </summary>
         /// <remarks>
+        /// signs credential with the wallet v2
+        /// </remarks>
+        /// <exception cref="AffinidiTdk.WalletsClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="walletId">id of the wallet</param>
+        /// <param name="signCredentialsJwtInputDto">signCredentialsJwt</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of SignCredentialsJwtResultDto</returns>
+        System.Threading.Tasks.Task<SignCredentialsJwtResultDto> SignCredentialsJwtAsync(string walletId, SignCredentialsJwtInputDto signCredentialsJwtInputDto, System.Threading.CancellationToken cancellationToken = default);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// signs credential with the wallet v2
+        /// </remarks>
+        /// <exception cref="AffinidiTdk.WalletsClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="walletId">id of the wallet</param>
+        /// <param name="signCredentialsJwtInputDto">signCredentialsJwt</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (SignCredentialsJwtResultDto)</returns>
+        System.Threading.Tasks.Task<ApiResponse<SignCredentialsJwtResultDto>> SignCredentialsJwtWithHttpInfoAsync(string walletId, SignCredentialsJwtInputDto signCredentialsJwtInputDto, System.Threading.CancellationToken cancellationToken = default);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// signs credential with the wallet v2
+        /// </remarks>
+        /// <exception cref="AffinidiTdk.WalletsClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="walletId">id of the wallet</param>
+        /// <param name="signCredentialsLdpInputDto">signCredentialsLdp</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of SignCredentialsLdpResultDto</returns>
+        System.Threading.Tasks.Task<SignCredentialsLdpResultDto> SignCredentialsLdpAsync(string walletId, SignCredentialsLdpInputDto signCredentialsLdpInputDto, System.Threading.CancellationToken cancellationToken = default);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// signs credential with the wallet v2
+        /// </remarks>
+        /// <exception cref="AffinidiTdk.WalletsClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="walletId">id of the wallet</param>
+        /// <param name="signCredentialsLdpInputDto">signCredentialsLdp</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (SignCredentialsLdpResultDto)</returns>
+        System.Threading.Tasks.Task<ApiResponse<SignCredentialsLdpResultDto>> SignCredentialsLdpWithHttpInfoAsync(string walletId, SignCredentialsLdpInputDto signCredentialsLdpInputDto, System.Threading.CancellationToken cancellationToken = default);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// signs credential with the wallet v2
+        /// </remarks>
+        /// <exception cref="AffinidiTdk.WalletsClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="walletId">id of the wallet</param>
+        /// <param name="signCredentialsDm2SdJwtInputDto">SignCredentialsDm1SdJwt</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of SignCredentialsDm2SdJwtResultDto</returns>
+        System.Threading.Tasks.Task<SignCredentialsDm2SdJwtResultDto> SignCredentialsSdJwtAsync(string walletId, SignCredentialsDm2SdJwtInputDto signCredentialsDm2SdJwtInputDto, System.Threading.CancellationToken cancellationToken = default);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// signs credential with the wallet v2
+        /// </remarks>
+        /// <exception cref="AffinidiTdk.WalletsClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="walletId">id of the wallet</param>
+        /// <param name="signCredentialsDm2SdJwtInputDto">SignCredentialsDm1SdJwt</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (SignCredentialsDm2SdJwtResultDto)</returns>
+        System.Threading.Tasks.Task<ApiResponse<SignCredentialsDm2SdJwtResultDto>> SignCredentialsSdJwtWithHttpInfoAsync(string walletId, SignCredentialsDm2SdJwtInputDto signCredentialsDm2SdJwtInputDto, System.Threading.CancellationToken cancellationToken = default);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
         /// signs a jwt token with the wallet
         /// </remarks>
         /// <exception cref="AffinidiTdk.WalletsClient.Client.ApiException">Thrown when fails to make API call</exception>
@@ -332,6 +539,31 @@ namespace AffinidiTdk.WalletsClient.Api
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (SignJwtTokenOK)</returns>
         System.Threading.Tasks.Task<ApiResponse<SignJwtTokenOK>> SignJwtTokenWithHttpInfoAsync(string walletId, SignJwtToken signJwtToken, System.Threading.CancellationToken cancellationToken = default);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// signs presentation with the wallet
+        /// </remarks>
+        /// <exception cref="AffinidiTdk.WalletsClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="walletId">id of the wallet</param>
+        /// <param name="signPresentationLdpInputDto">signPresentationLdp</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of SignPresentationLdpResultDto</returns>
+        System.Threading.Tasks.Task<SignPresentationLdpResultDto> SignPresentationsLdpAsync(string walletId, SignPresentationLdpInputDto signPresentationLdpInputDto, System.Threading.CancellationToken cancellationToken = default);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// signs presentation with the wallet
+        /// </remarks>
+        /// <exception cref="AffinidiTdk.WalletsClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="walletId">id of the wallet</param>
+        /// <param name="signPresentationLdpInputDto">signPresentationLdp</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (SignPresentationLdpResultDto)</returns>
+        System.Threading.Tasks.Task<ApiResponse<SignPresentationLdpResultDto>> SignPresentationsLdpWithHttpInfoAsync(string walletId, SignPresentationLdpInputDto signPresentationLdpInputDto, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// 
         /// </summary>
@@ -683,6 +915,117 @@ namespace AffinidiTdk.WalletsClient.Api
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("CreateWallet", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  Create v2 wallet
+        /// </summary>
+        /// <exception cref="AffinidiTdk.WalletsClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>CreateWalletV2Response</returns>
+        public CreateWalletV2Response CreateWalletV2()
+        {
+            AffinidiTdk.WalletsClient.Client.ApiResponse<CreateWalletV2Response> localVarResponse = CreateWalletV2WithHttpInfo();
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  Create v2 wallet
+        /// </summary>
+        /// <exception cref="AffinidiTdk.WalletsClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ApiResponse of CreateWalletV2Response</returns>
+        public AffinidiTdk.WalletsClient.Client.ApiResponse<CreateWalletV2Response> CreateWalletV2WithHttpInfo()
+        {
+            AffinidiTdk.WalletsClient.Client.RequestOptions localVarRequestOptions = new AffinidiTdk.WalletsClient.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = AffinidiTdk.WalletsClient.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = AffinidiTdk.WalletsClient.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+
+            // authentication (ProjectTokenAuth) required
+            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
+            {
+                localVarRequestOptions.HeaderParameters.Add("authorization", this.Configuration.GetApiKeyWithPrefix("authorization"));
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<CreateWalletV2Response>("/v2/wallets", localVarRequestOptions, this.Configuration);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateWalletV2", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  Create v2 wallet
+        /// </summary>
+        /// <exception cref="AffinidiTdk.WalletsClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CreateWalletV2Response</returns>
+        public async System.Threading.Tasks.Task<CreateWalletV2Response> CreateWalletV2Async(System.Threading.CancellationToken cancellationToken = default)
+        {
+            AffinidiTdk.WalletsClient.Client.ApiResponse<CreateWalletV2Response> localVarResponse = await CreateWalletV2WithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  Create v2 wallet
+        /// </summary>
+        /// <exception cref="AffinidiTdk.WalletsClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CreateWalletV2Response)</returns>
+        public async System.Threading.Tasks.Task<AffinidiTdk.WalletsClient.Client.ApiResponse<CreateWalletV2Response>> CreateWalletV2WithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default)
+        {
+
+            AffinidiTdk.WalletsClient.Client.RequestOptions localVarRequestOptions = new AffinidiTdk.WalletsClient.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+
+            var localVarContentType = AffinidiTdk.WalletsClient.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = AffinidiTdk.WalletsClient.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+
+            // authentication (ProjectTokenAuth) required
+            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
+            {
+                localVarRequestOptions.HeaderParameters.Add("authorization", this.Configuration.GetApiKeyWithPrefix("authorization"));
+            }
+
+            // make the HTTP request
+
+            var localVarResponse = await this.AsynchronousClient.PostAsync<CreateWalletV2Response>("/v2/wallets", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateWalletV2", localVarResponse);
                 if (_exception != null) throw _exception;
             }
 
@@ -1200,6 +1543,429 @@ namespace AffinidiTdk.WalletsClient.Api
         }
 
         /// <summary>
+        ///  signs credential with the wallet v2
+        /// </summary>
+        /// <exception cref="AffinidiTdk.WalletsClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="walletId">id of the wallet</param>
+        /// <param name="signCredentialsJwtInputDto">signCredentialsJwt</param>
+        /// <returns>SignCredentialsJwtResultDto</returns>
+        public SignCredentialsJwtResultDto SignCredentialsJwt(string walletId, SignCredentialsJwtInputDto signCredentialsJwtInputDto)
+        {
+            AffinidiTdk.WalletsClient.Client.ApiResponse<SignCredentialsJwtResultDto> localVarResponse = SignCredentialsJwtWithHttpInfo(walletId, signCredentialsJwtInputDto);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  signs credential with the wallet v2
+        /// </summary>
+        /// <exception cref="AffinidiTdk.WalletsClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="walletId">id of the wallet</param>
+        /// <param name="signCredentialsJwtInputDto">signCredentialsJwt</param>
+        /// <returns>ApiResponse of SignCredentialsJwtResultDto</returns>
+        public AffinidiTdk.WalletsClient.Client.ApiResponse<SignCredentialsJwtResultDto> SignCredentialsJwtWithHttpInfo(string walletId, SignCredentialsJwtInputDto signCredentialsJwtInputDto)
+        {
+            // verify the required parameter 'walletId' is set
+            if (walletId == null)
+                throw new AffinidiTdk.WalletsClient.Client.ApiException(400, "Missing required parameter 'walletId' when calling WalletApi->SignCredentialsJwt");
+
+            // verify the required parameter 'signCredentialsJwtInputDto' is set
+            if (signCredentialsJwtInputDto == null)
+                throw new AffinidiTdk.WalletsClient.Client.ApiException(400, "Missing required parameter 'signCredentialsJwtInputDto' when calling WalletApi->SignCredentialsJwt");
+
+            AffinidiTdk.WalletsClient.Client.RequestOptions localVarRequestOptions = new AffinidiTdk.WalletsClient.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = AffinidiTdk.WalletsClient.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = AffinidiTdk.WalletsClient.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+            localVarRequestOptions.PathParameters.Add("walletId", AffinidiTdk.WalletsClient.Client.ClientUtils.ParameterToString(walletId)); // path parameter
+            localVarRequestOptions.Data = signCredentialsJwtInputDto;
+
+            // authentication (ProjectTokenAuth) required
+            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
+            {
+                localVarRequestOptions.HeaderParameters.Add("authorization", this.Configuration.GetApiKeyWithPrefix("authorization"));
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<SignCredentialsJwtResultDto>("/v2/wallets/{walletId}/credentials/jwt/sign", localVarRequestOptions, this.Configuration);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("SignCredentialsJwt", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  signs credential with the wallet v2
+        /// </summary>
+        /// <exception cref="AffinidiTdk.WalletsClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="walletId">id of the wallet</param>
+        /// <param name="signCredentialsJwtInputDto">signCredentialsJwt</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of SignCredentialsJwtResultDto</returns>
+        public async System.Threading.Tasks.Task<SignCredentialsJwtResultDto> SignCredentialsJwtAsync(string walletId, SignCredentialsJwtInputDto signCredentialsJwtInputDto, System.Threading.CancellationToken cancellationToken = default)
+        {
+            AffinidiTdk.WalletsClient.Client.ApiResponse<SignCredentialsJwtResultDto> localVarResponse = await SignCredentialsJwtWithHttpInfoAsync(walletId, signCredentialsJwtInputDto, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  signs credential with the wallet v2
+        /// </summary>
+        /// <exception cref="AffinidiTdk.WalletsClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="walletId">id of the wallet</param>
+        /// <param name="signCredentialsJwtInputDto">signCredentialsJwt</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (SignCredentialsJwtResultDto)</returns>
+        public async System.Threading.Tasks.Task<AffinidiTdk.WalletsClient.Client.ApiResponse<SignCredentialsJwtResultDto>> SignCredentialsJwtWithHttpInfoAsync(string walletId, SignCredentialsJwtInputDto signCredentialsJwtInputDto, System.Threading.CancellationToken cancellationToken = default)
+        {
+            // verify the required parameter 'walletId' is set
+            if (walletId == null)
+                throw new AffinidiTdk.WalletsClient.Client.ApiException(400, "Missing required parameter 'walletId' when calling WalletApi->SignCredentialsJwt");
+
+            // verify the required parameter 'signCredentialsJwtInputDto' is set
+            if (signCredentialsJwtInputDto == null)
+                throw new AffinidiTdk.WalletsClient.Client.ApiException(400, "Missing required parameter 'signCredentialsJwtInputDto' when calling WalletApi->SignCredentialsJwt");
+
+
+            AffinidiTdk.WalletsClient.Client.RequestOptions localVarRequestOptions = new AffinidiTdk.WalletsClient.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+
+            var localVarContentType = AffinidiTdk.WalletsClient.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = AffinidiTdk.WalletsClient.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+            localVarRequestOptions.PathParameters.Add("walletId", AffinidiTdk.WalletsClient.Client.ClientUtils.ParameterToString(walletId)); // path parameter
+            localVarRequestOptions.Data = signCredentialsJwtInputDto;
+
+            // authentication (ProjectTokenAuth) required
+            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
+            {
+                localVarRequestOptions.HeaderParameters.Add("authorization", this.Configuration.GetApiKeyWithPrefix("authorization"));
+            }
+
+            // make the HTTP request
+
+            var localVarResponse = await this.AsynchronousClient.PostAsync<SignCredentialsJwtResultDto>("/v2/wallets/{walletId}/credentials/jwt/sign", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("SignCredentialsJwt", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  signs credential with the wallet v2
+        /// </summary>
+        /// <exception cref="AffinidiTdk.WalletsClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="walletId">id of the wallet</param>
+        /// <param name="signCredentialsLdpInputDto">signCredentialsLdp</param>
+        /// <returns>SignCredentialsLdpResultDto</returns>
+        public SignCredentialsLdpResultDto SignCredentialsLdp(string walletId, SignCredentialsLdpInputDto signCredentialsLdpInputDto)
+        {
+            AffinidiTdk.WalletsClient.Client.ApiResponse<SignCredentialsLdpResultDto> localVarResponse = SignCredentialsLdpWithHttpInfo(walletId, signCredentialsLdpInputDto);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  signs credential with the wallet v2
+        /// </summary>
+        /// <exception cref="AffinidiTdk.WalletsClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="walletId">id of the wallet</param>
+        /// <param name="signCredentialsLdpInputDto">signCredentialsLdp</param>
+        /// <returns>ApiResponse of SignCredentialsLdpResultDto</returns>
+        public AffinidiTdk.WalletsClient.Client.ApiResponse<SignCredentialsLdpResultDto> SignCredentialsLdpWithHttpInfo(string walletId, SignCredentialsLdpInputDto signCredentialsLdpInputDto)
+        {
+            // verify the required parameter 'walletId' is set
+            if (walletId == null)
+                throw new AffinidiTdk.WalletsClient.Client.ApiException(400, "Missing required parameter 'walletId' when calling WalletApi->SignCredentialsLdp");
+
+            // verify the required parameter 'signCredentialsLdpInputDto' is set
+            if (signCredentialsLdpInputDto == null)
+                throw new AffinidiTdk.WalletsClient.Client.ApiException(400, "Missing required parameter 'signCredentialsLdpInputDto' when calling WalletApi->SignCredentialsLdp");
+
+            AffinidiTdk.WalletsClient.Client.RequestOptions localVarRequestOptions = new AffinidiTdk.WalletsClient.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = AffinidiTdk.WalletsClient.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = AffinidiTdk.WalletsClient.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+            localVarRequestOptions.PathParameters.Add("walletId", AffinidiTdk.WalletsClient.Client.ClientUtils.ParameterToString(walletId)); // path parameter
+            localVarRequestOptions.Data = signCredentialsLdpInputDto;
+
+            // authentication (ProjectTokenAuth) required
+            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
+            {
+                localVarRequestOptions.HeaderParameters.Add("authorization", this.Configuration.GetApiKeyWithPrefix("authorization"));
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<SignCredentialsLdpResultDto>("/v2/wallets/{walletId}/credentials/ldp/sign", localVarRequestOptions, this.Configuration);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("SignCredentialsLdp", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  signs credential with the wallet v2
+        /// </summary>
+        /// <exception cref="AffinidiTdk.WalletsClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="walletId">id of the wallet</param>
+        /// <param name="signCredentialsLdpInputDto">signCredentialsLdp</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of SignCredentialsLdpResultDto</returns>
+        public async System.Threading.Tasks.Task<SignCredentialsLdpResultDto> SignCredentialsLdpAsync(string walletId, SignCredentialsLdpInputDto signCredentialsLdpInputDto, System.Threading.CancellationToken cancellationToken = default)
+        {
+            AffinidiTdk.WalletsClient.Client.ApiResponse<SignCredentialsLdpResultDto> localVarResponse = await SignCredentialsLdpWithHttpInfoAsync(walletId, signCredentialsLdpInputDto, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  signs credential with the wallet v2
+        /// </summary>
+        /// <exception cref="AffinidiTdk.WalletsClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="walletId">id of the wallet</param>
+        /// <param name="signCredentialsLdpInputDto">signCredentialsLdp</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (SignCredentialsLdpResultDto)</returns>
+        public async System.Threading.Tasks.Task<AffinidiTdk.WalletsClient.Client.ApiResponse<SignCredentialsLdpResultDto>> SignCredentialsLdpWithHttpInfoAsync(string walletId, SignCredentialsLdpInputDto signCredentialsLdpInputDto, System.Threading.CancellationToken cancellationToken = default)
+        {
+            // verify the required parameter 'walletId' is set
+            if (walletId == null)
+                throw new AffinidiTdk.WalletsClient.Client.ApiException(400, "Missing required parameter 'walletId' when calling WalletApi->SignCredentialsLdp");
+
+            // verify the required parameter 'signCredentialsLdpInputDto' is set
+            if (signCredentialsLdpInputDto == null)
+                throw new AffinidiTdk.WalletsClient.Client.ApiException(400, "Missing required parameter 'signCredentialsLdpInputDto' when calling WalletApi->SignCredentialsLdp");
+
+
+            AffinidiTdk.WalletsClient.Client.RequestOptions localVarRequestOptions = new AffinidiTdk.WalletsClient.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+
+            var localVarContentType = AffinidiTdk.WalletsClient.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = AffinidiTdk.WalletsClient.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+            localVarRequestOptions.PathParameters.Add("walletId", AffinidiTdk.WalletsClient.Client.ClientUtils.ParameterToString(walletId)); // path parameter
+            localVarRequestOptions.Data = signCredentialsLdpInputDto;
+
+            // authentication (ProjectTokenAuth) required
+            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
+            {
+                localVarRequestOptions.HeaderParameters.Add("authorization", this.Configuration.GetApiKeyWithPrefix("authorization"));
+            }
+
+            // make the HTTP request
+
+            var localVarResponse = await this.AsynchronousClient.PostAsync<SignCredentialsLdpResultDto>("/v2/wallets/{walletId}/credentials/ldp/sign", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("SignCredentialsLdp", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  signs credential with the wallet v2
+        /// </summary>
+        /// <exception cref="AffinidiTdk.WalletsClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="walletId">id of the wallet</param>
+        /// <param name="signCredentialsDm2SdJwtInputDto">SignCredentialsDm1SdJwt</param>
+        /// <returns>SignCredentialsDm2SdJwtResultDto</returns>
+        public SignCredentialsDm2SdJwtResultDto SignCredentialsSdJwt(string walletId, SignCredentialsDm2SdJwtInputDto signCredentialsDm2SdJwtInputDto)
+        {
+            AffinidiTdk.WalletsClient.Client.ApiResponse<SignCredentialsDm2SdJwtResultDto> localVarResponse = SignCredentialsSdJwtWithHttpInfo(walletId, signCredentialsDm2SdJwtInputDto);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  signs credential with the wallet v2
+        /// </summary>
+        /// <exception cref="AffinidiTdk.WalletsClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="walletId">id of the wallet</param>
+        /// <param name="signCredentialsDm2SdJwtInputDto">SignCredentialsDm1SdJwt</param>
+        /// <returns>ApiResponse of SignCredentialsDm2SdJwtResultDto</returns>
+        public AffinidiTdk.WalletsClient.Client.ApiResponse<SignCredentialsDm2SdJwtResultDto> SignCredentialsSdJwtWithHttpInfo(string walletId, SignCredentialsDm2SdJwtInputDto signCredentialsDm2SdJwtInputDto)
+        {
+            // verify the required parameter 'walletId' is set
+            if (walletId == null)
+                throw new AffinidiTdk.WalletsClient.Client.ApiException(400, "Missing required parameter 'walletId' when calling WalletApi->SignCredentialsSdJwt");
+
+            // verify the required parameter 'signCredentialsDm2SdJwtInputDto' is set
+            if (signCredentialsDm2SdJwtInputDto == null)
+                throw new AffinidiTdk.WalletsClient.Client.ApiException(400, "Missing required parameter 'signCredentialsDm2SdJwtInputDto' when calling WalletApi->SignCredentialsSdJwt");
+
+            AffinidiTdk.WalletsClient.Client.RequestOptions localVarRequestOptions = new AffinidiTdk.WalletsClient.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = AffinidiTdk.WalletsClient.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = AffinidiTdk.WalletsClient.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+            localVarRequestOptions.PathParameters.Add("walletId", AffinidiTdk.WalletsClient.Client.ClientUtils.ParameterToString(walletId)); // path parameter
+            localVarRequestOptions.Data = signCredentialsDm2SdJwtInputDto;
+
+            // authentication (ProjectTokenAuth) required
+            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
+            {
+                localVarRequestOptions.HeaderParameters.Add("authorization", this.Configuration.GetApiKeyWithPrefix("authorization"));
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<SignCredentialsDm2SdJwtResultDto>("/v2/wallets/{walletId}/credentials/sd-jwt/sign", localVarRequestOptions, this.Configuration);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("SignCredentialsSdJwt", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  signs credential with the wallet v2
+        /// </summary>
+        /// <exception cref="AffinidiTdk.WalletsClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="walletId">id of the wallet</param>
+        /// <param name="signCredentialsDm2SdJwtInputDto">SignCredentialsDm1SdJwt</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of SignCredentialsDm2SdJwtResultDto</returns>
+        public async System.Threading.Tasks.Task<SignCredentialsDm2SdJwtResultDto> SignCredentialsSdJwtAsync(string walletId, SignCredentialsDm2SdJwtInputDto signCredentialsDm2SdJwtInputDto, System.Threading.CancellationToken cancellationToken = default)
+        {
+            AffinidiTdk.WalletsClient.Client.ApiResponse<SignCredentialsDm2SdJwtResultDto> localVarResponse = await SignCredentialsSdJwtWithHttpInfoAsync(walletId, signCredentialsDm2SdJwtInputDto, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  signs credential with the wallet v2
+        /// </summary>
+        /// <exception cref="AffinidiTdk.WalletsClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="walletId">id of the wallet</param>
+        /// <param name="signCredentialsDm2SdJwtInputDto">SignCredentialsDm1SdJwt</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (SignCredentialsDm2SdJwtResultDto)</returns>
+        public async System.Threading.Tasks.Task<AffinidiTdk.WalletsClient.Client.ApiResponse<SignCredentialsDm2SdJwtResultDto>> SignCredentialsSdJwtWithHttpInfoAsync(string walletId, SignCredentialsDm2SdJwtInputDto signCredentialsDm2SdJwtInputDto, System.Threading.CancellationToken cancellationToken = default)
+        {
+            // verify the required parameter 'walletId' is set
+            if (walletId == null)
+                throw new AffinidiTdk.WalletsClient.Client.ApiException(400, "Missing required parameter 'walletId' when calling WalletApi->SignCredentialsSdJwt");
+
+            // verify the required parameter 'signCredentialsDm2SdJwtInputDto' is set
+            if (signCredentialsDm2SdJwtInputDto == null)
+                throw new AffinidiTdk.WalletsClient.Client.ApiException(400, "Missing required parameter 'signCredentialsDm2SdJwtInputDto' when calling WalletApi->SignCredentialsSdJwt");
+
+
+            AffinidiTdk.WalletsClient.Client.RequestOptions localVarRequestOptions = new AffinidiTdk.WalletsClient.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+
+            var localVarContentType = AffinidiTdk.WalletsClient.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = AffinidiTdk.WalletsClient.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+            localVarRequestOptions.PathParameters.Add("walletId", AffinidiTdk.WalletsClient.Client.ClientUtils.ParameterToString(walletId)); // path parameter
+            localVarRequestOptions.Data = signCredentialsDm2SdJwtInputDto;
+
+            // authentication (ProjectTokenAuth) required
+            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
+            {
+                localVarRequestOptions.HeaderParameters.Add("authorization", this.Configuration.GetApiKeyWithPrefix("authorization"));
+            }
+
+            // make the HTTP request
+
+            var localVarResponse = await this.AsynchronousClient.PostAsync<SignCredentialsDm2SdJwtResultDto>("/v2/wallets/{walletId}/credentials/sd-jwt/sign", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("SignCredentialsSdJwt", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
         ///  signs a jwt token with the wallet
         /// </summary>
         /// <exception cref="AffinidiTdk.WalletsClient.Client.ApiException">Thrown when fails to make API call</exception>
@@ -1334,6 +2100,147 @@ namespace AffinidiTdk.WalletsClient.Api
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("SignJwtToken", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  signs presentation with the wallet
+        /// </summary>
+        /// <exception cref="AffinidiTdk.WalletsClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="walletId">id of the wallet</param>
+        /// <param name="signPresentationLdpInputDto">signPresentationLdp</param>
+        /// <returns>SignPresentationLdpResultDto</returns>
+        public SignPresentationLdpResultDto SignPresentationsLdp(string walletId, SignPresentationLdpInputDto signPresentationLdpInputDto)
+        {
+            AffinidiTdk.WalletsClient.Client.ApiResponse<SignPresentationLdpResultDto> localVarResponse = SignPresentationsLdpWithHttpInfo(walletId, signPresentationLdpInputDto);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  signs presentation with the wallet
+        /// </summary>
+        /// <exception cref="AffinidiTdk.WalletsClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="walletId">id of the wallet</param>
+        /// <param name="signPresentationLdpInputDto">signPresentationLdp</param>
+        /// <returns>ApiResponse of SignPresentationLdpResultDto</returns>
+        public AffinidiTdk.WalletsClient.Client.ApiResponse<SignPresentationLdpResultDto> SignPresentationsLdpWithHttpInfo(string walletId, SignPresentationLdpInputDto signPresentationLdpInputDto)
+        {
+            // verify the required parameter 'walletId' is set
+            if (walletId == null)
+                throw new AffinidiTdk.WalletsClient.Client.ApiException(400, "Missing required parameter 'walletId' when calling WalletApi->SignPresentationsLdp");
+
+            // verify the required parameter 'signPresentationLdpInputDto' is set
+            if (signPresentationLdpInputDto == null)
+                throw new AffinidiTdk.WalletsClient.Client.ApiException(400, "Missing required parameter 'signPresentationLdpInputDto' when calling WalletApi->SignPresentationsLdp");
+
+            AffinidiTdk.WalletsClient.Client.RequestOptions localVarRequestOptions = new AffinidiTdk.WalletsClient.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = AffinidiTdk.WalletsClient.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = AffinidiTdk.WalletsClient.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+            localVarRequestOptions.PathParameters.Add("walletId", AffinidiTdk.WalletsClient.Client.ClientUtils.ParameterToString(walletId)); // path parameter
+            localVarRequestOptions.Data = signPresentationLdpInputDto;
+
+            // authentication (ProjectTokenAuth) required
+            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
+            {
+                localVarRequestOptions.HeaderParameters.Add("authorization", this.Configuration.GetApiKeyWithPrefix("authorization"));
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<SignPresentationLdpResultDto>("/v2/wallets/{walletId}/presentations/ldp/sign", localVarRequestOptions, this.Configuration);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("SignPresentationsLdp", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  signs presentation with the wallet
+        /// </summary>
+        /// <exception cref="AffinidiTdk.WalletsClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="walletId">id of the wallet</param>
+        /// <param name="signPresentationLdpInputDto">signPresentationLdp</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of SignPresentationLdpResultDto</returns>
+        public async System.Threading.Tasks.Task<SignPresentationLdpResultDto> SignPresentationsLdpAsync(string walletId, SignPresentationLdpInputDto signPresentationLdpInputDto, System.Threading.CancellationToken cancellationToken = default)
+        {
+            AffinidiTdk.WalletsClient.Client.ApiResponse<SignPresentationLdpResultDto> localVarResponse = await SignPresentationsLdpWithHttpInfoAsync(walletId, signPresentationLdpInputDto, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  signs presentation with the wallet
+        /// </summary>
+        /// <exception cref="AffinidiTdk.WalletsClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="walletId">id of the wallet</param>
+        /// <param name="signPresentationLdpInputDto">signPresentationLdp</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (SignPresentationLdpResultDto)</returns>
+        public async System.Threading.Tasks.Task<AffinidiTdk.WalletsClient.Client.ApiResponse<SignPresentationLdpResultDto>> SignPresentationsLdpWithHttpInfoAsync(string walletId, SignPresentationLdpInputDto signPresentationLdpInputDto, System.Threading.CancellationToken cancellationToken = default)
+        {
+            // verify the required parameter 'walletId' is set
+            if (walletId == null)
+                throw new AffinidiTdk.WalletsClient.Client.ApiException(400, "Missing required parameter 'walletId' when calling WalletApi->SignPresentationsLdp");
+
+            // verify the required parameter 'signPresentationLdpInputDto' is set
+            if (signPresentationLdpInputDto == null)
+                throw new AffinidiTdk.WalletsClient.Client.ApiException(400, "Missing required parameter 'signPresentationLdpInputDto' when calling WalletApi->SignPresentationsLdp");
+
+
+            AffinidiTdk.WalletsClient.Client.RequestOptions localVarRequestOptions = new AffinidiTdk.WalletsClient.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+
+            var localVarContentType = AffinidiTdk.WalletsClient.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = AffinidiTdk.WalletsClient.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+            localVarRequestOptions.PathParameters.Add("walletId", AffinidiTdk.WalletsClient.Client.ClientUtils.ParameterToString(walletId)); // path parameter
+            localVarRequestOptions.Data = signPresentationLdpInputDto;
+
+            // authentication (ProjectTokenAuth) required
+            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
+            {
+                localVarRequestOptions.HeaderParameters.Add("authorization", this.Configuration.GetApiKeyWithPrefix("authorization"));
+            }
+
+            // make the HTTP request
+
+            var localVarResponse = await this.AsynchronousClient.PostAsync<SignPresentationLdpResultDto>("/v2/wallets/{walletId}/presentations/ldp/sign", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("SignPresentationsLdp", localVarResponse);
                 if (_exception != null) throw _exception;
             }
 
