@@ -10,7 +10,8 @@ Name | Type | Description | Notes
 **Nonce** | **string** | A randomly generated value that is added in the request and response to prevent replay attacks. | 
 **RedirectUri** | **string** | List of allowed URLs to redirect users, including the response from the request. This is required if the selected data-sharing mode is Redirect. | 
 **ConfigurationId** | **string** | ID of the Affinidi Iota Framework configuration. | 
-**Mode** | **string** | Determines whether to handle the data-sharing request using the WebSocket or Redirect flow. | 
+**UserDid** | **string** | User DID to send the initiating request to. Only required if mode is didcomm | [optional] 
+**Mode** | **string** | Determines whether to handle the data-sharing request using the WebSocket, Redirect or Didcomm messaging flow. | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

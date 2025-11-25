@@ -34,9 +34,9 @@ namespace AffinidiTdk.IotaClient.Model
     public partial class IotaConfigurationDto : IValidatableObject
     {
         /// <summary>
-        /// Determines whether to handle the data-sharing request using the WebSocket or Redirect flow.
+        /// Determines whether to handle the data-sharing request using the WebSocket, Redirect or Didcomm messaging flow.
         /// </summary>
-        /// <value>Determines whether to handle the data-sharing request using the WebSocket or Redirect flow.</value>
+        /// <value>Determines whether to handle the data-sharing request using the WebSocket, Redirect or Didcomm messaging flow.</value>
         [JsonConverter(typeof(StringEnumConverter))]
         public enum ModeEnum
         {
@@ -50,14 +50,20 @@ namespace AffinidiTdk.IotaClient.Model
             /// Enum Websocket for value: websocket
             /// </summary>
             [EnumMember(Value = "websocket")]
-            Websocket = 2
+            Websocket = 2,
+
+            /// <summary>
+            /// Enum Didcomm for value: didcomm
+            /// </summary>
+            [EnumMember(Value = "didcomm")]
+            Didcomm = 3
         }
 
 
         /// <summary>
-        /// Determines whether to handle the data-sharing request using the WebSocket or Redirect flow.
+        /// Determines whether to handle the data-sharing request using the WebSocket, Redirect or Didcomm messaging flow.
         /// </summary>
-        /// <value>Determines whether to handle the data-sharing request using the WebSocket or Redirect flow.</value>
+        /// <value>Determines whether to handle the data-sharing request using the WebSocket, Redirect or Didcomm messaging flow.</value>
         [DataMember(Name = "mode", EmitDefaultValue = false)]
         public ModeEnum? Mode { get; set; }
         /// <summary>
@@ -78,7 +84,7 @@ namespace AffinidiTdk.IotaClient.Model
         /// <param name="enableVerification">Cryptographically verifies the data shared by the user when enabled. (required).</param>
         /// <param name="enableConsentAuditLog">Records the consent the user gave when they shared their data, including the type of data shared. (required).</param>
         /// <param name="clientMetadata">clientMetadata (required).</param>
-        /// <param name="mode">Determines whether to handle the data-sharing request using the WebSocket or Redirect flow. (default to ModeEnum.Websocket).</param>
+        /// <param name="mode">Determines whether to handle the data-sharing request using the WebSocket, Redirect or Didcomm messaging flow. (default to ModeEnum.Websocket).</param>
         /// <param name="redirectUris">List of allowed URLs to redirect users, including the response from the request. This is required if the selected data-sharing mode is Redirect..</param>
         /// <param name="enableIdvProviders">Enables identity verification from user with a 3rd-party provider when a verified identity document is not found..</param>
         public IotaConfigurationDto(string ari = default, string configurationId = default, string name = default, string projectId = default, string walletAri = default, decimal tokenMaxAge = default, string iotaResponseWebhookURL = default, bool enableVerification = default, bool enableConsentAuditLog = default, IotaConfigurationDtoClientMetadata clientMetadata = default, ModeEnum? mode = ModeEnum.Websocket, List<string> redirectUris = default, bool enableIdvProviders = default)
