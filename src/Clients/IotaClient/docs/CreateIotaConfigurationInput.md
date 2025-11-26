@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **EnableConsentAuditLog** | **bool** | Records the user&#39;s consent when they share their data, including the type of data shared when enabled. | 
 **TokenMaxAge** | **decimal** | This is the lifetime of the signed request token during the data-sharing flow. | [optional] 
 **ClientMetadata** | [**IotaConfigurationDtoClientMetadata**](IotaConfigurationDtoClientMetadata.md) |  | 
-**Mode** | **string** | Determines whether to handle the data-sharing request using the WebSocket or Redirect flow. | [optional] [default to ModeEnum.Websocket]
+**Mode** | **string** | Determines whether to handle the data-sharing request using the WebSocket, Redirect or Didcomm messaging flow. | [optional] [default to ModeEnum.Websocket]
 **RedirectUris** | **List&lt;string&gt;** | List of allowed URLs to redirect users, including the response from the request. This is required if the selected data-sharing mode is Redirect. | [optional] 
 **EnableIdvProviders** | **bool** | Enables identity verification from user with a 3rd-party provider when a verified identity document is not found. | [optional] 
 

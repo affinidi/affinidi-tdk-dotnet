@@ -1,11 +1,11 @@
-# AffinidiTdk.WalletsClient.Model.SignCredentialsDm2LdResultDto
-DTO contains signed credential
+# AffinidiTdk.ConsumerIamClient.Model.Permission
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Credential** | **Object** | Signed credential can be in Dm2Ld format | 
+**Rights** | [**List&lt;RightsEnum&gt;**](RightsEnum.md) |  | 
+**NodeIds** | **List&lt;string&gt;** |  | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

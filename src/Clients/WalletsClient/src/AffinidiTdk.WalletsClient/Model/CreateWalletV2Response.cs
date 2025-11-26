@@ -28,36 +28,25 @@ using OpenAPIDateConverter = AffinidiTdk.WalletsClient.Client.OpenAPIDateConvert
 namespace AffinidiTdk.WalletsClient.Model
 {
     /// <summary>
-    /// DTO contains signed credential
+    /// wallet dto
     /// </summary>
-    [DataContract(Name = "SignCredentialsDm2LdResultDto")]
-    public partial class SignCredentialsDm2LdResultDto : IValidatableObject
+    [DataContract(Name = "CreateWalletV2Response")]
+    public partial class CreateWalletV2Response : IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="SignCredentialsDm2LdResultDto" /> class.
+        /// Initializes a new instance of the <see cref="CreateWalletV2Response" /> class.
         /// </summary>
-        [JsonConstructorAttribute]
-        protected SignCredentialsDm2LdResultDto() { }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="SignCredentialsDm2LdResultDto" /> class.
-        /// </summary>
-        /// <param name="credential">Signed credential can be in Dm2Ld format (required).</param>
-        public SignCredentialsDm2LdResultDto(Object credential = default)
+        /// <param name="wallet">wallet.</param>
+        public CreateWalletV2Response(WalletV2Dto wallet = default)
         {
-            // to ensure "credential" is required (not null)
-            if (credential == null)
-            {
-                throw new ArgumentNullException("credential is a required property for SignCredentialsDm2LdResultDto and cannot be null");
-            }
-            this.Credential = credential;
+            this.Wallet = wallet;
         }
 
         /// <summary>
-        /// Signed credential can be in Dm2Ld format
+        /// Gets or Sets Wallet
         /// </summary>
-        /// <value>Signed credential can be in Dm2Ld format</value>
-        [DataMember(Name = "credential", IsRequired = true, EmitDefaultValue = true)]
-        public Object Credential { get; set; }
+        [DataMember(Name = "wallet", EmitDefaultValue = false)]
+        public WalletV2Dto Wallet { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -66,8 +55,8 @@ namespace AffinidiTdk.WalletsClient.Model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class SignCredentialsDm2LdResultDto {\n");
-            sb.Append("  Credential: ").Append(Credential).Append("\n");
+            sb.Append("class CreateWalletV2Response {\n");
+            sb.Append("  Wallet: ").Append(Wallet).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
