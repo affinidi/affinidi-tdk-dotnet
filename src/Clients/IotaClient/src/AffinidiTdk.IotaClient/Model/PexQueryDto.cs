@@ -41,7 +41,7 @@ namespace AffinidiTdk.IotaClient.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="PexQueryDto" /> class.
         /// </summary>
-        /// <param name="ari">The unique resource identifier of the qeuery. (required).</param>
+        /// <param name="ari">The unique resource identifier of the query. (required).</param>
         /// <param name="queryId">The ID of the query. (required).</param>
         /// <param name="name">The name of the presentation definition to quickly identify the query. (required).</param>
         /// <param name="description">An optional description of what the query is used for. (required).</param>
@@ -88,9 +88,9 @@ namespace AffinidiTdk.IotaClient.Model
         }
 
         /// <summary>
-        /// The unique resource identifier of the qeuery.
+        /// The unique resource identifier of the query.
         /// </summary>
-        /// <value>The unique resource identifier of the qeuery.</value>
+        /// <value>The unique resource identifier of the query.</value>
         [DataMember(Name = "ari", IsRequired = true, EmitDefaultValue = true)]
         public string Ari { get; set; }
 
