@@ -34,6 +34,37 @@ namespace AffinidiTdk.WalletsClient.Model
     public partial class SignPresentationLdpInputDto : IValidatableObject
     {
         /// <summary>
+        /// Defines SignatureScheme
+        /// </summary>
+        [JsonConverter(typeof(StringEnumConverter))]
+        public enum SignatureSchemeEnum
+        {
+            /// <summary>
+            /// Enum EcdsaSecp256k1Sha256 for value: ecdsa_secp256k1_sha256
+            /// </summary>
+            [EnumMember(Value = "ecdsa_secp256k1_sha256")]
+            EcdsaSecp256k1Sha256 = 1,
+
+            /// <summary>
+            /// Enum EcdsaP256Sha256 for value: ecdsa_p256_sha256
+            /// </summary>
+            [EnumMember(Value = "ecdsa_p256_sha256")]
+            EcdsaP256Sha256 = 2,
+
+            /// <summary>
+            /// Enum Ed25519 for value: ed25519
+            /// </summary>
+            [EnumMember(Value = "ed25519")]
+            Ed25519 = 3
+        }
+
+
+        /// <summary>
+        /// Gets or Sets SignatureScheme
+        /// </summary>
+        [DataMember(Name = "signatureScheme", EmitDefaultValue = false)]
+        public SignatureSchemeEnum? SignatureScheme { get; set; }
+        /// <summary>
         /// Initializes a new instance of the <see cref="SignPresentationLdpInputDto" /> class.
         /// </summary>
         [JsonConstructorAttribute]
@@ -42,7 +73,10 @@ namespace AffinidiTdk.WalletsClient.Model
         /// Initializes a new instance of the <see cref="SignPresentationLdpInputDto" /> class.
         /// </summary>
         /// <param name="unsignedPresentation">Unsigned presentation in Dm1 format (required).</param>
-        public SignPresentationLdpInputDto(Object unsignedPresentation = default)
+        /// <param name="signatureScheme">signatureScheme.</param>
+        /// <param name="domain">Domain(s) for which the presentation is intended.</param>
+        /// <param name="challenge">Challenge string.</param>
+        public SignPresentationLdpInputDto(Object unsignedPresentation = default, SignatureSchemeEnum? signatureScheme = default, List<string> domain = default, string challenge = default)
         {
             // to ensure "unsignedPresentation" is required (not null)
             if (unsignedPresentation == null)
@@ -50,6 +84,9 @@ namespace AffinidiTdk.WalletsClient.Model
                 throw new ArgumentNullException("unsignedPresentation is a required property for SignPresentationLdpInputDto and cannot be null");
             }
             this.UnsignedPresentation = unsignedPresentation;
+            this.SignatureScheme = signatureScheme;
+            this.Domain = domain;
+            this.Challenge = challenge;
         }
 
         /// <summary>
@@ -60,6 +97,20 @@ namespace AffinidiTdk.WalletsClient.Model
         public Object UnsignedPresentation { get; set; }
 
         /// <summary>
+        /// Domain(s) for which the presentation is intended
+        /// </summary>
+        /// <value>Domain(s) for which the presentation is intended</value>
+        [DataMember(Name = "domain", EmitDefaultValue = false)]
+        public List<string> Domain { get; set; }
+
+        /// <summary>
+        /// Challenge string
+        /// </summary>
+        /// <value>Challenge string</value>
+        [DataMember(Name = "challenge", EmitDefaultValue = false)]
+        public string Challenge { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -68,6 +119,9 @@ namespace AffinidiTdk.WalletsClient.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class SignPresentationLdpInputDto {\n");
             sb.Append("  UnsignedPresentation: ").Append(UnsignedPresentation).Append("\n");
+            sb.Append("  SignatureScheme: ").Append(SignatureScheme).Append("\n");
+            sb.Append("  Domain: ").Append(Domain).Append("\n");
+            sb.Append("  Challenge: ").Append(Challenge).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }

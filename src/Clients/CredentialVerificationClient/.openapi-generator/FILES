@@ -34,6 +34,7 @@ docs/VerifyCredentialV2Input.md
 docs/VerifyPresentationInput.md
 docs/VerifyPresentationOutput.md
 docs/VerifyPresentationV2Input.md
+docs/VerifyPresentationV2InputPexQuery.md
 docs/W3cCredentialStatus.md
 docs/W3cProof.md
 src/AffinidiTdk.CredentialVerificationClient/AffinidiTdk.CredentialVerificationClient.csproj
@@ -87,5 +88,6 @@ src/AffinidiTdk.CredentialVerificationClient/Model/VerifyCredentialV2Input.cs
 src/AffinidiTdk.CredentialVerificationClient/Model/VerifyPresentationInput.cs
 src/AffinidiTdk.CredentialVerificationClient/Model/VerifyPresentationOutput.cs
 src/AffinidiTdk.CredentialVerificationClient/Model/VerifyPresentationV2Input.cs
+src/AffinidiTdk.CredentialVerificationClient/Model/VerifyPresentationV2InputPexQuery.cs
 src/AffinidiTdk.CredentialVerificationClient/Model/W3cCredentialStatus.cs
 src/AffinidiTdk.CredentialVerificationClient/Model/W3cProof.cs
