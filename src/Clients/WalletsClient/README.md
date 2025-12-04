@@ -189,6 +189,7 @@ ClientAPI | Operation | Description
  - [SignPresentationLdpInputDto](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/WalletsClient/docs/SignPresentationLdpInputDto.md)
  - [SignPresentationLdpResultDto](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/WalletsClient/docs/SignPresentationLdpResultDto.md)
  - [SigningFailedError](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/WalletsClient/docs/SigningFailedError.md)
+ - [TooManyRequestsError](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/WalletsClient/docs/TooManyRequestsError.md)
  - [UpdateWalletInput](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/WalletsClient/docs/UpdateWalletInput.md)
  - [WalletDto](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/WalletsClient/docs/WalletDto.md)
  - [WalletDtoKeysInner](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/WalletsClient/docs/WalletDtoKeysInner.md)

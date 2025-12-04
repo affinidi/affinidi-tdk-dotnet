@@ -65,6 +65,51 @@ namespace AffinidiTdk.WalletsClient.Model
         [DataMember(Name = "signatureScheme", EmitDefaultValue = false)]
         public SignatureSchemeEnum? SignatureScheme { get; set; }
         /// <summary>
+        /// W3C signature suite for canonicalization. Defaults to rdfc variants for each algorithm (ecdsa-rdfc-2019 for P256, eddsa-rdfc-2022 for Ed25519, EcdsaSecp256k1Signature2019 for secp256k1).
+        /// </summary>
+        /// <value>W3C signature suite for canonicalization. Defaults to rdfc variants for each algorithm (ecdsa-rdfc-2019 for P256, eddsa-rdfc-2022 for Ed25519, EcdsaSecp256k1Signature2019 for secp256k1).</value>
+        [JsonConverter(typeof(StringEnumConverter))]
+        public enum SignatureSuiteEnum
+        {
+            /// <summary>
+            /// Enum EcdsaJcs2019 for value: ecdsa-jcs-2019
+            /// </summary>
+            [EnumMember(Value = "ecdsa-jcs-2019")]
+            EcdsaJcs2019 = 1,
+
+            /// <summary>
+            /// Enum EcdsaRdfc2019 for value: ecdsa-rdfc-2019
+            /// </summary>
+            [EnumMember(Value = "ecdsa-rdfc-2019")]
+            EcdsaRdfc2019 = 2,
+
+            /// <summary>
+            /// Enum EddsaJcs2022 for value: eddsa-jcs-2022
+            /// </summary>
+            [EnumMember(Value = "eddsa-jcs-2022")]
+            EddsaJcs2022 = 3,
+
+            /// <summary>
+            /// Enum EddsaRdfc2022 for value: eddsa-rdfc-2022
+            /// </summary>
+            [EnumMember(Value = "eddsa-rdfc-2022")]
+            EddsaRdfc2022 = 4,
+
+            /// <summary>
+            /// Enum EcdsaSecp256k1Signature2019 for value: EcdsaSecp256k1Signature2019
+            /// </summary>
+            [EnumMember(Value = "EcdsaSecp256k1Signature2019")]
+            EcdsaSecp256k1Signature2019 = 5
+        }
+
+
+        /// <summary>
+        /// W3C signature suite for canonicalization. Defaults to rdfc variants for each algorithm (ecdsa-rdfc-2019 for P256, eddsa-rdfc-2022 for Ed25519, EcdsaSecp256k1Signature2019 for secp256k1).
+        /// </summary>
+        /// <value>W3C signature suite for canonicalization. Defaults to rdfc variants for each algorithm (ecdsa-rdfc-2019 for P256, eddsa-rdfc-2022 for Ed25519, EcdsaSecp256k1Signature2019 for secp256k1).</value>
+        [DataMember(Name = "signatureSuite", EmitDefaultValue = false)]
+        public SignatureSuiteEnum? SignatureSuite { get; set; }
+        /// <summary>
         /// Initializes a new instance of the <see cref="SignCredentialsLdpInputDto" /> class.
         /// </summary>
         [JsonConstructorAttribute]
@@ -75,7 +120,8 @@ namespace AffinidiTdk.WalletsClient.Model
         /// <param name="unsignedCredential">Unsigned Credential in Dm2 format  (required).</param>
         /// <param name="revocable">revocable.</param>
         /// <param name="signatureScheme">signatureScheme.</param>
-        public SignCredentialsLdpInputDto(Object unsignedCredential = default, bool revocable = default, SignatureSchemeEnum? signatureScheme = default)
+        /// <param name="signatureSuite">W3C signature suite for canonicalization. Defaults to rdfc variants for each algorithm (ecdsa-rdfc-2019 for P256, eddsa-rdfc-2022 for Ed25519, EcdsaSecp256k1Signature2019 for secp256k1)..</param>
+        public SignCredentialsLdpInputDto(Object unsignedCredential = default, bool revocable = default, SignatureSchemeEnum? signatureScheme = default, SignatureSuiteEnum? signatureSuite = default)
         {
             // to ensure "unsignedCredential" is required (not null)
             if (unsignedCredential == null)
@@ -85,6 +131,7 @@ namespace AffinidiTdk.WalletsClient.Model
             this.UnsignedCredential = unsignedCredential;
             this.Revocable = revocable;
             this.SignatureScheme = signatureScheme;
+            this.SignatureSuite = signatureSuite;
         }
 
         /// <summary>
@@ -111,6 +158,7 @@ namespace AffinidiTdk.WalletsClient.Model
             sb.Append("  UnsignedCredential: ").Append(UnsignedCredential).Append("\n");
             sb.Append("  Revocable: ").Append(Revocable).Append("\n");
             sb.Append("  SignatureScheme: ").Append(SignatureScheme).Append("\n");
+            sb.Append("  SignatureSuite: ").Append(SignatureSuite).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
