@@ -5,6 +5,7 @@ All URIs are relative to *https://apse1.api.affinidi.io/cwe*
 | Method | HTTP request | Description |
 |--------|--------------|-------------|
 | [**CreateWallet**](WalletApi.md#createwallet) | **POST** /v1/wallets |  |
+| [**CreateWalletV2**](WalletApi.md#createwalletv2) | **POST** /v2/wallets |  |
 | [**DeleteWallet**](WalletApi.md#deletewallet) | **DELETE** /v1/wallets/{walletId} |  |
 | [**GetWallet**](WalletApi.md#getwallet) | **GET** /v1/wallets/{walletId} |  |
 | [**ListWallets**](WalletApi.md#listwallets) | **GET** /v1/wallets |  |
@@ -111,6 +112,100 @@ catch (ApiException e)
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **201** | Created |  -  |
+| **403** | ForbiddenError |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a id="createwalletv2"></a>
+# **CreateWalletV2**
+> CreateWalletV2Response CreateWalletV2 ()
+
+
+
+Create v2 wallet
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Net.Http;
+using AffinidiTdk.WalletsClient.Api;
+using AffinidiTdk.WalletsClient.Client;
+using AffinidiTdk.WalletsClient.Model;
+
+namespace Example
+{
+    public class CreateWalletV2Example
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://apse1.api.affinidi.io/cwe";
+            // Configure API key authorization: ProjectTokenAuth
+            config.AddApiKey("authorization", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // config.AddApiKeyPrefix("authorization", "Bearer");
+
+            // create instances of HttpClient, HttpClientHandler to be reused later with different Api classes
+            HttpClient httpClient = new HttpClient();
+            HttpClientHandler httpClientHandler = new HttpClientHandler();
+            var apiInstance = new WalletApi(httpClient, config, httpClientHandler);
+
+            try
+            {
+                CreateWalletV2Response result = apiInstance.CreateWalletV2();
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling WalletApi.CreateWalletV2: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the CreateWalletV2WithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<CreateWalletV2Response> response = apiInstance.CreateWalletV2WithHttpInfo();
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling WalletApi.CreateWalletV2WithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+### Return type
+
+[**CreateWalletV2Response**](CreateWalletV2Response.md)
+
+### Authorization
+
+[ProjectTokenAuth](../README.md#ProjectTokenAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | OK |  -  |
 | **403** | ForbiddenError |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -510,6 +605,7 @@ catch (ApiException e)
 | **400** | BadRequestError |  -  |
 | **403** | ForbiddenError |  -  |
 | **404** | NotFoundError |  -  |
+| **429** | TooManyRequestsError |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -613,6 +709,7 @@ catch (ApiException e)
 | **400** | BadRequestError |  -  |
 | **403** | ForbiddenError |  -  |
 | **404** | NotFoundError |  -  |
+| **429** | TooManyRequestsError |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -716,6 +813,7 @@ catch (ApiException e)
 | **400** | BadRequestError |  -  |
 | **403** | ForbiddenError |  -  |
 | **404** | NotFoundError |  -  |
+| **429** | TooManyRequestsError |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -819,6 +917,7 @@ catch (ApiException e)
 | **400** | BadRequestError |  -  |
 | **403** | ForbiddenError |  -  |
 | **404** | NotFoundError |  -  |
+| **429** | TooManyRequestsError |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
