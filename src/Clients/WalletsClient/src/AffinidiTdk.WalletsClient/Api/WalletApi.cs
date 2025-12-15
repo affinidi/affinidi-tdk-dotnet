@@ -29,7 +29,7 @@ namespace AffinidiTdk.WalletsClient.Api
     {
         #region Synchronous Operations
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <remarks>
         /// creates a wallet
@@ -40,7 +40,7 @@ namespace AffinidiTdk.WalletsClient.Api
         CreateWalletResponse CreateWallet(CreateWalletInput? createWalletInput = default);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <remarks>
         /// creates a wallet
@@ -50,7 +50,28 @@ namespace AffinidiTdk.WalletsClient.Api
         /// <returns>ApiResponse of CreateWalletResponse</returns>
         ApiResponse<CreateWalletResponse> CreateWalletWithHttpInfo(CreateWalletInput? createWalletInput = default);
         /// <summary>
-        /// 
+        ///
+        /// </summary>
+        /// <remarks>
+        /// Create v2 wallet
+        /// </remarks>
+        /// <exception cref="AffinidiTdk.WalletsClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createWalletV2Input">CreateWallet (optional)</param>
+        /// <returns>CreateWalletV2Response</returns>
+        CreateWalletV2Response CreateWalletV2(CreateWalletV2Input? createWalletV2Input = default);
+
+        /// <summary>
+        ///
+        /// </summary>
+        /// <remarks>
+        /// Create v2 wallet
+        /// </remarks>
+        /// <exception cref="AffinidiTdk.WalletsClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createWalletV2Input">CreateWallet (optional)</param>
+        /// <returns>ApiResponse of CreateWalletV2Response</returns>
+        ApiResponse<CreateWalletV2Response> CreateWalletV2WithHttpInfo(CreateWalletV2Input? createWalletV2Input = default);
+        /// <summary>
+        ///
         /// </summary>
         /// <remarks>
         /// delete wallet by walletId
@@ -61,7 +82,7 @@ namespace AffinidiTdk.WalletsClient.Api
         void DeleteWallet(string walletId);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <remarks>
         /// delete wallet by walletId
@@ -71,7 +92,7 @@ namespace AffinidiTdk.WalletsClient.Api
         /// <returns>ApiResponse of Object(void)</returns>
         ApiResponse<Object> DeleteWalletWithHttpInfo(string walletId);
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <remarks>
         /// get wallet details using wallet Id.
@@ -82,7 +103,7 @@ namespace AffinidiTdk.WalletsClient.Api
         WalletDto GetWallet(string walletId);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <remarks>
         /// get wallet details using wallet Id.
@@ -92,7 +113,7 @@ namespace AffinidiTdk.WalletsClient.Api
         /// <returns>ApiResponse of WalletDto</returns>
         ApiResponse<WalletDto> GetWalletWithHttpInfo(string walletId);
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <remarks>
         /// lists all wallets
@@ -103,7 +124,7 @@ namespace AffinidiTdk.WalletsClient.Api
         WalletsListDto ListWallets(string? didType = default);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <remarks>
         /// lists all wallets
@@ -113,7 +134,7 @@ namespace AffinidiTdk.WalletsClient.Api
         /// <returns>ApiResponse of WalletsListDto</returns>
         ApiResponse<WalletsListDto> ListWalletsWithHttpInfo(string? didType = default);
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <remarks>
         /// signs credential with the wallet
@@ -125,7 +146,7 @@ namespace AffinidiTdk.WalletsClient.Api
         SignCredentialResultDto SignCredential(string walletId, SignCredentialInputDto signCredentialInputDto);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <remarks>
         /// signs credential with the wallet
@@ -136,7 +157,7 @@ namespace AffinidiTdk.WalletsClient.Api
         /// <returns>ApiResponse of SignCredentialResultDto</returns>
         ApiResponse<SignCredentialResultDto> SignCredentialWithHttpInfo(string walletId, SignCredentialInputDto signCredentialInputDto);
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <remarks>
         /// signs credential with the wallet v2
@@ -148,7 +169,7 @@ namespace AffinidiTdk.WalletsClient.Api
         SignCredentialsJwtResultDto SignCredentialsJwt(string walletId, SignCredentialsJwtInputDto signCredentialsJwtInputDto);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <remarks>
         /// signs credential with the wallet v2
@@ -159,7 +180,7 @@ namespace AffinidiTdk.WalletsClient.Api
         /// <returns>ApiResponse of SignCredentialsJwtResultDto</returns>
         ApiResponse<SignCredentialsJwtResultDto> SignCredentialsJwtWithHttpInfo(string walletId, SignCredentialsJwtInputDto signCredentialsJwtInputDto);
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <remarks>
         /// signs credential with the wallet v2
@@ -171,7 +192,7 @@ namespace AffinidiTdk.WalletsClient.Api
         SignCredentialsLdpResultDto SignCredentialsLdp(string walletId, SignCredentialsLdpInputDto signCredentialsLdpInputDto);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <remarks>
         /// signs credential with the wallet v2
@@ -182,7 +203,7 @@ namespace AffinidiTdk.WalletsClient.Api
         /// <returns>ApiResponse of SignCredentialsLdpResultDto</returns>
         ApiResponse<SignCredentialsLdpResultDto> SignCredentialsLdpWithHttpInfo(string walletId, SignCredentialsLdpInputDto signCredentialsLdpInputDto);
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <remarks>
         /// signs credential with the wallet v2
@@ -194,7 +215,7 @@ namespace AffinidiTdk.WalletsClient.Api
         SignCredentialsDm2SdJwtResultDto SignCredentialsSdJwt(string walletId, SignCredentialsDm2SdJwtInputDto signCredentialsDm2SdJwtInputDto);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <remarks>
         /// signs credential with the wallet v2
@@ -205,7 +226,7 @@ namespace AffinidiTdk.WalletsClient.Api
         /// <returns>ApiResponse of SignCredentialsDm2SdJwtResultDto</returns>
         ApiResponse<SignCredentialsDm2SdJwtResultDto> SignCredentialsSdJwtWithHttpInfo(string walletId, SignCredentialsDm2SdJwtInputDto signCredentialsDm2SdJwtInputDto);
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <remarks>
         /// signs a jwt token with the wallet
@@ -217,7 +238,7 @@ namespace AffinidiTdk.WalletsClient.Api
         SignJwtTokenOK SignJwtToken(string walletId, SignJwtToken signJwtToken);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <remarks>
         /// signs a jwt token with the wallet
@@ -228,7 +249,7 @@ namespace AffinidiTdk.WalletsClient.Api
         /// <returns>ApiResponse of SignJwtTokenOK</returns>
         ApiResponse<SignJwtTokenOK> SignJwtTokenWithHttpInfo(string walletId, SignJwtToken signJwtToken);
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <remarks>
         /// signs presentation with the wallet
@@ -240,7 +261,7 @@ namespace AffinidiTdk.WalletsClient.Api
         SignPresentationLdpResultDto SignPresentationsLdp(string walletId, SignPresentationLdpInputDto signPresentationLdpInputDto);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <remarks>
         /// signs presentation with the wallet
@@ -251,7 +272,7 @@ namespace AffinidiTdk.WalletsClient.Api
         /// <returns>ApiResponse of SignPresentationLdpResultDto</returns>
         ApiResponse<SignPresentationLdpResultDto> SignPresentationsLdpWithHttpInfo(string walletId, SignPresentationLdpInputDto signPresentationLdpInputDto);
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <remarks>
         /// update wallet details using wallet Id.
@@ -263,7 +284,7 @@ namespace AffinidiTdk.WalletsClient.Api
         WalletDto UpdateWallet(string walletId, UpdateWalletInput updateWalletInput);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <remarks>
         /// update wallet details using wallet Id.
@@ -283,7 +304,7 @@ namespace AffinidiTdk.WalletsClient.Api
     {
         #region Asynchronous Operations
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <remarks>
         /// creates a wallet
@@ -295,7 +316,7 @@ namespace AffinidiTdk.WalletsClient.Api
         System.Threading.Tasks.Task<CreateWalletResponse> CreateWalletAsync(CreateWalletInput? createWalletInput = default, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <remarks>
         /// creates a wallet
@@ -306,7 +327,51 @@ namespace AffinidiTdk.WalletsClient.Api
         /// <returns>Task of ApiResponse (CreateWalletResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<CreateWalletResponse>> CreateWalletWithHttpInfoAsync(CreateWalletInput? createWalletInput = default, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// 
+        ///
+        /// </summary>
+        /// <remarks>
+        /// Create v2 wallet
+        /// </remarks>
+        /// <exception cref="AffinidiTdk.WalletsClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createWalletV2Input">CreateWallet (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CreateWalletV2Response</returns>
+        System.Threading.Tasks.Task<CreateWalletV2Response> CreateWalletV2Async(CreateWalletV2Input? createWalletV2Input = default, System.Threading.CancellationToken cancellationToken = default);
+
+        /// <summary>
+        ///
+        /// </summary>
+        /// <remarks>
+        /// Create v2 wallet
+        /// </remarks>
+        /// <exception cref="AffinidiTdk.WalletsClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createWalletV2Input">CreateWallet (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CreateWalletV2Response)</returns>
+        System.Threading.Tasks.Task<ApiResponse<CreateWalletV2Response>> CreateWalletV2WithHttpInfoAsync(CreateWalletV2Input? createWalletV2Input = default, System.Threading.CancellationToken cancellationToken = default);
+        /// <summary>
+        ///
+        /// </summary>
+        /// <remarks>
+        /// Create v2 wallet
+        /// </remarks>
+        /// <exception cref="AffinidiTdk.WalletsClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CreateWalletV2Response</returns>
+        System.Threading.Tasks.Task<CreateWalletV2Response> CreateWalletV2Async(System.Threading.CancellationToken cancellationToken = default);
+
+        /// <summary>
+        ///
+        /// </summary>
+        /// <remarks>
+        /// Create v2 wallet
+        /// </remarks>
+        /// <exception cref="AffinidiTdk.WalletsClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CreateWalletV2Response)</returns>
+        System.Threading.Tasks.Task<ApiResponse<CreateWalletV2Response>> CreateWalletV2WithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default);
+        /// <summary>
+        ///
         /// </summary>
         /// <remarks>
         /// delete wallet by walletId
@@ -318,7 +383,7 @@ namespace AffinidiTdk.WalletsClient.Api
         System.Threading.Tasks.Task DeleteWalletAsync(string walletId, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <remarks>
         /// delete wallet by walletId
@@ -329,7 +394,7 @@ namespace AffinidiTdk.WalletsClient.Api
         /// <returns>Task of ApiResponse</returns>
         System.Threading.Tasks.Task<ApiResponse<Object>> DeleteWalletWithHttpInfoAsync(string walletId, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <remarks>
         /// get wallet details using wallet Id.
@@ -341,7 +406,7 @@ namespace AffinidiTdk.WalletsClient.Api
         System.Threading.Tasks.Task<WalletDto> GetWalletAsync(string walletId, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <remarks>
         /// get wallet details using wallet Id.
@@ -352,7 +417,7 @@ namespace AffinidiTdk.WalletsClient.Api
         /// <returns>Task of ApiResponse (WalletDto)</returns>
         System.Threading.Tasks.Task<ApiResponse<WalletDto>> GetWalletWithHttpInfoAsync(string walletId, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <remarks>
         /// lists all wallets
@@ -364,7 +429,7 @@ namespace AffinidiTdk.WalletsClient.Api
         System.Threading.Tasks.Task<WalletsListDto> ListWalletsAsync(string? didType = default, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <remarks>
         /// lists all wallets
@@ -375,7 +440,7 @@ namespace AffinidiTdk.WalletsClient.Api
         /// <returns>Task of ApiResponse (WalletsListDto)</returns>
         System.Threading.Tasks.Task<ApiResponse<WalletsListDto>> ListWalletsWithHttpInfoAsync(string? didType = default, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <remarks>
         /// signs credential with the wallet
@@ -388,7 +453,7 @@ namespace AffinidiTdk.WalletsClient.Api
         System.Threading.Tasks.Task<SignCredentialResultDto> SignCredentialAsync(string walletId, SignCredentialInputDto signCredentialInputDto, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <remarks>
         /// signs credential with the wallet
@@ -400,7 +465,7 @@ namespace AffinidiTdk.WalletsClient.Api
         /// <returns>Task of ApiResponse (SignCredentialResultDto)</returns>
         System.Threading.Tasks.Task<ApiResponse<SignCredentialResultDto>> SignCredentialWithHttpInfoAsync(string walletId, SignCredentialInputDto signCredentialInputDto, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <remarks>
         /// signs credential with the wallet v2
@@ -413,7 +478,7 @@ namespace AffinidiTdk.WalletsClient.Api
         System.Threading.Tasks.Task<SignCredentialsJwtResultDto> SignCredentialsJwtAsync(string walletId, SignCredentialsJwtInputDto signCredentialsJwtInputDto, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <remarks>
         /// signs credential with the wallet v2
@@ -425,7 +490,7 @@ namespace AffinidiTdk.WalletsClient.Api
         /// <returns>Task of ApiResponse (SignCredentialsJwtResultDto)</returns>
         System.Threading.Tasks.Task<ApiResponse<SignCredentialsJwtResultDto>> SignCredentialsJwtWithHttpInfoAsync(string walletId, SignCredentialsJwtInputDto signCredentialsJwtInputDto, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <remarks>
         /// signs credential with the wallet v2
@@ -438,7 +503,7 @@ namespace AffinidiTdk.WalletsClient.Api
         System.Threading.Tasks.Task<SignCredentialsLdpResultDto> SignCredentialsLdpAsync(string walletId, SignCredentialsLdpInputDto signCredentialsLdpInputDto, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <remarks>
         /// signs credential with the wallet v2
@@ -450,7 +515,7 @@ namespace AffinidiTdk.WalletsClient.Api
         /// <returns>Task of ApiResponse (SignCredentialsLdpResultDto)</returns>
         System.Threading.Tasks.Task<ApiResponse<SignCredentialsLdpResultDto>> SignCredentialsLdpWithHttpInfoAsync(string walletId, SignCredentialsLdpInputDto signCredentialsLdpInputDto, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <remarks>
         /// signs credential with the wallet v2
@@ -463,7 +528,7 @@ namespace AffinidiTdk.WalletsClient.Api
         System.Threading.Tasks.Task<SignCredentialsDm2SdJwtResultDto> SignCredentialsSdJwtAsync(string walletId, SignCredentialsDm2SdJwtInputDto signCredentialsDm2SdJwtInputDto, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <remarks>
         /// signs credential with the wallet v2
@@ -475,7 +540,7 @@ namespace AffinidiTdk.WalletsClient.Api
         /// <returns>Task of ApiResponse (SignCredentialsDm2SdJwtResultDto)</returns>
         System.Threading.Tasks.Task<ApiResponse<SignCredentialsDm2SdJwtResultDto>> SignCredentialsSdJwtWithHttpInfoAsync(string walletId, SignCredentialsDm2SdJwtInputDto signCredentialsDm2SdJwtInputDto, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <remarks>
         /// signs a jwt token with the wallet
@@ -488,7 +553,7 @@ namespace AffinidiTdk.WalletsClient.Api
         System.Threading.Tasks.Task<SignJwtTokenOK> SignJwtTokenAsync(string walletId, SignJwtToken signJwtToken, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <remarks>
         /// signs a jwt token with the wallet
@@ -500,7 +565,7 @@ namespace AffinidiTdk.WalletsClient.Api
         /// <returns>Task of ApiResponse (SignJwtTokenOK)</returns>
         System.Threading.Tasks.Task<ApiResponse<SignJwtTokenOK>> SignJwtTokenWithHttpInfoAsync(string walletId, SignJwtToken signJwtToken, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <remarks>
         /// signs presentation with the wallet
@@ -513,7 +578,7 @@ namespace AffinidiTdk.WalletsClient.Api
         System.Threading.Tasks.Task<SignPresentationLdpResultDto> SignPresentationsLdpAsync(string walletId, SignPresentationLdpInputDto signPresentationLdpInputDto, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <remarks>
         /// signs presentation with the wallet
@@ -525,7 +590,7 @@ namespace AffinidiTdk.WalletsClient.Api
         /// <returns>Task of ApiResponse (SignPresentationLdpResultDto)</returns>
         System.Threading.Tasks.Task<ApiResponse<SignPresentationLdpResultDto>> SignPresentationsLdpWithHttpInfoAsync(string walletId, SignPresentationLdpInputDto signPresentationLdpInputDto, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <remarks>
         /// update wallet details using wallet Id.
@@ -538,7 +603,7 @@ namespace AffinidiTdk.WalletsClient.Api
         System.Threading.Tasks.Task<WalletDto> UpdateWalletAsync(string walletId, UpdateWalletInput updateWalletInput, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <remarks>
         /// update wallet details using wallet Id.
@@ -875,6 +940,125 @@ namespace AffinidiTdk.WalletsClient.Api
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("CreateWallet", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  Create v2 wallet
+        /// </summary>
+        /// <exception cref="AffinidiTdk.WalletsClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createWalletV2Input">CreateWallet (optional)</param>
+        /// <returns>CreateWalletV2Response</returns>
+        public CreateWalletV2Response CreateWalletV2(CreateWalletV2Input? createWalletV2Input = default)
+        {
+            AffinidiTdk.WalletsClient.Client.ApiResponse<CreateWalletV2Response> localVarResponse = CreateWalletV2WithHttpInfo(createWalletV2Input);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  Create v2 wallet
+        /// </summary>
+        /// <exception cref="AffinidiTdk.WalletsClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createWalletV2Input">CreateWallet (optional)</param>
+        /// <returns>ApiResponse of CreateWalletV2Response</returns>
+        public AffinidiTdk.WalletsClient.Client.ApiResponse<CreateWalletV2Response> CreateWalletV2WithHttpInfo(CreateWalletV2Input? createWalletV2Input = default)
+        {
+            AffinidiTdk.WalletsClient.Client.RequestOptions localVarRequestOptions = new AffinidiTdk.WalletsClient.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = AffinidiTdk.WalletsClient.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = AffinidiTdk.WalletsClient.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+            localVarRequestOptions.Data = createWalletV2Input;
+
+            // authentication (ProjectTokenAuth) required
+            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
+            {
+                localVarRequestOptions.HeaderParameters.Add("authorization", this.Configuration.GetApiKeyWithPrefix("authorization"));
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<CreateWalletV2Response>("/v2/wallets", localVarRequestOptions, this.Configuration);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateWalletV2", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  Create v2 wallet
+        /// </summary>
+        /// <exception cref="AffinidiTdk.WalletsClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createWalletV2Input">CreateWallet (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CreateWalletV2Response</returns>
+        public async System.Threading.Tasks.Task<CreateWalletV2Response> CreateWalletV2Async(CreateWalletV2Input? createWalletV2Input = default, System.Threading.CancellationToken cancellationToken = default)
+        {
+            AffinidiTdk.WalletsClient.Client.ApiResponse<CreateWalletV2Response> localVarResponse = await CreateWalletV2WithHttpInfoAsync(createWalletV2Input, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  Create v2 wallet
+        /// </summary>
+        /// <exception cref="AffinidiTdk.WalletsClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createWalletV2Input">CreateWallet (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CreateWalletV2Response)</returns>
+        public async System.Threading.Tasks.Task<AffinidiTdk.WalletsClient.Client.ApiResponse<CreateWalletV2Response>> CreateWalletV2WithHttpInfoAsync(CreateWalletV2Input? createWalletV2Input = default, System.Threading.CancellationToken cancellationToken = default)
+        {
+
+            AffinidiTdk.WalletsClient.Client.RequestOptions localVarRequestOptions = new AffinidiTdk.WalletsClient.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+
+            var localVarContentType = AffinidiTdk.WalletsClient.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = AffinidiTdk.WalletsClient.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+            localVarRequestOptions.Data = createWalletV2Input;
+
+            // authentication (ProjectTokenAuth) required
+            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
+            {
+                localVarRequestOptions.HeaderParameters.Add("authorization", this.Configuration.GetApiKeyWithPrefix("authorization"));
+            }
+
+            // make the HTTP request
+
+            var localVarResponse = await this.AsynchronousClient.PostAsync<CreateWalletV2Response>("/v2/wallets", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateWalletV2", localVarResponse);
                 if (_exception != null) throw _exception;
             }
 
