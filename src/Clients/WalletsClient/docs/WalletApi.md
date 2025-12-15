@@ -118,7 +118,7 @@ catch (ApiException e)
 
 <a id="createwalletv2"></a>
 # **CreateWalletV2**
-> CreateWalletV2Response CreateWalletV2 ()
+> CreateWalletV2Response CreateWalletV2 (CreateWalletV2Input? createWalletV2Input = null)
 
 
 
@@ -150,10 +150,11 @@ namespace Example
             HttpClient httpClient = new HttpClient();
             HttpClientHandler httpClientHandler = new HttpClientHandler();
             var apiInstance = new WalletApi(httpClient, config, httpClientHandler);
+            var createWalletV2Input = new CreateWalletV2Input?(); // CreateWalletV2Input? | CreateWallet (optional) 
 
             try
             {
-                CreateWalletV2Response result = apiInstance.CreateWalletV2();
+                CreateWalletV2Response result = apiInstance.CreateWalletV2(createWalletV2Input);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -173,7 +174,7 @@ This returns an ApiResponse object which contains the response data, status code
 ```csharp
 try
 {
-    ApiResponse<CreateWalletV2Response> response = apiInstance.CreateWalletV2WithHttpInfo();
+    ApiResponse<CreateWalletV2Response> response = apiInstance.CreateWalletV2WithHttpInfo(createWalletV2Input);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
@@ -187,7 +188,11 @@ catch (ApiException e)
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **createWalletV2Input** | [**CreateWalletV2Input?**](CreateWalletV2Input?.md) | CreateWallet | [optional]  |
+
 ### Return type
 
 [**CreateWalletV2Response**](CreateWalletV2Response.md)
@@ -198,7 +203,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
