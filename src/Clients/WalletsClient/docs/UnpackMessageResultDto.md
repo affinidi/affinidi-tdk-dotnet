@@ -1,12 +1,11 @@
-# AffinidiTdk.ConsumerIamClient.Model.Permission
+# AffinidiTdk.WalletsClient.Model.UnpackMessageResultDto
+DTO contains decrypted message in JSON fromat
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Rights** | [**List&lt;RightsEnum&gt;**](RightsEnum.md) |  | 
-**NodeIds** | **List&lt;string&gt;** |  | 
-**ExpiresAt** | **DateTime** |  | [optional] 
+**Message** | **Object** | decrypted message in JSON format | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
