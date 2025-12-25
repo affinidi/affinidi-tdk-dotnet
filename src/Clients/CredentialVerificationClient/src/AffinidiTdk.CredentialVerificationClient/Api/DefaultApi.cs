@@ -50,6 +50,27 @@ namespace AffinidiTdk.CredentialVerificationClient.Api
         /// <returns>ApiResponse of VerifyCredentialOutput</returns>
         ApiResponse<VerifyCredentialOutput> VerifyCredentialsWithHttpInfo(VerifyCredentialInput verifyCredentialInput);
         /// <summary>
+        /// Verifying VC
+        /// </summary>
+        /// <remarks>
+        /// Verifying Verifiable Credentials (signatures)  &#x60;isValid&#x60; - true if all credentials verified &#x60;errors&#x60; contains list of error messages for invalid credentials.
+        /// </remarks>
+        /// <exception cref="AffinidiTdk.CredentialVerificationClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="verifyCredentialV2Input">Request body for verifying VCs with separate JWT and LDP arrays</param>
+        /// <returns>VerifyCredentialOutput</returns>
+        VerifyCredentialOutput VerifyCredentialsV2(VerifyCredentialV2Input verifyCredentialV2Input);
+
+        /// <summary>
+        /// Verifying VC
+        /// </summary>
+        /// <remarks>
+        /// Verifying Verifiable Credentials (signatures)  &#x60;isValid&#x60; - true if all credentials verified &#x60;errors&#x60; contains list of error messages for invalid credentials.
+        /// </remarks>
+        /// <exception cref="AffinidiTdk.CredentialVerificationClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="verifyCredentialV2Input">Request body for verifying VCs with separate JWT and LDP arrays</param>
+        /// <returns>ApiResponse of VerifyCredentialOutput</returns>
+        ApiResponse<VerifyCredentialOutput> VerifyCredentialsV2WithHttpInfo(VerifyCredentialV2Input verifyCredentialV2Input);
+        /// <summary>
         /// Verifying VP
         /// </summary>
         /// <remarks>
@@ -70,6 +91,27 @@ namespace AffinidiTdk.CredentialVerificationClient.Api
         /// <param name="verifyPresentationInput">VerifyPresentation</param>
         /// <returns>ApiResponse of VerifyPresentationOutput</returns>
         ApiResponse<VerifyPresentationOutput> VerifyPresentationWithHttpInfo(VerifyPresentationInput verifyPresentationInput);
+        /// <summary>
+        /// Verifying VP
+        /// </summary>
+        /// <remarks>
+        /// Verifying Verifiable Presentation (signatures)  Uses Presentation Exchange Query (pexQuery) structure for presentation definition and submission. Supports optional domain and challenge verification as per W3C VP standard.  &#x60;isValid&#x60; - true if presentation verified &#x60;error&#x60; verificaction error.
+        /// </remarks>
+        /// <exception cref="AffinidiTdk.CredentialVerificationClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="verifyPresentationV2Input">VerifyPresentationV2</param>
+        /// <returns>VerifyPresentationOutput</returns>
+        VerifyPresentationOutput VerifyPresentationV2(VerifyPresentationV2Input verifyPresentationV2Input);
+
+        /// <summary>
+        /// Verifying VP
+        /// </summary>
+        /// <remarks>
+        /// Verifying Verifiable Presentation (signatures)  Uses Presentation Exchange Query (pexQuery) structure for presentation definition and submission. Supports optional domain and challenge verification as per W3C VP standard.  &#x60;isValid&#x60; - true if presentation verified &#x60;error&#x60; verificaction error.
+        /// </remarks>
+        /// <exception cref="AffinidiTdk.CredentialVerificationClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="verifyPresentationV2Input">VerifyPresentationV2</param>
+        /// <returns>ApiResponse of VerifyPresentationOutput</returns>
+        ApiResponse<VerifyPresentationOutput> VerifyPresentationV2WithHttpInfo(VerifyPresentationV2Input verifyPresentationV2Input);
         #endregion Synchronous Operations
     }
 
@@ -103,6 +145,29 @@ namespace AffinidiTdk.CredentialVerificationClient.Api
         /// <returns>Task of ApiResponse (VerifyCredentialOutput)</returns>
         System.Threading.Tasks.Task<ApiResponse<VerifyCredentialOutput>> VerifyCredentialsWithHttpInfoAsync(VerifyCredentialInput verifyCredentialInput, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
+        /// Verifying VC
+        /// </summary>
+        /// <remarks>
+        /// Verifying Verifiable Credentials (signatures)  &#x60;isValid&#x60; - true if all credentials verified &#x60;errors&#x60; contains list of error messages for invalid credentials.
+        /// </remarks>
+        /// <exception cref="AffinidiTdk.CredentialVerificationClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="verifyCredentialV2Input">Request body for verifying VCs with separate JWT and LDP arrays</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of VerifyCredentialOutput</returns>
+        System.Threading.Tasks.Task<VerifyCredentialOutput> VerifyCredentialsV2Async(VerifyCredentialV2Input verifyCredentialV2Input, System.Threading.CancellationToken cancellationToken = default);
+
+        /// <summary>
+        /// Verifying VC
+        /// </summary>
+        /// <remarks>
+        /// Verifying Verifiable Credentials (signatures)  &#x60;isValid&#x60; - true if all credentials verified &#x60;errors&#x60; contains list of error messages for invalid credentials.
+        /// </remarks>
+        /// <exception cref="AffinidiTdk.CredentialVerificationClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="verifyCredentialV2Input">Request body for verifying VCs with separate JWT and LDP arrays</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (VerifyCredentialOutput)</returns>
+        System.Threading.Tasks.Task<ApiResponse<VerifyCredentialOutput>> VerifyCredentialsV2WithHttpInfoAsync(VerifyCredentialV2Input verifyCredentialV2Input, System.Threading.CancellationToken cancellationToken = default);
+        /// <summary>
         /// Verifying VP
         /// </summary>
         /// <remarks>
@@ -125,6 +190,29 @@ namespace AffinidiTdk.CredentialVerificationClient.Api
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (VerifyPresentationOutput)</returns>
         System.Threading.Tasks.Task<ApiResponse<VerifyPresentationOutput>> VerifyPresentationWithHttpInfoAsync(VerifyPresentationInput verifyPresentationInput, System.Threading.CancellationToken cancellationToken = default);
+        /// <summary>
+        /// Verifying VP
+        /// </summary>
+        /// <remarks>
+        /// Verifying Verifiable Presentation (signatures)  Uses Presentation Exchange Query (pexQuery) structure for presentation definition and submission. Supports optional domain and challenge verification as per W3C VP standard.  &#x60;isValid&#x60; - true if presentation verified &#x60;error&#x60; verificaction error.
+        /// </remarks>
+        /// <exception cref="AffinidiTdk.CredentialVerificationClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="verifyPresentationV2Input">VerifyPresentationV2</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of VerifyPresentationOutput</returns>
+        System.Threading.Tasks.Task<VerifyPresentationOutput> VerifyPresentationV2Async(VerifyPresentationV2Input verifyPresentationV2Input, System.Threading.CancellationToken cancellationToken = default);
+
+        /// <summary>
+        /// Verifying VP
+        /// </summary>
+        /// <remarks>
+        /// Verifying Verifiable Presentation (signatures)  Uses Presentation Exchange Query (pexQuery) structure for presentation definition and submission. Supports optional domain and challenge verification as per W3C VP standard.  &#x60;isValid&#x60; - true if presentation verified &#x60;error&#x60; verificaction error.
+        /// </remarks>
+        /// <exception cref="AffinidiTdk.CredentialVerificationClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="verifyPresentationV2Input">VerifyPresentationV2</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (VerifyPresentationOutput)</returns>
+        System.Threading.Tasks.Task<ApiResponse<VerifyPresentationOutput>> VerifyPresentationV2WithHttpInfoAsync(VerifyPresentationV2Input verifyPresentationV2Input, System.Threading.CancellationToken cancellationToken = default);
         #endregion Asynchronous Operations
     }
 
@@ -466,6 +554,133 @@ namespace AffinidiTdk.CredentialVerificationClient.Api
         }
 
         /// <summary>
+        /// Verifying VC Verifying Verifiable Credentials (signatures)  &#x60;isValid&#x60; - true if all credentials verified &#x60;errors&#x60; contains list of error messages for invalid credentials.
+        /// </summary>
+        /// <exception cref="AffinidiTdk.CredentialVerificationClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="verifyCredentialV2Input">Request body for verifying VCs with separate JWT and LDP arrays</param>
+        /// <returns>VerifyCredentialOutput</returns>
+        public VerifyCredentialOutput VerifyCredentialsV2(VerifyCredentialV2Input verifyCredentialV2Input)
+        {
+            AffinidiTdk.CredentialVerificationClient.Client.ApiResponse<VerifyCredentialOutput> localVarResponse = VerifyCredentialsV2WithHttpInfo(verifyCredentialV2Input);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Verifying VC Verifying Verifiable Credentials (signatures)  &#x60;isValid&#x60; - true if all credentials verified &#x60;errors&#x60; contains list of error messages for invalid credentials.
+        /// </summary>
+        /// <exception cref="AffinidiTdk.CredentialVerificationClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="verifyCredentialV2Input">Request body for verifying VCs with separate JWT and LDP arrays</param>
+        /// <returns>ApiResponse of VerifyCredentialOutput</returns>
+        public AffinidiTdk.CredentialVerificationClient.Client.ApiResponse<VerifyCredentialOutput> VerifyCredentialsV2WithHttpInfo(VerifyCredentialV2Input verifyCredentialV2Input)
+        {
+            // verify the required parameter 'verifyCredentialV2Input' is set
+            if (verifyCredentialV2Input == null)
+                throw new AffinidiTdk.CredentialVerificationClient.Client.ApiException(400, "Missing required parameter 'verifyCredentialV2Input' when calling DefaultApi->VerifyCredentialsV2");
+
+            AffinidiTdk.CredentialVerificationClient.Client.RequestOptions localVarRequestOptions = new AffinidiTdk.CredentialVerificationClient.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = AffinidiTdk.CredentialVerificationClient.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = AffinidiTdk.CredentialVerificationClient.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+            localVarRequestOptions.Data = verifyCredentialV2Input;
+
+            // authentication (ProjectTokenAuth) required
+            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
+            {
+                localVarRequestOptions.HeaderParameters.Add("authorization", this.Configuration.GetApiKeyWithPrefix("authorization"));
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<VerifyCredentialOutput>("/v2/verifier/credentials", localVarRequestOptions, this.Configuration);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("VerifyCredentialsV2", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Verifying VC Verifying Verifiable Credentials (signatures)  &#x60;isValid&#x60; - true if all credentials verified &#x60;errors&#x60; contains list of error messages for invalid credentials.
+        /// </summary>
+        /// <exception cref="AffinidiTdk.CredentialVerificationClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="verifyCredentialV2Input">Request body for verifying VCs with separate JWT and LDP arrays</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of VerifyCredentialOutput</returns>
+        public async System.Threading.Tasks.Task<VerifyCredentialOutput> VerifyCredentialsV2Async(VerifyCredentialV2Input verifyCredentialV2Input, System.Threading.CancellationToken cancellationToken = default)
+        {
+            AffinidiTdk.CredentialVerificationClient.Client.ApiResponse<VerifyCredentialOutput> localVarResponse = await VerifyCredentialsV2WithHttpInfoAsync(verifyCredentialV2Input, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Verifying VC Verifying Verifiable Credentials (signatures)  &#x60;isValid&#x60; - true if all credentials verified &#x60;errors&#x60; contains list of error messages for invalid credentials.
+        /// </summary>
+        /// <exception cref="AffinidiTdk.CredentialVerificationClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="verifyCredentialV2Input">Request body for verifying VCs with separate JWT and LDP arrays</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (VerifyCredentialOutput)</returns>
+        public async System.Threading.Tasks.Task<AffinidiTdk.CredentialVerificationClient.Client.ApiResponse<VerifyCredentialOutput>> VerifyCredentialsV2WithHttpInfoAsync(VerifyCredentialV2Input verifyCredentialV2Input, System.Threading.CancellationToken cancellationToken = default)
+        {
+            // verify the required parameter 'verifyCredentialV2Input' is set
+            if (verifyCredentialV2Input == null)
+                throw new AffinidiTdk.CredentialVerificationClient.Client.ApiException(400, "Missing required parameter 'verifyCredentialV2Input' when calling DefaultApi->VerifyCredentialsV2");
+
+
+            AffinidiTdk.CredentialVerificationClient.Client.RequestOptions localVarRequestOptions = new AffinidiTdk.CredentialVerificationClient.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+
+            var localVarContentType = AffinidiTdk.CredentialVerificationClient.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = AffinidiTdk.CredentialVerificationClient.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+            localVarRequestOptions.Data = verifyCredentialV2Input;
+
+            // authentication (ProjectTokenAuth) required
+            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
+            {
+                localVarRequestOptions.HeaderParameters.Add("authorization", this.Configuration.GetApiKeyWithPrefix("authorization"));
+            }
+
+            // make the HTTP request
+
+            var localVarResponse = await this.AsynchronousClient.PostAsync<VerifyCredentialOutput>("/v2/verifier/credentials", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("VerifyCredentialsV2", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
         /// Verifying VP Verifying Verifiable Presentation (signatures)  &#x60;isValid&#x60; - true if presentation verified &#x60;error&#x60; verificaction error.
         /// </summary>
         /// <exception cref="AffinidiTdk.CredentialVerificationClient.Client.ApiException">Thrown when fails to make API call</exception>
@@ -586,6 +801,133 @@ namespace AffinidiTdk.CredentialVerificationClient.Api
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("VerifyPresentation", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Verifying VP Verifying Verifiable Presentation (signatures)  Uses Presentation Exchange Query (pexQuery) structure for presentation definition and submission. Supports optional domain and challenge verification as per W3C VP standard.  &#x60;isValid&#x60; - true if presentation verified &#x60;error&#x60; verificaction error.
+        /// </summary>
+        /// <exception cref="AffinidiTdk.CredentialVerificationClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="verifyPresentationV2Input">VerifyPresentationV2</param>
+        /// <returns>VerifyPresentationOutput</returns>
+        public VerifyPresentationOutput VerifyPresentationV2(VerifyPresentationV2Input verifyPresentationV2Input)
+        {
+            AffinidiTdk.CredentialVerificationClient.Client.ApiResponse<VerifyPresentationOutput> localVarResponse = VerifyPresentationV2WithHttpInfo(verifyPresentationV2Input);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Verifying VP Verifying Verifiable Presentation (signatures)  Uses Presentation Exchange Query (pexQuery) structure for presentation definition and submission. Supports optional domain and challenge verification as per W3C VP standard.  &#x60;isValid&#x60; - true if presentation verified &#x60;error&#x60; verificaction error.
+        /// </summary>
+        /// <exception cref="AffinidiTdk.CredentialVerificationClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="verifyPresentationV2Input">VerifyPresentationV2</param>
+        /// <returns>ApiResponse of VerifyPresentationOutput</returns>
+        public AffinidiTdk.CredentialVerificationClient.Client.ApiResponse<VerifyPresentationOutput> VerifyPresentationV2WithHttpInfo(VerifyPresentationV2Input verifyPresentationV2Input)
+        {
+            // verify the required parameter 'verifyPresentationV2Input' is set
+            if (verifyPresentationV2Input == null)
+                throw new AffinidiTdk.CredentialVerificationClient.Client.ApiException(400, "Missing required parameter 'verifyPresentationV2Input' when calling DefaultApi->VerifyPresentationV2");
+
+            AffinidiTdk.CredentialVerificationClient.Client.RequestOptions localVarRequestOptions = new AffinidiTdk.CredentialVerificationClient.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = AffinidiTdk.CredentialVerificationClient.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = AffinidiTdk.CredentialVerificationClient.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+            localVarRequestOptions.Data = verifyPresentationV2Input;
+
+            // authentication (ProjectTokenAuth) required
+            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
+            {
+                localVarRequestOptions.HeaderParameters.Add("authorization", this.Configuration.GetApiKeyWithPrefix("authorization"));
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<VerifyPresentationOutput>("/v2/verifier/presentation", localVarRequestOptions, this.Configuration);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("VerifyPresentationV2", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Verifying VP Verifying Verifiable Presentation (signatures)  Uses Presentation Exchange Query (pexQuery) structure for presentation definition and submission. Supports optional domain and challenge verification as per W3C VP standard.  &#x60;isValid&#x60; - true if presentation verified &#x60;error&#x60; verificaction error.
+        /// </summary>
+        /// <exception cref="AffinidiTdk.CredentialVerificationClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="verifyPresentationV2Input">VerifyPresentationV2</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of VerifyPresentationOutput</returns>
+        public async System.Threading.Tasks.Task<VerifyPresentationOutput> VerifyPresentationV2Async(VerifyPresentationV2Input verifyPresentationV2Input, System.Threading.CancellationToken cancellationToken = default)
+        {
+            AffinidiTdk.CredentialVerificationClient.Client.ApiResponse<VerifyPresentationOutput> localVarResponse = await VerifyPresentationV2WithHttpInfoAsync(verifyPresentationV2Input, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Verifying VP Verifying Verifiable Presentation (signatures)  Uses Presentation Exchange Query (pexQuery) structure for presentation definition and submission. Supports optional domain and challenge verification as per W3C VP standard.  &#x60;isValid&#x60; - true if presentation verified &#x60;error&#x60; verificaction error.
+        /// </summary>
+        /// <exception cref="AffinidiTdk.CredentialVerificationClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="verifyPresentationV2Input">VerifyPresentationV2</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (VerifyPresentationOutput)</returns>
+        public async System.Threading.Tasks.Task<AffinidiTdk.CredentialVerificationClient.Client.ApiResponse<VerifyPresentationOutput>> VerifyPresentationV2WithHttpInfoAsync(VerifyPresentationV2Input verifyPresentationV2Input, System.Threading.CancellationToken cancellationToken = default)
+        {
+            // verify the required parameter 'verifyPresentationV2Input' is set
+            if (verifyPresentationV2Input == null)
+                throw new AffinidiTdk.CredentialVerificationClient.Client.ApiException(400, "Missing required parameter 'verifyPresentationV2Input' when calling DefaultApi->VerifyPresentationV2");
+
+
+            AffinidiTdk.CredentialVerificationClient.Client.RequestOptions localVarRequestOptions = new AffinidiTdk.CredentialVerificationClient.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+
+            var localVarContentType = AffinidiTdk.CredentialVerificationClient.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = AffinidiTdk.CredentialVerificationClient.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+            localVarRequestOptions.Data = verifyPresentationV2Input;
+
+            // authentication (ProjectTokenAuth) required
+            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
+            {
+                localVarRequestOptions.HeaderParameters.Add("authorization", this.Configuration.GetApiKeyWithPrefix("authorization"));
+            }
+
+            // make the HTTP request
+
+            var localVarResponse = await this.AsynchronousClient.PostAsync<VerifyPresentationOutput>("/v2/verifier/presentation", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("VerifyPresentationV2", localVarResponse);
                 if (_exception != null) throw _exception;
             }
 
