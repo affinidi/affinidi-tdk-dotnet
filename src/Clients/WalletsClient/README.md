@@ -136,6 +136,7 @@ ClientAPI | Operation | Description
 [*RevocationApi*](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/WalletsClient/docs/RevocationApi.md) | [*RevokeCredential*](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/WalletsClient/docs/RevocationApi.md#revokecredential) | Revoke Credential.
 [*RevocationApi*](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/WalletsClient/docs/RevocationApi.md) | [*RevokeCredentials*](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/WalletsClient/docs/RevocationApi.md#revokecredentials) | Revoke Credentials.
 [*WalletApi*](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/WalletsClient/docs/WalletApi.md) | [*CreateWallet*](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/WalletsClient/docs/WalletApi.md#createwallet) | 
+[*WalletApi*](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/WalletsClient/docs/WalletApi.md) | [*CreateWalletV2*](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/WalletsClient/docs/WalletApi.md#createwalletv2) | 
 [*WalletApi*](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/WalletsClient/docs/WalletApi.md) | [*DeleteWallet*](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/WalletsClient/docs/WalletApi.md#deletewallet) | 
 [*WalletApi*](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/WalletsClient/docs/WalletApi.md) | [*GetWallet*](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/WalletsClient/docs/WalletApi.md#getwallet) | 
 [*WalletApi*](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/WalletsClient/docs/WalletApi.md) | [*ListWallets*](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/WalletsClient/docs/WalletApi.md#listwallets) | 
@@ -189,6 +190,9 @@ ClientAPI | Operation | Description
  - [SignPresentationLdpInputDto](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/WalletsClient/docs/SignPresentationLdpInputDto.md)
  - [SignPresentationLdpResultDto](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/WalletsClient/docs/SignPresentationLdpResultDto.md)
  - [SigningFailedError](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/WalletsClient/docs/SigningFailedError.md)
+ - [TooManyRequestsError](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/WalletsClient/docs/TooManyRequestsError.md)
+ - [UnpackMessageInput](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/WalletsClient/docs/UnpackMessageInput.md)
+ - [UnpackMessageResultDto](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/WalletsClient/docs/UnpackMessageResultDto.md)
  - [UpdateWalletInput](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/WalletsClient/docs/UpdateWalletInput.md)
  - [WalletDto](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/WalletsClient/docs/WalletDto.md)
  - [WalletDtoKeysInner](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/WalletsClient/docs/WalletDtoKeysInner.md)
