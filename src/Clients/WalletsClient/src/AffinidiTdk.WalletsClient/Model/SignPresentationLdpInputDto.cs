@@ -65,6 +65,51 @@ namespace AffinidiTdk.WalletsClient.Model
         [DataMember(Name = "signatureScheme", EmitDefaultValue = false)]
         public SignatureSchemeEnum? SignatureScheme { get; set; }
         /// <summary>
+        /// W3C signature suite for canonicalization. Defaults to rdfc variants for each algorithm (ecdsa-rdfc-2019 for P256, eddsa-rdfc-2022 for Ed25519, EcdsaSecp256k1Signature2019 for secp256k1).
+        /// </summary>
+        /// <value>W3C signature suite for canonicalization. Defaults to rdfc variants for each algorithm (ecdsa-rdfc-2019 for P256, eddsa-rdfc-2022 for Ed25519, EcdsaSecp256k1Signature2019 for secp256k1).</value>
+        [JsonConverter(typeof(StringEnumConverter))]
+        public enum SignatureSuiteEnum
+        {
+            /// <summary>
+            /// Enum EcdsaJcs2019 for value: ecdsa-jcs-2019
+            /// </summary>
+            [EnumMember(Value = "ecdsa-jcs-2019")]
+            EcdsaJcs2019 = 1,
+
+            /// <summary>
+            /// Enum EcdsaRdfc2019 for value: ecdsa-rdfc-2019
+            /// </summary>
+            [EnumMember(Value = "ecdsa-rdfc-2019")]
+            EcdsaRdfc2019 = 2,
+
+            /// <summary>
+            /// Enum EddsaJcs2022 for value: eddsa-jcs-2022
+            /// </summary>
+            [EnumMember(Value = "eddsa-jcs-2022")]
+            EddsaJcs2022 = 3,
+
+            /// <summary>
+            /// Enum EddsaRdfc2022 for value: eddsa-rdfc-2022
+            /// </summary>
+            [EnumMember(Value = "eddsa-rdfc-2022")]
+            EddsaRdfc2022 = 4,
+
+            /// <summary>
+            /// Enum EcdsaSecp256k1Signature2019 for value: EcdsaSecp256k1Signature2019
+            /// </summary>
+            [EnumMember(Value = "EcdsaSecp256k1Signature2019")]
+            EcdsaSecp256k1Signature2019 = 5
+        }
+
+
+        /// <summary>
+        /// W3C signature suite for canonicalization. Defaults to rdfc variants for each algorithm (ecdsa-rdfc-2019 for P256, eddsa-rdfc-2022 for Ed25519, EcdsaSecp256k1Signature2019 for secp256k1).
+        /// </summary>
+        /// <value>W3C signature suite for canonicalization. Defaults to rdfc variants for each algorithm (ecdsa-rdfc-2019 for P256, eddsa-rdfc-2022 for Ed25519, EcdsaSecp256k1Signature2019 for secp256k1).</value>
+        [DataMember(Name = "signatureSuite", EmitDefaultValue = false)]
+        public SignatureSuiteEnum? SignatureSuite { get; set; }
+        /// <summary>
         /// Initializes a new instance of the <see cref="SignPresentationLdpInputDto" /> class.
         /// </summary>
         [JsonConstructorAttribute]
@@ -74,9 +119,10 @@ namespace AffinidiTdk.WalletsClient.Model
         /// </summary>
         /// <param name="unsignedPresentation">Unsigned presentation in Dm1 format (required).</param>
         /// <param name="signatureScheme">signatureScheme.</param>
+        /// <param name="signatureSuite">W3C signature suite for canonicalization. Defaults to rdfc variants for each algorithm (ecdsa-rdfc-2019 for P256, eddsa-rdfc-2022 for Ed25519, EcdsaSecp256k1Signature2019 for secp256k1)..</param>
         /// <param name="domain">Domain(s) for which the presentation is intended.</param>
         /// <param name="challenge">Challenge string.</param>
-        public SignPresentationLdpInputDto(Object unsignedPresentation = default, SignatureSchemeEnum? signatureScheme = default, List<string> domain = default, string challenge = default)
+        public SignPresentationLdpInputDto(Object unsignedPresentation = default, SignatureSchemeEnum? signatureScheme = default, SignatureSuiteEnum? signatureSuite = default, List<string> domain = default, string challenge = default)
         {
             // to ensure "unsignedPresentation" is required (not null)
             if (unsignedPresentation == null)
@@ -85,6 +131,7 @@ namespace AffinidiTdk.WalletsClient.Model
             }
             this.UnsignedPresentation = unsignedPresentation;
             this.SignatureScheme = signatureScheme;
+            this.SignatureSuite = signatureSuite;
             this.Domain = domain;
             this.Challenge = challenge;
         }
@@ -120,6 +167,7 @@ namespace AffinidiTdk.WalletsClient.Model
             sb.Append("class SignPresentationLdpInputDto {\n");
             sb.Append("  UnsignedPresentation: ").Append(UnsignedPresentation).Append("\n");
             sb.Append("  SignatureScheme: ").Append(SignatureScheme).Append("\n");
+            sb.Append("  SignatureSuite: ").Append(SignatureSuite).Append("\n");
             sb.Append("  Domain: ").Append(Domain).Append("\n");
             sb.Append("  Challenge: ").Append(Challenge).Append("\n");
             sb.Append("}\n");
