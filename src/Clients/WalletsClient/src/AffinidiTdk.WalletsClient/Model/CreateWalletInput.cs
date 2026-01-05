@@ -142,7 +142,7 @@ namespace AffinidiTdk.WalletsClient.Model
 
             if (this.DidWebUrl != null) {
                 // DidWebUrl (string) pattern
-                Regex regexDidWebUrl = new Regex(@"^(?!:\/\/)([a-zA-Z0-9\-\.]+)(:[0-9]+)?(\/[a-zA-Z0-9\-\/]*)?$", RegexOptions.CultureInvariant);
+                Regex regexDidWebUrl = new Regex(@"^(https?:\/\/)?(?!:\/\/)([a-zA-Z0-9\-\.]+)(:[0-9]+)?(\/[a-zA-Z0-9\-\/]*)?$", RegexOptions.CultureInvariant);
                 if (!regexDidWebUrl.Match(this.DidWebUrl).Success)
                 {
                     yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for DidWebUrl, must match a pattern of " + regexDidWebUrl, new [] { "DidWebUrl" });
