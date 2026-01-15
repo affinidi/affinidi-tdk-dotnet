@@ -16,6 +16,7 @@ namespace IntegrationTests.Fixtures
         public RevocationApi RevocationApi { get; private set; }
 
         public SignCredentialResultDto? SignedCredential { get; set; }
+        public Object? SignedCredentialLdp { get; set; }
         public string? WalletId { get; set; }
         public string? WalletDid { get; set; }
         public string? WalletIdDidWeb { get; set; }

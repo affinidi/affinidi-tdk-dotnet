@@ -46,8 +46,12 @@ namespace IntegrationTests.Helpers
         public static string IotaPresentationDefinition => GetEnvVar("IOTA_PRESENTATION_DEFINITION", required: true);
         public static string CredentialIssuanceConfiguration => GetEnvVar("CREDENTIAL_ISSUANCE_CONFIGURATION", required: true);
         public static string CredentialIssuanceData => GetEnvVar("CREDENTIAL_ISSUANCE_DATA", required: true);
+        public static string UnsignedCredentialV2 => GetEnvVar("UNSIGNED_CREDENTIAL_V2", required: true);
+        public static string DisclosureFrameV2 => GetEnvVar("DISCLOSURE_FRAME_V2", required: true);
+        
 
         // Required JSON env vars
         public static JObject VerifiableCredential => GetJsonObject("VERIFIABLE_CREDENTIAL", required: true);
+        public static string JwtCredentialV2 => GetEnvVar("JWT_CREDENTIAL_V2", required: true);
     }
 }

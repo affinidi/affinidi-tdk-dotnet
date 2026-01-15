@@ -34,6 +34,30 @@ namespace IntegrationTests.Helpers
             return response;
         }
 
+
+        public static async Task<CreateWalletV2Response> CreateWalletV2(bool didWeb = false)
+        {
+            var api = GetWalletApi();
+
+            var input = didWeb
+                ? new CreateWalletV2Input
+                {
+                    DidMethod = CreateWalletV2Input.DidMethodEnum.Web,
+                    DidWebUrl = $"https://{Utils.GenerateRandomString()}.com"
+                }
+                : new CreateWalletV2Input();
+            // Debug logging
+            if (didWeb)
+            {
+                Console.WriteLine($"[DEBUG] CreateWalletV2 - DidMethod: {input.DidMethod}, DidWebUrl: {input.DidWebUrl}");
+            }
+            var response = await api.CreateWalletV2Async(input);
+            Console.WriteLine($"[DEBUG] Wallet V2 created - ID: {response.Wallet?.Id}, DID: {response.Wallet?.Did}");
+
+            Assert.NotNull(response);
+            return response;
+        }
+
         public static async Task DeleteWallet(string walletId)
         {
             var api = GetWalletApi();
