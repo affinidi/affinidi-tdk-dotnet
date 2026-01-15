@@ -46,13 +46,8 @@ namespace IntegrationTests.Helpers
                     DidWebUrl = $"https://{Utils.GenerateRandomString()}.com"
                 }
                 : new CreateWalletV2Input();
-            // Debug logging
-            if (didWeb)
-            {
-                Console.WriteLine($"[DEBUG] CreateWalletV2 - DidMethod: {input.DidMethod}, DidWebUrl: {input.DidWebUrl}");
-            }
+
             var response = await api.CreateWalletV2Async(input);
-            Console.WriteLine($"[DEBUG] Wallet V2 created - ID: {response.Wallet?.Id}, DID: {response.Wallet?.Did}");
 
             Assert.NotNull(response);
             return response;
