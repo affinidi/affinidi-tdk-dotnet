@@ -38,12 +38,14 @@ namespace AffinidiTdk.CredentialVerificationClient.Model
         /// </summary>
         /// <param name="verifiablePresentation">verifiablePresentation.</param>
         /// <param name="pexQuery">pexQuery.</param>
+        /// <param name="dcqlQuery">DCQL (Digital Credentials Query Language) Query used to verify that the credentials in the Verifiable Presentation match the specified query requirements. Currently supports only ldp_vc format credentials. Developers should implement additional business rule validation on top of the verification results returned by this service..</param>
         /// <param name="challenge">Optional challenge string for domain/challenge verification.</param>
         /// <param name="domain">Optional domain for verification. Array of domain strings as per W3C VP standard.</param>
-        public VerifyPresentationV2Input(Object verifiablePresentation = default, VerifyPresentationV2InputPexQuery pexQuery = default, string challenge = default, List<string> domain = default)
+        public VerifyPresentationV2Input(Object verifiablePresentation = default, VerifyPresentationV2InputPexQuery pexQuery = default, Dictionary<string, Object> dcqlQuery = default, string challenge = default, List<string> domain = default)
         {
             this.VerifiablePresentation = verifiablePresentation;
             this.PexQuery = pexQuery;
+            this.DcqlQuery = dcqlQuery;
             this.Challenge = challenge;
             this.Domain = domain;
         }
@@ -59,6 +61,13 @@ namespace AffinidiTdk.CredentialVerificationClient.Model
         /// </summary>
         [DataMember(Name = "pexQuery", EmitDefaultValue = false)]
         public VerifyPresentationV2InputPexQuery PexQuery { get; set; }
+
+        /// <summary>
+        /// DCQL (Digital Credentials Query Language) Query used to verify that the credentials in the Verifiable Presentation match the specified query requirements. Currently supports only ldp_vc format credentials. Developers should implement additional business rule validation on top of the verification results returned by this service.
+        /// </summary>
+        /// <value>DCQL (Digital Credentials Query Language) Query used to verify that the credentials in the Verifiable Presentation match the specified query requirements. Currently supports only ldp_vc format credentials. Developers should implement additional business rule validation on top of the verification results returned by this service.</value>
+        [DataMember(Name = "dcqlQuery", EmitDefaultValue = false)]
+        public Dictionary<string, Object> DcqlQuery { get; set; }
 
         /// <summary>
         /// Optional challenge string for domain/challenge verification
@@ -84,6 +93,7 @@ namespace AffinidiTdk.CredentialVerificationClient.Model
             sb.Append("class VerifyPresentationV2Input {\n");
             sb.Append("  VerifiablePresentation: ").Append(VerifiablePresentation).Append("\n");
             sb.Append("  PexQuery: ").Append(PexQuery).Append("\n");
+            sb.Append("  DcqlQuery: ").Append(DcqlQuery).Append("\n");
             sb.Append("  Challenge: ").Append(Challenge).Append("\n");
             sb.Append("  Domain: ").Append(Domain).Append("\n");
             sb.Append("}\n");
