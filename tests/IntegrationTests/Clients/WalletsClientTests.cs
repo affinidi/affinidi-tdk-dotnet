@@ -312,16 +312,16 @@ namespace IntegrationTests
 
                 if (!string.IsNullOrEmpty(credentialId))
                 {
-                    var revokeCredentialInput = new RevokeCredentialInput
+                    var revokeCredentialsInput = new RevokeCredentialsInput
                     {
                         RevocationReason = "test v2 tdk",
                         CredentialId = credentialId
                     };
 
-                    await _fixture.RevocationApi.RevokeCredentialAsync(_fixture.V2WalletId!, revokeCredentialInput);
+                    await _fixture.RevocationApi.RevokeCredentialsAsync(_fixture.V2WalletId!, revokeCredentialsInput);
 
                     // Verify the credential is now invalid
-                    var isValid = await VerificationHelper.IsValid(_fixture.SignedCredentialLdp);
+                    var isValid = await VerificationHelper.IsValidV2(ldpVc: _fixture.SignedCredentialLdp);
                     Assert.False(isValid);
                 }
             }
