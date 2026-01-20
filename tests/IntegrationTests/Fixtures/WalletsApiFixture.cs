@@ -16,9 +16,13 @@ namespace IntegrationTests.Fixtures
         public RevocationApi RevocationApi { get; private set; }
 
         public SignCredentialResultDto? SignedCredential { get; set; }
+        public Object? SignedCredentialLdp { get; set; }
         public string? WalletId { get; set; }
         public string? WalletDid { get; set; }
         public string? WalletIdDidWeb { get; set; }
+        public string? V2WalletId { get; set; }
+        public string? V2WalletDid { get; set; }
+        public string? V2WalletIdDidWeb { get; set; }
 
         public WalletsApiFixture()
         {
@@ -36,6 +40,10 @@ namespace IntegrationTests.Fixtures
 
             WalletId = createWalletResult.Wallet.Id;
             WalletDid = createWalletResult.Wallet.Did;
+
+            var createWalletV2Result = await WalletsHelper.CreateWalletV2();
+            V2WalletId = createWalletV2Result.Wallet.Id;
+            V2WalletDid = createWalletV2Result.Wallet.Did;
         }
 
         // Runs AFTER all tests are done (clean up)

@@ -130,7 +130,9 @@ We have created an [example code](https://github.com/affinidi/affinidi-tdk-dotne
 ClientAPI | Operation | Description
 ------------ | ------------- | -------------
 [*DefaultApi*](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/CredentialVerificationClient/docs/DefaultApi.md) | [*VerifyCredentials*](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/CredentialVerificationClient/docs/DefaultApi.md#verifycredentials) | Verifying VC
+[*DefaultApi*](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/CredentialVerificationClient/docs/DefaultApi.md) | [*VerifyCredentialsV2*](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/CredentialVerificationClient/docs/DefaultApi.md#verifycredentialsv2) | Verifying VC
 [*DefaultApi*](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/CredentialVerificationClient/docs/DefaultApi.md) | [*VerifyPresentation*](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/CredentialVerificationClient/docs/DefaultApi.md#verifypresentation) | Verifying VP
+[*DefaultApi*](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/CredentialVerificationClient/docs/DefaultApi.md) | [*VerifyPresentationV2*](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/CredentialVerificationClient/docs/DefaultApi.md#verifypresentationv2) | Verifying VP
 
 
 **Note:** *Each Client API operation requires a different authorization token. Please check the operation details for the type of token required to use the operation properly.*

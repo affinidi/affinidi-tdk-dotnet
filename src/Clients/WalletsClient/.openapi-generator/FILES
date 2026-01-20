@@ -40,6 +40,9 @@ docs/SignMessageResultDto.md
 docs/SignPresentationLdpInputDto.md
 docs/SignPresentationLdpResultDto.md
 docs/SigningFailedError.md
+docs/TooManyRequestsError.md
+docs/UnpackMessageInput.md
+docs/UnpackMessageResultDto.md
 docs/UpdateWalletInput.md
 docs/WalletApi.md
 docs/WalletDto.md
@@ -104,6 +107,9 @@ src/AffinidiTdk.WalletsClient/Model/SignMessageResultDto.cs
 src/AffinidiTdk.WalletsClient/Model/SignPresentationLdpInputDto.cs
 src/AffinidiTdk.WalletsClient/Model/SignPresentationLdpResultDto.cs
 src/AffinidiTdk.WalletsClient/Model/SigningFailedError.cs
+src/AffinidiTdk.WalletsClient/Model/TooManyRequestsError.cs
+src/AffinidiTdk.WalletsClient/Model/UnpackMessageInput.cs
+src/AffinidiTdk.WalletsClient/Model/UnpackMessageResultDto.cs
 src/AffinidiTdk.WalletsClient/Model/UpdateWalletInput.cs
 src/AffinidiTdk.WalletsClient/Model/WalletDto.cs
 src/AffinidiTdk.WalletsClient/Model/WalletDtoKeysInner.cs

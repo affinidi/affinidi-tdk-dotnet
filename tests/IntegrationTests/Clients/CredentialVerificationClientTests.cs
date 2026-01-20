@@ -46,5 +46,50 @@ namespace IntegrationTests
             Assert.IsType<VerifyPresentationOutput>(result);
             Assert.True(result.IsValid);
         }
+
+        [Fact]
+        public async Task VerifyCredentialsV2_LdpFormat()
+        {
+
+
+            var verifyCredentialV2Input = new VerifyCredentialV2Input
+            {
+                LdpVcs = new List<Dictionary<string, object>> { EnvHelper.VerifiableCredential.ToObject<Dictionary<string, object>>()! }
+            };
+
+            VerifyCredentialOutput result = await _fixture.DefaultApi.VerifyCredentialsV2Async(verifyCredentialV2Input);
+
+            Assert.NotNull(result);
+            Assert.IsType<VerifyCredentialOutput>(result);
+            Assert.True(result.IsValid);
+        }
+
+        [Fact]
+        public async Task VerifyCredentialsV2_JwtFormat()
+        {
+            var verifyCredentialV2Input = new VerifyCredentialV2Input
+            {
+                JwtVcs = new List<string> { EnvHelper.JwtCredentialV2 }
+            };
+
+            VerifyCredentialOutput result = await _fixture.DefaultApi.VerifyCredentialsV2Async(verifyCredentialV2Input);
+
+            Assert.NotNull(result);
+            Assert.IsType<VerifyCredentialOutput>(result);
+            Assert.True(result.IsValid);
+        }
+
+        [Fact]
+        public async Task VerifyPresentationV2()
+        {
+            object vp = JObject.Parse(EnvHelper.VerifiablePresentation);
+            var verifyPresentationV2Input = new VerifyPresentationV2Input(vp);
+
+            VerifyPresentationOutput result = await _fixture.DefaultApi.VerifyPresentationV2Async(verifyPresentationV2Input);
+
+            Assert.NotNull(result);
+            Assert.IsType<VerifyPresentationOutput>(result);
+            Assert.True(result.IsValid);
+        }
     }
 }
