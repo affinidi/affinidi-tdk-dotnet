@@ -28,7 +28,6 @@ docs/PresentationSubmission.md
 docs/SubmissionRequirement.md
 docs/ValidateJwtInput.md
 docs/ValidateJwtOutput.md
-docs/VerifierApi.md
 docs/VerifyCredentialInput.md
 docs/VerifyCredentialOutput.md
 docs/VerifyCredentialV2Input.md
@@ -40,7 +39,6 @@ docs/W3cCredentialStatus.md
 docs/W3cProof.md
 src/AffinidiTdk.CredentialVerificationClient/AffinidiTdk.CredentialVerificationClient.csproj
 src/AffinidiTdk.CredentialVerificationClient/Api/DefaultApi.cs
-src/AffinidiTdk.CredentialVerificationClient/Api/VerifierApi.cs
 src/AffinidiTdk.CredentialVerificationClient/Client/ApiClient.cs
 src/AffinidiTdk.CredentialVerificationClient/Client/ApiException.cs
 src/AffinidiTdk.CredentialVerificationClient/Client/ApiResponse.cs

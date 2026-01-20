@@ -133,7 +133,6 @@ ClientAPI | Operation | Description
 [*DefaultApi*](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/CredentialVerificationClient/docs/DefaultApi.md) | [*VerifyCredentialsV2*](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/CredentialVerificationClient/docs/DefaultApi.md#verifycredentialsv2) | Verifying VC
 [*DefaultApi*](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/CredentialVerificationClient/docs/DefaultApi.md) | [*VerifyPresentation*](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/CredentialVerificationClient/docs/DefaultApi.md#verifypresentation) | Verifying VP
 [*DefaultApi*](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/CredentialVerificationClient/docs/DefaultApi.md) | [*VerifyPresentationV2*](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/CredentialVerificationClient/docs/DefaultApi.md#verifypresentationv2) | Verifying VP
-[*VerifierApi*](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/CredentialVerificationClient/docs/VerifierApi.md) | [*ValidateJwt*](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/CredentialVerificationClient/docs/VerifierApi.md#validatejwt) | Validates JWT token
 
 
 **Note:** *Each Client API operation requires a different authorization token. Please check the operation details for the type of token required to use the operation properly.*
