@@ -249,6 +249,29 @@ namespace AffinidiTdk.WalletsClient.Api
         /// <returns>ApiResponse of SignJwtTokenOK</returns>
         ApiResponse<SignJwtTokenOK> SignJwtTokenWithHttpInfo(string walletId, SignJwtToken signJwtToken);
         /// <summary>
+        /// Sign JWT.
+        /// </summary>
+        /// <remarks>
+        /// Sign a JSON Web Token (JWT).
+        /// </remarks>
+        /// <exception cref="AffinidiTdk.WalletsClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="walletId">id of the wallet</param>
+        /// <param name="signJwtV2">SignJwtV2</param>
+        /// <returns>SignJwtV2OK</returns>
+        SignJwtV2OK SignJwtV2(string walletId, SignJwtV2 signJwtV2);
+
+        /// <summary>
+        /// Sign JWT.
+        /// </summary>
+        /// <remarks>
+        /// Sign a JSON Web Token (JWT).
+        /// </remarks>
+        /// <exception cref="AffinidiTdk.WalletsClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="walletId">id of the wallet</param>
+        /// <param name="signJwtV2">SignJwtV2</param>
+        /// <returns>ApiResponse of SignJwtV2OK</returns>
+        ApiResponse<SignJwtV2OK> SignJwtV2WithHttpInfo(string walletId, SignJwtV2 signJwtV2);
+        /// <summary>
         /// 
         /// </summary>
         /// <remarks>
@@ -543,6 +566,31 @@ namespace AffinidiTdk.WalletsClient.Api
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (SignJwtTokenOK)</returns>
         System.Threading.Tasks.Task<ApiResponse<SignJwtTokenOK>> SignJwtTokenWithHttpInfoAsync(string walletId, SignJwtToken signJwtToken, System.Threading.CancellationToken cancellationToken = default);
+        /// <summary>
+        /// Sign JWT.
+        /// </summary>
+        /// <remarks>
+        /// Sign a JSON Web Token (JWT).
+        /// </remarks>
+        /// <exception cref="AffinidiTdk.WalletsClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="walletId">id of the wallet</param>
+        /// <param name="signJwtV2">SignJwtV2</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of SignJwtV2OK</returns>
+        System.Threading.Tasks.Task<SignJwtV2OK> SignJwtV2Async(string walletId, SignJwtV2 signJwtV2, System.Threading.CancellationToken cancellationToken = default);
+
+        /// <summary>
+        /// Sign JWT.
+        /// </summary>
+        /// <remarks>
+        /// Sign a JSON Web Token (JWT).
+        /// </remarks>
+        /// <exception cref="AffinidiTdk.WalletsClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="walletId">id of the wallet</param>
+        /// <param name="signJwtV2">SignJwtV2</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (SignJwtV2OK)</returns>
+        System.Threading.Tasks.Task<ApiResponse<SignJwtV2OK>> SignJwtV2WithHttpInfoAsync(string walletId, SignJwtV2 signJwtV2, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// 
         /// </summary>
@@ -2112,6 +2160,147 @@ namespace AffinidiTdk.WalletsClient.Api
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("SignJwtToken", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Sign JWT. Sign a JSON Web Token (JWT).
+        /// </summary>
+        /// <exception cref="AffinidiTdk.WalletsClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="walletId">id of the wallet</param>
+        /// <param name="signJwtV2">SignJwtV2</param>
+        /// <returns>SignJwtV2OK</returns>
+        public SignJwtV2OK SignJwtV2(string walletId, SignJwtV2 signJwtV2)
+        {
+            AffinidiTdk.WalletsClient.Client.ApiResponse<SignJwtV2OK> localVarResponse = SignJwtV2WithHttpInfo(walletId, signJwtV2);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Sign JWT. Sign a JSON Web Token (JWT).
+        /// </summary>
+        /// <exception cref="AffinidiTdk.WalletsClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="walletId">id of the wallet</param>
+        /// <param name="signJwtV2">SignJwtV2</param>
+        /// <returns>ApiResponse of SignJwtV2OK</returns>
+        public AffinidiTdk.WalletsClient.Client.ApiResponse<SignJwtV2OK> SignJwtV2WithHttpInfo(string walletId, SignJwtV2 signJwtV2)
+        {
+            // verify the required parameter 'walletId' is set
+            if (walletId == null)
+                throw new AffinidiTdk.WalletsClient.Client.ApiException(400, "Missing required parameter 'walletId' when calling WalletApi->SignJwtV2");
+
+            // verify the required parameter 'signJwtV2' is set
+            if (signJwtV2 == null)
+                throw new AffinidiTdk.WalletsClient.Client.ApiException(400, "Missing required parameter 'signJwtV2' when calling WalletApi->SignJwtV2");
+
+            AffinidiTdk.WalletsClient.Client.RequestOptions localVarRequestOptions = new AffinidiTdk.WalletsClient.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = AffinidiTdk.WalletsClient.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = AffinidiTdk.WalletsClient.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+            localVarRequestOptions.PathParameters.Add("walletId", AffinidiTdk.WalletsClient.Client.ClientUtils.ParameterToString(walletId)); // path parameter
+            localVarRequestOptions.Data = signJwtV2;
+
+            // authentication (ProjectTokenAuth) required
+            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
+            {
+                localVarRequestOptions.HeaderParameters.Add("authorization", this.Configuration.GetApiKeyWithPrefix("authorization"));
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<SignJwtV2OK>("/v2/wallets/{walletId}/jwt/sign", localVarRequestOptions, this.Configuration);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("SignJwtV2", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Sign JWT. Sign a JSON Web Token (JWT).
+        /// </summary>
+        /// <exception cref="AffinidiTdk.WalletsClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="walletId">id of the wallet</param>
+        /// <param name="signJwtV2">SignJwtV2</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of SignJwtV2OK</returns>
+        public async System.Threading.Tasks.Task<SignJwtV2OK> SignJwtV2Async(string walletId, SignJwtV2 signJwtV2, System.Threading.CancellationToken cancellationToken = default)
+        {
+            AffinidiTdk.WalletsClient.Client.ApiResponse<SignJwtV2OK> localVarResponse = await SignJwtV2WithHttpInfoAsync(walletId, signJwtV2, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Sign JWT. Sign a JSON Web Token (JWT).
+        /// </summary>
+        /// <exception cref="AffinidiTdk.WalletsClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="walletId">id of the wallet</param>
+        /// <param name="signJwtV2">SignJwtV2</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (SignJwtV2OK)</returns>
+        public async System.Threading.Tasks.Task<AffinidiTdk.WalletsClient.Client.ApiResponse<SignJwtV2OK>> SignJwtV2WithHttpInfoAsync(string walletId, SignJwtV2 signJwtV2, System.Threading.CancellationToken cancellationToken = default)
+        {
+            // verify the required parameter 'walletId' is set
+            if (walletId == null)
+                throw new AffinidiTdk.WalletsClient.Client.ApiException(400, "Missing required parameter 'walletId' when calling WalletApi->SignJwtV2");
+
+            // verify the required parameter 'signJwtV2' is set
+            if (signJwtV2 == null)
+                throw new AffinidiTdk.WalletsClient.Client.ApiException(400, "Missing required parameter 'signJwtV2' when calling WalletApi->SignJwtV2");
+
+
+            AffinidiTdk.WalletsClient.Client.RequestOptions localVarRequestOptions = new AffinidiTdk.WalletsClient.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+
+            var localVarContentType = AffinidiTdk.WalletsClient.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = AffinidiTdk.WalletsClient.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+            localVarRequestOptions.PathParameters.Add("walletId", AffinidiTdk.WalletsClient.Client.ClientUtils.ParameterToString(walletId)); // path parameter
+            localVarRequestOptions.Data = signJwtV2;
+
+            // authentication (ProjectTokenAuth) required
+            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
+            {
+                localVarRequestOptions.HeaderParameters.Add("authorization", this.Configuration.GetApiKeyWithPrefix("authorization"));
+            }
+
+            // make the HTTP request
+
+            var localVarResponse = await this.AsynchronousClient.PostAsync<SignJwtV2OK>("/v2/wallets/{walletId}/jwt/sign", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("SignJwtV2", localVarResponse);
                 if (_exception != null) throw _exception;
             }
 
