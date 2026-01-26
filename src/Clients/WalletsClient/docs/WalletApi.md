@@ -14,6 +14,7 @@ All URIs are relative to *https://apse1.api.affinidi.io/cwe*
 | [**SignCredentialsLdp**](WalletApi.md#signcredentialsldp) | **POST** /v2/wallets/{walletId}/credentials/ldp/sign |  |
 | [**SignCredentialsSdJwt**](WalletApi.md#signcredentialssdjwt) | **POST** /v2/wallets/{walletId}/credentials/sd-jwt/sign |  |
 | [**SignJwtToken**](WalletApi.md#signjwttoken) | **POST** /v1/wallets/{walletId}/sign-jwt |  |
+| [**SignJwtV2**](WalletApi.md#signjwtv2) | **POST** /v2/wallets/{walletId}/jwt/sign | Sign JWT. |
 | [**SignPresentationsLdp**](WalletApi.md#signpresentationsldp) | **POST** /v2/wallets/{walletId}/presentations/ldp/sign |  |
 | [**UpdateWallet**](WalletApi.md#updatewallet) | **PATCH** /v1/wallets/{walletId} |  |
 
@@ -1023,6 +1024,111 @@ catch (ApiException e)
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | SignJwtTokenOK |  -  |
+| **400** | BadRequestError |  -  |
+| **403** | ForbiddenError |  -  |
+| **404** | NotFoundError |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a id="signjwtv2"></a>
+# **SignJwtV2**
+> SignJwtV2OK SignJwtV2 (string walletId, SignJwtV2 signJwtV2)
+
+Sign JWT.
+
+Sign a JSON Web Token (JWT).
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Net.Http;
+using AffinidiTdk.WalletsClient.Api;
+using AffinidiTdk.WalletsClient.Client;
+using AffinidiTdk.WalletsClient.Model;
+
+namespace Example
+{
+    public class SignJwtV2Example
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://apse1.api.affinidi.io/cwe";
+            // Configure API key authorization: ProjectTokenAuth
+            config.AddApiKey("authorization", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // config.AddApiKeyPrefix("authorization", "Bearer");
+
+            // create instances of HttpClient, HttpClientHandler to be reused later with different Api classes
+            HttpClient httpClient = new HttpClient();
+            HttpClientHandler httpClientHandler = new HttpClientHandler();
+            var apiInstance = new WalletApi(httpClient, config, httpClientHandler);
+            var walletId = "walletId_example";  // string | id of the wallet
+            var signJwtV2 = new SignJwtV2(); // SignJwtV2 | SignJwtV2
+
+            try
+            {
+                // Sign JWT.
+                SignJwtV2OK result = apiInstance.SignJwtV2(walletId, signJwtV2);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling WalletApi.SignJwtV2: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the SignJwtV2WithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    // Sign JWT.
+    ApiResponse<SignJwtV2OK> response = apiInstance.SignJwtV2WithHttpInfo(walletId, signJwtV2);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling WalletApi.SignJwtV2WithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **walletId** | **string** | id of the wallet |  |
+| **signJwtV2** | [**SignJwtV2**](SignJwtV2.md) | SignJwtV2 |  |
+
+### Return type
+
+[**SignJwtV2OK**](SignJwtV2OK.md)
+
+### Authorization
+
+[ProjectTokenAuth](../README.md#ProjectTokenAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | SignJwtOK |  -  |
 | **400** | BadRequestError |  -  |
 | **403** | ForbiddenError |  -  |
 | **404** | NotFoundError |  -  |
