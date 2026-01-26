@@ -35,6 +35,8 @@ docs/SignCredentialsLdpInputDto.md
 docs/SignCredentialsLdpResultDto.md
 docs/SignJwtToken.md
 docs/SignJwtTokenOK.md
+docs/SignJwtV2.md
+docs/SignJwtV2OK.md
 docs/SignMessageInput.md
 docs/SignMessageResultDto.md
 docs/SignPresentationLdpInputDto.md
@@ -102,6 +104,8 @@ src/AffinidiTdk.WalletsClient/Model/SignCredentialsLdpInputDto.cs
 src/AffinidiTdk.WalletsClient/Model/SignCredentialsLdpResultDto.cs
 src/AffinidiTdk.WalletsClient/Model/SignJwtToken.cs
 src/AffinidiTdk.WalletsClient/Model/SignJwtTokenOK.cs
+src/AffinidiTdk.WalletsClient/Model/SignJwtV2.cs
+src/AffinidiTdk.WalletsClient/Model/SignJwtV2OK.cs
 src/AffinidiTdk.WalletsClient/Model/SignMessageInput.cs
 src/AffinidiTdk.WalletsClient/Model/SignMessageResultDto.cs
 src/AffinidiTdk.WalletsClient/Model/SignPresentationLdpInputDto.cs
