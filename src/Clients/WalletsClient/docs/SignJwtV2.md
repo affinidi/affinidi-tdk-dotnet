@@ -1,12 +1,11 @@
-# AffinidiTdk.ConsumerIamClient.Model.Permission
+# AffinidiTdk.WalletsClient.Model.SignJwtV2
+DTO contains payload of JWT to be signed
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Rights** | [**List&lt;RightsEnum&gt;**](RightsEnum.md) |  | 
-**NodeIds** | **List&lt;string&gt;** |  | 
-**ExpiresAt** | **DateTime** |  | [optional] 
+**Payload** | **Object** |  | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
