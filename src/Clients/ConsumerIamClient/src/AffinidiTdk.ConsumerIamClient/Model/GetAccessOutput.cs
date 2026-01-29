@@ -28,56 +28,36 @@ using OpenAPIDateConverter = AffinidiTdk.ConsumerIamClient.Client.OpenAPIDateCon
 namespace AffinidiTdk.ConsumerIamClient.Model
 {
     /// <summary>
-    /// Permission
+    /// GetAccessOutput
     /// </summary>
-    [DataContract(Name = "Permission")]
-    public partial class Permission : IValidatableObject
+    [DataContract(Name = "GetAccessOutput")]
+    public partial class GetAccessOutput : IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="Permission" /> class.
+        /// Initializes a new instance of the <see cref="GetAccessOutput" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        protected Permission() { }
+        protected GetAccessOutput() { }
         /// <summary>
-        /// Initializes a new instance of the <see cref="Permission" /> class.
+        /// Initializes a new instance of the <see cref="GetAccessOutput" /> class.
         /// </summary>
-        /// <param name="rights">rights (required).</param>
-        /// <param name="nodeIds">nodeIds (required).</param>
-        /// <param name="expiresAt">expiresAt.</param>
-        public Permission(List<RightsEnum> rights = default, List<string> nodeIds = default, DateTime expiresAt = default)
+        /// <param name="permissions">List of permissions currently granted (required).</param>
+        public GetAccessOutput(List<Permission> permissions = default)
         {
-            // to ensure "rights" is required (not null)
-            if (rights == null)
+            // to ensure "permissions" is required (not null)
+            if (permissions == null)
             {
-                throw new ArgumentNullException("rights is a required property for Permission and cannot be null");
+                throw new ArgumentNullException("permissions is a required property for GetAccessOutput and cannot be null");
             }
-            this.Rights = rights;
-            // to ensure "nodeIds" is required (not null)
-            if (nodeIds == null)
-            {
-                throw new ArgumentNullException("nodeIds is a required property for Permission and cannot be null");
-            }
-            this.NodeIds = nodeIds;
-            this.ExpiresAt = expiresAt;
+            this.Permissions = permissions;
         }
 
         /// <summary>
-        /// Gets or Sets Rights
+        /// List of permissions currently granted
         /// </summary>
-        [DataMember(Name = "rights", IsRequired = true, EmitDefaultValue = true)]
-        public List<RightsEnum> Rights { get; set; }
-
-        /// <summary>
-        /// Gets or Sets NodeIds
-        /// </summary>
-        [DataMember(Name = "nodeIds", IsRequired = true, EmitDefaultValue = true)]
-        public List<string> NodeIds { get; set; }
-
-        /// <summary>
-        /// Gets or Sets ExpiresAt
-        /// </summary>
-        [DataMember(Name = "expiresAt", EmitDefaultValue = false)]
-        public DateTime ExpiresAt { get; set; }
+        /// <value>List of permissions currently granted</value>
+        [DataMember(Name = "permissions", IsRequired = true, EmitDefaultValue = true)]
+        public List<Permission> Permissions { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -86,10 +66,8 @@ namespace AffinidiTdk.ConsumerIamClient.Model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class Permission {\n");
-            sb.Append("  Rights: ").Append(Rights).Append("\n");
-            sb.Append("  NodeIds: ").Append(NodeIds).Append("\n");
-            sb.Append("  ExpiresAt: ").Append(ExpiresAt).Append("\n");
+            sb.Append("class GetAccessOutput {\n");
+            sb.Append("  Permissions: ").Append(Permissions).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
