@@ -145,6 +145,7 @@ ClientAPI | Operation | Description
 [*WalletApi*](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/WalletsClient/docs/WalletApi.md) | [*SignCredentialsLdp*](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/WalletsClient/docs/WalletApi.md#signcredentialsldp) | 
 [*WalletApi*](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/WalletsClient/docs/WalletApi.md) | [*SignCredentialsSdJwt*](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/WalletsClient/docs/WalletApi.md#signcredentialssdjwt) | 
 [*WalletApi*](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/WalletsClient/docs/WalletApi.md) | [*SignJwtToken*](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/WalletsClient/docs/WalletApi.md#signjwttoken) | 
+[*WalletApi*](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/WalletsClient/docs/WalletApi.md) | [*SignJwtV2*](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/WalletsClient/docs/WalletApi.md#signjwtv2) | Sign JWT.
 [*WalletApi*](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/WalletsClient/docs/WalletApi.md) | [*SignPresentationsLdp*](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/WalletsClient/docs/WalletApi.md#signpresentationsldp) | 
 [*WalletApi*](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/WalletsClient/docs/WalletApi.md) | [*UpdateWallet*](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/WalletsClient/docs/WalletApi.md#updatewallet) | 
 
@@ -185,6 +186,8 @@ ClientAPI | Operation | Description
  - [SignCredentialsLdpResultDto](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/WalletsClient/docs/SignCredentialsLdpResultDto.md)
  - [SignJwtToken](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/WalletsClient/docs/SignJwtToken.md)
  - [SignJwtTokenOK](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/WalletsClient/docs/SignJwtTokenOK.md)
+ - [SignJwtV2](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/WalletsClient/docs/SignJwtV2.md)
+ - [SignJwtV2OK](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/WalletsClient/docs/SignJwtV2OK.md)
  - [SignMessageInput](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/WalletsClient/docs/SignMessageInput.md)
  - [SignMessageResultDto](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/WalletsClient/docs/SignMessageResultDto.md)
  - [SignPresentationLdpInputDto](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/WalletsClient/docs/SignPresentationLdpInputDto.md)
