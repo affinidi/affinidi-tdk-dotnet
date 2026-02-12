@@ -1,11 +1,11 @@
-# AffinidiTdk.IotaClient.Model.AwsExchangeCredentialsOK
+# AffinidiTdk.IotaClient.Model.AwsExchangeCredentialsOKCredentials
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ConnectionClientId** | **string** |  | 
-**Credentials** | [**AwsExchangeCredentialsOKCredentials**](AwsExchangeCredentialsOKCredentials.md) |  | 
+**IdentityId** | **string** |  | 
+**Token** | **string** |  | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
