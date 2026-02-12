@@ -28,29 +28,29 @@ using OpenAPIDateConverter = AffinidiTdk.WalletsClient.Client.OpenAPIDateConvert
 namespace AffinidiTdk.WalletsClient.Model
 {
     /// <summary>
-    /// ServiceErrorResponseDetailsInner
+    /// NotFoundErrorDetailsInner
     /// </summary>
-    [DataContract(Name = "ServiceErrorResponse_details_inner")]
-    public partial class ServiceErrorResponseDetailsInner : IValidatableObject
+    [DataContract(Name = "NotFoundError_details_inner")]
+    public partial class NotFoundErrorDetailsInner : IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="ServiceErrorResponseDetailsInner" /> class.
+        /// Initializes a new instance of the <see cref="NotFoundErrorDetailsInner" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        protected ServiceErrorResponseDetailsInner() { }
+        protected NotFoundErrorDetailsInner() { }
         /// <summary>
-        /// Initializes a new instance of the <see cref="ServiceErrorResponseDetailsInner" /> class.
+        /// Initializes a new instance of the <see cref="NotFoundErrorDetailsInner" /> class.
         /// </summary>
         /// <param name="issue">issue (required).</param>
         /// <param name="field">field.</param>
         /// <param name="value">value.</param>
         /// <param name="location">location.</param>
-        public ServiceErrorResponseDetailsInner(string issue = default, string field = default, string value = default, string location = default)
+        public NotFoundErrorDetailsInner(string issue = default, string field = default, string value = default, string location = default)
         {
             // to ensure "issue" is required (not null)
             if (issue == null)
             {
-                throw new ArgumentNullException("issue is a required property for ServiceErrorResponseDetailsInner and cannot be null");
+                throw new ArgumentNullException("issue is a required property for NotFoundErrorDetailsInner and cannot be null");
             }
             this.Issue = issue;
             this.Field = field;
@@ -89,7 +89,7 @@ namespace AffinidiTdk.WalletsClient.Model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class ServiceErrorResponseDetailsInner {\n");
+            sb.Append("class NotFoundErrorDetailsInner {\n");
             sb.Append("  Issue: ").Append(Issue).Append("\n");
             sb.Append("  Field: ").Append(Field).Append("\n");
             sb.Append("  Value: ").Append(Value).Append("\n");

@@ -1,12 +1,11 @@
-# AffinidiTdk.WalletsClient.Model.AuthcryptMessageInput
-DTO contains params to authcrypt plain text DIDComm message
+# AffinidiTdk.WalletsClient.Model.SignJwtV2InputDto
+DTO contains payload of JWT to be signed
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**PlainTextMessage** | **Object** | Unsigned plain text DIDComm message | 
-**SignatureScheme** | **string** |  | [optional] 
+**Payload** | **Object** |  | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
