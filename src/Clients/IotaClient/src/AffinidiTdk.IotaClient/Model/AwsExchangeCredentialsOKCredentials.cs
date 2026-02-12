@@ -28,48 +28,48 @@ using OpenAPIDateConverter = AffinidiTdk.IotaClient.Client.OpenAPIDateConverter;
 namespace AffinidiTdk.IotaClient.Model
 {
     /// <summary>
-    /// AwsExchangeCredentialsOK
+    /// AwsExchangeCredentialsOKCredentials
     /// </summary>
-    [DataContract(Name = "AwsExchangeCredentialsOK")]
-    public partial class AwsExchangeCredentialsOK : IValidatableObject
+    [DataContract(Name = "AwsExchangeCredentialsOK_credentials")]
+    public partial class AwsExchangeCredentialsOKCredentials : IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="AwsExchangeCredentialsOK" /> class.
+        /// Initializes a new instance of the <see cref="AwsExchangeCredentialsOKCredentials" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        protected AwsExchangeCredentialsOK() { }
+        protected AwsExchangeCredentialsOKCredentials() { }
         /// <summary>
-        /// Initializes a new instance of the <see cref="AwsExchangeCredentialsOK" /> class.
+        /// Initializes a new instance of the <see cref="AwsExchangeCredentialsOKCredentials" /> class.
         /// </summary>
-        /// <param name="connectionClientId">connectionClientId (required).</param>
-        /// <param name="credentials">credentials (required).</param>
-        public AwsExchangeCredentialsOK(string connectionClientId = default, AwsExchangeCredentialsOKCredentials credentials = default)
+        /// <param name="identityId">identityId (required).</param>
+        /// <param name="token">token (required).</param>
+        public AwsExchangeCredentialsOKCredentials(string identityId = default, string token = default)
         {
-            // to ensure "connectionClientId" is required (not null)
-            if (connectionClientId == null)
+            // to ensure "identityId" is required (not null)
+            if (identityId == null)
             {
-                throw new ArgumentNullException("connectionClientId is a required property for AwsExchangeCredentialsOK and cannot be null");
+                throw new ArgumentNullException("identityId is a required property for AwsExchangeCredentialsOKCredentials and cannot be null");
             }
-            this.ConnectionClientId = connectionClientId;
-            // to ensure "credentials" is required (not null)
-            if (credentials == null)
+            this.IdentityId = identityId;
+            // to ensure "token" is required (not null)
+            if (token == null)
             {
-                throw new ArgumentNullException("credentials is a required property for AwsExchangeCredentialsOK and cannot be null");
+                throw new ArgumentNullException("token is a required property for AwsExchangeCredentialsOKCredentials and cannot be null");
             }
-            this.Credentials = credentials;
+            this.Token = token;
         }
 
         /// <summary>
-        /// Gets or Sets ConnectionClientId
+        /// Gets or Sets IdentityId
         /// </summary>
-        [DataMember(Name = "connectionClientId", IsRequired = true, EmitDefaultValue = true)]
-        public string ConnectionClientId { get; set; }
+        [DataMember(Name = "identityId", IsRequired = true, EmitDefaultValue = true)]
+        public string IdentityId { get; set; }
 
         /// <summary>
-        /// Gets or Sets Credentials
+        /// Gets or Sets Token
         /// </summary>
-        [DataMember(Name = "credentials", IsRequired = true, EmitDefaultValue = true)]
-        public AwsExchangeCredentialsOKCredentials Credentials { get; set; }
+        [DataMember(Name = "token", IsRequired = true, EmitDefaultValue = true)]
+        public string Token { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -78,9 +78,9 @@ namespace AffinidiTdk.IotaClient.Model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class AwsExchangeCredentialsOK {\n");
-            sb.Append("  ConnectionClientId: ").Append(ConnectionClientId).Append("\n");
-            sb.Append("  Credentials: ").Append(Credentials).Append("\n");
+            sb.Append("class AwsExchangeCredentialsOKCredentials {\n");
+            sb.Append("  IdentityId: ").Append(IdentityId).Append("\n");
+            sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
