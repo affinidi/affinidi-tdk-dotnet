@@ -327,6 +327,24 @@ namespace IntegrationTests
             }
         }
 
+        // Test sign jwt token v2
+        [Fact]
+        public async Task Test16_SignJwtV2()
+        {
+            var input = new JObject
+            {
+                ["sub"] = _fixture.V2WalletDid!,
+                ["name"] = "Test user",
+                ["iat"] = DateTimeOffset.UtcNow.ToUnixTimeSeconds(),
+                ["exp"] = DateTimeOffset.UtcNow.AddMinutes(5).ToUnixTimeSeconds()
+            };
+
+            var signJwtV2InputDto = new SignJwtV2InputDto(input);
+
+            var result = await _fixture.WalletApi.SignJwtV2Async(_fixture.V2WalletId!, signJwtV2InputDto);
+
+            Assert.NotNull(result.SignedJwt);
+        }
 
         [Fact]
         public async Task Test99_DeletesWallet()
