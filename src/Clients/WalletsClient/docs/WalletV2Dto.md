@@ -12,7 +12,9 @@ Name | Type | Description | Notes
 **DidDocument** | **Object** | did document of the wallet | [optional] 
 **Ari** | **string** | ARI of the wallet | [optional] 
 **Algorithm** | **string** | algorithm used to generate key for the wallet | [optional] 
-**Keys** | [**List&lt;WalletDtoKeysInner&gt;**](WalletDtoKeysInner.md) |  | [optional] 
+**Keys** | [**List&lt;WalletV2DtoKeysInner&gt;**](WalletV2DtoKeysInner.md) |  | [optional] 
+**DefaultKeyId** | **string** | default key for signing operations when keyId not specified | [optional] 
+**Services** | [**List&lt;ServiceEndpointDto&gt;**](ServiceEndpointDto.md) | service endpoints in DID document | [optional] 
 **CreatedAt** | **string** |  | [optional] 
 **ModifiedAt** | **string** |  | [optional] 
 

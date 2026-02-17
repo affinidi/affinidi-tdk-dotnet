@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **Message** | **string** |  | 
 **HttpStatusCode** | **decimal** |  | 
 **TraceId** | **string** |  | 
-**Details** | [**List&lt;ServiceErrorResponseDetailsInner&gt;**](ServiceErrorResponseDetailsInner.md) |  | [optional] 
+**Details** | [**List&lt;NotFoundErrorDetailsInner&gt;**](NotFoundErrorDetailsInner.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
