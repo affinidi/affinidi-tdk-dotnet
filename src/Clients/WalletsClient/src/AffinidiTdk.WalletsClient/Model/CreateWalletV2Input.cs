@@ -56,7 +56,13 @@ namespace AffinidiTdk.WalletsClient.Model
             /// Enum Peer0 for value: peer0
             /// </summary>
             [EnumMember(Value = "peer0")]
-            Peer0 = 3
+            Peer0 = 3,
+
+            /// <summary>
+            /// Enum Peer2 for value: peer2
+            /// </summary>
+            [EnumMember(Value = "peer2")]
+            Peer2 = 4
         }
 
 
@@ -107,13 +113,15 @@ namespace AffinidiTdk.WalletsClient.Model
         /// <param name="didMethod">Define how DID of your wallet is created and resolved (default to DidMethodEnum.Key).</param>
         /// <param name="didWebUrl">URL of the DID. Required if the did method is web.</param>
         /// <param name="algorithm">algorithm to generate key for the wallet (default to AlgorithmEnum.Secp256k1).</param>
-        public CreateWalletV2Input(string name = default, string description = default, DidMethodEnum? didMethod = DidMethodEnum.Key, string didWebUrl = default, AlgorithmEnum? algorithm = AlgorithmEnum.Secp256k1)
+        /// <param name="services">Service endpoints to include in DID document.</param>
+        public CreateWalletV2Input(string name = default, string description = default, DidMethodEnum? didMethod = DidMethodEnum.Key, string didWebUrl = default, AlgorithmEnum? algorithm = AlgorithmEnum.Secp256k1, List<ServiceEndpointInput> services = default)
         {
             this.Name = name;
             this.Description = description;
             this.DidMethod = didMethod;
             this.DidWebUrl = didWebUrl;
             this.Algorithm = algorithm;
+            this.Services = services;
         }
 
         /// <summary>
@@ -138,6 +146,13 @@ namespace AffinidiTdk.WalletsClient.Model
         public string DidWebUrl { get; set; }
 
         /// <summary>
+        /// Service endpoints to include in DID document
+        /// </summary>
+        /// <value>Service endpoints to include in DID document</value>
+        [DataMember(Name = "services", EmitDefaultValue = false)]
+        public List<ServiceEndpointInput> Services { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -150,6 +165,7 @@ namespace AffinidiTdk.WalletsClient.Model
             sb.Append("  DidMethod: ").Append(DidMethod).Append("\n");
             sb.Append("  DidWebUrl: ").Append(DidWebUrl).Append("\n");
             sb.Append("  Algorithm: ").Append(Algorithm).Append("\n");
+            sb.Append("  Services: ").Append(Services).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }

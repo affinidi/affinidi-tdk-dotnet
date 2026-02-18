@@ -44,9 +44,11 @@ namespace AffinidiTdk.WalletsClient.Model
         /// <param name="ari">ARI of the wallet.</param>
         /// <param name="algorithm">algorithm used to generate key for the wallet.</param>
         /// <param name="keys">keys.</param>
+        /// <param name="defaultKeyId">default key for signing operations when keyId not specified.</param>
+        /// <param name="services">service endpoints in DID document.</param>
         /// <param name="createdAt">createdAt.</param>
         /// <param name="modifiedAt">modifiedAt.</param>
-        public WalletV2Dto(string id = default, string did = default, string name = default, string description = default, Object didDocument = default, string ari = default, string algorithm = default, List<WalletDtoKeysInner> keys = default, string createdAt = default, string modifiedAt = default)
+        public WalletV2Dto(string id = default, string did = default, string name = default, string description = default, Object didDocument = default, string ari = default, string algorithm = default, List<WalletV2DtoKeysInner> keys = default, string defaultKeyId = default, List<ServiceEndpointDto> services = default, string createdAt = default, string modifiedAt = default)
         {
             this.Id = id;
             this.Did = did;
@@ -56,6 +58,8 @@ namespace AffinidiTdk.WalletsClient.Model
             this.Ari = ari;
             this.Algorithm = algorithm;
             this.Keys = keys;
+            this.DefaultKeyId = defaultKeyId;
+            this.Services = services;
             this.CreatedAt = createdAt;
             this.ModifiedAt = modifiedAt;
         }
@@ -113,7 +117,21 @@ namespace AffinidiTdk.WalletsClient.Model
         /// Gets or Sets Keys
         /// </summary>
         [DataMember(Name = "keys", EmitDefaultValue = false)]
-        public List<WalletDtoKeysInner> Keys { get; set; }
+        public List<WalletV2DtoKeysInner> Keys { get; set; }
+
+        /// <summary>
+        /// default key for signing operations when keyId not specified
+        /// </summary>
+        /// <value>default key for signing operations when keyId not specified</value>
+        [DataMember(Name = "defaultKeyId", EmitDefaultValue = false)]
+        public string DefaultKeyId { get; set; }
+
+        /// <summary>
+        /// service endpoints in DID document
+        /// </summary>
+        /// <value>service endpoints in DID document</value>
+        [DataMember(Name = "services", EmitDefaultValue = false)]
+        public List<ServiceEndpointDto> Services { get; set; }
 
         /// <summary>
         /// Gets or Sets CreatedAt
@@ -143,6 +161,8 @@ namespace AffinidiTdk.WalletsClient.Model
             sb.Append("  Ari: ").Append(Ari).Append("\n");
             sb.Append("  Algorithm: ").Append(Algorithm).Append("\n");
             sb.Append("  Keys: ").Append(Keys).Append("\n");
+            sb.Append("  DefaultKeyId: ").Append(DefaultKeyId).Append("\n");
+            sb.Append("  Services: ").Append(Services).Append("\n");
             sb.Append("  CreatedAt: ").Append(CreatedAt).Append("\n");
             sb.Append("  ModifiedAt: ").Append(ModifiedAt).Append("\n");
             sb.Append("}\n");
