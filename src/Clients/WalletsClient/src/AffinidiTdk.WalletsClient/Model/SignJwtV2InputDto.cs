@@ -28,36 +28,35 @@ using OpenAPIDateConverter = AffinidiTdk.WalletsClient.Client.OpenAPIDateConvert
 namespace AffinidiTdk.WalletsClient.Model
 {
     /// <summary>
-    /// DTO contains signed credential
+    /// DTO contains payload of JWT to be signed
     /// </summary>
-    [DataContract(Name = "SignCredentialsDm1LdResultDto")]
-    public partial class SignCredentialsDm1LdResultDto : IValidatableObject
+    [DataContract(Name = "SignJwtV2InputDto")]
+    public partial class SignJwtV2InputDto : IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="SignCredentialsDm1LdResultDto" /> class.
+        /// Initializes a new instance of the <see cref="SignJwtV2InputDto" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        protected SignCredentialsDm1LdResultDto() { }
+        protected SignJwtV2InputDto() { }
         /// <summary>
-        /// Initializes a new instance of the <see cref="SignCredentialsDm1LdResultDto" /> class.
+        /// Initializes a new instance of the <see cref="SignJwtV2InputDto" /> class.
         /// </summary>
-        /// <param name="credential">Signed credential can be in Dm1Ld format (required).</param>
-        public SignCredentialsDm1LdResultDto(Object credential = default)
+        /// <param name="payload">payload (required).</param>
+        public SignJwtV2InputDto(Object payload = default)
         {
-            // to ensure "credential" is required (not null)
-            if (credential == null)
+            // to ensure "payload" is required (not null)
+            if (payload == null)
             {
-                throw new ArgumentNullException("credential is a required property for SignCredentialsDm1LdResultDto and cannot be null");
+                throw new ArgumentNullException("payload is a required property for SignJwtV2InputDto and cannot be null");
             }
-            this.Credential = credential;
+            this.Payload = payload;
         }
 
         /// <summary>
-        /// Signed credential can be in Dm1Ld format
+        /// Gets or Sets Payload
         /// </summary>
-        /// <value>Signed credential can be in Dm1Ld format</value>
-        [DataMember(Name = "credential", IsRequired = true, EmitDefaultValue = true)]
-        public Object Credential { get; set; }
+        [DataMember(Name = "payload", IsRequired = true, EmitDefaultValue = true)]
+        public Object Payload { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -66,8 +65,8 @@ namespace AffinidiTdk.WalletsClient.Model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class SignCredentialsDm1LdResultDto {\n");
-            sb.Append("  Credential: ").Append(Credential).Append("\n");
+            sb.Append("class SignJwtV2InputDto {\n");
+            sb.Append("  Payload: ").Append(Payload).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }

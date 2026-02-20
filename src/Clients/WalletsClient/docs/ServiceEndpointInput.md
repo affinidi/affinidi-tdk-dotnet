@@ -1,12 +1,13 @@
-# AffinidiTdk.WalletsClient.Model.AuthcryptMessageInput
-DTO contains params to authcrypt plain text DIDComm message
+# AffinidiTdk.WalletsClient.Model.ServiceEndpointInput
+Input for adding a service endpoint
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**PlainTextMessage** | **Object** | Unsigned plain text DIDComm message | 
-**SignatureScheme** | **string** |  | [optional] 
+**Name** | **string** | Name of the service endpoint | 
+**Description** | **string** | Description of the service endpoint | 
+**Url** | **string** | service endpoint URL | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

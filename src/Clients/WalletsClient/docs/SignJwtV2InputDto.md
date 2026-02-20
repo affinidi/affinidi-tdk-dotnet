@@ -1,11 +1,11 @@
-# AffinidiTdk.WalletsClient.Model.AuthcryptMessageResultDto
-DTO contains authcrypted message in JSON fromat
+# AffinidiTdk.WalletsClient.Model.SignJwtV2InputDto
+DTO contains payload of JWT to be signed
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AuthcryptedMessage** | **Object** | Authcrypted message in JSON format | 
+**Payload** | **Object** |  | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
