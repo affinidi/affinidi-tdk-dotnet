@@ -28,67 +28,64 @@ using OpenAPIDateConverter = AffinidiTdk.WalletsClient.Client.OpenAPIDateConvert
 namespace AffinidiTdk.WalletsClient.Model
 {
     /// <summary>
-    /// ServiceErrorResponse
+    /// Input for adding a service endpoint
     /// </summary>
-    [DataContract(Name = "ServiceErrorResponse")]
-    public partial class ServiceErrorResponse : IValidatableObject
+    [DataContract(Name = "ServiceEndpointInput")]
+    public partial class ServiceEndpointInput : IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="ServiceErrorResponse" /> class.
+        /// Initializes a new instance of the <see cref="ServiceEndpointInput" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        protected ServiceErrorResponse() { }
+        protected ServiceEndpointInput() { }
         /// <summary>
-        /// Initializes a new instance of the <see cref="ServiceErrorResponse" /> class.
+        /// Initializes a new instance of the <see cref="ServiceEndpointInput" /> class.
         /// </summary>
-        /// <param name="debugId">unique id for correlating this specific error to logs (required).</param>
-        /// <param name="name">name of the error (required).</param>
-        /// <param name="code">backwards compatible Affinidi error code (required).</param>
-        /// <param name="details">details.</param>
-        public ServiceErrorResponse(Guid debugId = default, string name = default, string code = default, List<ServiceErrorResponseDetailsInner> details = default)
+        /// <param name="name">Name of the service endpoint (required).</param>
+        /// <param name="description">Description of the service endpoint (required).</param>
+        /// <param name="url">service endpoint URL (required).</param>
+        public ServiceEndpointInput(string name = default, string description = default, string url = default)
         {
-            this.DebugId = debugId;
             // to ensure "name" is required (not null)
             if (name == null)
             {
-                throw new ArgumentNullException("name is a required property for ServiceErrorResponse and cannot be null");
+                throw new ArgumentNullException("name is a required property for ServiceEndpointInput and cannot be null");
             }
             this.Name = name;
-            // to ensure "code" is required (not null)
-            if (code == null)
+            // to ensure "description" is required (not null)
+            if (description == null)
             {
-                throw new ArgumentNullException("code is a required property for ServiceErrorResponse and cannot be null");
+                throw new ArgumentNullException("description is a required property for ServiceEndpointInput and cannot be null");
             }
-            this.Code = code;
-            this.Details = details;
+            this.Description = description;
+            // to ensure "url" is required (not null)
+            if (url == null)
+            {
+                throw new ArgumentNullException("url is a required property for ServiceEndpointInput and cannot be null");
+            }
+            this.Url = url;
         }
 
         /// <summary>
-        /// unique id for correlating this specific error to logs
+        /// Name of the service endpoint
         /// </summary>
-        /// <value>unique id for correlating this specific error to logs</value>
-        [DataMember(Name = "debugId", IsRequired = true, EmitDefaultValue = true)]
-        public Guid DebugId { get; set; }
-
-        /// <summary>
-        /// name of the error
-        /// </summary>
-        /// <value>name of the error</value>
+        /// <value>Name of the service endpoint</value>
         [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = true)]
         public string Name { get; set; }
 
         /// <summary>
-        /// backwards compatible Affinidi error code
+        /// Description of the service endpoint
         /// </summary>
-        /// <value>backwards compatible Affinidi error code</value>
-        [DataMember(Name = "code", IsRequired = true, EmitDefaultValue = true)]
-        public string Code { get; set; }
+        /// <value>Description of the service endpoint</value>
+        [DataMember(Name = "description", IsRequired = true, EmitDefaultValue = true)]
+        public string Description { get; set; }
 
         /// <summary>
-        /// Gets or Sets Details
+        /// service endpoint URL
         /// </summary>
-        [DataMember(Name = "details", EmitDefaultValue = false)]
-        public List<ServiceErrorResponseDetailsInner> Details { get; set; }
+        /// <value>service endpoint URL</value>
+        [DataMember(Name = "url", IsRequired = true, EmitDefaultValue = true)]
+        public string Url { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -97,11 +94,10 @@ namespace AffinidiTdk.WalletsClient.Model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class ServiceErrorResponse {\n");
-            sb.Append("  DebugId: ").Append(DebugId).Append("\n");
+            sb.Append("class ServiceEndpointInput {\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
-            sb.Append("  Code: ").Append(Code).Append("\n");
-            sb.Append("  Details: ").Append(Details).Append("\n");
+            sb.Append("  Description: ").Append(Description).Append("\n");
+            sb.Append("  Url: ").Append(Url).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
