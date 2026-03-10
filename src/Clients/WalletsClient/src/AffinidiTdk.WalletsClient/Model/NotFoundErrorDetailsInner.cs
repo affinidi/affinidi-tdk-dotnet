@@ -28,36 +28,59 @@ using OpenAPIDateConverter = AffinidiTdk.WalletsClient.Client.OpenAPIDateConvert
 namespace AffinidiTdk.WalletsClient.Model
 {
     /// <summary>
-    /// DTO contains signed credential
+    /// NotFoundErrorDetailsInner
     /// </summary>
-    [DataContract(Name = "SignCredentialsDm1LdResultDto")]
-    public partial class SignCredentialsDm1LdResultDto : IValidatableObject
+    [DataContract(Name = "NotFoundError_details_inner")]
+    public partial class NotFoundErrorDetailsInner : IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="SignCredentialsDm1LdResultDto" /> class.
+        /// Initializes a new instance of the <see cref="NotFoundErrorDetailsInner" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        protected SignCredentialsDm1LdResultDto() { }
+        protected NotFoundErrorDetailsInner() { }
         /// <summary>
-        /// Initializes a new instance of the <see cref="SignCredentialsDm1LdResultDto" /> class.
+        /// Initializes a new instance of the <see cref="NotFoundErrorDetailsInner" /> class.
         /// </summary>
-        /// <param name="credential">Signed credential can be in Dm1Ld format (required).</param>
-        public SignCredentialsDm1LdResultDto(Object credential = default)
+        /// <param name="issue">issue (required).</param>
+        /// <param name="field">field.</param>
+        /// <param name="value">value.</param>
+        /// <param name="location">location.</param>
+        public NotFoundErrorDetailsInner(string issue = default, string field = default, string value = default, string location = default)
         {
-            // to ensure "credential" is required (not null)
-            if (credential == null)
+            // to ensure "issue" is required (not null)
+            if (issue == null)
             {
-                throw new ArgumentNullException("credential is a required property for SignCredentialsDm1LdResultDto and cannot be null");
+                throw new ArgumentNullException("issue is a required property for NotFoundErrorDetailsInner and cannot be null");
             }
-            this.Credential = credential;
+            this.Issue = issue;
+            this.Field = field;
+            this.Value = value;
+            this.Location = location;
         }
 
         /// <summary>
-        /// Signed credential can be in Dm1Ld format
+        /// Gets or Sets Issue
         /// </summary>
-        /// <value>Signed credential can be in Dm1Ld format</value>
-        [DataMember(Name = "credential", IsRequired = true, EmitDefaultValue = true)]
-        public Object Credential { get; set; }
+        [DataMember(Name = "issue", IsRequired = true, EmitDefaultValue = true)]
+        public string Issue { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Field
+        /// </summary>
+        [DataMember(Name = "field", EmitDefaultValue = false)]
+        public string Field { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Value
+        /// </summary>
+        [DataMember(Name = "value", EmitDefaultValue = false)]
+        public string Value { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Location
+        /// </summary>
+        [DataMember(Name = "location", EmitDefaultValue = false)]
+        public string Location { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -66,8 +89,11 @@ namespace AffinidiTdk.WalletsClient.Model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class SignCredentialsDm1LdResultDto {\n");
-            sb.Append("  Credential: ").Append(Credential).Append("\n");
+            sb.Append("class NotFoundErrorDetailsInner {\n");
+            sb.Append("  Issue: ").Append(Issue).Append("\n");
+            sb.Append("  Field: ").Append(Field).Append("\n");
+            sb.Append("  Value: ").Append(Value).Append("\n");
+            sb.Append("  Location: ").Append(Location).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
