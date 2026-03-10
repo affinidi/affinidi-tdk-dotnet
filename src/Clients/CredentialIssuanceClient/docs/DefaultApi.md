@@ -115,7 +115,7 @@ catch (ApiException e)
 
 <a id="listissuancedatarecords"></a>
 # **ListIssuanceDataRecords**
-> ListIssuanceRecordResponse ListIssuanceDataRecords (string projectId, string configurationId, int? limit = null, string? exclusiveStartKey = null)
+> ListIssuanceRecordResponse ListIssuanceDataRecords (string projectId, string configurationId, string? issuanceId = null, int? limit = null, string? exclusiveStartKey = null)
 
 List records
 
@@ -149,13 +149,14 @@ namespace Example
             var apiInstance = new DefaultApi(httpClient, config, httpClientHandler);
             var projectId = "projectId_example";  // string | Affinidi project id
             var configurationId = "configurationId_example";  // string | The id of the issuance configuration
+            var issuanceId = "issuanceId_example";  // string? | Optional filter to retrieve records for a specific issuance ID (optional) 
             var limit = 10;  // int? | Maximum number of records to fetch in a list (optional)  (default to 10)
             var exclusiveStartKey = "exclusiveStartKey_example";  // string? | exclusiveStartKey for retrieving the next batch of data. (optional) 
 
             try
             {
                 // List records
-                ListIssuanceRecordResponse result = apiInstance.ListIssuanceDataRecords(projectId, configurationId, limit, exclusiveStartKey);
+                ListIssuanceRecordResponse result = apiInstance.ListIssuanceDataRecords(projectId, configurationId, issuanceId, limit, exclusiveStartKey);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -176,7 +177,7 @@ This returns an ApiResponse object which contains the response data, status code
 try
 {
     // List records
-    ApiResponse<ListIssuanceRecordResponse> response = apiInstance.ListIssuanceDataRecordsWithHttpInfo(projectId, configurationId, limit, exclusiveStartKey);
+    ApiResponse<ListIssuanceRecordResponse> response = apiInstance.ListIssuanceDataRecordsWithHttpInfo(projectId, configurationId, issuanceId, limit, exclusiveStartKey);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
@@ -195,6 +196,7 @@ catch (ApiException e)
 |------|------|-------------|-------|
 | **projectId** | **string** | Affinidi project id |  |
 | **configurationId** | **string** | The id of the issuance configuration |  |
+| **issuanceId** | **string?** | Optional filter to retrieve records for a specific issuance ID | [optional]  |
 | **limit** | **int?** | Maximum number of records to fetch in a list | [optional] [default to 10] |
 | **exclusiveStartKey** | **string?** | exclusiveStartKey for retrieving the next batch of data. | [optional]  |
 
