@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **Ari** | **string** | ARI of the wallet | [optional] 
 **Algorithm** | **string** | algorithm used to generate key for the wallet | [optional] 
 **Keys** | [**List&lt;WalletDtoKeysInner&gt;**](WalletDtoKeysInner.md) |  | [optional] 
+**Services** | [**List&lt;ServiceEndpointDto&gt;**](ServiceEndpointDto.md) | list of service endpoints associated with this wallet | [optional] 
 **CreatedAt** | **string** |  | [optional] 
 **ModifiedAt** | **string** |  | [optional] 
 
