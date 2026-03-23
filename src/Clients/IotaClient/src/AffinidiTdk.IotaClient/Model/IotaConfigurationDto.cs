@@ -87,7 +87,8 @@ namespace AffinidiTdk.IotaClient.Model
         /// <param name="mode">Determines whether to handle the data-sharing request using the WebSocket, Redirect or Didcomm messaging flow. (default to ModeEnum.Websocket).</param>
         /// <param name="redirectUris">List of allowed URLs to redirect users, including the response from the request. This is required if the selected data-sharing mode is Redirect..</param>
         /// <param name="enableIdvProviders">Enables identity verification from user with a 3rd-party provider when a verified identity document is not found..</param>
-        public IotaConfigurationDto(string ari = default, string configurationId = default, string name = default, string projectId = default, string walletAri = default, decimal tokenMaxAge = default, string iotaResponseWebhookURL = default, bool enableVerification = default, bool enableConsentAuditLog = default, IotaConfigurationDtoClientMetadata clientMetadata = default, ModeEnum? mode = ModeEnum.Websocket, List<string> redirectUris = default, bool enableIdvProviders = default)
+        /// <param name="mediatorDid">mediatorDid.</param>
+        public IotaConfigurationDto(string ari = default, string configurationId = default, string name = default, string projectId = default, string walletAri = default, decimal tokenMaxAge = default, string iotaResponseWebhookURL = default, bool enableVerification = default, bool enableConsentAuditLog = default, IotaConfigurationDtoClientMetadata clientMetadata = default, ModeEnum? mode = ModeEnum.Websocket, List<string> redirectUris = default, bool enableIdvProviders = default, string mediatorDid = default)
         {
             // to ensure "ari" is required (not null)
             if (ari == null)
@@ -132,6 +133,7 @@ namespace AffinidiTdk.IotaClient.Model
             this.Mode = mode;
             this.RedirectUris = redirectUris;
             this.EnableIdvProviders = enableIdvProviders;
+            this.MediatorDid = mediatorDid;
         }
 
         /// <summary>
@@ -218,6 +220,12 @@ namespace AffinidiTdk.IotaClient.Model
         public bool EnableIdvProviders { get; set; }
 
         /// <summary>
+        /// Gets or Sets MediatorDid
+        /// </summary>
+        [DataMember(Name = "mediatorDid", EmitDefaultValue = false)]
+        public string MediatorDid { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -238,6 +246,7 @@ namespace AffinidiTdk.IotaClient.Model
             sb.Append("  Mode: ").Append(Mode).Append("\n");
             sb.Append("  RedirectUris: ").Append(RedirectUris).Append("\n");
             sb.Append("  EnableIdvProviders: ").Append(EnableIdvProviders).Append("\n");
+            sb.Append("  MediatorDid: ").Append(MediatorDid).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -258,6 +267,15 @@ namespace AffinidiTdk.IotaClient.Model
         /// <returns>Validation Result</returns>
         IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
+            if (this.MediatorDid != null) {
+                // MediatorDid (string) pattern
+                Regex regexMediatorDid = new Regex(@"^did:(?:web|webvh):.*$", RegexOptions.CultureInvariant);
+                if (!regexMediatorDid.Match(this.MediatorDid).Success)
+                {
+                    yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for MediatorDid, must match a pattern of " + regexMediatorDid, new [] { "MediatorDid" });
+                }
+            }
+
             yield break;
         }
     }
