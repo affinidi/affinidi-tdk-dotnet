@@ -17,6 +17,7 @@ Name | Type | Description | Notes
 **Mode** | **string** | Determines whether to handle the data-sharing request using the WebSocket, Redirect or Didcomm messaging flow. | [optional] [default to ModeEnum.Websocket]
 **RedirectUris** | **List&lt;string&gt;** | List of allowed URLs to redirect users, including the response from the request. This is required if the selected data-sharing mode is Redirect. | [optional] 
 **EnableIdvProviders** | **bool** | Enables identity verification from user with a 3rd-party provider when a verified identity document is not found. | [optional] 
+**MediatorDid** | **string** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
