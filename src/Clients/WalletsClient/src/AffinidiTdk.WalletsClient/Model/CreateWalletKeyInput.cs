@@ -28,69 +28,71 @@ using OpenAPIDateConverter = AffinidiTdk.WalletsClient.Client.OpenAPIDateConvert
 namespace AffinidiTdk.WalletsClient.Model
 {
     /// <summary>
-    /// DTO contains params to sign plain text DIDComm message
+    /// Input for adding a new key to a wallet. Only supported for did:web ATM.
     /// </summary>
-    [DataContract(Name = "SignMessageInput")]
-    public partial class SignMessageInput : IValidatableObject
+    [DataContract(Name = "CreateWalletKeyInput")]
+    public partial class CreateWalletKeyInput : IValidatableObject
     {
         /// <summary>
-        /// Defines SignatureScheme
+        /// cryptographic algorithm for the new key
         /// </summary>
+        /// <value>cryptographic algorithm for the new key</value>
         [JsonConverter(typeof(StringEnumConverter))]
-        public enum SignatureSchemeEnum
+        public enum KeyTypeEnum
         {
             /// <summary>
-            /// Enum EcdsaSecp256k1Sha256 for value: ecdsa_secp256k1_sha256
+            /// Enum Secp256k1 for value: secp256k1
             /// </summary>
-            [EnumMember(Value = "ecdsa_secp256k1_sha256")]
-            EcdsaSecp256k1Sha256 = 1,
-
-            /// <summary>
-            /// Enum EcdsaP256Sha256 for value: ecdsa_p256_sha256
-            /// </summary>
-            [EnumMember(Value = "ecdsa_p256_sha256")]
-            EcdsaP256Sha256 = 2,
+            [EnumMember(Value = "secp256k1")]
+            Secp256k1 = 1,
 
             /// <summary>
             /// Enum Ed25519 for value: ed25519
             /// </summary>
             [EnumMember(Value = "ed25519")]
-            Ed25519 = 3
+            Ed25519 = 2,
+
+            /// <summary>
+            /// Enum P256 for value: p256
+            /// </summary>
+            [EnumMember(Value = "p256")]
+            P256 = 3
         }
 
 
         /// <summary>
-        /// Gets or Sets SignatureScheme
+        /// cryptographic algorithm for the new key
         /// </summary>
-        [DataMember(Name = "signatureScheme", EmitDefaultValue = false)]
-        public SignatureSchemeEnum? SignatureScheme { get; set; }
+        /// <value>cryptographic algorithm for the new key</value>
+        [DataMember(Name = "keyType", IsRequired = true, EmitDefaultValue = true)]
+        public KeyTypeEnum KeyType { get; set; }
         /// <summary>
-        /// Initializes a new instance of the <see cref="SignMessageInput" /> class.
+        /// Initializes a new instance of the <see cref="CreateWalletKeyInput" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        protected SignMessageInput() { }
+        protected CreateWalletKeyInput() { }
         /// <summary>
-        /// Initializes a new instance of the <see cref="SignMessageInput" /> class.
+        /// Initializes a new instance of the <see cref="CreateWalletKeyInput" /> class.
         /// </summary>
-        /// <param name="plainTextMessage">Unsigned plain text DIDComm message (required).</param>
-        /// <param name="signatureScheme">signatureScheme.</param>
-        public SignMessageInput(Object plainTextMessage = default, SignatureSchemeEnum? signatureScheme = default)
+        /// <param name="keyType">cryptographic algorithm for the new key (required).</param>
+        /// <param name="relationships">verification relationships for the key. (required).</param>
+        public CreateWalletKeyInput(KeyTypeEnum keyType = default, List<VerificationRelationship> relationships = default)
         {
-            // to ensure "plainTextMessage" is required (not null)
-            if (plainTextMessage == null)
+            this.KeyType = keyType;
+            // to ensure "relationships" is required (not null)
+            if (relationships == null)
             {
-                throw new ArgumentNullException("plainTextMessage is a required property for SignMessageInput and cannot be null");
+                throw new ArgumentNullException("relationships is a required property for CreateWalletKeyInput and cannot be null");
             }
-            this.PlainTextMessage = plainTextMessage;
-            this.SignatureScheme = signatureScheme;
+            this.Relationships = relationships;
         }
 
         /// <summary>
-        /// Unsigned plain text DIDComm message
+        /// verification relationships for the key.
         /// </summary>
-        /// <value>Unsigned plain text DIDComm message</value>
-        [DataMember(Name = "plainTextMessage", IsRequired = true, EmitDefaultValue = true)]
-        public Object PlainTextMessage { get; set; }
+        /// <value>verification relationships for the key.</value>
+        [DataMember(Name = "relationships", IsRequired = true, EmitDefaultValue = true)]
+        public List<VerificationRelationship> Relationships { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -99,9 +101,9 @@ namespace AffinidiTdk.WalletsClient.Model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class SignMessageInput {\n");
-            sb.Append("  PlainTextMessage: ").Append(PlainTextMessage).Append("\n");
-            sb.Append("  SignatureScheme: ").Append(SignatureScheme).Append("\n");
+            sb.Append("class CreateWalletKeyInput {\n");
+            sb.Append("  KeyType: ").Append(KeyType).Append("\n");
+            sb.Append("  Relationships: ").Append(Relationships).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
