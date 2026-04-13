@@ -28,25 +28,25 @@ using OpenAPIDateConverter = AffinidiTdk.VaultDataManagerClient.Client.OpenAPIDa
 namespace AffinidiTdk.VaultDataManagerClient.Model
 {
     /// <summary>
-    /// CorsDeleteAccountOK
+    /// ListProfilesOK
     /// </summary>
-    [DataContract(Name = "CorsDeleteAccountOK")]
-    public partial class CorsDeleteAccountOK : IValidatableObject
+    [DataContract(Name = "ListProfilesOK")]
+    public partial class ListProfilesOK : IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="CorsDeleteAccountOK" /> class.
+        /// Initializes a new instance of the <see cref="ListProfilesOK" /> class.
         /// </summary>
-        /// <param name="corsDeleteAccountOk">corsDeleteAccountOk.</param>
-        public CorsDeleteAccountOK(string corsDeleteAccountOk = default)
+        /// <param name="nodes">nodes.</param>
+        public ListProfilesOK(List<PartialProfileNodeDto> nodes = default)
         {
-            this.CorsDeleteAccountOk = corsDeleteAccountOk;
+            this.Nodes = nodes;
         }
 
         /// <summary>
-        /// Gets or Sets CorsDeleteAccountOk
+        /// Gets or Sets Nodes
         /// </summary>
-        [DataMember(Name = "corsDeleteAccountOk", EmitDefaultValue = false)]
-        public string CorsDeleteAccountOk { get; set; }
+        [DataMember(Name = "nodes", EmitDefaultValue = false)]
+        public List<PartialProfileNodeDto> Nodes { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -55,8 +55,8 @@ namespace AffinidiTdk.VaultDataManagerClient.Model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class CorsDeleteAccountOK {\n");
-            sb.Append("  CorsDeleteAccountOk: ").Append(CorsDeleteAccountOk).Append("\n");
+            sb.Append("class ListProfilesOK {\n");
+            sb.Append("  Nodes: ").Append(Nodes).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
