@@ -97,6 +97,25 @@ namespace AffinidiTdk.VaultDataManagerClient.Api
         /// 
         /// </summary>
         /// <remarks>
+        /// lists children of the root node with accounts
+        /// </remarks>
+        /// <exception cref="AffinidiTdk.VaultDataManagerClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ListProfilesOK</returns>
+        ListProfilesOK ListProfiles();
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// lists children of the root node with accounts
+        /// </remarks>
+        /// <exception cref="AffinidiTdk.VaultDataManagerClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ApiResponse of ListProfilesOK</returns>
+        ApiResponse<ListProfilesOK> ListProfilesWithHttpInfo();
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
         /// Update account.
         /// </remarks>
         /// <exception cref="AffinidiTdk.VaultDataManagerClient.Client.ApiException">Thrown when fails to make API call</exception>
@@ -196,6 +215,27 @@ namespace AffinidiTdk.VaultDataManagerClient.Api
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListAccountsDto)</returns>
         System.Threading.Tasks.Task<ApiResponse<ListAccountsDto>> ListAccountsWithHttpInfoAsync(int? limit = default, string? exclusiveStartKey = default, System.Threading.CancellationToken cancellationToken = default);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// lists children of the root node with accounts
+        /// </remarks>
+        /// <exception cref="AffinidiTdk.VaultDataManagerClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ListProfilesOK</returns>
+        System.Threading.Tasks.Task<ListProfilesOK> ListProfilesAsync(System.Threading.CancellationToken cancellationToken = default);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// lists children of the root node with accounts
+        /// </remarks>
+        /// <exception cref="AffinidiTdk.VaultDataManagerClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (ListProfilesOK)</returns>
+        System.Threading.Tasks.Task<ApiResponse<ListProfilesOK>> ListProfilesWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// 
         /// </summary>
@@ -807,6 +847,117 @@ namespace AffinidiTdk.VaultDataManagerClient.Api
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("ListAccounts", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  lists children of the root node with accounts
+        /// </summary>
+        /// <exception cref="AffinidiTdk.VaultDataManagerClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ListProfilesOK</returns>
+        public ListProfilesOK ListProfiles()
+        {
+            AffinidiTdk.VaultDataManagerClient.Client.ApiResponse<ListProfilesOK> localVarResponse = ListProfilesWithHttpInfo();
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  lists children of the root node with accounts
+        /// </summary>
+        /// <exception cref="AffinidiTdk.VaultDataManagerClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ApiResponse of ListProfilesOK</returns>
+        public AffinidiTdk.VaultDataManagerClient.Client.ApiResponse<ListProfilesOK> ListProfilesWithHttpInfo()
+        {
+            AffinidiTdk.VaultDataManagerClient.Client.RequestOptions localVarRequestOptions = new AffinidiTdk.VaultDataManagerClient.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = AffinidiTdk.VaultDataManagerClient.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = AffinidiTdk.VaultDataManagerClient.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+
+            // authentication (ConsumerTokenAuth) required
+            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
+            {
+                localVarRequestOptions.HeaderParameters.Add("authorization", this.Configuration.GetApiKeyWithPrefix("authorization"));
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Get<ListProfilesOK>("/v1/accounts/profiles", localVarRequestOptions, this.Configuration);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("ListProfiles", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  lists children of the root node with accounts
+        /// </summary>
+        /// <exception cref="AffinidiTdk.VaultDataManagerClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ListProfilesOK</returns>
+        public async System.Threading.Tasks.Task<ListProfilesOK> ListProfilesAsync(System.Threading.CancellationToken cancellationToken = default)
+        {
+            AffinidiTdk.VaultDataManagerClient.Client.ApiResponse<ListProfilesOK> localVarResponse = await ListProfilesWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  lists children of the root node with accounts
+        /// </summary>
+        /// <exception cref="AffinidiTdk.VaultDataManagerClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (ListProfilesOK)</returns>
+        public async System.Threading.Tasks.Task<AffinidiTdk.VaultDataManagerClient.Client.ApiResponse<ListProfilesOK>> ListProfilesWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default)
+        {
+
+            AffinidiTdk.VaultDataManagerClient.Client.RequestOptions localVarRequestOptions = new AffinidiTdk.VaultDataManagerClient.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+
+            var localVarContentType = AffinidiTdk.VaultDataManagerClient.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = AffinidiTdk.VaultDataManagerClient.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+
+            // authentication (ConsumerTokenAuth) required
+            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
+            {
+                localVarRequestOptions.HeaderParameters.Add("authorization", this.Configuration.GetApiKeyWithPrefix("authorization"));
+            }
+
+            // make the HTTP request
+
+            var localVarResponse = await this.AsynchronousClient.GetAsync<ListProfilesOK>("/v1/accounts/profiles", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("ListProfiles", localVarResponse);
                 if (_exception != null) throw _exception;
             }
 
