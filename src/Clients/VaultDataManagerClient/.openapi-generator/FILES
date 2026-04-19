@@ -8,6 +8,8 @@ docs/ConfigurationApi.md
 docs/ConsumerMetadataDto.md
 docs/CreateAccountInput.md
 docs/CreateAccountOK.md
+docs/CreateAccountWithProfileInput.md
+docs/CreateAccountWithProfileOK.md
 docs/CreateChildNodeInput.md
 docs/CreateNodeInput.md
 docs/CreateNodeOK.md
@@ -77,6 +79,8 @@ src/AffinidiTdk.VaultDataManagerClient/Model/AccountDto.cs
 src/AffinidiTdk.VaultDataManagerClient/Model/ConsumerMetadataDto.cs
 src/AffinidiTdk.VaultDataManagerClient/Model/CreateAccountInput.cs
 src/AffinidiTdk.VaultDataManagerClient/Model/CreateAccountOK.cs
+src/AffinidiTdk.VaultDataManagerClient/Model/CreateAccountWithProfileInput.cs
+src/AffinidiTdk.VaultDataManagerClient/Model/CreateAccountWithProfileOK.cs
 src/AffinidiTdk.VaultDataManagerClient/Model/CreateChildNodeInput.cs
 src/AffinidiTdk.VaultDataManagerClient/Model/CreateNodeInput.cs
 src/AffinidiTdk.VaultDataManagerClient/Model/CreateNodeOK.cs
