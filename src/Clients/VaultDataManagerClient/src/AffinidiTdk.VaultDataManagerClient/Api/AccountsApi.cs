@@ -53,6 +53,27 @@ namespace AffinidiTdk.VaultDataManagerClient.Api
         /// 
         /// </summary>
         /// <remarks>
+        /// creates account and corresponding profile at the same time
+        /// </remarks>
+        /// <exception cref="AffinidiTdk.VaultDataManagerClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createAccountWithProfileInput">CreateAccountWithProfile</param>
+        /// <returns>CreateAccountWithProfileOK</returns>
+        CreateAccountWithProfileOK CreateAccountWithProfile(CreateAccountWithProfileInput createAccountWithProfileInput);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// creates account and corresponding profile at the same time
+        /// </remarks>
+        /// <exception cref="AffinidiTdk.VaultDataManagerClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createAccountWithProfileInput">CreateAccountWithProfile</param>
+        /// <returns>ApiResponse of CreateAccountWithProfileOK</returns>
+        ApiResponse<CreateAccountWithProfileOK> CreateAccountWithProfileWithHttpInfo(CreateAccountWithProfileInput createAccountWithProfileInput);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
         /// Delete account.
         /// </remarks>
         /// <exception cref="AffinidiTdk.VaultDataManagerClient.Client.ApiException">Thrown when fails to make API call</exception>
@@ -167,6 +188,29 @@ namespace AffinidiTdk.VaultDataManagerClient.Api
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateAccountOK)</returns>
         System.Threading.Tasks.Task<ApiResponse<CreateAccountOK>> CreateAccountWithHttpInfoAsync(CreateAccountInput createAccountInput, System.Threading.CancellationToken cancellationToken = default);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// creates account and corresponding profile at the same time
+        /// </remarks>
+        /// <exception cref="AffinidiTdk.VaultDataManagerClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createAccountWithProfileInput">CreateAccountWithProfile</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CreateAccountWithProfileOK</returns>
+        System.Threading.Tasks.Task<CreateAccountWithProfileOK> CreateAccountWithProfileAsync(CreateAccountWithProfileInput createAccountWithProfileInput, System.Threading.CancellationToken cancellationToken = default);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// creates account and corresponding profile at the same time
+        /// </remarks>
+        /// <exception cref="AffinidiTdk.VaultDataManagerClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createAccountWithProfileInput">CreateAccountWithProfile</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CreateAccountWithProfileOK)</returns>
+        System.Threading.Tasks.Task<ApiResponse<CreateAccountWithProfileOK>> CreateAccountWithProfileWithHttpInfoAsync(CreateAccountWithProfileInput createAccountWithProfileInput, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// 
         /// </summary>
@@ -595,6 +639,133 @@ namespace AffinidiTdk.VaultDataManagerClient.Api
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("CreateAccount", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  creates account and corresponding profile at the same time
+        /// </summary>
+        /// <exception cref="AffinidiTdk.VaultDataManagerClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createAccountWithProfileInput">CreateAccountWithProfile</param>
+        /// <returns>CreateAccountWithProfileOK</returns>
+        public CreateAccountWithProfileOK CreateAccountWithProfile(CreateAccountWithProfileInput createAccountWithProfileInput)
+        {
+            AffinidiTdk.VaultDataManagerClient.Client.ApiResponse<CreateAccountWithProfileOK> localVarResponse = CreateAccountWithProfileWithHttpInfo(createAccountWithProfileInput);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  creates account and corresponding profile at the same time
+        /// </summary>
+        /// <exception cref="AffinidiTdk.VaultDataManagerClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createAccountWithProfileInput">CreateAccountWithProfile</param>
+        /// <returns>ApiResponse of CreateAccountWithProfileOK</returns>
+        public AffinidiTdk.VaultDataManagerClient.Client.ApiResponse<CreateAccountWithProfileOK> CreateAccountWithProfileWithHttpInfo(CreateAccountWithProfileInput createAccountWithProfileInput)
+        {
+            // verify the required parameter 'createAccountWithProfileInput' is set
+            if (createAccountWithProfileInput == null)
+                throw new AffinidiTdk.VaultDataManagerClient.Client.ApiException(400, "Missing required parameter 'createAccountWithProfileInput' when calling AccountsApi->CreateAccountWithProfile");
+
+            AffinidiTdk.VaultDataManagerClient.Client.RequestOptions localVarRequestOptions = new AffinidiTdk.VaultDataManagerClient.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = AffinidiTdk.VaultDataManagerClient.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = AffinidiTdk.VaultDataManagerClient.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+            localVarRequestOptions.Data = createAccountWithProfileInput;
+
+            // authentication (ConsumerTokenAuth) required
+            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
+            {
+                localVarRequestOptions.HeaderParameters.Add("authorization", this.Configuration.GetApiKeyWithPrefix("authorization"));
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<CreateAccountWithProfileOK>("/v1/accounts/profiles", localVarRequestOptions, this.Configuration);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateAccountWithProfile", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  creates account and corresponding profile at the same time
+        /// </summary>
+        /// <exception cref="AffinidiTdk.VaultDataManagerClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createAccountWithProfileInput">CreateAccountWithProfile</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CreateAccountWithProfileOK</returns>
+        public async System.Threading.Tasks.Task<CreateAccountWithProfileOK> CreateAccountWithProfileAsync(CreateAccountWithProfileInput createAccountWithProfileInput, System.Threading.CancellationToken cancellationToken = default)
+        {
+            AffinidiTdk.VaultDataManagerClient.Client.ApiResponse<CreateAccountWithProfileOK> localVarResponse = await CreateAccountWithProfileWithHttpInfoAsync(createAccountWithProfileInput, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  creates account and corresponding profile at the same time
+        /// </summary>
+        /// <exception cref="AffinidiTdk.VaultDataManagerClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createAccountWithProfileInput">CreateAccountWithProfile</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CreateAccountWithProfileOK)</returns>
+        public async System.Threading.Tasks.Task<AffinidiTdk.VaultDataManagerClient.Client.ApiResponse<CreateAccountWithProfileOK>> CreateAccountWithProfileWithHttpInfoAsync(CreateAccountWithProfileInput createAccountWithProfileInput, System.Threading.CancellationToken cancellationToken = default)
+        {
+            // verify the required parameter 'createAccountWithProfileInput' is set
+            if (createAccountWithProfileInput == null)
+                throw new AffinidiTdk.VaultDataManagerClient.Client.ApiException(400, "Missing required parameter 'createAccountWithProfileInput' when calling AccountsApi->CreateAccountWithProfile");
+
+
+            AffinidiTdk.VaultDataManagerClient.Client.RequestOptions localVarRequestOptions = new AffinidiTdk.VaultDataManagerClient.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+
+            var localVarContentType = AffinidiTdk.VaultDataManagerClient.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = AffinidiTdk.VaultDataManagerClient.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+            localVarRequestOptions.Data = createAccountWithProfileInput;
+
+            // authentication (ConsumerTokenAuth) required
+            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
+            {
+                localVarRequestOptions.HeaderParameters.Add("authorization", this.Configuration.GetApiKeyWithPrefix("authorization"));
+            }
+
+            // make the HTTP request
+
+            var localVarResponse = await this.AsynchronousClient.PostAsync<CreateAccountWithProfileOK>("/v1/accounts/profiles", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateAccountWithProfile", localVarResponse);
                 if (_exception != null) throw _exception;
             }
 
