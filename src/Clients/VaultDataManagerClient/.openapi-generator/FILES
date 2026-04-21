@@ -8,6 +8,8 @@ docs/ConfigurationApi.md
 docs/ConsumerMetadataDto.md
 docs/CreateAccountInput.md
 docs/CreateAccountOK.md
+docs/CreateAccountWithProfileInput.md
+docs/CreateAccountWithProfileOK.md
 docs/CreateChildNodeInput.md
 docs/CreateNodeInput.md
 docs/CreateNodeOK.md
@@ -36,6 +38,7 @@ docs/NodeStatus.md
 docs/NodeType.md
 docs/NodesApi.md
 docs/PartialProfileNodeDto.md
+docs/PatchAccountInput.md
 docs/ProfileDataApi.md
 docs/QueryProfileDataOK.md
 docs/RestoreNodeFromTrashbin.md
@@ -77,6 +80,8 @@ src/AffinidiTdk.VaultDataManagerClient/Model/AccountDto.cs
 src/AffinidiTdk.VaultDataManagerClient/Model/ConsumerMetadataDto.cs
 src/AffinidiTdk.VaultDataManagerClient/Model/CreateAccountInput.cs
 src/AffinidiTdk.VaultDataManagerClient/Model/CreateAccountOK.cs
+src/AffinidiTdk.VaultDataManagerClient/Model/CreateAccountWithProfileInput.cs
+src/AffinidiTdk.VaultDataManagerClient/Model/CreateAccountWithProfileOK.cs
 src/AffinidiTdk.VaultDataManagerClient/Model/CreateChildNodeInput.cs
 src/AffinidiTdk.VaultDataManagerClient/Model/CreateNodeInput.cs
 src/AffinidiTdk.VaultDataManagerClient/Model/CreateNodeOK.cs
@@ -103,6 +108,7 @@ src/AffinidiTdk.VaultDataManagerClient/Model/NodeDto.cs
 src/AffinidiTdk.VaultDataManagerClient/Model/NodeStatus.cs
 src/AffinidiTdk.VaultDataManagerClient/Model/NodeType.cs
 src/AffinidiTdk.VaultDataManagerClient/Model/PartialProfileNodeDto.cs
+src/AffinidiTdk.VaultDataManagerClient/Model/PatchAccountInput.cs
 src/AffinidiTdk.VaultDataManagerClient/Model/QueryProfileDataOK.cs
 src/AffinidiTdk.VaultDataManagerClient/Model/RestoreNodeFromTrashbin.cs
 src/AffinidiTdk.VaultDataManagerClient/Model/StartFileScanInput.cs
