@@ -130,9 +130,11 @@ We have created an [example code](https://github.com/affinidi/affinidi-tdk-dotne
 ClientAPI | Operation | Description
 ------------ | ------------- | -------------
 [*AccountsApi*](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/VaultDataManagerClient/docs/AccountsApi.md) | [*CreateAccount*](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/VaultDataManagerClient/docs/AccountsApi.md#createaccount) | 
+[*AccountsApi*](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/VaultDataManagerClient/docs/AccountsApi.md) | [*CreateAccountWithProfile*](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/VaultDataManagerClient/docs/AccountsApi.md#createaccountwithprofile) | 
 [*AccountsApi*](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/VaultDataManagerClient/docs/AccountsApi.md) | [*DeleteAccount*](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/VaultDataManagerClient/docs/AccountsApi.md#deleteaccount) | 
 [*AccountsApi*](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/VaultDataManagerClient/docs/AccountsApi.md) | [*ListAccounts*](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/VaultDataManagerClient/docs/AccountsApi.md#listaccounts) | 
 [*AccountsApi*](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/VaultDataManagerClient/docs/AccountsApi.md) | [*ListProfiles*](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/VaultDataManagerClient/docs/AccountsApi.md#listprofiles) | 
+[*AccountsApi*](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/VaultDataManagerClient/docs/AccountsApi.md) | [*PatchAccount*](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/VaultDataManagerClient/docs/AccountsApi.md#patchaccount) | 
 [*AccountsApi*](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/VaultDataManagerClient/docs/AccountsApi.md) | [*UpdateAccount*](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/VaultDataManagerClient/docs/AccountsApi.md#updateaccount) | 
 [*ConfigurationApi*](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/VaultDataManagerClient/docs/ConfigurationApi.md) | [*GetConfiguration*](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/VaultDataManagerClient/docs/ConfigurationApi.md#getconfiguration) | 
 [*FilesApi*](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/VaultDataManagerClient/docs/FilesApi.md) | [*GetScannedFileInfo*](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/VaultDataManagerClient/docs/FilesApi.md#getscannedfileinfo) | 
@@ -162,6 +164,8 @@ ClientAPI | Operation | Description
  - [ConsumerMetadataDto](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/VaultDataManagerClient/docs/ConsumerMetadataDto.md)
  - [CreateAccountInput](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/VaultDataManagerClient/docs/CreateAccountInput.md)
  - [CreateAccountOK](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/VaultDataManagerClient/docs/CreateAccountOK.md)
+ - [CreateAccountWithProfileInput](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/VaultDataManagerClient/docs/CreateAccountWithProfileInput.md)
+ - [CreateAccountWithProfileOK](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/VaultDataManagerClient/docs/CreateAccountWithProfileOK.md)
  - [CreateChildNodeInput](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/VaultDataManagerClient/docs/CreateChildNodeInput.md)
  - [CreateNodeInput](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/VaultDataManagerClient/docs/CreateNodeInput.md)
  - [CreateNodeOK](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/VaultDataManagerClient/docs/CreateNodeOK.md)
@@ -188,6 +192,7 @@ ClientAPI | Operation | Description
  - [NodeStatus](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/VaultDataManagerClient/docs/NodeStatus.md)
  - [NodeType](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/VaultDataManagerClient/docs/NodeType.md)
  - [PartialProfileNodeDto](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/VaultDataManagerClient/docs/PartialProfileNodeDto.md)
+ - [PatchAccountInput](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/VaultDataManagerClient/docs/PatchAccountInput.md)
  - [QueryProfileDataOK](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/VaultDataManagerClient/docs/QueryProfileDataOK.md)
  - [RestoreNodeFromTrashbin](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/VaultDataManagerClient/docs/RestoreNodeFromTrashbin.md)
  - [StartFileScanInput](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/VaultDataManagerClient/docs/StartFileScanInput.md)
