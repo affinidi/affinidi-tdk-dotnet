@@ -5,9 +5,11 @@ All URIs are relative to *https://api.vault.affinidi.com/vfs*
 | Method | HTTP request | Description |
 |--------|--------------|-------------|
 | [**CreateAccount**](AccountsApi.md#createaccount) | **POST** /v1/accounts |  |
+| [**CreateAccountWithProfile**](AccountsApi.md#createaccountwithprofile) | **POST** /v1/accounts/profiles |  |
 | [**DeleteAccount**](AccountsApi.md#deleteaccount) | **DELETE** /v1/accounts/{accountIndex} |  |
 | [**ListAccounts**](AccountsApi.md#listaccounts) | **GET** /v1/accounts |  |
 | [**ListProfiles**](AccountsApi.md#listprofiles) | **GET** /v1/accounts/profiles |  |
+| [**PatchAccount**](AccountsApi.md#patchaccount) | **PATCH** /v1/accounts/{accountIndex} |  |
 | [**UpdateAccount**](AccountsApi.md#updateaccount) | **PUT** /v1/accounts/{accountIndex} |  |
 
 <a id="createaccount"></a>
@@ -105,6 +107,105 @@ catch (ApiException e)
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | CreateAccountOK |  * Access-Control-Allow-Origin -  <br>  * Access-Control-Allow-Methods -  <br>  * Access-Control-Allow-Headers -  <br>  |
+| **400** | BadRequestError |  * Access-Control-Allow-Origin -  <br>  * Access-Control-Allow-Methods -  <br>  * Access-Control-Allow-Headers -  <br>  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a id="createaccountwithprofile"></a>
+# **CreateAccountWithProfile**
+> CreateAccountWithProfileOK CreateAccountWithProfile (CreateAccountWithProfileInput createAccountWithProfileInput)
+
+
+
+creates account and corresponding profile at the same time
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Net.Http;
+using AffinidiTdk.VaultDataManagerClient.Api;
+using AffinidiTdk.VaultDataManagerClient.Client;
+using AffinidiTdk.VaultDataManagerClient.Model;
+
+namespace Example
+{
+    public class CreateAccountWithProfileExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.vault.affinidi.com/vfs";
+            // Configure API key authorization: ConsumerTokenAuth
+            config.AddApiKey("authorization", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // config.AddApiKeyPrefix("authorization", "Bearer");
+
+            // create instances of HttpClient, HttpClientHandler to be reused later with different Api classes
+            HttpClient httpClient = new HttpClient();
+            HttpClientHandler httpClientHandler = new HttpClientHandler();
+            var apiInstance = new AccountsApi(httpClient, config, httpClientHandler);
+            var createAccountWithProfileInput = new CreateAccountWithProfileInput(); // CreateAccountWithProfileInput | CreateAccountWithProfile
+
+            try
+            {
+                CreateAccountWithProfileOK result = apiInstance.CreateAccountWithProfile(createAccountWithProfileInput);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling AccountsApi.CreateAccountWithProfile: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the CreateAccountWithProfileWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<CreateAccountWithProfileOK> response = apiInstance.CreateAccountWithProfileWithHttpInfo(createAccountWithProfileInput);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling AccountsApi.CreateAccountWithProfileWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **createAccountWithProfileInput** | [**CreateAccountWithProfileInput**](CreateAccountWithProfileInput.md) | CreateAccountWithProfile |  |
+
+### Return type
+
+[**CreateAccountWithProfileOK**](CreateAccountWithProfileOK.md)
+
+### Authorization
+
+[ConsumerTokenAuth](../README.md#ConsumerTokenAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | CreateAccountWithProfileOK |  * Access-Control-Allow-Origin -  <br>  * Access-Control-Allow-Methods -  <br>  * Access-Control-Allow-Headers -  <br>  |
 | **400** | BadRequestError |  * Access-Control-Allow-Origin -  <br>  * Access-Control-Allow-Methods -  <br>  * Access-Control-Allow-Headers -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -399,6 +500,107 @@ This endpoint does not need any parameter.
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | ListProfilesOK |  * Access-Control-Allow-Origin -  <br>  * Access-Control-Allow-Methods -  <br>  * Access-Control-Allow-Headers -  <br>  |
+| **400** | BadRequestError |  * Access-Control-Allow-Origin -  <br>  * Access-Control-Allow-Methods -  <br>  * Access-Control-Allow-Headers -  <br>  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a id="patchaccount"></a>
+# **PatchAccount**
+> UpdateAccountDto PatchAccount (int accountIndex, PatchAccountInput patchAccountInput)
+
+
+
+Patch account.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Net.Http;
+using AffinidiTdk.VaultDataManagerClient.Api;
+using AffinidiTdk.VaultDataManagerClient.Client;
+using AffinidiTdk.VaultDataManagerClient.Model;
+
+namespace Example
+{
+    public class PatchAccountExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.vault.affinidi.com/vfs";
+            // Configure API key authorization: ConsumerTokenAuth
+            config.AddApiKey("authorization", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // config.AddApiKeyPrefix("authorization", "Bearer");
+
+            // create instances of HttpClient, HttpClientHandler to be reused later with different Api classes
+            HttpClient httpClient = new HttpClient();
+            HttpClientHandler httpClientHandler = new HttpClientHandler();
+            var apiInstance = new AccountsApi(httpClient, config, httpClientHandler);
+            var accountIndex = 56;  // int | 
+            var patchAccountInput = new PatchAccountInput(); // PatchAccountInput | PatchAccount
+
+            try
+            {
+                UpdateAccountDto result = apiInstance.PatchAccount(accountIndex, patchAccountInput);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling AccountsApi.PatchAccount: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the PatchAccountWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<UpdateAccountDto> response = apiInstance.PatchAccountWithHttpInfo(accountIndex, patchAccountInput);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling AccountsApi.PatchAccountWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **accountIndex** | **int** |  |  |
+| **patchAccountInput** | [**PatchAccountInput**](PatchAccountInput.md) | PatchAccount |  |
+
+### Return type
+
+[**UpdateAccountDto**](UpdateAccountDto.md)
+
+### Authorization
+
+[ConsumerTokenAuth](../README.md#ConsumerTokenAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | PatchAccountOK |  * Access-Control-Allow-Origin -  <br>  * Access-Control-Allow-Methods -  <br>  * Access-Control-Allow-Headers -  <br>  |
 | **400** | BadRequestError |  * Access-Control-Allow-Origin -  <br>  * Access-Control-Allow-Methods -  <br>  * Access-Control-Allow-Headers -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
