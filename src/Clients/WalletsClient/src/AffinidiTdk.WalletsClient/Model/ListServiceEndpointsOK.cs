@@ -28,36 +28,36 @@ using OpenAPIDateConverter = AffinidiTdk.WalletsClient.Client.OpenAPIDateConvert
 namespace AffinidiTdk.WalletsClient.Model
 {
     /// <summary>
-    /// DTO contains signed credential
+    /// Response containing service endpoints
     /// </summary>
-    [DataContract(Name = "SignCredentialsDm1LdResultDto")]
-    public partial class SignCredentialsDm1LdResultDto : IValidatableObject
+    [DataContract(Name = "ListServiceEndpointsOK")]
+    public partial class ListServiceEndpointsOK : IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="SignCredentialsDm1LdResultDto" /> class.
+        /// Initializes a new instance of the <see cref="ListServiceEndpointsOK" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        protected SignCredentialsDm1LdResultDto() { }
+        protected ListServiceEndpointsOK() { }
         /// <summary>
-        /// Initializes a new instance of the <see cref="SignCredentialsDm1LdResultDto" /> class.
+        /// Initializes a new instance of the <see cref="ListServiceEndpointsOK" /> class.
         /// </summary>
-        /// <param name="credential">Signed credential can be in Dm1Ld format (required).</param>
-        public SignCredentialsDm1LdResultDto(Object credential = default)
+        /// <param name="services">list of service endpoints (required).</param>
+        public ListServiceEndpointsOK(List<ServiceEndpointDto> services = default)
         {
-            // to ensure "credential" is required (not null)
-            if (credential == null)
+            // to ensure "services" is required (not null)
+            if (services == null)
             {
-                throw new ArgumentNullException("credential is a required property for SignCredentialsDm1LdResultDto and cannot be null");
+                throw new ArgumentNullException("services is a required property for ListServiceEndpointsOK and cannot be null");
             }
-            this.Credential = credential;
+            this.Services = services;
         }
 
         /// <summary>
-        /// Signed credential can be in Dm1Ld format
+        /// list of service endpoints
         /// </summary>
-        /// <value>Signed credential can be in Dm1Ld format</value>
-        [DataMember(Name = "credential", IsRequired = true, EmitDefaultValue = true)]
-        public Object Credential { get; set; }
+        /// <value>list of service endpoints</value>
+        [DataMember(Name = "services", IsRequired = true, EmitDefaultValue = true)]
+        public List<ServiceEndpointDto> Services { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -66,8 +66,8 @@ namespace AffinidiTdk.WalletsClient.Model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class SignCredentialsDm1LdResultDto {\n");
-            sb.Append("  Credential: ").Append(Credential).Append("\n");
+            sb.Append("class ListServiceEndpointsOK {\n");
+            sb.Append("  Services: ").Append(Services).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }

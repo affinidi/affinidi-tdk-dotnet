@@ -28,36 +28,59 @@ using OpenAPIDateConverter = AffinidiTdk.WalletsClient.Client.OpenAPIDateConvert
 namespace AffinidiTdk.WalletsClient.Model
 {
     /// <summary>
-    /// DTO contains authcrypted message in JSON fromat
+    /// NotFoundErrorDetailsInner
     /// </summary>
-    [DataContract(Name = "AuthcryptMessageResultDto")]
-    public partial class AuthcryptMessageResultDto : IValidatableObject
+    [DataContract(Name = "NotFoundError_details_inner")]
+    public partial class NotFoundErrorDetailsInner : IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="AuthcryptMessageResultDto" /> class.
+        /// Initializes a new instance of the <see cref="NotFoundErrorDetailsInner" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        protected AuthcryptMessageResultDto() { }
+        protected NotFoundErrorDetailsInner() { }
         /// <summary>
-        /// Initializes a new instance of the <see cref="AuthcryptMessageResultDto" /> class.
+        /// Initializes a new instance of the <see cref="NotFoundErrorDetailsInner" /> class.
         /// </summary>
-        /// <param name="authcryptedMessage">Authcrypted message in JSON format (required).</param>
-        public AuthcryptMessageResultDto(Object authcryptedMessage = default)
+        /// <param name="issue">issue (required).</param>
+        /// <param name="field">field.</param>
+        /// <param name="value">value.</param>
+        /// <param name="location">location.</param>
+        public NotFoundErrorDetailsInner(string issue = default, string field = default, string value = default, string location = default)
         {
-            // to ensure "authcryptedMessage" is required (not null)
-            if (authcryptedMessage == null)
+            // to ensure "issue" is required (not null)
+            if (issue == null)
             {
-                throw new ArgumentNullException("authcryptedMessage is a required property for AuthcryptMessageResultDto and cannot be null");
+                throw new ArgumentNullException("issue is a required property for NotFoundErrorDetailsInner and cannot be null");
             }
-            this.AuthcryptedMessage = authcryptedMessage;
+            this.Issue = issue;
+            this.Field = field;
+            this.Value = value;
+            this.Location = location;
         }
 
         /// <summary>
-        /// Authcrypted message in JSON format
+        /// Gets or Sets Issue
         /// </summary>
-        /// <value>Authcrypted message in JSON format</value>
-        [DataMember(Name = "authcryptedMessage", IsRequired = true, EmitDefaultValue = true)]
-        public Object AuthcryptedMessage { get; set; }
+        [DataMember(Name = "issue", IsRequired = true, EmitDefaultValue = true)]
+        public string Issue { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Field
+        /// </summary>
+        [DataMember(Name = "field", EmitDefaultValue = false)]
+        public string Field { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Value
+        /// </summary>
+        [DataMember(Name = "value", EmitDefaultValue = false)]
+        public string Value { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Location
+        /// </summary>
+        [DataMember(Name = "location", EmitDefaultValue = false)]
+        public string Location { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -66,8 +89,11 @@ namespace AffinidiTdk.WalletsClient.Model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class AuthcryptMessageResultDto {\n");
-            sb.Append("  AuthcryptedMessage: ").Append(AuthcryptedMessage).Append("\n");
+            sb.Append("class NotFoundErrorDetailsInner {\n");
+            sb.Append("  Issue: ").Append(Issue).Append("\n");
+            sb.Append("  Field: ").Append(Field).Append("\n");
+            sb.Append("  Value: ").Append(Value).Append("\n");
+            sb.Append("  Location: ").Append(Location).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
