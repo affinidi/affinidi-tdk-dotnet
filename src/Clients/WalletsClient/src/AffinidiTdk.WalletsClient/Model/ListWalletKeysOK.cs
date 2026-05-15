@@ -28,36 +28,36 @@ using OpenAPIDateConverter = AffinidiTdk.WalletsClient.Client.OpenAPIDateConvert
 namespace AffinidiTdk.WalletsClient.Model
 {
     /// <summary>
-    /// DTO contains decrypted message in JSON fromat
+    /// Response containing wallet keys
     /// </summary>
-    [DataContract(Name = "UnpackMessageResultDto")]
-    public partial class UnpackMessageResultDto : IValidatableObject
+    [DataContract(Name = "ListWalletKeysOK")]
+    public partial class ListWalletKeysOK : IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="UnpackMessageResultDto" /> class.
+        /// Initializes a new instance of the <see cref="ListWalletKeysOK" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        protected UnpackMessageResultDto() { }
+        protected ListWalletKeysOK() { }
         /// <summary>
-        /// Initializes a new instance of the <see cref="UnpackMessageResultDto" /> class.
+        /// Initializes a new instance of the <see cref="ListWalletKeysOK" /> class.
         /// </summary>
-        /// <param name="message">decrypted message in JSON format (required).</param>
-        public UnpackMessageResultDto(Object message = default)
+        /// <param name="keys">list of wallet keys (required).</param>
+        public ListWalletKeysOK(List<WalletKeyDto> keys = default)
         {
-            // to ensure "message" is required (not null)
-            if (message == null)
+            // to ensure "keys" is required (not null)
+            if (keys == null)
             {
-                throw new ArgumentNullException("message is a required property for UnpackMessageResultDto and cannot be null");
+                throw new ArgumentNullException("keys is a required property for ListWalletKeysOK and cannot be null");
             }
-            this.Message = message;
+            this.Keys = keys;
         }
 
         /// <summary>
-        /// decrypted message in JSON format
+        /// list of wallet keys
         /// </summary>
-        /// <value>decrypted message in JSON format</value>
-        [DataMember(Name = "message", IsRequired = true, EmitDefaultValue = true)]
-        public Object Message { get; set; }
+        /// <value>list of wallet keys</value>
+        [DataMember(Name = "keys", IsRequired = true, EmitDefaultValue = true)]
+        public List<WalletKeyDto> Keys { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -66,8 +66,8 @@ namespace AffinidiTdk.WalletsClient.Model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class UnpackMessageResultDto {\n");
-            sb.Append("  Message: ").Append(Message).Append("\n");
+            sb.Append("class ListWalletKeysOK {\n");
+            sb.Append("  Keys: ").Append(Keys).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
