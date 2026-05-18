@@ -5,6 +5,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **NodeId** | **string** |  | 
+**CreatedAt** | **string** | creation date/time | 
+**ModifiedAt** | **string** | modification date/time | 
 **Url** | **string** |  | [optional] 
 **Link** | **string** |  | [optional] 
 **Fields** | **Dictionary&lt;string, Object&gt;** |  | [optional] 
