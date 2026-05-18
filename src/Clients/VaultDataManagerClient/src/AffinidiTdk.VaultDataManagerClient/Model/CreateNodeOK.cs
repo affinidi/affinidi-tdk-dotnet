@@ -42,10 +42,12 @@ namespace AffinidiTdk.VaultDataManagerClient.Model
         /// Initializes a new instance of the <see cref="CreateNodeOK" /> class.
         /// </summary>
         /// <param name="nodeId">nodeId (required).</param>
+        /// <param name="createdAt">creation date/time (required).</param>
+        /// <param name="modifiedAt">modification date/time (required).</param>
         /// <param name="url">url.</param>
         /// <param name="link">link.</param>
         /// <param name="fields">fields.</param>
-        public CreateNodeOK(string nodeId = default, string url = default, string link = default, Dictionary<string, Object> fields = default)
+        public CreateNodeOK(string nodeId = default, string createdAt = default, string modifiedAt = default, string url = default, string link = default, Dictionary<string, Object> fields = default)
         {
             // to ensure "nodeId" is required (not null)
             if (nodeId == null)
@@ -53,6 +55,18 @@ namespace AffinidiTdk.VaultDataManagerClient.Model
                 throw new ArgumentNullException("nodeId is a required property for CreateNodeOK and cannot be null");
             }
             this.NodeId = nodeId;
+            // to ensure "createdAt" is required (not null)
+            if (createdAt == null)
+            {
+                throw new ArgumentNullException("createdAt is a required property for CreateNodeOK and cannot be null");
+            }
+            this.CreatedAt = createdAt;
+            // to ensure "modifiedAt" is required (not null)
+            if (modifiedAt == null)
+            {
+                throw new ArgumentNullException("modifiedAt is a required property for CreateNodeOK and cannot be null");
+            }
+            this.ModifiedAt = modifiedAt;
             this.Url = url;
             this.Link = link;
             this.Fields = fields;
@@ -63,6 +77,20 @@ namespace AffinidiTdk.VaultDataManagerClient.Model
         /// </summary>
         [DataMember(Name = "nodeId", IsRequired = true, EmitDefaultValue = true)]
         public string NodeId { get; set; }
+
+        /// <summary>
+        /// creation date/time
+        /// </summary>
+        /// <value>creation date/time</value>
+        [DataMember(Name = "createdAt", IsRequired = true, EmitDefaultValue = true)]
+        public string CreatedAt { get; set; }
+
+        /// <summary>
+        /// modification date/time
+        /// </summary>
+        /// <value>modification date/time</value>
+        [DataMember(Name = "modifiedAt", IsRequired = true, EmitDefaultValue = true)]
+        public string ModifiedAt { get; set; }
 
         /// <summary>
         /// Gets or Sets Url
@@ -91,6 +119,8 @@ namespace AffinidiTdk.VaultDataManagerClient.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class CreateNodeOK {\n");
             sb.Append("  NodeId: ").Append(NodeId).Append("\n");
+            sb.Append("  CreatedAt: ").Append(CreatedAt).Append("\n");
+            sb.Append("  ModifiedAt: ").Append(ModifiedAt).Append("\n");
             sb.Append("  Url: ").Append(Url).Append("\n");
             sb.Append("  Link: ").Append(Link).Append("\n");
             sb.Append("  Fields: ").Append(Fields).Append("\n");
