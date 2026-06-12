@@ -58,6 +58,9 @@ namespace IntegrationTests
         [Fact]
         public async Task Test_StartIssuance()
         {
+            // Ensure the configuration's wallet exists before starting issuance
+            await WalletsHelper.EnsureConfigWalletExists(_fixture.ConfigurationId!);
+
             var startIssuanceInput = JsonConvert.DeserializeObject<StartIssuanceInput>(EnvHelper.CredentialIssuanceData);
             startIssuanceInput!.ClaimMode = StartIssuanceInput.ClaimModeEnum.TXCODE;
 

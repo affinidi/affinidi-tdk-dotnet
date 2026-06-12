@@ -60,6 +60,41 @@ namespace IntegrationTests.Helpers
             Assert.Equal(HttpStatusCode.NoContent, result.StatusCode);
         }
 
+        public static async Task<WalletDto> GetWalletById(string walletId)
+        {
+            if (string.IsNullOrWhiteSpace(walletId))
+            {
+                throw new ArgumentException("Wallet ID cannot be null or empty", nameof(walletId));
+            }
+            
+            var api = GetWalletApi();
+            return await api.GetWalletAsync(walletId);
+        }
+
+        public static async Task EnsureConfigWalletExists(string configurationId)
+        {
+            var httpClient = AuthHelper.Instance.HttpClient;
+            var cisConfig = new AffinidiTdk.CredentialIssuanceClient.Client.Configuration();
+            var cisConfigApi = new AffinidiTdk.CredentialIssuanceClient.Api.ConfigurationApi(httpClient, cisConfig);
+            
+            var config = await cisConfigApi.GetIssuanceConfigByIdAsync(configurationId);
+            string? issuerWalletId = config.IssuerWalletId;
+            
+            if (!string.IsNullOrWhiteSpace(issuerWalletId))
+            {
+                try
+                {
+                    await GetWalletById(issuerWalletId);
+                }
+                catch (AffinidiTdk.WalletsClient.Client.ApiException ex) when (ex.ErrorCode == 404)
+                {
+                    var newWallet = await CreateWallet();
+                    var updateInput = new AffinidiTdk.CredentialIssuanceClient.Model.UpdateIssuanceConfigInput(issuerWalletId: newWallet.Wallet.Id);
+                    await cisConfigApi.UpdateIssuanceConfigByIdAsync(configurationId, updateInput);
+                }
+            }
+        }
+
         public static string? ExtractRevocationStatusId(string url)
         {
             try
@@ -83,9 +118,32 @@ namespace IntegrationTests.Helpers
             {
                 Console.WriteLine($"❗️Number of wallets reaching the limit ({WalletsHardLimit}). Deleting all wallets.");
 
+                // Get protected wallet ID from issuance configuration
+                string? protectedWalletId = null;
+                try
+                {
+                    var httpClient = AuthHelper.Instance.HttpClient;
+                    var cisConfig = new AffinidiTdk.CredentialIssuanceClient.Client.Configuration();
+                    var cisConfigApi = new AffinidiTdk.CredentialIssuanceClient.Api.ConfigurationApi(httpClient, cisConfig);
+                    var configList = await cisConfigApi.GetIssuanceConfigListAsync();
+                    
+                    if (configList?.Configurations != null && configList.Configurations.Count > 0)
+                    {
+                        protectedWalletId = configList.Configurations[0].IssuerWalletId;
+                    }
+                }
+                catch
+                {
+                    // Proceed without protection if config unavailable
+                }
+
                 foreach (var wallet in result.Wallets)
                 {
-                    await api.DeleteWalletAsync(wallet.Id);
+                    // Skip deleting the wallet used by the issuance configuration
+                    if (wallet.Id != protectedWalletId)
+                    {
+                        await api.DeleteWalletAsync(wallet.Id);
+                    }
                 }
             }
         }
