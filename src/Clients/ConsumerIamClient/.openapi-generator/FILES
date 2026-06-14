@@ -7,6 +7,7 @@ docs/ConsumerAuthApi.md
 docs/ConsumerAuthTokenEndpointInput.md
 docs/ConsumerAuthTokenEndpointOutput.md
 docs/CorsConsumerAuthTokenEndpointOK.md
+docs/GetAccessOutput.md
 docs/GrantAccessInput.md
 docs/GrantAccessOutput.md
 docs/InvalidDIDError.md
@@ -47,6 +48,7 @@ src/AffinidiTdk.ConsumerIamClient/Model/AbstractOpenAPISchema.cs
 src/AffinidiTdk.ConsumerIamClient/Model/ConsumerAuthTokenEndpointInput.cs
 src/AffinidiTdk.ConsumerIamClient/Model/ConsumerAuthTokenEndpointOutput.cs
 src/AffinidiTdk.ConsumerIamClient/Model/CorsConsumerAuthTokenEndpointOK.cs
+src/AffinidiTdk.ConsumerIamClient/Model/GetAccessOutput.cs
 src/AffinidiTdk.ConsumerIamClient/Model/GrantAccessInput.cs
 src/AffinidiTdk.ConsumerIamClient/Model/GrantAccessOutput.cs
 src/AffinidiTdk.ConsumerIamClient/Model/InvalidDIDError.cs
