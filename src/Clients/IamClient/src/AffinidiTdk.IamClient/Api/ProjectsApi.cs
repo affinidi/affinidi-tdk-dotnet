@@ -88,6 +88,24 @@ namespace AffinidiTdk.IamClient.Api
         /// 
         /// </summary>
         /// <exception cref="AffinidiTdk.IamClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="projectId">projectId</param>
+        /// <returns>ProjectDto</returns>
+        ProjectDto GetProject(string projectId);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="AffinidiTdk.IamClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="projectId">projectId</param>
+        /// <returns>ApiResponse of ProjectDto</returns>
+        ApiResponse<ProjectDto> GetProjectWithHttpInfo(string projectId);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <exception cref="AffinidiTdk.IamClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="limit">Maximum number of records to fetch in a list (optional, default to 100)</param>
         /// <param name="exclusiveStartKey">The base64url encoded key of the first item that this operation will evaluate (it is not returned). Use the value that was returned in the previous operation. (optional)</param>
         /// <returns>UserList</returns>
@@ -224,6 +242,29 @@ namespace AffinidiTdk.IamClient.Api
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse</returns>
         System.Threading.Tasks.Task<ApiResponse<Object>> DeletePrincipalFromProjectWithHttpInfoAsync(string principalId, string principalType, System.Threading.CancellationToken cancellationToken = default);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="AffinidiTdk.IamClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="projectId">projectId</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ProjectDto</returns>
+        System.Threading.Tasks.Task<ProjectDto> GetProjectAsync(string projectId, System.Threading.CancellationToken cancellationToken = default);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="AffinidiTdk.IamClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="projectId">projectId</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (ProjectDto)</returns>
+        System.Threading.Tasks.Task<ApiResponse<ProjectDto>> GetProjectWithHttpInfoAsync(string projectId, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// 
         /// </summary>
@@ -895,6 +936,131 @@ namespace AffinidiTdk.IamClient.Api
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("DeletePrincipalFromProject", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="AffinidiTdk.IamClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="projectId">projectId</param>
+        /// <returns>ProjectDto</returns>
+        public ProjectDto GetProject(string projectId)
+        {
+            AffinidiTdk.IamClient.Client.ApiResponse<ProjectDto> localVarResponse = GetProjectWithHttpInfo(projectId);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="AffinidiTdk.IamClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="projectId">projectId</param>
+        /// <returns>ApiResponse of ProjectDto</returns>
+        public AffinidiTdk.IamClient.Client.ApiResponse<ProjectDto> GetProjectWithHttpInfo(string projectId)
+        {
+            // verify the required parameter 'projectId' is set
+            if (projectId == null)
+                throw new AffinidiTdk.IamClient.Client.ApiException(400, "Missing required parameter 'projectId' when calling ProjectsApi->GetProject");
+
+            AffinidiTdk.IamClient.Client.RequestOptions localVarRequestOptions = new AffinidiTdk.IamClient.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = AffinidiTdk.IamClient.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = AffinidiTdk.IamClient.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+            localVarRequestOptions.PathParameters.Add("projectId", AffinidiTdk.IamClient.Client.ClientUtils.ParameterToString(projectId)); // path parameter
+
+            // authentication (UserTokenAuth) required
+            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
+            {
+                localVarRequestOptions.HeaderParameters.Add("authorization", this.Configuration.GetApiKeyWithPrefix("authorization"));
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Get<ProjectDto>("/v1/projects/{projectId}", localVarRequestOptions, this.Configuration);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetProject", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="AffinidiTdk.IamClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="projectId">projectId</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ProjectDto</returns>
+        public async System.Threading.Tasks.Task<ProjectDto> GetProjectAsync(string projectId, System.Threading.CancellationToken cancellationToken = default)
+        {
+            AffinidiTdk.IamClient.Client.ApiResponse<ProjectDto> localVarResponse = await GetProjectWithHttpInfoAsync(projectId, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="AffinidiTdk.IamClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="projectId">projectId</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (ProjectDto)</returns>
+        public async System.Threading.Tasks.Task<AffinidiTdk.IamClient.Client.ApiResponse<ProjectDto>> GetProjectWithHttpInfoAsync(string projectId, System.Threading.CancellationToken cancellationToken = default)
+        {
+            // verify the required parameter 'projectId' is set
+            if (projectId == null)
+                throw new AffinidiTdk.IamClient.Client.ApiException(400, "Missing required parameter 'projectId' when calling ProjectsApi->GetProject");
+
+
+            AffinidiTdk.IamClient.Client.RequestOptions localVarRequestOptions = new AffinidiTdk.IamClient.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+
+            var localVarContentType = AffinidiTdk.IamClient.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = AffinidiTdk.IamClient.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+            localVarRequestOptions.PathParameters.Add("projectId", AffinidiTdk.IamClient.Client.ClientUtils.ParameterToString(projectId)); // path parameter
+
+            // authentication (UserTokenAuth) required
+            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
+            {
+                localVarRequestOptions.HeaderParameters.Add("authorization", this.Configuration.GetApiKeyWithPrefix("authorization"));
+            }
+
+            // make the HTTP request
+
+            var localVarResponse = await this.AsynchronousClient.GetAsync<ProjectDto>("/v1/projects/{projectId}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetProject", localVarResponse);
                 if (_exception != null) throw _exception;
             }
 
