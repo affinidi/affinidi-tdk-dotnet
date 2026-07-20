@@ -122,7 +122,8 @@ namespace AffinidiTdk.WalletsClient.Model
         /// <param name="signatureSuite">W3C signature suite for canonicalization. Defaults to rdfc variants for each algorithm (ecdsa-rdfc-2019 for P256, eddsa-rdfc-2022 for Ed25519, EcdsaSecp256k1Signature2019 for secp256k1)..</param>
         /// <param name="domain">Domain(s) for which the presentation is intended.</param>
         /// <param name="challenge">Challenge string.</param>
-        public SignPresentationLdpInputDto(Object unsignedPresentation = default, SignatureSchemeEnum? signatureScheme = default, SignatureSuiteEnum? signatureSuite = default, List<string> domain = default, string challenge = default)
+        /// <param name="keyId">wallet key ID to use for signing (defaults to wallet&#39;s default key).</param>
+        public SignPresentationLdpInputDto(Object unsignedPresentation = default, SignatureSchemeEnum? signatureScheme = default, SignatureSuiteEnum? signatureSuite = default, List<string> domain = default, string challenge = default, string keyId = default)
         {
             // to ensure "unsignedPresentation" is required (not null)
             if (unsignedPresentation == null)
@@ -134,6 +135,7 @@ namespace AffinidiTdk.WalletsClient.Model
             this.SignatureSuite = signatureSuite;
             this.Domain = domain;
             this.Challenge = challenge;
+            this.KeyId = keyId;
         }
 
         /// <summary>
@@ -158,6 +160,13 @@ namespace AffinidiTdk.WalletsClient.Model
         public string Challenge { get; set; }
 
         /// <summary>
+        /// wallet key ID to use for signing (defaults to wallet&#39;s default key)
+        /// </summary>
+        /// <value>wallet key ID to use for signing (defaults to wallet&#39;s default key)</value>
+        [DataMember(Name = "keyId", EmitDefaultValue = false)]
+        public string KeyId { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -170,6 +179,7 @@ namespace AffinidiTdk.WalletsClient.Model
             sb.Append("  SignatureSuite: ").Append(SignatureSuite).Append("\n");
             sb.Append("  Domain: ").Append(Domain).Append("\n");
             sb.Append("  Challenge: ").Append(Challenge).Append("\n");
+            sb.Append("  KeyId: ").Append(KeyId).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
