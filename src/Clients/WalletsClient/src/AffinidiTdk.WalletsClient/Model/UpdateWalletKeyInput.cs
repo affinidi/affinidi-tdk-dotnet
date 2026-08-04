@@ -28,35 +28,26 @@ using OpenAPIDateConverter = AffinidiTdk.WalletsClient.Client.OpenAPIDateConvert
 namespace AffinidiTdk.WalletsClient.Model
 {
     /// <summary>
-    /// DTO contains revocation list credential
+    /// Input for updating an existing wallet key. Only supported for did:web wallets.
     /// </summary>
-    [DataContract(Name = "GetRevocationCredentialStatusOK")]
-    public partial class GetRevocationCredentialStatusOK : IValidatableObject
+    [DataContract(Name = "UpdateWalletKeyInput")]
+    public partial class UpdateWalletKeyInput : IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="GetRevocationCredentialStatusOK" /> class.
+        /// Initializes a new instance of the <see cref="UpdateWalletKeyInput" /> class.
         /// </summary>
-        [JsonConstructorAttribute]
-        protected GetRevocationCredentialStatusOK() { }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="GetRevocationCredentialStatusOK" /> class.
-        /// </summary>
-        /// <param name="revocationListCredential">revocationListCredential (required).</param>
-        public GetRevocationCredentialStatusOK(Object revocationListCredential = default)
+        /// <param name="relationships">verification relationships for the key.</param>
+        public UpdateWalletKeyInput(List<VerificationRelationship> relationships = default)
         {
-            // to ensure "revocationListCredential" is required (not null)
-            if (revocationListCredential == null)
-            {
-                throw new ArgumentNullException("revocationListCredential is a required property for GetRevocationCredentialStatusOK and cannot be null");
-            }
-            this.RevocationListCredential = revocationListCredential;
+            this.Relationships = relationships;
         }
 
         /// <summary>
-        /// Gets or Sets RevocationListCredential
+        /// verification relationships for the key
         /// </summary>
-        [DataMember(Name = "revocationListCredential", IsRequired = true, EmitDefaultValue = true)]
-        public Object RevocationListCredential { get; set; }
+        /// <value>verification relationships for the key</value>
+        [DataMember(Name = "relationships", EmitDefaultValue = false)]
+        public List<VerificationRelationship> Relationships { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -65,8 +56,8 @@ namespace AffinidiTdk.WalletsClient.Model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class GetRevocationCredentialStatusOK {\n");
-            sb.Append("  RevocationListCredential: ").Append(RevocationListCredential).Append("\n");
+            sb.Append("class UpdateWalletKeyInput {\n");
+            sb.Append("  Relationships: ").Append(Relationships).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }

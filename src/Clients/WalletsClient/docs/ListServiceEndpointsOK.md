@@ -1,11 +1,11 @@
-# AffinidiTdk.WalletsClient.Model.AuthcryptMessageResultDto
-DTO contains authcrypted message in JSON fromat
+# AffinidiTdk.WalletsClient.Model.ListServiceEndpointsOK
+Response containing service endpoints
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AuthcryptedMessage** | **Object** | Authcrypted message in JSON format | 
+**Services** | [**List&lt;ServiceEndpointDto&gt;**](ServiceEndpointDto.md) | list of service endpoints | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -28,36 +28,25 @@ using OpenAPIDateConverter = AffinidiTdk.WalletsClient.Client.OpenAPIDateConvert
 namespace AffinidiTdk.WalletsClient.Model
 {
     /// <summary>
-    /// DTO contains params to unpack encrypted DIDComm message
+    /// SignJwtV2ResultDto
     /// </summary>
-    [DataContract(Name = "UnpackMessageInput")]
-    public partial class UnpackMessageInput : IValidatableObject
+    [DataContract(Name = "SignJwtV2ResultDto")]
+    public partial class SignJwtV2ResultDto : IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="UnpackMessageInput" /> class.
+        /// Initializes a new instance of the <see cref="SignJwtV2ResultDto" /> class.
         /// </summary>
-        [JsonConstructorAttribute]
-        protected UnpackMessageInput() { }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="UnpackMessageInput" /> class.
-        /// </summary>
-        /// <param name="message">Encrypted DIDComm message (required).</param>
-        public UnpackMessageInput(Object message = default)
+        /// <param name="signedJwt">signedJwt.</param>
+        public SignJwtV2ResultDto(string signedJwt = default)
         {
-            // to ensure "message" is required (not null)
-            if (message == null)
-            {
-                throw new ArgumentNullException("message is a required property for UnpackMessageInput and cannot be null");
-            }
-            this.Message = message;
+            this.SignedJwt = signedJwt;
         }
 
         /// <summary>
-        /// Encrypted DIDComm message
+        /// Gets or Sets SignedJwt
         /// </summary>
-        /// <value>Encrypted DIDComm message</value>
-        [DataMember(Name = "message", IsRequired = true, EmitDefaultValue = true)]
-        public Object Message { get; set; }
+        [DataMember(Name = "signedJwt", EmitDefaultValue = false)]
+        public string SignedJwt { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -66,8 +55,8 @@ namespace AffinidiTdk.WalletsClient.Model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class UnpackMessageInput {\n");
-            sb.Append("  Message: ").Append(Message).Append("\n");
+            sb.Append("class SignJwtV2ResultDto {\n");
+            sb.Append("  SignedJwt: ").Append(SignedJwt).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
