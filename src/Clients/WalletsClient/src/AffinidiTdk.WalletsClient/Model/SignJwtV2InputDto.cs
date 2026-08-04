@@ -28,59 +28,44 @@ using OpenAPIDateConverter = AffinidiTdk.WalletsClient.Client.OpenAPIDateConvert
 namespace AffinidiTdk.WalletsClient.Model
 {
     /// <summary>
-    /// ServiceErrorResponseDetailsInner
+    /// DTO contains payload of JWT to be signed
     /// </summary>
-    [DataContract(Name = "ServiceErrorResponse_details_inner")]
-    public partial class ServiceErrorResponseDetailsInner : IValidatableObject
+    [DataContract(Name = "SignJwtV2InputDto")]
+    public partial class SignJwtV2InputDto : IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="ServiceErrorResponseDetailsInner" /> class.
+        /// Initializes a new instance of the <see cref="SignJwtV2InputDto" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        protected ServiceErrorResponseDetailsInner() { }
+        protected SignJwtV2InputDto() { }
         /// <summary>
-        /// Initializes a new instance of the <see cref="ServiceErrorResponseDetailsInner" /> class.
+        /// Initializes a new instance of the <see cref="SignJwtV2InputDto" /> class.
         /// </summary>
-        /// <param name="issue">issue (required).</param>
-        /// <param name="field">field.</param>
-        /// <param name="value">value.</param>
-        /// <param name="location">location.</param>
-        public ServiceErrorResponseDetailsInner(string issue = default, string field = default, string value = default, string location = default)
+        /// <param name="payload">payload (required).</param>
+        /// <param name="keyId">wallet key ID to use for signing (defaults to wallet&#39;s default key).</param>
+        public SignJwtV2InputDto(Object payload = default, string keyId = default)
         {
-            // to ensure "issue" is required (not null)
-            if (issue == null)
+            // to ensure "payload" is required (not null)
+            if (payload == null)
             {
-                throw new ArgumentNullException("issue is a required property for ServiceErrorResponseDetailsInner and cannot be null");
+                throw new ArgumentNullException("payload is a required property for SignJwtV2InputDto and cannot be null");
             }
-            this.Issue = issue;
-            this.Field = field;
-            this.Value = value;
-            this.Location = location;
+            this.Payload = payload;
+            this.KeyId = keyId;
         }
 
         /// <summary>
-        /// Gets or Sets Issue
+        /// Gets or Sets Payload
         /// </summary>
-        [DataMember(Name = "issue", IsRequired = true, EmitDefaultValue = true)]
-        public string Issue { get; set; }
+        [DataMember(Name = "payload", IsRequired = true, EmitDefaultValue = true)]
+        public Object Payload { get; set; }
 
         /// <summary>
-        /// Gets or Sets Field
+        /// wallet key ID to use for signing (defaults to wallet&#39;s default key)
         /// </summary>
-        [DataMember(Name = "field", EmitDefaultValue = false)]
-        public string Field { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Value
-        /// </summary>
-        [DataMember(Name = "value", EmitDefaultValue = false)]
-        public string Value { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Location
-        /// </summary>
-        [DataMember(Name = "location", EmitDefaultValue = false)]
-        public string Location { get; set; }
+        /// <value>wallet key ID to use for signing (defaults to wallet&#39;s default key)</value>
+        [DataMember(Name = "keyId", EmitDefaultValue = false)]
+        public string KeyId { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -89,11 +74,9 @@ namespace AffinidiTdk.WalletsClient.Model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class ServiceErrorResponseDetailsInner {\n");
-            sb.Append("  Issue: ").Append(Issue).Append("\n");
-            sb.Append("  Field: ").Append(Field).Append("\n");
-            sb.Append("  Value: ").Append(Value).Append("\n");
-            sb.Append("  Location: ").Append(Location).Append("\n");
+            sb.Append("class SignJwtV2InputDto {\n");
+            sb.Append("  Payload: ").Append(Payload).Append("\n");
+            sb.Append("  KeyId: ").Append(KeyId).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
