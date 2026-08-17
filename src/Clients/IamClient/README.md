@@ -147,6 +147,7 @@ ClientAPI | Operation | Description
 [*ProjectsApi*](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/IamClient/docs/ProjectsApi.md) | [*AddPrincipalToProject*](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/IamClient/docs/ProjectsApi.md#addprincipaltoproject) | 
 [*ProjectsApi*](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/IamClient/docs/ProjectsApi.md) | [*CreateProject*](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/IamClient/docs/ProjectsApi.md#createproject) | 
 [*ProjectsApi*](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/IamClient/docs/ProjectsApi.md) | [*DeletePrincipalFromProject*](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/IamClient/docs/ProjectsApi.md#deleteprincipalfromproject) | 
+[*ProjectsApi*](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/IamClient/docs/ProjectsApi.md) | [*GetProject*](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/IamClient/docs/ProjectsApi.md#getproject) | 
 [*ProjectsApi*](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/IamClient/docs/ProjectsApi.md) | [*ListPrincipalsOfProject*](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/IamClient/docs/ProjectsApi.md#listprincipalsofproject) | 
 [*ProjectsApi*](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/IamClient/docs/ProjectsApi.md) | [*ListProject*](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/IamClient/docs/ProjectsApi.md#listproject) | 
 [*ProjectsApi*](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/IamClient/docs/ProjectsApi.md) | [*UpdateProject*](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/IamClient/docs/ProjectsApi.md#updateproject) | 
@@ -170,18 +171,13 @@ ClientAPI | Operation | Description
  - [AddUserToProjectInput](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/IamClient/docs/AddUserToProjectInput.md)
  - [ConsumerAuthTokenEndpointInput](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/IamClient/docs/ConsumerAuthTokenEndpointInput.md)
  - [ConsumerAuthTokenEndpointOutput](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/IamClient/docs/ConsumerAuthTokenEndpointOutput.md)
- - [CorsConsumerAuthTokenEndpointOK](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/IamClient/docs/CorsConsumerAuthTokenEndpointOK.md)
- - [CorsGrantAccessVfsOK](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/IamClient/docs/CorsGrantAccessVfsOK.md)
- - [CorsUpdateAccessVfsOK](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/IamClient/docs/CorsUpdateAccessVfsOK.md)
  - [CreateProjectInput](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/IamClient/docs/CreateProjectInput.md)
  - [CreateProjectScopedTokenInput](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/IamClient/docs/CreateProjectScopedTokenInput.md)
  - [CreateProjectScopedTokenOutput](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/IamClient/docs/CreateProjectScopedTokenOutput.md)
  - [CreateTokenInput](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/IamClient/docs/CreateTokenInput.md)
- - [DeleteAccessOutput](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/IamClient/docs/DeleteAccessOutput.md)
  - [GrantAccessInput](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/IamClient/docs/GrantAccessInput.md)
  - [GrantAccessOutput](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/IamClient/docs/GrantAccessOutput.md)
  - [InvalidDIDError](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/IamClient/docs/InvalidDIDError.md)
- - [InvalidJwtTokenError](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/IamClient/docs/InvalidJwtTokenError.md)
  - [InvalidParameterError](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/IamClient/docs/InvalidParameterError.md)
  - [JsonWebKeyDto](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/IamClient/docs/JsonWebKeyDto.md)
  - [JsonWebKeySetDto](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/IamClient/docs/JsonWebKeySetDto.md)
@@ -194,19 +190,16 @@ ClientAPI | Operation | Description
  - [ProjectList](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/IamClient/docs/ProjectList.md)
  - [ProjectWithPolicyDto](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/IamClient/docs/ProjectWithPolicyDto.md)
  - [ProjectWithPolicyList](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/IamClient/docs/ProjectWithPolicyList.md)
- - [PublicKeyCannotBeResolvedFromDidError](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/IamClient/docs/PublicKeyCannotBeResolvedFromDidError.md)
  - [RightsEnum](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/IamClient/docs/RightsEnum.md)
- - [ServiceErrorResponse](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/IamClient/docs/ServiceErrorResponse.md)
- - [ServiceErrorResponseDetailsInner](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/IamClient/docs/ServiceErrorResponseDetailsInner.md)
  - [TokenDto](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/IamClient/docs/TokenDto.md)
  - [TokenList](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/IamClient/docs/TokenList.md)
  - [TokenPrivateKeyAuthenticationMethodDto](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/IamClient/docs/TokenPrivateKeyAuthenticationMethodDto.md)
  - [TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfo](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/IamClient/docs/TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfo.md)
  - [TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfoOneOf](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/IamClient/docs/TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfoOneOf.md)
  - [TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfoOneOf1](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/IamClient/docs/TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfoOneOf1.md)
- - [TypedPrincipalId](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/IamClient/docs/TypedPrincipalId.md)
  - [UnauthorizedError](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/IamClient/docs/UnauthorizedError.md)
  - [UnexpectedError](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/IamClient/docs/UnexpectedError.md)
+ - [UnexpectedErrorDetailsInner](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/IamClient/docs/UnexpectedErrorDetailsInner.md)
  - [UpdateAccessInput](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/IamClient/docs/UpdateAccessInput.md)
  - [UpdateAccessOutput](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/IamClient/docs/UpdateAccessOutput.md)
  - [UpdateProjectInput](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/IamClient/docs/UpdateProjectInput.md)
