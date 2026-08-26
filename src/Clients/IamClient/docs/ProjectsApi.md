@@ -7,6 +7,7 @@ All URIs are relative to *https://apse1.api.affinidi.io/iam*
 | [**AddPrincipalToProject**](ProjectsApi.md#addprincipaltoproject) | **POST** /v1/projects/principals |  |
 | [**CreateProject**](ProjectsApi.md#createproject) | **POST** /v1/projects |  |
 | [**DeletePrincipalFromProject**](ProjectsApi.md#deleteprincipalfromproject) | **DELETE** /v1/projects/principals/{principalId} |  |
+| [**GetProject**](ProjectsApi.md#getproject) | **GET** /v1/projects/{projectId} |  |
 | [**ListPrincipalsOfProject**](ProjectsApi.md#listprincipalsofproject) | **GET** /v1/projects/principals |  |
 | [**ListProject**](ProjectsApi.md#listproject) | **GET** /v1/projects |  |
 | [**UpdateProject**](ProjectsApi.md#updateproject) | **PATCH** /v1/projects/{projectId} |  |
@@ -299,6 +300,105 @@ void (empty response body)
 | **403** | ForbiddenError |  -  |
 | **404** | NotFoundError |  -  |
 | **409** | ConflictError |  -  |
+| **500** | UnexpectedError |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a id="getproject"></a>
+# **GetProject**
+> ProjectDto GetProject (string projectId)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Net.Http;
+using AffinidiTdk.IamClient.Api;
+using AffinidiTdk.IamClient.Client;
+using AffinidiTdk.IamClient.Model;
+
+namespace Example
+{
+    public class GetProjectExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://apse1.api.affinidi.io/iam";
+            // Configure API key authorization: UserTokenAuth
+            config.AddApiKey("authorization", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // config.AddApiKeyPrefix("authorization", "Bearer");
+
+            // create instances of HttpClient, HttpClientHandler to be reused later with different Api classes
+            HttpClient httpClient = new HttpClient();
+            HttpClientHandler httpClientHandler = new HttpClientHandler();
+            var apiInstance = new ProjectsApi(httpClient, config, httpClientHandler);
+            var projectId = "projectId_example";  // string | projectId
+
+            try
+            {
+                ProjectDto result = apiInstance.GetProject(projectId);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling ProjectsApi.GetProject: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the GetProjectWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<ProjectDto> response = apiInstance.GetProjectWithHttpInfo(projectId);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling ProjectsApi.GetProjectWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **projectId** | **string** | projectId |  |
+
+### Return type
+
+[**ProjectDto**](ProjectDto.md)
+
+### Authorization
+
+[UserTokenAuth](../README.md#UserTokenAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Ok |  -  |
+| **400** | BadRequestError |  -  |
+| **404** | NotFoundError |  -  |
 | **500** | UnexpectedError |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
