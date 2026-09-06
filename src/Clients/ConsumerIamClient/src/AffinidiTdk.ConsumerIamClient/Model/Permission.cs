@@ -43,7 +43,8 @@ namespace AffinidiTdk.ConsumerIamClient.Model
         /// </summary>
         /// <param name="rights">rights (required).</param>
         /// <param name="nodeIds">nodeIds (required).</param>
-        public Permission(List<RightsEnum> rights = default, List<string> nodeIds = default)
+        /// <param name="expiresAt">expiresAt.</param>
+        public Permission(List<RightsEnum> rights = default, List<string> nodeIds = default, DateTime expiresAt = default)
         {
             // to ensure "rights" is required (not null)
             if (rights == null)
@@ -57,6 +58,7 @@ namespace AffinidiTdk.ConsumerIamClient.Model
                 throw new ArgumentNullException("nodeIds is a required property for Permission and cannot be null");
             }
             this.NodeIds = nodeIds;
+            this.ExpiresAt = expiresAt;
         }
 
         /// <summary>
@@ -72,6 +74,12 @@ namespace AffinidiTdk.ConsumerIamClient.Model
         public List<string> NodeIds { get; set; }
 
         /// <summary>
+        /// Gets or Sets ExpiresAt
+        /// </summary>
+        [DataMember(Name = "expiresAt", EmitDefaultValue = false)]
+        public DateTime ExpiresAt { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -81,6 +89,7 @@ namespace AffinidiTdk.ConsumerIamClient.Model
             sb.Append("class Permission {\n");
             sb.Append("  Rights: ").Append(Rights).Append("\n");
             sb.Append("  NodeIds: ").Append(NodeIds).Append("\n");
+            sb.Append("  ExpiresAt: ").Append(ExpiresAt).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
