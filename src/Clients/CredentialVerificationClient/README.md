@@ -139,31 +139,9 @@ ClientAPI | Operation | Description
 
 ### Documentation For Models
 
- - [Constraints](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/CredentialVerificationClient/docs/Constraints.md)
- - [ConstraintsStatuses](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/CredentialVerificationClient/docs/ConstraintsStatuses.md)
- - [Descriptor](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/CredentialVerificationClient/docs/Descriptor.md)
- - [Error](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/CredentialVerificationClient/docs/Error.md)
- - [ErrorDetail](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/CredentialVerificationClient/docs/ErrorDetail.md)
- - [EvaluateVpOutput](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/CredentialVerificationClient/docs/EvaluateVpOutput.md)
- - [Field](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/CredentialVerificationClient/docs/Field.md)
- - [Filter](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/CredentialVerificationClient/docs/Filter.md)
- - [FilterConst](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/CredentialVerificationClient/docs/FilterConst.md)
- - [FilterItems](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/CredentialVerificationClient/docs/FilterItems.md)
- - [Format](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/CredentialVerificationClient/docs/Format.md)
- - [HolderSubject](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/CredentialVerificationClient/docs/HolderSubject.md)
- - [InputDescriptor](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/CredentialVerificationClient/docs/InputDescriptor.md)
  - [InvalidParameterError](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/CredentialVerificationClient/docs/InvalidParameterError.md)
- - [JwtObject](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/CredentialVerificationClient/docs/JwtObject.md)
- - [LdpObject](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/CredentialVerificationClient/docs/LdpObject.md)
- - [NestedDescriptor](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/CredentialVerificationClient/docs/NestedDescriptor.md)
  - [NotFoundError](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/CredentialVerificationClient/docs/NotFoundError.md)
  - [NotFoundErrorDetailsInner](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/CredentialVerificationClient/docs/NotFoundErrorDetailsInner.md)
- - [PdStatus](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/CredentialVerificationClient/docs/PdStatus.md)
- - [PresentationDefinition](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/CredentialVerificationClient/docs/PresentationDefinition.md)
- - [PresentationSubmission](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/CredentialVerificationClient/docs/PresentationSubmission.md)
- - [SubmissionRequirement](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/CredentialVerificationClient/docs/SubmissionRequirement.md)
- - [ValidateJwtInput](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/CredentialVerificationClient/docs/ValidateJwtInput.md)
- - [ValidateJwtOutput](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/CredentialVerificationClient/docs/ValidateJwtOutput.md)
  - [VerifyCredentialInput](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/CredentialVerificationClient/docs/VerifyCredentialInput.md)
  - [VerifyCredentialOutput](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/CredentialVerificationClient/docs/VerifyCredentialOutput.md)
  - [VerifyCredentialV2Input](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/CredentialVerificationClient/docs/VerifyCredentialV2Input.md)
@@ -171,8 +149,6 @@ ClientAPI | Operation | Description
  - [VerifyPresentationOutput](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/CredentialVerificationClient/docs/VerifyPresentationOutput.md)
  - [VerifyPresentationV2Input](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/CredentialVerificationClient/docs/VerifyPresentationV2Input.md)
  - [VerifyPresentationV2InputPexQuery](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/CredentialVerificationClient/docs/VerifyPresentationV2InputPexQuery.md)
- - [W3cCredentialStatus](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/CredentialVerificationClient/docs/W3cCredentialStatus.md)
- - [W3cProof](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/CredentialVerificationClient/docs/W3cProof.md)
 
 
 
