@@ -44,7 +44,7 @@ namespace AffinidiTdk.IamClient.Model
         /// <param name="name">name (required).</param>
         /// <param name="authenticationMethod">authenticationMethod (required).</param>
         /// <param name="description">description.</param>
-        public CreateTokenInput(string name = default, TokenPrivateKeyAuthenticationMethodDto authenticationMethod = default, string description = default)
+        public CreateTokenInput(string name = default, TokenAuthenticationMethodDto authenticationMethod = default, string description = default)
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -74,7 +74,7 @@ namespace AffinidiTdk.IamClient.Model
         /// Gets or Sets AuthenticationMethod
         /// </summary>
         [DataMember(Name = "authenticationMethod", IsRequired = true, EmitDefaultValue = true)]
-        public TokenPrivateKeyAuthenticationMethodDto AuthenticationMethod { get; set; }
+        public TokenAuthenticationMethodDto AuthenticationMethod { get; set; }
 
         /// <summary>
         /// Gets or Sets Description
