@@ -152,6 +152,18 @@ namespace AffinidiTdk.CredentialIssuanceClient.Model
                 }
             }
 
+            // IssuanceId (string) maxLength
+            if (this.IssuanceId != null && this.IssuanceId.Length > 500)
+            {
+                yield return new ValidationResult("Invalid value for IssuanceId, length must be less than 500.", new [] { "IssuanceId" });
+            }
+
+            // IssuanceId (string) minLength
+            if (this.IssuanceId != null && this.IssuanceId.Length < 1)
+            {
+                yield return new ValidationResult("Invalid value for IssuanceId, length must be greater than 1.", new [] { "IssuanceId" });
+            }
+
             yield break;
         }
     }
