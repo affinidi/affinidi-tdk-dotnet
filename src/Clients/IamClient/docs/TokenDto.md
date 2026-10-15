@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **Ari** | **string** | Token ARI | 
 **OwnerAri** | **string** | The Token owner&#39;s ARI | 
 **Name** | **string** | Owner defined Token display name | 
-**AuthenticationMethod** | [**TokenPrivateKeyAuthenticationMethodDto**](TokenPrivateKeyAuthenticationMethodDto.md) |  | 
+**AuthenticationMethod** | [**TokenAuthenticationMethodDto**](TokenAuthenticationMethodDto.md) |  | 
 **Scopes** | **List&lt;string&gt;** | Scopes that will be assigned to the Token on authentication | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
