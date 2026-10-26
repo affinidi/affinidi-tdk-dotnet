@@ -55,7 +55,13 @@ namespace AffinidiTdk.WalletsClient.Model
             /// Enum Ed25519 for value: ed25519
             /// </summary>
             [EnumMember(Value = "ed25519")]
-            Ed25519 = 3
+            Ed25519 = 3,
+
+            /// <summary>
+            /// Enum Mldsa44 for value: mldsa44
+            /// </summary>
+            [EnumMember(Value = "mldsa44")]
+            Mldsa44 = 4
         }
 
 
@@ -99,7 +105,19 @@ namespace AffinidiTdk.WalletsClient.Model
             /// Enum EcdsaSecp256k1Signature2019 for value: EcdsaSecp256k1Signature2019
             /// </summary>
             [EnumMember(Value = "EcdsaSecp256k1Signature2019")]
-            EcdsaSecp256k1Signature2019 = 5
+            EcdsaSecp256k1Signature2019 = 5,
+
+            /// <summary>
+            /// Enum Mldsa44Jcs2024 for value: mldsa44-jcs-2024
+            /// </summary>
+            [EnumMember(Value = "mldsa44-jcs-2024")]
+            Mldsa44Jcs2024 = 6,
+
+            /// <summary>
+            /// Enum Mldsa44Rdfc2024 for value: mldsa44-rdfc-2024
+            /// </summary>
+            [EnumMember(Value = "mldsa44-rdfc-2024")]
+            Mldsa44Rdfc2024 = 7
         }
 
 
@@ -121,7 +139,8 @@ namespace AffinidiTdk.WalletsClient.Model
         /// <param name="revocable">revocable.</param>
         /// <param name="signatureScheme">signatureScheme.</param>
         /// <param name="signatureSuite">W3C signature suite for canonicalization. Defaults to rdfc variants for each algorithm (ecdsa-rdfc-2019 for P256, eddsa-rdfc-2022 for Ed25519, EcdsaSecp256k1Signature2019 for secp256k1)..</param>
-        public SignCredentialsLdpInputDto(Object unsignedCredential = default, bool revocable = default, SignatureSchemeEnum? signatureScheme = default, SignatureSuiteEnum? signatureSuite = default)
+        /// <param name="keyId">wallet key ID to use for signing (defaults to wallet&#39;s default key).</param>
+        public SignCredentialsLdpInputDto(Object unsignedCredential = default, bool revocable = default, SignatureSchemeEnum? signatureScheme = default, SignatureSuiteEnum? signatureSuite = default, string keyId = default)
         {
             // to ensure "unsignedCredential" is required (not null)
             if (unsignedCredential == null)
@@ -132,6 +151,7 @@ namespace AffinidiTdk.WalletsClient.Model
             this.Revocable = revocable;
             this.SignatureScheme = signatureScheme;
             this.SignatureSuite = signatureSuite;
+            this.KeyId = keyId;
         }
 
         /// <summary>
@@ -148,6 +168,13 @@ namespace AffinidiTdk.WalletsClient.Model
         public bool Revocable { get; set; }
 
         /// <summary>
+        /// wallet key ID to use for signing (defaults to wallet&#39;s default key)
+        /// </summary>
+        /// <value>wallet key ID to use for signing (defaults to wallet&#39;s default key)</value>
+        [DataMember(Name = "keyId", EmitDefaultValue = false)]
+        public string KeyId { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -159,6 +186,7 @@ namespace AffinidiTdk.WalletsClient.Model
             sb.Append("  Revocable: ").Append(Revocable).Append("\n");
             sb.Append("  SignatureScheme: ").Append(SignatureScheme).Append("\n");
             sb.Append("  SignatureSuite: ").Append(SignatureSuite).Append("\n");
+            sb.Append("  KeyId: ").Append(KeyId).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
