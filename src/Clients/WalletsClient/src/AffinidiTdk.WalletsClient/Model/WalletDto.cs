@@ -45,7 +45,8 @@ namespace AffinidiTdk.WalletsClient.Model
         /// <param name="keys">keys.</param>
         /// <param name="createdAt">createdAt.</param>
         /// <param name="modifiedAt">modifiedAt.</param>
-        public WalletDto(string id = default, string did = default, string name = default, string description = default, Object didDocument = default, string ari = default, List<WalletDtoKeysInner> keys = default, string createdAt = default, string modifiedAt = default)
+        /// <param name="varVersion">The version of the wallet.</param>
+        public WalletDto(string id = default, string did = default, string name = default, string description = default, Object didDocument = default, string ari = default, List<WalletDtoKeysInner> keys = default, string createdAt = default, string modifiedAt = default, decimal varVersion = default)
         {
             this.Id = id;
             this.Did = did;
@@ -56,6 +57,7 @@ namespace AffinidiTdk.WalletsClient.Model
             this.Keys = keys;
             this.CreatedAt = createdAt;
             this.ModifiedAt = modifiedAt;
+            this.VarVersion = varVersion;
         }
 
         /// <summary>
@@ -119,6 +121,13 @@ namespace AffinidiTdk.WalletsClient.Model
         public string ModifiedAt { get; set; }
 
         /// <summary>
+        /// The version of the wallet
+        /// </summary>
+        /// <value>The version of the wallet</value>
+        [DataMember(Name = "version", EmitDefaultValue = false)]
+        public decimal VarVersion { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -135,6 +144,7 @@ namespace AffinidiTdk.WalletsClient.Model
             sb.Append("  Keys: ").Append(Keys).Append("\n");
             sb.Append("  CreatedAt: ").Append(CreatedAt).Append("\n");
             sb.Append("  ModifiedAt: ").Append(ModifiedAt).Append("\n");
+            sb.Append("  VarVersion: ").Append(VarVersion).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }

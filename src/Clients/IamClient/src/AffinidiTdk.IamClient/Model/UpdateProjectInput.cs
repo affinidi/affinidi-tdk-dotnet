@@ -38,10 +38,12 @@ namespace AffinidiTdk.IamClient.Model
         /// </summary>
         /// <param name="name">name.</param>
         /// <param name="description">description.</param>
-        public UpdateProjectInput(string name = default, string description = default)
+        /// <param name="identityVerificationEnabled">flag indicates if identity verification is enabled for project.</param>
+        public UpdateProjectInput(string name = default, string description = default, bool identityVerificationEnabled = default)
         {
             this.Name = name;
             this.Description = description;
+            this.IdentityVerificationEnabled = identityVerificationEnabled;
         }
 
         /// <summary>
@@ -57,6 +59,13 @@ namespace AffinidiTdk.IamClient.Model
         public string Description { get; set; }
 
         /// <summary>
+        /// flag indicates if identity verification is enabled for project
+        /// </summary>
+        /// <value>flag indicates if identity verification is enabled for project</value>
+        [DataMember(Name = "identityVerificationEnabled", EmitDefaultValue = true)]
+        public bool IdentityVerificationEnabled { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -66,6 +75,7 @@ namespace AffinidiTdk.IamClient.Model
             sb.Append("class UpdateProjectInput {\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  Description: ").Append(Description).Append("\n");
+            sb.Append("  IdentityVerificationEnabled: ").Append(IdentityVerificationEnabled).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
