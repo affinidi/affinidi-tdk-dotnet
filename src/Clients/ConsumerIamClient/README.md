@@ -129,6 +129,7 @@ We have created an [example code](https://github.com/affinidi/affinidi-tdk-dotne
 ClientAPI | Operation | Description
 ------------ | ------------- | -------------
 [*AuthzApi*](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/ConsumerIamClient/docs/AuthzApi.md) | [*DeleteAccessVfs*](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/ConsumerIamClient/docs/AuthzApi.md#deleteaccessvfs) | delete access of granteeDid
+[*AuthzApi*](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/ConsumerIamClient/docs/AuthzApi.md) | [*GetAccessVfs*](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/ConsumerIamClient/docs/AuthzApi.md#getaccessvfs) | Get permissions to the virtual file system for a subject
 [*AuthzApi*](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/ConsumerIamClient/docs/AuthzApi.md) | [*GrantAccessVfs*](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/ConsumerIamClient/docs/AuthzApi.md#grantaccessvfs) | Grant access to the virtual file system
 [*AuthzApi*](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/ConsumerIamClient/docs/AuthzApi.md) | [*UpdateAccessVfs*](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/ConsumerIamClient/docs/AuthzApi.md#updateaccessvfs) | Update access of granteeDid
 [*ConsumerAuthApi*](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/ConsumerIamClient/docs/ConsumerAuthApi.md) | [*ConsumerAuthTokenEndpoint*](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/ConsumerIamClient/docs/ConsumerAuthApi.md#consumerauthtokenendpoint) | The Consumer OAuth 2.0 Token Endpoint
@@ -141,13 +142,12 @@ ClientAPI | Operation | Description
 
  - [ConsumerAuthTokenEndpointInput](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/ConsumerIamClient/docs/ConsumerAuthTokenEndpointInput.md)
  - [ConsumerAuthTokenEndpointOutput](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/ConsumerIamClient/docs/ConsumerAuthTokenEndpointOutput.md)
- - [CorsConsumerAuthTokenEndpointOK](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/ConsumerIamClient/docs/CorsConsumerAuthTokenEndpointOK.md)
+ - [GetAccessOutput](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/ConsumerIamClient/docs/GetAccessOutput.md)
  - [GrantAccessInput](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/ConsumerIamClient/docs/GrantAccessInput.md)
  - [GrantAccessOutput](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/ConsumerIamClient/docs/GrantAccessOutput.md)
  - [InvalidDIDError](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/ConsumerIamClient/docs/InvalidDIDError.md)
  - [InvalidJwtTokenError](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/ConsumerIamClient/docs/InvalidJwtTokenError.md)
  - [InvalidJwtTokenErrorDetailsInner](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/ConsumerIamClient/docs/InvalidJwtTokenErrorDetailsInner.md)
- - [InvalidParameterError](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/ConsumerIamClient/docs/InvalidParameterError.md)
  - [JsonWebKeyDto](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/ConsumerIamClient/docs/JsonWebKeyDto.md)
  - [JsonWebKeySetDto](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/ConsumerIamClient/docs/JsonWebKeySetDto.md)
  - [Permission](https://github.com/affinidi/affinidi-tdk-dotnet/tree/main/src/Clients/ConsumerIamClient/docs/Permission.md)

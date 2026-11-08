@@ -47,7 +47,7 @@ namespace AffinidiTdk.IamClient.Model
         /// <param name="name">Owner defined Token display name (required).</param>
         /// <param name="authenticationMethod">authenticationMethod (required).</param>
         /// <param name="scopes">Scopes that will be assigned to the Token on authentication (required).</param>
-        public TokenDto(Guid id = default, string ari = default, string ownerAri = default, string name = default, TokenPrivateKeyAuthenticationMethodDto authenticationMethod = default, List<string> scopes = default)
+        public TokenDto(Guid id = default, string ari = default, string ownerAri = default, string name = default, TokenAuthenticationMethodDto authenticationMethod = default, List<string> scopes = default)
         {
             this.Id = id;
             // to ensure "ari" is required (not null)
@@ -126,7 +126,7 @@ namespace AffinidiTdk.IamClient.Model
         /// Gets or Sets AuthenticationMethod
         /// </summary>
         [DataMember(Name = "authenticationMethod", IsRequired = true, EmitDefaultValue = true)]
-        public TokenPrivateKeyAuthenticationMethodDto AuthenticationMethod { get; set; }
+        public TokenAuthenticationMethodDto AuthenticationMethod { get; set; }
 
         /// <summary>
         /// Scopes that will be assigned to the Token on authentication
