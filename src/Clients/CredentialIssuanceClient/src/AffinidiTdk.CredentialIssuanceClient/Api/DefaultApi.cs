@@ -62,10 +62,11 @@ namespace AffinidiTdk.CredentialIssuanceClient.Api
         /// <exception cref="AffinidiTdk.CredentialIssuanceClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="projectId">Affinidi project id</param>
         /// <param name="configurationId">The id of the issuance configuration</param>
+        /// <param name="issuanceId">Optional filter to retrieve records for a specific issuance ID (optional)</param>
         /// <param name="limit">Maximum number of records to fetch in a list (optional, default to 10)</param>
         /// <param name="exclusiveStartKey">exclusiveStartKey for retrieving the next batch of data. (optional)</param>
         /// <returns>ListIssuanceRecordResponse</returns>
-        ListIssuanceRecordResponse ListIssuanceDataRecords(string projectId, string configurationId, int? limit = default, string? exclusiveStartKey = default);
+        ListIssuanceRecordResponse ListIssuanceDataRecords(string projectId, string configurationId, string? issuanceId = default, int? limit = default, string? exclusiveStartKey = default);
 
         /// <summary>
         /// List records
@@ -76,10 +77,11 @@ namespace AffinidiTdk.CredentialIssuanceClient.Api
         /// <exception cref="AffinidiTdk.CredentialIssuanceClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="projectId">Affinidi project id</param>
         /// <param name="configurationId">The id of the issuance configuration</param>
+        /// <param name="issuanceId">Optional filter to retrieve records for a specific issuance ID (optional)</param>
         /// <param name="limit">Maximum number of records to fetch in a list (optional, default to 10)</param>
         /// <param name="exclusiveStartKey">exclusiveStartKey for retrieving the next batch of data. (optional)</param>
         /// <returns>ApiResponse of ListIssuanceRecordResponse</returns>
-        ApiResponse<ListIssuanceRecordResponse> ListIssuanceDataRecordsWithHttpInfo(string projectId, string configurationId, int? limit = default, string? exclusiveStartKey = default);
+        ApiResponse<ListIssuanceRecordResponse> ListIssuanceDataRecordsWithHttpInfo(string projectId, string configurationId, string? issuanceId = default, int? limit = default, string? exclusiveStartKey = default);
         #endregion Synchronous Operations
     }
 
@@ -125,11 +127,12 @@ namespace AffinidiTdk.CredentialIssuanceClient.Api
         /// <exception cref="AffinidiTdk.CredentialIssuanceClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="projectId">Affinidi project id</param>
         /// <param name="configurationId">The id of the issuance configuration</param>
+        /// <param name="issuanceId">Optional filter to retrieve records for a specific issuance ID (optional)</param>
         /// <param name="limit">Maximum number of records to fetch in a list (optional, default to 10)</param>
         /// <param name="exclusiveStartKey">exclusiveStartKey for retrieving the next batch of data. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListIssuanceRecordResponse</returns>
-        System.Threading.Tasks.Task<ListIssuanceRecordResponse> ListIssuanceDataRecordsAsync(string projectId, string configurationId, int? limit = default, string? exclusiveStartKey = default, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ListIssuanceRecordResponse> ListIssuanceDataRecordsAsync(string projectId, string configurationId, string? issuanceId = default, int? limit = default, string? exclusiveStartKey = default, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// List records
@@ -140,11 +143,12 @@ namespace AffinidiTdk.CredentialIssuanceClient.Api
         /// <exception cref="AffinidiTdk.CredentialIssuanceClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="projectId">Affinidi project id</param>
         /// <param name="configurationId">The id of the issuance configuration</param>
+        /// <param name="issuanceId">Optional filter to retrieve records for a specific issuance ID (optional)</param>
         /// <param name="limit">Maximum number of records to fetch in a list (optional, default to 10)</param>
         /// <param name="exclusiveStartKey">exclusiveStartKey for retrieving the next batch of data. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListIssuanceRecordResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ListIssuanceRecordResponse>> ListIssuanceDataRecordsWithHttpInfoAsync(string projectId, string configurationId, int? limit = default, string? exclusiveStartKey = default, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<ListIssuanceRecordResponse>> ListIssuanceDataRecordsWithHttpInfoAsync(string projectId, string configurationId, string? issuanceId = default, int? limit = default, string? exclusiveStartKey = default, System.Threading.CancellationToken cancellationToken = default);
         #endregion Asynchronous Operations
     }
 
@@ -519,12 +523,13 @@ namespace AffinidiTdk.CredentialIssuanceClient.Api
         /// <exception cref="AffinidiTdk.CredentialIssuanceClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="projectId">Affinidi project id</param>
         /// <param name="configurationId">The id of the issuance configuration</param>
+        /// <param name="issuanceId">Optional filter to retrieve records for a specific issuance ID (optional)</param>
         /// <param name="limit">Maximum number of records to fetch in a list (optional, default to 10)</param>
         /// <param name="exclusiveStartKey">exclusiveStartKey for retrieving the next batch of data. (optional)</param>
         /// <returns>ListIssuanceRecordResponse</returns>
-        public ListIssuanceRecordResponse ListIssuanceDataRecords(string projectId, string configurationId, int? limit = default, string? exclusiveStartKey = default)
+        public ListIssuanceRecordResponse ListIssuanceDataRecords(string projectId, string configurationId, string? issuanceId = default, int? limit = default, string? exclusiveStartKey = default)
         {
-            AffinidiTdk.CredentialIssuanceClient.Client.ApiResponse<ListIssuanceRecordResponse> localVarResponse = ListIssuanceDataRecordsWithHttpInfo(projectId, configurationId, limit, exclusiveStartKey);
+            AffinidiTdk.CredentialIssuanceClient.Client.ApiResponse<ListIssuanceRecordResponse> localVarResponse = ListIssuanceDataRecordsWithHttpInfo(projectId, configurationId, issuanceId, limit, exclusiveStartKey);
             return localVarResponse.Data;
         }
 
@@ -534,10 +539,11 @@ namespace AffinidiTdk.CredentialIssuanceClient.Api
         /// <exception cref="AffinidiTdk.CredentialIssuanceClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="projectId">Affinidi project id</param>
         /// <param name="configurationId">The id of the issuance configuration</param>
+        /// <param name="issuanceId">Optional filter to retrieve records for a specific issuance ID (optional)</param>
         /// <param name="limit">Maximum number of records to fetch in a list (optional, default to 10)</param>
         /// <param name="exclusiveStartKey">exclusiveStartKey for retrieving the next batch of data. (optional)</param>
         /// <returns>ApiResponse of ListIssuanceRecordResponse</returns>
-        public AffinidiTdk.CredentialIssuanceClient.Client.ApiResponse<ListIssuanceRecordResponse> ListIssuanceDataRecordsWithHttpInfo(string projectId, string configurationId, int? limit = default, string? exclusiveStartKey = default)
+        public AffinidiTdk.CredentialIssuanceClient.Client.ApiResponse<ListIssuanceRecordResponse> ListIssuanceDataRecordsWithHttpInfo(string projectId, string configurationId, string? issuanceId = default, int? limit = default, string? exclusiveStartKey = default)
         {
             // verify the required parameter 'projectId' is set
             if (projectId == null)
@@ -565,6 +571,10 @@ namespace AffinidiTdk.CredentialIssuanceClient.Api
 
             localVarRequestOptions.PathParameters.Add("projectId", AffinidiTdk.CredentialIssuanceClient.Client.ClientUtils.ParameterToString(projectId)); // path parameter
             localVarRequestOptions.PathParameters.Add("configurationId", AffinidiTdk.CredentialIssuanceClient.Client.ClientUtils.ParameterToString(configurationId)); // path parameter
+            if (issuanceId != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(AffinidiTdk.CredentialIssuanceClient.Client.ClientUtils.ParameterToMultiMap("", "issuanceId", issuanceId));
+            }
             if (limit != null)
             {
                 localVarRequestOptions.QueryParameters.Add(AffinidiTdk.CredentialIssuanceClient.Client.ClientUtils.ParameterToMultiMap("", "limit", limit));
@@ -598,13 +608,14 @@ namespace AffinidiTdk.CredentialIssuanceClient.Api
         /// <exception cref="AffinidiTdk.CredentialIssuanceClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="projectId">Affinidi project id</param>
         /// <param name="configurationId">The id of the issuance configuration</param>
+        /// <param name="issuanceId">Optional filter to retrieve records for a specific issuance ID (optional)</param>
         /// <param name="limit">Maximum number of records to fetch in a list (optional, default to 10)</param>
         /// <param name="exclusiveStartKey">exclusiveStartKey for retrieving the next batch of data. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListIssuanceRecordResponse</returns>
-        public async System.Threading.Tasks.Task<ListIssuanceRecordResponse> ListIssuanceDataRecordsAsync(string projectId, string configurationId, int? limit = default, string? exclusiveStartKey = default, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<ListIssuanceRecordResponse> ListIssuanceDataRecordsAsync(string projectId, string configurationId, string? issuanceId = default, int? limit = default, string? exclusiveStartKey = default, System.Threading.CancellationToken cancellationToken = default)
         {
-            AffinidiTdk.CredentialIssuanceClient.Client.ApiResponse<ListIssuanceRecordResponse> localVarResponse = await ListIssuanceDataRecordsWithHttpInfoAsync(projectId, configurationId, limit, exclusiveStartKey, cancellationToken).ConfigureAwait(false);
+            AffinidiTdk.CredentialIssuanceClient.Client.ApiResponse<ListIssuanceRecordResponse> localVarResponse = await ListIssuanceDataRecordsWithHttpInfoAsync(projectId, configurationId, issuanceId, limit, exclusiveStartKey, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -614,11 +625,12 @@ namespace AffinidiTdk.CredentialIssuanceClient.Api
         /// <exception cref="AffinidiTdk.CredentialIssuanceClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="projectId">Affinidi project id</param>
         /// <param name="configurationId">The id of the issuance configuration</param>
+        /// <param name="issuanceId">Optional filter to retrieve records for a specific issuance ID (optional)</param>
         /// <param name="limit">Maximum number of records to fetch in a list (optional, default to 10)</param>
         /// <param name="exclusiveStartKey">exclusiveStartKey for retrieving the next batch of data. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListIssuanceRecordResponse)</returns>
-        public async System.Threading.Tasks.Task<AffinidiTdk.CredentialIssuanceClient.Client.ApiResponse<ListIssuanceRecordResponse>> ListIssuanceDataRecordsWithHttpInfoAsync(string projectId, string configurationId, int? limit = default, string? exclusiveStartKey = default, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<AffinidiTdk.CredentialIssuanceClient.Client.ApiResponse<ListIssuanceRecordResponse>> ListIssuanceDataRecordsWithHttpInfoAsync(string projectId, string configurationId, string? issuanceId = default, int? limit = default, string? exclusiveStartKey = default, System.Threading.CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'projectId' is set
             if (projectId == null)
@@ -648,6 +660,10 @@ namespace AffinidiTdk.CredentialIssuanceClient.Api
 
             localVarRequestOptions.PathParameters.Add("projectId", AffinidiTdk.CredentialIssuanceClient.Client.ClientUtils.ParameterToString(projectId)); // path parameter
             localVarRequestOptions.PathParameters.Add("configurationId", AffinidiTdk.CredentialIssuanceClient.Client.ClientUtils.ParameterToString(configurationId)); // path parameter
+            if (issuanceId != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(AffinidiTdk.CredentialIssuanceClient.Client.ClientUtils.ParameterToMultiMap("", "issuanceId", issuanceId));
+            }
             if (limit != null)
             {
                 localVarRequestOptions.QueryParameters.Add(AffinidiTdk.CredentialIssuanceClient.Client.ClientUtils.ParameterToMultiMap("", "limit", limit));
