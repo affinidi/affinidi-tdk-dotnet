@@ -75,7 +75,8 @@ namespace AffinidiTdk.WalletsClient.Model
         /// <param name="unsignedCredential">Unsigned Credential in Dm1 format (required).</param>
         /// <param name="revocable">revocable.</param>
         /// <param name="signatureScheme">signatureScheme.</param>
-        public SignCredentialsJwtInputDto(Object unsignedCredential = default, bool revocable = default, SignatureSchemeEnum? signatureScheme = default)
+        /// <param name="keyId">wallet key ID to use for signing (defaults to wallet&#39;s default key).</param>
+        public SignCredentialsJwtInputDto(Object unsignedCredential = default, bool revocable = default, SignatureSchemeEnum? signatureScheme = default, string keyId = default)
         {
             // to ensure "unsignedCredential" is required (not null)
             if (unsignedCredential == null)
@@ -85,6 +86,7 @@ namespace AffinidiTdk.WalletsClient.Model
             this.UnsignedCredential = unsignedCredential;
             this.Revocable = revocable;
             this.SignatureScheme = signatureScheme;
+            this.KeyId = keyId;
         }
 
         /// <summary>
@@ -101,6 +103,13 @@ namespace AffinidiTdk.WalletsClient.Model
         public bool Revocable { get; set; }
 
         /// <summary>
+        /// wallet key ID to use for signing (defaults to wallet&#39;s default key)
+        /// </summary>
+        /// <value>wallet key ID to use for signing (defaults to wallet&#39;s default key)</value>
+        [DataMember(Name = "keyId", EmitDefaultValue = false)]
+        public string KeyId { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -111,6 +120,7 @@ namespace AffinidiTdk.WalletsClient.Model
             sb.Append("  UnsignedCredential: ").Append(UnsignedCredential).Append("\n");
             sb.Append("  Revocable: ").Append(Revocable).Append("\n");
             sb.Append("  SignatureScheme: ").Append(SignatureScheme).Append("\n");
+            sb.Append("  KeyId: ").Append(KeyId).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }

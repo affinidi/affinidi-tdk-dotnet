@@ -103,7 +103,7 @@ namespace AffinidiTdk.IamClient.Model
         /// <param name="httpStatusCode">httpStatusCode (required).</param>
         /// <param name="traceId">traceId (required).</param>
         /// <param name="details">details.</param>
-        public UnauthorizedError(NameEnum name = default, MessageEnum message = default, HttpStatusCodeEnum httpStatusCode = default, string traceId = default, List<ServiceErrorResponseDetailsInner> details = default)
+        public UnauthorizedError(NameEnum name = default, MessageEnum message = default, HttpStatusCodeEnum httpStatusCode = default, string traceId = default, List<UnexpectedErrorDetailsInner> details = default)
         {
             this.Name = name;
             this.Message = message;
@@ -127,7 +127,7 @@ namespace AffinidiTdk.IamClient.Model
         /// Gets or Sets Details
         /// </summary>
         [DataMember(Name = "details", EmitDefaultValue = false)]
-        public List<ServiceErrorResponseDetailsInner> Details { get; set; }
+        public List<UnexpectedErrorDetailsInner> Details { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
