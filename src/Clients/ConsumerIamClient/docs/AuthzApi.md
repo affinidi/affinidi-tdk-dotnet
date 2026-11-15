@@ -5,6 +5,7 @@ All URIs are relative to *https://apse1.api.affinidi.io/cid*
 | Method | HTTP request | Description |
 |--------|--------------|-------------|
 | [**DeleteAccessVfs**](AuthzApi.md#deleteaccessvfs) | **DELETE** /v1/authz/vfs/access/{granteeDid} | delete access of granteeDid |
+| [**GetAccessVfs**](AuthzApi.md#getaccessvfs) | **GET** /v1/authz/vfs/access/{granteeDid} | Get permissions to the virtual file system for a subject |
 | [**GrantAccessVfs**](AuthzApi.md#grantaccessvfs) | **POST** /v1/authz/vfs/access/{granteeDid} | Grant access to the virtual file system |
 | [**UpdateAccessVfs**](AuthzApi.md#updateaccessvfs) | **PUT** /v1/authz/vfs/access/{granteeDid} | Update access of granteeDid |
 
@@ -101,6 +102,108 @@ void (empty response body)
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **204** | Ok |  -  |
+| **403** | ForbiddenError |  -  |
+| **500** | UnexpectedError |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a id="getaccessvfs"></a>
+# **GetAccessVfs**
+> GetAccessOutput GetAccessVfs (string granteeDid)
+
+Get permissions to the virtual file system for a subject
+
+Retrieves access rights granted to a subject for the virtual file system
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Net.Http;
+using AffinidiTdk.ConsumerIamClient.Api;
+using AffinidiTdk.ConsumerIamClient.Client;
+using AffinidiTdk.ConsumerIamClient.Model;
+
+namespace Example
+{
+    public class GetAccessVfsExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://apse1.api.affinidi.io/cid";
+            // Configure API key authorization: ConsumerTokenAuth
+            config.AddApiKey("authorization", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // config.AddApiKeyPrefix("authorization", "Bearer");
+
+            // create instances of HttpClient, HttpClientHandler to be reused later with different Api classes
+            HttpClient httpClient = new HttpClient();
+            HttpClientHandler httpClientHandler = new HttpClientHandler();
+            var apiInstance = new AuthzApi(httpClient, config, httpClientHandler);
+            var granteeDid = "granteeDid_example";  // string | 
+
+            try
+            {
+                // Get permissions to the virtual file system for a subject
+                GetAccessOutput result = apiInstance.GetAccessVfs(granteeDid);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling AuthzApi.GetAccessVfs: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the GetAccessVfsWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    // Get permissions to the virtual file system for a subject
+    ApiResponse<GetAccessOutput> response = apiInstance.GetAccessVfsWithHttpInfo(granteeDid);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling AuthzApi.GetAccessVfsWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **granteeDid** | **string** |  |  |
+
+### Return type
+
+[**GetAccessOutput**](GetAccessOutput.md)
+
+### Authorization
+
+[ConsumerTokenAuth](../README.md#ConsumerTokenAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Successfully retrieved access permissions for the subject |  -  |
 | **403** | ForbiddenError |  -  |
 | **500** | UnexpectedError |  -  |
 
