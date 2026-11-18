@@ -44,9 +44,11 @@ namespace AffinidiTdk.WalletsClient.Model
         /// <param name="ari">ARI of the wallet.</param>
         /// <param name="algorithm">algorithm used to generate key for the wallet.</param>
         /// <param name="keys">keys.</param>
+        /// <param name="services">list of service endpoints associated with this wallet.</param>
         /// <param name="createdAt">createdAt.</param>
         /// <param name="modifiedAt">modifiedAt.</param>
-        public WalletV2Dto(string id = default, string did = default, string name = default, string description = default, Object didDocument = default, string ari = default, string algorithm = default, List<WalletDtoKeysInner> keys = default, string createdAt = default, string modifiedAt = default)
+        /// <param name="varVersion">The version of the wallet.</param>
+        public WalletV2Dto(string id = default, string did = default, string name = default, string description = default, Object didDocument = default, string ari = default, string algorithm = default, List<WalletDtoKeysInner> keys = default, List<ServiceEndpointDto> services = default, string createdAt = default, string modifiedAt = default, decimal varVersion = default)
         {
             this.Id = id;
             this.Did = did;
@@ -56,8 +58,10 @@ namespace AffinidiTdk.WalletsClient.Model
             this.Ari = ari;
             this.Algorithm = algorithm;
             this.Keys = keys;
+            this.Services = services;
             this.CreatedAt = createdAt;
             this.ModifiedAt = modifiedAt;
+            this.VarVersion = varVersion;
         }
 
         /// <summary>
@@ -116,6 +120,13 @@ namespace AffinidiTdk.WalletsClient.Model
         public List<WalletDtoKeysInner> Keys { get; set; }
 
         /// <summary>
+        /// list of service endpoints associated with this wallet
+        /// </summary>
+        /// <value>list of service endpoints associated with this wallet</value>
+        [DataMember(Name = "services", EmitDefaultValue = false)]
+        public List<ServiceEndpointDto> Services { get; set; }
+
+        /// <summary>
         /// Gets or Sets CreatedAt
         /// </summary>
         [DataMember(Name = "createdAt", EmitDefaultValue = false)]
@@ -126,6 +137,13 @@ namespace AffinidiTdk.WalletsClient.Model
         /// </summary>
         [DataMember(Name = "modifiedAt", EmitDefaultValue = false)]
         public string ModifiedAt { get; set; }
+
+        /// <summary>
+        /// The version of the wallet
+        /// </summary>
+        /// <value>The version of the wallet</value>
+        [DataMember(Name = "version", EmitDefaultValue = false)]
+        public decimal VarVersion { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -143,8 +161,10 @@ namespace AffinidiTdk.WalletsClient.Model
             sb.Append("  Ari: ").Append(Ari).Append("\n");
             sb.Append("  Algorithm: ").Append(Algorithm).Append("\n");
             sb.Append("  Keys: ").Append(Keys).Append("\n");
+            sb.Append("  Services: ").Append(Services).Append("\n");
             sb.Append("  CreatedAt: ").Append(CreatedAt).Append("\n");
             sb.Append("  ModifiedAt: ").Append(ModifiedAt).Append("\n");
+            sb.Append("  VarVersion: ").Append(VarVersion).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
