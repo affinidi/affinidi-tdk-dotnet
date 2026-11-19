@@ -16,12 +16,6 @@ docs/CisConfigurationWebhookSettingEndpoint.md
 docs/ClaimedCredentialListResponse.md
 docs/ClaimedCredentialResponse.md
 docs/ConfigurationApi.md
-docs/CorsBatchCredentialOK.md
-docs/CorsGenerateCredentialsOK.md
-docs/CorsGetClaimedCredentialsOK.md
-docs/CorsGetCredentialOfferOK.md
-docs/CorsGetIssuanceIdClaimedCredentialOK.md
-docs/CorsGetWellKnownOpenIdCredentialIssuerOK.md
 docs/CreateCredentialInput.md
 docs/CreateIssuanceConfig400Response.md
 docs/CreateIssuanceConfigInput.md
@@ -42,7 +36,6 @@ docs/CredentialSubjectNotValidError.md
 docs/CredentialSupportedObject.md
 docs/CredentialsApi.md
 docs/DefaultApi.md
-docs/DeferredCredentialInput.md
 docs/FlowData.md
 docs/FlowDataStatusListsDetailsInner.md
 docs/GenerateCredentials400Response.md
@@ -66,7 +59,6 @@ docs/NotFoundError.md
 docs/OfferApi.md
 docs/ProjectCredentialConfigExistError.md
 docs/ProjectCredentialConfigNotExistError.md
-docs/RevocationForbiddenError.md
 docs/StartIssuance400Response.md
 docs/StartIssuanceInput.md
 docs/StartIssuanceInputDataInner.md
@@ -121,12 +113,6 @@ src/AffinidiTdk.CredentialIssuanceClient/Model/CisConfigurationWebhookSetting.cs
 src/AffinidiTdk.CredentialIssuanceClient/Model/CisConfigurationWebhookSettingEndpoint.cs
 src/AffinidiTdk.CredentialIssuanceClient/Model/ClaimedCredentialListResponse.cs
 src/AffinidiTdk.CredentialIssuanceClient/Model/ClaimedCredentialResponse.cs
-src/AffinidiTdk.CredentialIssuanceClient/Model/CorsBatchCredentialOK.cs
-src/AffinidiTdk.CredentialIssuanceClient/Model/CorsGenerateCredentialsOK.cs
-src/AffinidiTdk.CredentialIssuanceClient/Model/CorsGetClaimedCredentialsOK.cs
-src/AffinidiTdk.CredentialIssuanceClient/Model/CorsGetCredentialOfferOK.cs
-src/AffinidiTdk.CredentialIssuanceClient/Model/CorsGetIssuanceIdClaimedCredentialOK.cs
-src/AffinidiTdk.CredentialIssuanceClient/Model/CorsGetWellKnownOpenIdCredentialIssuerOK.cs
 src/AffinidiTdk.CredentialIssuanceClient/Model/CreateCredentialInput.cs
 src/AffinidiTdk.CredentialIssuanceClient/Model/CreateIssuanceConfig400Response.cs
 src/AffinidiTdk.CredentialIssuanceClient/Model/CreateIssuanceConfigInput.cs
@@ -145,7 +131,6 @@ src/AffinidiTdk.CredentialIssuanceClient/Model/CredentialResponseImmediateCNonce
 src/AffinidiTdk.CredentialIssuanceClient/Model/CredentialResponseImmediateCredential.cs
 src/AffinidiTdk.CredentialIssuanceClient/Model/CredentialSubjectNotValidError.cs
 src/AffinidiTdk.CredentialIssuanceClient/Model/CredentialSupportedObject.cs
-src/AffinidiTdk.CredentialIssuanceClient/Model/DeferredCredentialInput.cs
 src/AffinidiTdk.CredentialIssuanceClient/Model/FlowData.cs
 src/AffinidiTdk.CredentialIssuanceClient/Model/FlowDataStatusListsDetailsInner.cs
 src/AffinidiTdk.CredentialIssuanceClient/Model/GenerateCredentials400Response.cs
@@ -167,7 +152,6 @@ src/AffinidiTdk.CredentialIssuanceClient/Model/MissingHolderDidError.cs
 src/AffinidiTdk.CredentialIssuanceClient/Model/NotFoundError.cs
 src/AffinidiTdk.CredentialIssuanceClient/Model/ProjectCredentialConfigExistError.cs
 src/AffinidiTdk.CredentialIssuanceClient/Model/ProjectCredentialConfigNotExistError.cs
-src/AffinidiTdk.CredentialIssuanceClient/Model/RevocationForbiddenError.cs
 src/AffinidiTdk.CredentialIssuanceClient/Model/StartIssuance400Response.cs
 src/AffinidiTdk.CredentialIssuanceClient/Model/StartIssuanceInput.cs
 src/AffinidiTdk.CredentialIssuanceClient/Model/StartIssuanceInputDataInner.cs

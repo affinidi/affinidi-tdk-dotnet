@@ -50,6 +50,27 @@ namespace AffinidiTdk.ConsumerIamClient.Api
         /// <returns>ApiResponse of Object(void)</returns>
         ApiResponse<Object> DeleteAccessVfsWithHttpInfo(string granteeDid);
         /// <summary>
+        /// Get permissions to the virtual file system for a subject
+        /// </summary>
+        /// <remarks>
+        /// Retrieves access rights granted to a subject for the virtual file system
+        /// </remarks>
+        /// <exception cref="AffinidiTdk.ConsumerIamClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="granteeDid"></param>
+        /// <returns>GetAccessOutput</returns>
+        GetAccessOutput GetAccessVfs(string granteeDid);
+
+        /// <summary>
+        /// Get permissions to the virtual file system for a subject
+        /// </summary>
+        /// <remarks>
+        /// Retrieves access rights granted to a subject for the virtual file system
+        /// </remarks>
+        /// <exception cref="AffinidiTdk.ConsumerIamClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="granteeDid"></param>
+        /// <returns>ApiResponse of GetAccessOutput</returns>
+        ApiResponse<GetAccessOutput> GetAccessVfsWithHttpInfo(string granteeDid);
+        /// <summary>
         /// Grant access to the virtual file system
         /// </summary>
         /// <remarks>
@@ -59,6 +80,7 @@ namespace AffinidiTdk.ConsumerIamClient.Api
         /// <param name="granteeDid"></param>
         /// <param name="grantAccessInput">Grant access to virtual file system</param>
         /// <returns>GrantAccessOutput</returns>
+        [Obsolete]
         GrantAccessOutput GrantAccessVfs(string granteeDid, GrantAccessInput grantAccessInput);
 
         /// <summary>
@@ -71,6 +93,7 @@ namespace AffinidiTdk.ConsumerIamClient.Api
         /// <param name="granteeDid"></param>
         /// <param name="grantAccessInput">Grant access to virtual file system</param>
         /// <returns>ApiResponse of GrantAccessOutput</returns>
+        [Obsolete]
         ApiResponse<GrantAccessOutput> GrantAccessVfsWithHttpInfo(string granteeDid, GrantAccessInput grantAccessInput);
         /// <summary>
         /// Update access of granteeDid
@@ -128,6 +151,29 @@ namespace AffinidiTdk.ConsumerIamClient.Api
         /// <returns>Task of ApiResponse</returns>
         System.Threading.Tasks.Task<ApiResponse<Object>> DeleteAccessVfsWithHttpInfoAsync(string granteeDid, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
+        /// Get permissions to the virtual file system for a subject
+        /// </summary>
+        /// <remarks>
+        /// Retrieves access rights granted to a subject for the virtual file system
+        /// </remarks>
+        /// <exception cref="AffinidiTdk.ConsumerIamClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="granteeDid"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GetAccessOutput</returns>
+        System.Threading.Tasks.Task<GetAccessOutput> GetAccessVfsAsync(string granteeDid, System.Threading.CancellationToken cancellationToken = default);
+
+        /// <summary>
+        /// Get permissions to the virtual file system for a subject
+        /// </summary>
+        /// <remarks>
+        /// Retrieves access rights granted to a subject for the virtual file system
+        /// </remarks>
+        /// <exception cref="AffinidiTdk.ConsumerIamClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="granteeDid"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GetAccessOutput)</returns>
+        System.Threading.Tasks.Task<ApiResponse<GetAccessOutput>> GetAccessVfsWithHttpInfoAsync(string granteeDid, System.Threading.CancellationToken cancellationToken = default);
+        /// <summary>
         /// Grant access to the virtual file system
         /// </summary>
         /// <remarks>
@@ -138,6 +184,7 @@ namespace AffinidiTdk.ConsumerIamClient.Api
         /// <param name="grantAccessInput">Grant access to virtual file system</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GrantAccessOutput</returns>
+        [Obsolete]
         System.Threading.Tasks.Task<GrantAccessOutput> GrantAccessVfsAsync(string granteeDid, GrantAccessInput grantAccessInput, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
@@ -151,6 +198,7 @@ namespace AffinidiTdk.ConsumerIamClient.Api
         /// <param name="grantAccessInput">Grant access to virtual file system</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GrantAccessOutput)</returns>
+        [Obsolete]
         System.Threading.Tasks.Task<ApiResponse<GrantAccessOutput>> GrantAccessVfsWithHttpInfoAsync(string granteeDid, GrantAccessInput grantAccessInput, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Update access of granteeDid
@@ -514,12 +562,138 @@ namespace AffinidiTdk.ConsumerIamClient.Api
         }
 
         /// <summary>
+        /// Get permissions to the virtual file system for a subject Retrieves access rights granted to a subject for the virtual file system
+        /// </summary>
+        /// <exception cref="AffinidiTdk.ConsumerIamClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="granteeDid"></param>
+        /// <returns>GetAccessOutput</returns>
+        public GetAccessOutput GetAccessVfs(string granteeDid)
+        {
+            AffinidiTdk.ConsumerIamClient.Client.ApiResponse<GetAccessOutput> localVarResponse = GetAccessVfsWithHttpInfo(granteeDid);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Get permissions to the virtual file system for a subject Retrieves access rights granted to a subject for the virtual file system
+        /// </summary>
+        /// <exception cref="AffinidiTdk.ConsumerIamClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="granteeDid"></param>
+        /// <returns>ApiResponse of GetAccessOutput</returns>
+        public AffinidiTdk.ConsumerIamClient.Client.ApiResponse<GetAccessOutput> GetAccessVfsWithHttpInfo(string granteeDid)
+        {
+            // verify the required parameter 'granteeDid' is set
+            if (granteeDid == null)
+                throw new AffinidiTdk.ConsumerIamClient.Client.ApiException(400, "Missing required parameter 'granteeDid' when calling AuthzApi->GetAccessVfs");
+
+            AffinidiTdk.ConsumerIamClient.Client.RequestOptions localVarRequestOptions = new AffinidiTdk.ConsumerIamClient.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = AffinidiTdk.ConsumerIamClient.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = AffinidiTdk.ConsumerIamClient.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+            localVarRequestOptions.PathParameters.Add("granteeDid", AffinidiTdk.ConsumerIamClient.Client.ClientUtils.ParameterToString(granteeDid)); // path parameter
+
+            // authentication (ConsumerTokenAuth) required
+            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
+            {
+                localVarRequestOptions.HeaderParameters.Add("authorization", this.Configuration.GetApiKeyWithPrefix("authorization"));
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Get<GetAccessOutput>("/v1/authz/vfs/access/{granteeDid}", localVarRequestOptions, this.Configuration);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetAccessVfs", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Get permissions to the virtual file system for a subject Retrieves access rights granted to a subject for the virtual file system
+        /// </summary>
+        /// <exception cref="AffinidiTdk.ConsumerIamClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="granteeDid"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GetAccessOutput</returns>
+        public async System.Threading.Tasks.Task<GetAccessOutput> GetAccessVfsAsync(string granteeDid, System.Threading.CancellationToken cancellationToken = default)
+        {
+            AffinidiTdk.ConsumerIamClient.Client.ApiResponse<GetAccessOutput> localVarResponse = await GetAccessVfsWithHttpInfoAsync(granteeDid, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Get permissions to the virtual file system for a subject Retrieves access rights granted to a subject for the virtual file system
+        /// </summary>
+        /// <exception cref="AffinidiTdk.ConsumerIamClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="granteeDid"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GetAccessOutput)</returns>
+        public async System.Threading.Tasks.Task<AffinidiTdk.ConsumerIamClient.Client.ApiResponse<GetAccessOutput>> GetAccessVfsWithHttpInfoAsync(string granteeDid, System.Threading.CancellationToken cancellationToken = default)
+        {
+            // verify the required parameter 'granteeDid' is set
+            if (granteeDid == null)
+                throw new AffinidiTdk.ConsumerIamClient.Client.ApiException(400, "Missing required parameter 'granteeDid' when calling AuthzApi->GetAccessVfs");
+
+
+            AffinidiTdk.ConsumerIamClient.Client.RequestOptions localVarRequestOptions = new AffinidiTdk.ConsumerIamClient.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+
+            var localVarContentType = AffinidiTdk.ConsumerIamClient.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = AffinidiTdk.ConsumerIamClient.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+            localVarRequestOptions.PathParameters.Add("granteeDid", AffinidiTdk.ConsumerIamClient.Client.ClientUtils.ParameterToString(granteeDid)); // path parameter
+
+            // authentication (ConsumerTokenAuth) required
+            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
+            {
+                localVarRequestOptions.HeaderParameters.Add("authorization", this.Configuration.GetApiKeyWithPrefix("authorization"));
+            }
+
+            // make the HTTP request
+
+            var localVarResponse = await this.AsynchronousClient.GetAsync<GetAccessOutput>("/v1/authz/vfs/access/{granteeDid}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetAccessVfs", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
         /// Grant access to the virtual file system Grants access rights to a subject for the virtual file system
         /// </summary>
         /// <exception cref="AffinidiTdk.ConsumerIamClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="granteeDid"></param>
         /// <param name="grantAccessInput">Grant access to virtual file system</param>
         /// <returns>GrantAccessOutput</returns>
+        [Obsolete]
         public GrantAccessOutput GrantAccessVfs(string granteeDid, GrantAccessInput grantAccessInput)
         {
             AffinidiTdk.ConsumerIamClient.Client.ApiResponse<GrantAccessOutput> localVarResponse = GrantAccessVfsWithHttpInfo(granteeDid, grantAccessInput);
@@ -533,6 +707,7 @@ namespace AffinidiTdk.ConsumerIamClient.Api
         /// <param name="granteeDid"></param>
         /// <param name="grantAccessInput">Grant access to virtual file system</param>
         /// <returns>ApiResponse of GrantAccessOutput</returns>
+        [Obsolete]
         public AffinidiTdk.ConsumerIamClient.Client.ApiResponse<GrantAccessOutput> GrantAccessVfsWithHttpInfo(string granteeDid, GrantAccessInput grantAccessInput)
         {
             // verify the required parameter 'granteeDid' is set
@@ -589,6 +764,7 @@ namespace AffinidiTdk.ConsumerIamClient.Api
         /// <param name="grantAccessInput">Grant access to virtual file system</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GrantAccessOutput</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<GrantAccessOutput> GrantAccessVfsAsync(string granteeDid, GrantAccessInput grantAccessInput, System.Threading.CancellationToken cancellationToken = default)
         {
             AffinidiTdk.ConsumerIamClient.Client.ApiResponse<GrantAccessOutput> localVarResponse = await GrantAccessVfsWithHttpInfoAsync(granteeDid, grantAccessInput, cancellationToken).ConfigureAwait(false);
@@ -603,6 +779,7 @@ namespace AffinidiTdk.ConsumerIamClient.Api
         /// <param name="grantAccessInput">Grant access to virtual file system</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GrantAccessOutput)</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<AffinidiTdk.ConsumerIamClient.Client.ApiResponse<GrantAccessOutput>> GrantAccessVfsWithHttpInfoAsync(string granteeDid, GrantAccessInput grantAccessInput, System.Threading.CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'granteeDid' is set
