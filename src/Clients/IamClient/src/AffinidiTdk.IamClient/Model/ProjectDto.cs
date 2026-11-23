@@ -45,9 +45,10 @@ namespace AffinidiTdk.IamClient.Model
         /// <param name="name">name (required).</param>
         /// <param name="ownerId">ownerId.</param>
         /// <param name="description">description.</param>
+        /// <param name="identityVerificationEnabled">flag indicates if identity verification is enabled for project (default to false).</param>
         /// <param name="createdAt">creation date and time in ISO-8601 format, e.g. 2023-09-20T07:12:13.</param>
         /// <param name="updatedAt">last update date and time in ISO-8601 format, e.g. 2023-09-20T07:12:13.</param>
-        public ProjectDto(string id = default, string name = default, string ownerId = default, string description = default, string createdAt = default, string updatedAt = default)
+        public ProjectDto(string id = default, string name = default, string ownerId = default, string description = default, bool identityVerificationEnabled = false, string createdAt = default, string updatedAt = default)
         {
             // to ensure "id" is required (not null)
             if (id == null)
@@ -63,6 +64,7 @@ namespace AffinidiTdk.IamClient.Model
             this.Name = name;
             this.OwnerId = ownerId;
             this.Description = description;
+            this.IdentityVerificationEnabled = identityVerificationEnabled;
             this.CreatedAt = createdAt;
             this.UpdatedAt = updatedAt;
         }
@@ -92,6 +94,13 @@ namespace AffinidiTdk.IamClient.Model
         public string Description { get; set; }
 
         /// <summary>
+        /// flag indicates if identity verification is enabled for project
+        /// </summary>
+        /// <value>flag indicates if identity verification is enabled for project</value>
+        [DataMember(Name = "identityVerificationEnabled", EmitDefaultValue = true)]
+        public bool IdentityVerificationEnabled { get; set; }
+
+        /// <summary>
         /// creation date and time in ISO-8601 format, e.g. 2023-09-20T07:12:13
         /// </summary>
         /// <value>creation date and time in ISO-8601 format, e.g. 2023-09-20T07:12:13</value>
@@ -117,6 +126,7 @@ namespace AffinidiTdk.IamClient.Model
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  OwnerId: ").Append(OwnerId).Append("\n");
             sb.Append("  Description: ").Append(Description).Append("\n");
+            sb.Append("  IdentityVerificationEnabled: ").Append(IdentityVerificationEnabled).Append("\n");
             sb.Append("  CreatedAt: ").Append(CreatedAt).Append("\n");
             sb.Append("  UpdatedAt: ").Append(UpdatedAt).Append("\n");
             sb.Append("}\n");
