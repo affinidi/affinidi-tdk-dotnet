@@ -43,7 +43,7 @@ namespace AffinidiTdk.IotaClient.Model
         /// </summary>
         /// <param name="connectionClientId">connectionClientId (required).</param>
         /// <param name="credentials">credentials (required).</param>
-        public AwsExchangeCredentialsOK(string connectionClientId = default, AwsExchangeCredentialsProjectTokenOKCredentials credentials = default)
+        public AwsExchangeCredentialsOK(string connectionClientId = default, AwsExchangeCredentialsOKCredentials credentials = default)
         {
             // to ensure "connectionClientId" is required (not null)
             if (connectionClientId == null)
@@ -69,7 +69,7 @@ namespace AffinidiTdk.IotaClient.Model
         /// Gets or Sets Credentials
         /// </summary>
         [DataMember(Name = "credentials", IsRequired = true, EmitDefaultValue = true)]
-        public AwsExchangeCredentialsProjectTokenOKCredentials Credentials { get; set; }
+        public AwsExchangeCredentialsOKCredentials Credentials { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
